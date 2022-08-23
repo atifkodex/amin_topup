@@ -19,6 +19,15 @@ Route::get('/', function () {
 });
 
 
+Route::get('/sign-up', function () {
+    return view('pages.auth.sign-up');
+});
+
+Route::get('/setting', function () {
+    return view('pages.setting');
+});
+
+
 Auth::routes();
 
 

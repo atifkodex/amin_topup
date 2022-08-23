@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-sm-8">
            <div class="login-content-outer">
-            <div class="login-content">
+            <div class="login-content py-5">
                 <div class="login-heading text-center">
                     <h1>Sign in</h1>
                     <p>Welcome to Amin Pay</p>
@@ -24,7 +24,7 @@
                           <img src="{{asset('assets/images/hide.svg')}}" alt="image">
                           <input type="password" class="form-control" id="loginpassword" placeholder="Enter your password">
                           <div class="text-right create-account">
-                            <a href="#" >create new account</a>
+                            <a href="{{url('sign-up')}}" >create new account</a>
                           </div>
                          
                         </div>

@@ -16,6 +16,7 @@
 @yield('content')
 
 @include('includes.admin-footer')
+@yield('javascriptwork')
 </body>
 
 </html>

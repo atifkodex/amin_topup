@@ -6,6 +6,13 @@
 body,html{
     height: 100%;
 }
+.page-bg{
+    background-image: url('../images/main-banner.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center;
+    min-height: 100vh;
+}
 .login-banner-right{
     background-image: url('../images/login-banner.svg');
     background-position:bottom center;
@@ -102,4 +109,39 @@ font-size: 14px;
 .create-account a {
     text-decoration: none;
     color: #F89822;
+}
+/* create account */
+.signup-heading{
+    padding-bottom: 20px !important;
+}
+/* setting */
+.setting-section{
+    background: linear-gradient(134.54deg, rgba(250, 250, 250, 0.749) -8.09%, rgba(255, 255, 255, 0.349) 110.07%);
+border-radius: 10px;
+}
+.setting-heading h1{
+    color: rgba(63, 71, 101, 1);
+    font-size: 20px;
+}
+.setting-section-heading h1{
+color: rgba(248, 152, 34, 1);
+font-size: 20px;
+}
+.setting-dropdown .dropdown-toggle::after{
+    display: none;
+}
+.dropdown-menu{
+    width: 100% !important;
+}
+.setting-dropdown-btn{
+    background-color: white;
+    height: 52px;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+.setting-dropdown-btn:active,.setting-dropdown-btn:focus{
+    outline: none;
+    box-shadow: none;
 }
