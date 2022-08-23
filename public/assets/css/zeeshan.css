@@ -1,0 +1,105 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body,html{
+    height: 100%;
+}
+.login-banner-right{
+    background-image: url('../images/login-banner.svg');
+    background-position:bottom center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+.login-heading{
+    padding-bottom: 70px;
+}
+.login-heading h1{
+    color:#F89822 ;
+    font-size: 40px;
+}
+.login-heading p{
+color: #8B8B8A;
+font-size: 18px;
+}
+.login-email-field label{
+    color: #001933;
+    font-size: 14px;
+}
+.login-email-field input{
+    background-color:#E5E5E5 ;
+    height: 60px;
+    border-radius: 10px;
+    border: none;
+}
+.login-email-field input:active,.login-email-field input:focus{
+    background-color:#E5E5E5 ;
+    height: 60px;
+    border-radius: 10px;
+    border: none;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.login-email-field input:-webkit-autofill,
+.login-email-field input:-webkit-autofill:hover, 
+.login-email-field input:-webkit-autofill:focus, 
+.login-email-field input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #E5E5E5 inset !important;
+}
+.login-btn{
+    background-color:#063A6D ;
+    color: white;
+    border: none;
+    height: 50px;
+    width: 300px;
+    border-radius: 10px;
+}
+.login-footer p{
+color: #F89822;
+font-size: 14px;
+}
+.login-content-outer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.login-content{
+    width: 80%;
+}
+.login-button-outer{
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.login-logo h1{
+    color: white;
+    font-size: 16px;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+.login-logo h1 span{
+    font-weight: bold;
+}
+.login-banner-right{
+    position: relative;
+}
+.login-logo{
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+.login-email-field{
+    position: relative;
+}
+.login-email-field img{
+    position: absolute;
+    right: 25px;
+    top: 51px;
+}
+.create-account a {
+    text-decoration: none;
+    color: #F89822;
+}
