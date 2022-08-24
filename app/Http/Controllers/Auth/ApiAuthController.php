@@ -38,7 +38,7 @@ class ApiAuthController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */
     public function login(Request $request)
     {
