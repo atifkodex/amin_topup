@@ -32,7 +32,7 @@ class ApiAuthController extends Controller
         $user = User::create($request->except('password_confirmation'));
         $token = $user->createToken('Laravel Password Grant Client')->accessToken;
         $response = ['token' => $token];
-        return response()->json(['message' => $response, 'status' => 200, 'user' => $user], 200);
+        return response()->json(['message' => $response, 'user' => $user, 'status' => 200], 200);
     }
 
 
@@ -53,15 +53,14 @@ class ApiAuthController extends Controller
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('Laravel Password Grant Client')->accessToken;
-                $response = ['token' => $token];
+                $response = $token;
                 return response()->json(['message' => $response, 'status' => 200, 'user' => $user], 200);
             } else {
-                $response = ["Password mismatch"];
-
+                $response = "Password mismatch";
                 return response()->json(['message' => $response, 'status' => 422], 422);
             }
         } else {
-            $response = ["message" => 'User does not exist'];
+            $response = 'User does not exist';
             return response()->json(['message' => $response, 'status' => 422], 422);
         }
     }
@@ -74,7 +73,7 @@ class ApiAuthController extends Controller
     {
         $token = $request->user()->token();
         $token->revoke();
-        $response = ['message' => 'You have been successfully logged out!'];
+        $response = 'You have been successfully logged out!';
         return response()->json(['message' => $response, 'status' => 200], 200);
     }
 }
