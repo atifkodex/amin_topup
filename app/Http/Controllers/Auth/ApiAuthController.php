@@ -56,7 +56,7 @@ class ApiAuthController extends Controller
                 $response = ['token' => $token];
                 return response()->json(['message' => $response, 'status' => 200], 200);
             } else {
-                $response = ["message" => "Password mismatch"];
+                $response = ["Password mismatch"];
 
                 return response()->json(['message' => $response, 'status' => 422], 422);
             }
