@@ -14,7 +14,7 @@ class ApiAuthController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */
     public function register(Request $request)
     {
@@ -22,6 +22,7 @@ class ApiAuthController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
         ]);
+
         if ($validator->fails()) {
             return response(['errors' => implode(",", $validator->errors()->all()), 'status' => 422], 422);
         }
@@ -30,14 +31,15 @@ class ApiAuthController extends Controller
         $request['type'] = $request['type'] ? $request['type'] : 0;
         $user = User::create($request->except('password_confirmation'));
         $token = $user->createToken('Laravel Password Grant Client')->accessToken;
-        $response =  $token;
-        return response()->json(['message' => $response,  'user' => $user, 'status' => 200], 200);
+
+        $response = $token;
+        return response()->json(['message' => $response, 'user' => $user, 'status' => 200], 200);
     }
 
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */
     public function login(Request $request)
     {
@@ -52,11 +54,11 @@ class ApiAuthController extends Controller
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('Laravel Password Grant Client')->accessToken;
+
                 $response =  $token;
                 return response()->json(['message' => $response,  'user' => $user, 'status' => 200], 200);
             } else {
                 $response = "Password mismatch";
-
                 return response()->json(['message' => $response, 'status' => 422], 422);
             }
         } else {
