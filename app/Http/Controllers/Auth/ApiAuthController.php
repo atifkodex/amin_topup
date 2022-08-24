@@ -14,15 +14,15 @@ class ApiAuthController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
-
         ]);
+
         if ($validator->fails()) {
             return response(['errors' => $validator->errors()->all(), 'status' => 422], 422);
         }
