@@ -19,10 +19,9 @@ class ApiAuthController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
-            'type' => 'integer',
+
         ]);
         if ($validator->fails()) {
             return response(['errors' => $validator->errors()->all(), 'status' => 422], 422);
@@ -34,7 +33,7 @@ class ApiAuthController extends Controller
         $token = $user->createToken('Laravel Password Grant Client')->accessToken;
         $response = ['token' => $token];
         return response()->json(['message' => $response, 'status' => 200], 200);
-        // return response($response, 200);
+        
     }
 
 
