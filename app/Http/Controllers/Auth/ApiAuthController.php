@@ -32,8 +32,7 @@ class ApiAuthController extends Controller
         $user = User::create($request->except('password_confirmation'));
         $token = $user->createToken('Laravel Password Grant Client')->accessToken;
         $response = ['token' => $token];
-        return response()->json(['message' => $response, 'status' => 200], 200);
-        
+        return response()->json(['message' => $response, 'status' => 200, 'user' => $user], 200);
     }
 
 
