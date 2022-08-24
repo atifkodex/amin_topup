@@ -23,6 +23,10 @@ Route::get('/sign-up', function () {
     return view('pages.auth.sign-up');
 });
 
+Route::get('/dashboard', function () {
+    return view('pages.dashboard');
+});
+
 Route::get('/setting', function () {
     return view('pages.setting');
 });

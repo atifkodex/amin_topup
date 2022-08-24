@@ -51,33 +51,37 @@
 </div>
 <!-- ===================== Navbar ===================== -->
 <nav class="admin-navbar">
-    <div class="sidebar-top-area">
-        <!-- Menu Icon -->
-        <div class="menu-icon">
-            <i class="fa fa-bars"></i>
-        </div>
-        <!-- Search Bar -->
-        <div class="search-bar">
-            <input type="text" placeholder="Search anything here ...">
-        </div>
-        <!-- Notification Area  -->
-        <div class="bell-section-area">
-            <div class="bell-icon">
-                <img src="{{ asset('assets/images/bell-notify-icon.svg') }}" alt="bell-notify">
-                <span class="noti-dot">3</span>
+    <div class="row sidebar-top-area">
+        <div class="col-md-8">
+            <!-- Menu Icon -->
+            <div class="menu-icon">
+                <i class="fa fa-bars"></i>
             </div>
-            <div class="admin-top-dropdown">
-            <div class="dropdown">
-                <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ asset('assets/images/dropdown-user.svg') }}" alt="">
-                    <span>Amin Topup</span>
-                    <i class="fa-solid fa-angle-down"></i>
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" placeholder="Search anything here ...">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <!-- Notification Area  -->
+            <div class="bell-section-area">
+                <div class="bell-icon">
+                    <img src="{{ asset('assets/images/bell-notify-icon.svg') }}" alt="bell-notify">
+                    <span class="noti-dot">3</span>
                 </div>
+                <div class="admin-top-dropdown">
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                        <img src="{{ asset('assets/images/dropdown-user.svg') }}" alt="">
+                        <span>Amin Topup</span>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>
