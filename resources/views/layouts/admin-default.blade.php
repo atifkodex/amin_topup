@@ -17,6 +17,7 @@
 
 @include('includes.admin-footer')
 @yield('javascriptwork')
+@yield('inserfooter')
 </body>
 
 </html>

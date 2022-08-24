@@ -21,7 +21,7 @@
                         </div>
                         <div class="form-group login-email-field">
                           <label for="loginpassword">Password</label>
-                          <img src="{{asset('assets/images/hide.svg')}}" alt="image">
+                          <img src="{{asset('assets/images/hide.svg')}}" alt="image" onclick="myFunction()" style="cursor: pointer">
                           <input type="password" class="form-control" id="loginpassword" placeholder="Enter your password">
                           <div class="text-right create-account">
                             <a href="{{url('sign-up')}}" >create new account</a>
@@ -55,4 +55,16 @@
     </div>
 </div>
 
+@endsection
+@section('inserfooter')
+<script>
+    function myFunction() {
+      var x = document.getElementById("loginpassword");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+    </script>
 @endsection
