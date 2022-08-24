@@ -174,52 +174,75 @@
          <h2>Latest Transactions</h2>
          <div class="row">
            <div class="col-12">
-            <table>
-                <thead>
+           <div class="setting-card-body-inner Flipped" style="overflow-x:auto;">                                   
+                <table>
                     <tr>
-                        <th>Transaction ID</th>
-                        <th>Sender</th>
-                        <th>Network:</th>
-                        <th>Receiver Phone Number</th>
-                        <th>Topup Amount:</th>
-                        <th> Topup amount in USD</th>
-                        <th>Stripe fee</th>
-                        <th>Total Payment in USD</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>#213652</td>
-                        <td>Muhammad Ali</td>
-                        <td></td>
-                        <td>+93 700 00 00 0000</td>
-                        <td>50</td>
-                        <td>1.30</td>
-                        <td>1.30</td>
-                        <td>USD</td>
-                        <td>Success</td>
+                    <th>Denomination</th>
+                    <th>Topup Amount</th>
+                    <th>topup Customer will Receive (-10% Tax)</th>
+                    <th>Exchange Rate</th>
+                    <th>Amin Topup Price</th>
+                    <th>Transaction Fee(%)</th>
+                    <th>Transaction Fees(%+Fix)</th>
+                    <th>Amount Payable to Customer</th>
+                    <th>Product Code in Topup API</th>
+                    <th>Product Code in Strip (Testbed)</th>
                     </tr>
                     <tr>
-                        <td>#02154</td>
+                    <td class="data">-100 AFN</td>
+                    <td class="data">100</td>
+                    <td class="data">90</td>
+                    <td class="data">80</td>
+                    <td class="data">$1.25</td>
+                    <td class="data">2.90%</td>
+                    <td class="data">$0.30</td>
+                    <td class="data">$1.59</td>
+                    <td class="data">ROSHAN_EXCHANGE</td>
+                    <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
+
                     </tr>
                     <tr>
-                        <td>#12345</td>
-                    </tr>
-                    <tr>
-                        <td>#98765</td>
-                    </tr>
-                    <tr>
-                        <td>#58463</td>
-                    </tr>
-                    <tr>
-                        <td>#87456</td>
-                    </tr>
-                    <tr>
-                        <td>#213657</td>
-                    </tr>
-                </tbody>
-            </table>
+                    <td class="data">-100 AFN</td>
+                    <td class="data">100</td>
+                    <td class="data">90</td>
+                    <td class="data">80</td>
+                    <td class="data">$1.25</td>
+                    <td class="data">2.90%</td>
+                    <td class="data">$0.30</td>
+                    <td class="data">$1.59</td>
+                    <td class="data">ROSHAN_EXCHANGE</td>
+                    <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
+
+                </tr>
+                <tr>
+                    <td class="data">-100 AFN</td>
+                    <td class="data">100</td>
+                    <td class="data">90</td>
+                    <td class="data">80</td>
+                    <td class="data">$1.25</td>
+                    <td class="data">2.90%</td>
+                    <td class="data">$0.30</td>
+                    <td class="data">$1.59</td>
+                    <td class="data">ROSHAN_EXCHANGE</td>
+                    <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
+
+                </tr>
+                <tr>
+                    <td class="data">-100 AFN</td>
+                    <td class="data">100</td>
+                    <td class="data">90</td>
+                    <td class="data">80</td>
+                    <td class="data">$1.25</td>
+                    <td class="data">2.90%</td>
+                    <td class="data">$0.30</td>
+                    <td class="data">$1.59</td>
+                    <td class="data">ROSHAN_EXCHANGE</td>
+                    <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
+
+                </tr>
+                
+                </table>
+            </div>
            </div>
          </div>
       </div>
