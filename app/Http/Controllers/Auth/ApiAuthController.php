@@ -21,18 +21,17 @@ class ApiAuthController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
-
         ]);
         if ($validator->fails()) {
-            return response(['errors' => $validator->errors()->all(), 'status' => 422], 422);
+            return response(['errors' => implode(",", $validator->errors()->all()), 'status' => 422], 422);
         }
         $request['password'] = Hash::make($request['password']);
         $request['remember_token'] = Str::random(10);
         $request['type'] = $request['type'] ? $request['type'] : 0;
         $user = User::create($request->except('password_confirmation'));
         $token = $user->createToken('Laravel Password Grant Client')->accessToken;
-        $response = ['token' => $token];
-        return response()->json(['message' => $response, 'status' => 200, 'user' => $user], 200);
+        $response =  $token;
+        return response()->json(['message' => $response,  'user' => $user, 'status' => 200], 200);
     }
 
 
@@ -47,21 +46,21 @@ class ApiAuthController extends Controller
             'password' => 'required|string|min:6',
         ]);
         if ($validator->fails()) {
-            return response(['errors' => $validator->errors()->all(), 'status' => 422], 422);
+            return response(['errors' => implode(",", $validator->errors()->all()), 'status' => 422], 422);
         }
         $user = User::where('email', $request->email)->first();
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('Laravel Password Grant Client')->accessToken;
-                $response = ['token' => $token];
-                return response()->json(['message' => $response, 'status' => 200, 'user' => $user], 200);
+                $response =  $token;
+                return response()->json(['message' => $response,  'user' => $user, 'status' => 200], 200);
             } else {
-                $response = ["Password mismatch"];
+                $response = "Password mismatch";
 
                 return response()->json(['message' => $response, 'status' => 422], 422);
             }
         } else {
-            $response = ["message" => 'User does not exist'];
+            $response = 'User does not exist';
             return response()->json(['message' => $response, 'status' => 422], 422);
         }
     }
@@ -74,7 +73,7 @@ class ApiAuthController extends Controller
     {
         $token = $request->user()->token();
         $token->revoke();
-        $response = ['message' => 'You have been successfully logged out!'];
+        $response = 'You have been successfully logged out!';
         return response()->json(['message' => $response, 'status' => 200], 200);
     }
 }
