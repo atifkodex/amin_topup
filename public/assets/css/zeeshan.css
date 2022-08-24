@@ -150,7 +150,7 @@ font-size: 20px;
     color: #fff;
     display: block;
     text-align: left;
-    background: #e9e8e7;
+    background: white;
     color: #222;
     padding: 20px;
   }
@@ -169,7 +169,13 @@ font-size: 20px;
   
   #main #faq .card .card-header .btn-header-link.collapsed:after {
     content: "\f105";
+    padding-top: 10px;
   }
+  #main #faq .card .stripe-key-header .btn-header-link.collapsed:after {
+    content: "\f105";
+    padding-top: 0px;
+  }
+
   
   #main #faq .card .collapsing {
     background: white;
@@ -188,7 +194,114 @@ font-size: 20px;
   .setting-card-header a{
     text-decoration: none;
     font-weight: bold;
+    font-size: 18px;
   }
   .setting-card{
     margin-bottom: 15px !important;
   }
+  .setting-card-body-inner table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 3000px;
+    border-collapse: collapse;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .setting-card-body-inner table tr th{
+    background-color: #012245;
+    color: white;
+  }
+  
+  
+  .setting-card-body-inner table tr th, .setting-card-body-inner table tr td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #E4E4E4;
+    border-top: 0px;
+    border-left: 0px;
+    font-weight: normal;
+    font-size: 14px;
+  }
+  .setting-card-body-inner table tr th:last-of-type, .setting-card-body-inner table tr td:last-of-type {
+    border-right: 0px
+
+  }
+  .setting-card-body-inner::-webkit-scrollbar {
+    width: 10px;
+    height:5px;
+}
+.setting-card-body-inner::-webkit-scrollbar-track {
+    background-color: #ebebeb !important;
+    -webkit-border-radius: 10px !important;
+    border-radius: 10px !important;
+}
+.setting-card-body-inner::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+    background: #F89822;
+}
+.setting-card-button button{
+  border: none;
+  background: none;
+  width: 115px;
+  height: 34px;
+  font-size: 18px;
+  border-radius: 10px;
+}
+.setting-card-button .edit{
+  border: 1px solid #F89822;
+  color: #F89822;
+  margin-right: 10px;
+ 
+}
+.setting-card-button .edit:hover{
+  background: #F89822;
+  color: white
+}
+.setting-card-button .save{
+  border: 1px solid #063A6D;
+  color:#063A6D;
+ 
+}
+.setting-card-button .save:hover{
+  background: #063A6D;
+  color: white;
+ 
+}
+.stripe-key label{
+  color: #001933;
+  font-size: 14px;
+  padding-left: 20px;
+  font-weight: 400;
+}
+.stripe-key input{
+  height: 60px;
+  background: #F8F8F8;
+  border-radius: 10px;
+  border: none;
+}
+.stripe-key input::placeholder{
+  font-size: 14px;
+}
+.stripe-key input:active,.stripe-key input:focus{
+  outline: none;
+  box-shadow: none;
+  border: none;
+  background: #F8F8F8;
+}
+.stripe-key input:-webkit-autofill,
+.stripe-key input:-webkit-autofill:hover, 
+.stripe-key input:-webkit-autofill:focus, 
+.stripe-key input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #F8F8F8 inset !important;
+}
+.stripe-key-btn button{
+  background: #063A6D;
+  border-radius: 7px;
+  height: 56px;
+  width: 270px;
+  color: white;
+  font-size: 18px;
+  border: none;
+}
