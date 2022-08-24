@@ -88,11 +88,11 @@
     </div>
 </nav>
 <!-- ===================== Right Sidebar ===================== -->
-<div class="right-sidebar">
+{{-- <div class="right-sidebar">
     <div class="sidebar-inner">
 
     </div>
-</div>
+</div> --}}
 
 <!-- ============ JQuery Cdn ============ -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
