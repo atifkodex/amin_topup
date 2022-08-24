@@ -11,8 +11,8 @@
             </div>
             <div class="sidebar-menu">
                 <ul>
-                    <li class="active">
-                        <a href="#">
+                    <li class="">
+                        <a href="{{url('dashboard')}}">
                             <img src="{{asset('assets/images/dots-icon.svg')}}" alt="dashboard-icon">
                             Dashboard
                         </a>
@@ -30,7 +30,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('setting')}}">
                         <img src="{{asset('assets/images/setting-icon.svg')}}" alt="setting-icon">
                             Settings
                         </a>

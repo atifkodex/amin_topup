@@ -169,64 +169,15 @@
       </div>
       <!-- Overview Box End -->
  
-      <!-- Latest Transactions -->
-      <div class="latest-transection-sec">
-         <h2>Latest Transactions</h2>
-         <div class="row">
-           <div class="col-12">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Transaction ID</th>
-                        <th>Sender</th>
-                        <th>Network:</th>
-                        <th>Receiver Phone Number</th>
-                        <th>Topup Amount:</th>
-                        <th> Topup amount in USD</th>
-                        <th>Stripe fee</th>
-                        <th>Total Payment in USD</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>#213652</td>
-                        <td>Muhammad Ali</td>
-                        <td></td>
-                        <td>+93 700 00 00 0000</td>
-                        <td>50</td>
-                        <td>1.30</td>
-                        <td>1.30</td>
-                        <td>USD</td>
-                        <td>Success</td>
-                    </tr>
-                    <tr>
-                        <td>#02154</td>
-                    </tr>
-                    <tr>
-                        <td>#12345</td>
-                    </tr>
-                    <tr>
-                        <td>#98765</td>
-                    </tr>
-                    <tr>
-                        <td>#58463</td>
-                    </tr>
-                    <tr>
-                        <td>#87456</td>
-                    </tr>
-                    <tr>
-                        <td>#213657</td>
-                    </tr>
-                </tbody>
-            </table>
-           </div>
-         </div>
-      </div>
+   
 
  </div>
 </div>
 
+
+
+@endsection
+@section('inserfooter')
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
     var options = {
@@ -253,8 +204,7 @@
 
 
 </script>
-
-@endsection
-@section('javascriptwork')
-
+<script>
+    $('.sidebar-menu ul li:nth-of-type(1)').addClass('active');
+</script>
 @endsection

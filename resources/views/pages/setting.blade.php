@@ -692,7 +692,7 @@ $(document).on('click', '.save', function() {
   $('.edit').show();
   
 });
-
+$('.sidebar-menu ul li:nth-of-type(4)').addClass('active');
 </script>
 
 @endsection

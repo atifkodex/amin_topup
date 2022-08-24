@@ -25,7 +25,7 @@ Route::get('/sign-up', function () {
 
 Route::get('/dashboard', function () {
     return view('pages.dashboard');
-});
+})->name("dashboard");
 
 Route::get('/setting', function () {
     return view('pages.setting');
