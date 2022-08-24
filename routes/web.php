@@ -18,10 +18,6 @@ Route::get('/', function () {
     return view('pages.auth.login');
 });
 
-Route::get('dashboard', function () {
-    return view('pages.dashboard');
-});
-
 
 Route::get('/sign-up', function () {
     return view('pages.auth.sign-up');

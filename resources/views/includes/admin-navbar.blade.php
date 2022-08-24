@@ -84,7 +84,7 @@
     </div>
 </nav>
 <!-- ============ JQuery Cdn ============ -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+@section('javascriptwork')
 <script>     	
     $(document).ready(function(){
         $(".menu-icon").click(function(){
@@ -96,3 +96,4 @@
     });
 
 </script>
+@endsection

@@ -13,7 +13,7 @@ body {
 .left-outer {
     position: fixed;
     width: 250px;
-    left: 0;
+    left: 0 ;
     top: 0;
     bottom: 0;
     background: #001933;
@@ -260,6 +260,11 @@ body {
 .admin-top-dropdown .dropdown-toggle i {
     color: #F89822;
     margin-left: 15px;
+}
+@media only screen and (min-width: 993px){
+ .left-outer{
+    left: 0px !important;
+ }
 }
 
 /* ************************ Media Query Css ************************ */
