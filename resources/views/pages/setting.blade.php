@@ -45,90 +45,94 @@
   </style>
 
 @section('content')
-<div class="container-fluid page-bg">
-   <div class="setting-heading">
-    <h1>Settings</h1>
-   </div>
-   <div class="setting-section p-4">
-    <div class="setting-section-heading">
-        <h1>Operator Network</h1>
+@include('includes.admin-navbar')
+<!-- ===================== Right Sidebar ===================== -->
+<div class="right-sidebar">
+  <div class="container-fluid">
+    <div class="setting-heading">
+     <h1>Settings</h1>
     </div>
-    <div id="main">
-      <div class="container-fluid px-0">
-    <div class="accordion" id="faq">
-                        <div class="card setting-card">
-                            <div class="card-header setting-card-header" id="faqhead1">
-                                <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq1"
-                                aria-expanded="true" aria-controls="faq1">Roshan</a>
-                            </div>
-    
-                            <div id="faq1" class="collapse show" aria-labelledby="faqhead1" data-parent="#faq">
-                                <div class="card-body setting-card-body">
-                                  <div class="setting-card-body-inner" style="overflow-x:auto;">
-                                    <table>
-                                      <tr>
-                                        <th>Month Month Month</th>
-                                        <th>Savings</th>
-                                        <th>Month</th>
-                                        <th>Savings</th>
-                                        <th>Month</th>
-                                        <th>Savings</th>
-                                        <th>Month</th>
-                                        <th>Savings</th>
-                                        <th>Month</th>
-                                        <th>Savings</th>
-                                        <th>Month</th>
-                                        <th>Savings</th>
-                                        <th>Month</th>
-                                        <th>Savings</th>
-                                        <th>Month</th>
-                                        <th>Savings</th>
-                                        <th>Month</th>
-                                        <th>Savings</th>
-                                        <th>Month</th>
-                                        <th>Savings</th>
-                                        <th>Month</th>
-                                        <th>Savings</th>
-                                      </tr>
-                                      <tr>
-                                        <td>January</td>
-                                        <td>$100</td>
-                                      </tr>
-                                      <tr>
-                                        <td>February</td>
-                                        <td>$80</td>
-                                      </tr>
-                                    </table>
-                                  </div>
-                                  
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card setting-card">
-                            <div class="card-header setting-card-header" id="faqhead2">
-                                <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq2"
-                                aria-expanded="true" aria-controls="faq2">Etisalat Afghanistan</a>
-                            </div>
-    
-                            <div id="faq2" class="collapse" aria-labelledby="faqhead2" data-parent="#faq">
-                                <div class="card-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                    </div>
-        </div>
-      </div>
-  
-
-   </div>
+    <div class="setting-section p-4">
+     <div class="setting-section-heading">
+         <h1>Operator Network</h1>
+     </div>
+     <div id="main">
+       <div class="container-fluid px-0">
+     <div class="accordion" id="faq">
+                         <div class="card setting-card">
+                             <div class="card-header setting-card-header" id="faqhead1">
+                                 <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq1"
+                                 aria-expanded="true" aria-controls="faq1">Roshan</a>
+                             </div>
+     
+                             <div id="faq1" class="collapse show" aria-labelledby="faqhead1" data-parent="#faq">
+                                 <div class="card-body setting-card-body">
+                                   <div class="setting-card-body-inner" style="overflow-x:auto;">
+                                     <table>
+                                       <tr>
+                                         <th>Month Month Month</th>
+                                         <th>Savings</th>
+                                         <th>Month</th>
+                                         <th>Savings</th>
+                                         <th>Month</th>
+                                         <th>Savings</th>
+                                         <th>Month</th>
+                                         <th>Savings</th>
+                                         <th>Month</th>
+                                         <th>Savings</th>
+                                         <th>Month</th>
+                                         <th>Savings</th>
+                                         <th>Month</th>
+                                         <th>Savings</th>
+                                         <th>Month</th>
+                                         <th>Savings</th>
+                                         <th>Month</th>
+                                         <th>Savings</th>
+                                         <th>Month</th>
+                                         <th>Savings</th>
+                                         <th>Month</th>
+                                         <th>Savings</th>
+                                       </tr>
+                                       <tr>
+                                         <td>January</td>
+                                         <td>$100</td>
+                                       </tr>
+                                       <tr>
+                                         <td>February</td>
+                                         <td>$80</td>
+                                       </tr>
+                                     </table>
+                                   </div>
+                                   
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="card setting-card">
+                             <div class="card-header setting-card-header" id="faqhead2">
+                                 <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq2"
+                                 aria-expanded="true" aria-controls="faq2">Etisalat Afghanistan</a>
+                             </div>
+     
+                             <div id="faq2" class="collapse" aria-labelledby="faqhead2" data-parent="#faq">
+                                 <div class="card-body">
+                                     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                                     moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                                     Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                                     shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                                     proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                                     aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                 </div>
+                             </div>
+                         </div>
+                         
+                         
+                     </div>
+         </div>
+       </div>
+   
+ 
+    </div>
+ </div>
 </div>
 @endsection
 @section('javascriptwork')
