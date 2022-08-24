@@ -25,7 +25,7 @@ class ApiAuthController extends Controller
             'type' => 'integer',
         ]);
         if ($validator->fails()) {
-            return response(['errors' => $validator->errors()->all()], 422);
+            return response(['errors' => $validator->errors()->all(), 'status' => 422], 422);
         }
         $request['password'] = Hash::make($request['password']);
         $request['remember_token'] = Str::random(10);
@@ -33,7 +33,8 @@ class ApiAuthController extends Controller
         $user = User::create($request->except('password_confirmation'));
         $token = $user->createToken('Laravel Password Grant Client')->accessToken;
         $response = ['token' => $token];
-        return response($response, 200);
+        return response()->json(['message' => $response, 'status' => 200], 200);
+        // return response($response, 200);
     }
 
 
@@ -48,21 +49,22 @@ class ApiAuthController extends Controller
             'password' => 'required|string|min:6',
         ]);
         if ($validator->fails()) {
-            return response(['errors' => $validator->errors()->all()], 422);
+            return response(['errors' => $validator->errors()->all(), 'status' => 422], 422);
         }
         $user = User::where('email', $request->email)->first();
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('Laravel Password Grant Client')->accessToken;
                 $response = ['token' => $token];
-                return response($response, 200);
+                return response()->json(['message' => $response, 'status' => 200], 200);
             } else {
                 $response = ["message" => "Password mismatch"];
-                return response($response, 422);
+
+                return response()->json(['message' => $response, 'status' => 422], 422);
             }
         } else {
             $response = ["message" => 'User does not exist'];
-            return response($response, 422);
+            return response()->json(['message' => $response, 'status' => 422], 422);
         }
     }
 
@@ -75,6 +77,6 @@ class ApiAuthController extends Controller
         $token = $request->user()->token();
         $token->revoke();
         $response = ['message' => 'You have been successfully logged out!'];
-        return response($response, 200);
+        return response()->json(['message' => $response, 'status' => 200], 200);
     }
 }
