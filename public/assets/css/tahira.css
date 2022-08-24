@@ -165,6 +165,7 @@ body {
 
 .search-bar {
     position: relative;
+    width: 100%;
 }
 
 .search-bar::before {
@@ -199,6 +200,10 @@ body {
     justify-content: space-between;
 }
 
+.top-sidebar {
+    display: flex;
+}
+
 .bell-icon {
     width: 50px;
     height: 50px;
@@ -230,7 +235,7 @@ body {
 }
 
 .bell-section-area {
-    display: inline-flex;
+    display: flex;
     justify-content: flex-end;
     margin-left: 20px;
 }
@@ -440,6 +445,12 @@ body {
 
 /* ************************ Media Query Css ************************ */
 
+@media only screen and (max-width: 1300px){ 
+    .bell-section-area {
+        display: inline-flex;
+    }
+}
+
 @media only screen and (min-width: 993px){
     .left-outer{
        left: 0px !important;
@@ -448,6 +459,9 @@ body {
 
 
 @media only screen and (max-width: 992px) {
+    .bell-section-area {
+        display: flex;
+    }
     .close {
         display: block;
     }

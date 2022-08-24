@@ -52,17 +52,19 @@
 <!-- ===================== Navbar ===================== -->
 <nav class="admin-navbar">
     <div class="row sidebar-top-area">
-        <div class="col-md-8">
-            <!-- Menu Icon -->
-            <div class="menu-icon">
+        <div class="col-xl-8 col-sm-7 col-6">
+           <div class="top-sidebar">
+             <!-- Menu Icon -->
+             <div class="menu-icon">
                 <i class="fa fa-bars"></i>
             </div>
             <!-- Search Bar -->
             <div class="search-bar">
                 <input type="text" placeholder="Search anything here ...">
             </div>
+           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-xl-4 col-sm-5 col-6">
             <!-- Notification Area  -->
             <div class="bell-section-area">
                 <div class="bell-icon">
