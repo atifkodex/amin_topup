@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 
+
+
 class ResetPasswordController extends Controller
 {
     /*
@@ -48,5 +50,4 @@ class ResetPasswordController extends Controller
         $response = "Token Invalid";
         return response($response, 401);
     }
-
 }
