@@ -88,7 +88,8 @@ class ApiAuthController extends Controller
     }
 
     //////....update user......./////// 
-    public function update()
+    public function update(Request $request)
     {
+        
     }
 }
