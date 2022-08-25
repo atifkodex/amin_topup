@@ -23,19 +23,20 @@
                           <label for="loginpassword">Password</label>
                           <img src="{{asset('assets/images/hide.svg')}}" alt="image" onclick="myFunction()" style="cursor: pointer">
                           <input type="password" class="form-control" id="loginpassword" placeholder="Enter your password">
-                          <div class="text-right create-account">
+                          {{-- <div class="text-right create-account">
                             <a href="{{url('sign-up')}}" >create new account</a>
-                          </div>
+                          </div> --}}
                          
                         </div>
-                        <div class="d-flex justify-content-center login-button-outer">
-                            <button type="submit" class="btn  login-btn">Sign in</button>
-                            
-                        </div>
-   
                         
                       </form>
-                      
+                      <div class="d-flex justify-content-center login-button-outer">
+                        <a href="{{route('dashboard')}}">
+                          <button class="btn  login-btn">Sign in</button>
+                        </a>
+                          
+                          
+                      </div>
                 </div>
                 <div class="login-footer text-center">
                     <p>&copy; Amin Technologies Inc. All Right Reserved.</p>

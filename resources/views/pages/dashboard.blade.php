@@ -169,87 +169,14 @@
       </div>
       <!-- Overview Box End -->
  
-      <!-- Latest Transactions -->
-      <div class="latest-transection-sec">
-         <h2>Latest Transactions</h2>
-         <div class="row">
-           <div class="col-12">
-           <div class="setting-card-body-inner Flipped" style="overflow-x:auto;">                                   
-                <table>
-                    <tr>
-                    <th>Denomination</th>
-                    <th>Topup Amount</th>
-                    <th>topup Customer will Receive (-10% Tax)</th>
-                    <th>Exchange Rate</th>
-                    <th>Amin Topup Price</th>
-                    <th>Transaction Fee(%)</th>
-                    <th>Transaction Fees(%+Fix)</th>
-                    <th>Amount Payable to Customer</th>
-                    <th>Product Code in Topup API</th>
-                    <th>Product Code in Strip (Testbed)</th>
-                    </tr>
-                    <tr>
-                    <td class="data">-100 AFN</td>
-                    <td class="data">100</td>
-                    <td class="data">90</td>
-                    <td class="data">80</td>
-                    <td class="data">$1.25</td>
-                    <td class="data">2.90%</td>
-                    <td class="data">$0.30</td>
-                    <td class="data">$1.59</td>
-                    <td class="data">ROSHAN_EXCHANGE</td>
-                    <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                    </tr>
-                    <tr>
-                    <td class="data">-100 AFN</td>
-                    <td class="data">100</td>
-                    <td class="data">90</td>
-                    <td class="data">80</td>
-                    <td class="data">$1.25</td>
-                    <td class="data">2.90%</td>
-                    <td class="data">$0.30</td>
-                    <td class="data">$1.59</td>
-                    <td class="data">ROSHAN_EXCHANGE</td>
-                    <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                </tr>
-                <tr>
-                    <td class="data">-100 AFN</td>
-                    <td class="data">100</td>
-                    <td class="data">90</td>
-                    <td class="data">80</td>
-                    <td class="data">$1.25</td>
-                    <td class="data">2.90%</td>
-                    <td class="data">$0.30</td>
-                    <td class="data">$1.59</td>
-                    <td class="data">ROSHAN_EXCHANGE</td>
-                    <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                </tr>
-                <tr>
-                    <td class="data">-100 AFN</td>
-                    <td class="data">100</td>
-                    <td class="data">90</td>
-                    <td class="data">80</td>
-                    <td class="data">$1.25</td>
-                    <td class="data">2.90%</td>
-                    <td class="data">$0.30</td>
-                    <td class="data">$1.59</td>
-                    <td class="data">ROSHAN_EXCHANGE</td>
-                    <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                </tr>
-                
-                </table>
-            </div>
-           </div>
-         </div>
-      </div>
 
  </div>
 </div>
 
+
+
+@endsection
+@section('inserfooter')
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
     var options = {
@@ -276,8 +203,7 @@
 
 
 </script>
-
-@endsection
-@section('javascriptwork')
-
+<script>
+    $('.sidebar-menu ul li:nth-of-type(1)').addClass('active');
+</script>
 @endsection
