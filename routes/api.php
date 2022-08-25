@@ -34,6 +34,7 @@ Route::middleware('auth:api')->group(function () {
     //    Route::get('/articles', 'ArticleController@index')->middleware('api.admin')->name('articles');
     Route::get('/articles', [ArticleController::class, 'index'])->middleware('api.admin')->name('articles');
     Route::post('/logout', [ApiAuthController::class, 'logout'])->name('logout.api');
+    Route::post('/update', [ApiAuthController::class, 'update_user'])->name('update.api');
 });
 
 

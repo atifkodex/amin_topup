@@ -19,6 +19,7 @@ class ApiAuthController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */
+    //////.....Register.........////
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -44,6 +45,7 @@ class ApiAuthController extends Controller
         }
     }
 
+    /////////.........login....////
 
     /**
      * @param Request $request
@@ -63,7 +65,6 @@ class ApiAuthController extends Controller
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('Laravel Password Grant Client')->accessToken;
                 $user['token'] = $token;
-                // $response =  $token;
                 return $this->sendResponse(['user' => $user, 'status' => 200], null);
             } else {
                 $response = "Password mismatch";
@@ -74,6 +75,8 @@ class ApiAuthController extends Controller
             return $this->sendError(($response), null);
         }
     }
+
+    ///////////........logout.......//////
 
     /**
      * @param Request $request
@@ -88,8 +91,21 @@ class ApiAuthController extends Controller
     }
 
     //////....update user......./////// 
-    public function update(Request $request)
+    public function update_user(Request $request)
     {
-        
+        $user = User::where('id', $request->id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
+            'date_of_birth' => $request->date_of_birth,
+            'profile' => $request->profile
+        ]);
+        if ($user) {
+            $success = User::where('id', $request->id)->first();
+            return $this->sendResponse(['user' => $success, 'status' => 200], null);
+        } else {
+            $response = 'User updation Fail';
+            return $this->sendError(($response), null);
+        }
     }
 }
