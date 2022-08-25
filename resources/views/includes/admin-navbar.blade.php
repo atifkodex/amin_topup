@@ -36,7 +36,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('support')}}">
                             <img src="{{asset('assets/images/support-icon.svg')}}" alt="support-icon">
                             Support
                         </a>
