@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\ApiAuthController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\UserController;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -38,3 +39,10 @@ Route::middleware('auth:api')->group(function () {
 
 
 Route::post('password/email', [ResetPasswordController::class, 'sendResetResponse'])->name('password/email');
+
+// Admin Panel API's START------- 
+Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], function () {
+    Route::get('/users_list', [UserController::class, 'allUsers']);
+});
+// Admin Panel API's END------- 
+
