@@ -3,15 +3,18 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\ResponseTrait;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
+
+
 class ApiAuthController extends Controller
 {
-
+    use ResponseTrait;
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
@@ -24,21 +27,22 @@ class ApiAuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response(['errors' => $validator->errors()->all(), 'status' => 422], 422);
+            return $this->sendError(implode(",", $validator->errors()->all()), null);
         }
         $request['password'] = Hash::make($request['password']);
         $request['remember_token'] = Str::random(10);
         $request['type'] = $request['type'] ? $request['type'] : 0;
         $user = User::create($request->except('password_confirmation'));
         $token = $user->createToken('Laravel Password Grant Client')->accessToken;
-        $response = ['token' => $token];
-        return response()->json(['message' => $response, 'status' => 200, 'user' => $user], 200);
+        $response = $token;
+        // return $this->sendResponse(['message' => $response, 'user' => $user, 'status' => 200], 200);
+        return $this->sendResponse(['token' => $response,  'user' => $user, 'status' => 200], null);
     }
 
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */
     public function login(Request $request)
     {
@@ -47,22 +51,25 @@ class ApiAuthController extends Controller
             'password' => 'required|string|min:6',
         ]);
         if ($validator->fails()) {
-            return response(['errors' => $validator->errors()->all(), 'status' => 422], 422);
+            // return response(['errors' => implode(",", $validator->errors()->all()), 'status' => 422], 422);
+            return $this->sendError(implode(",", $validator->errors()->all()), null);
         }
         $user = User::where('email', $request->email)->first();
         if ($user) {
             if (Hash::check($request->password, $user->password)) {
                 $token = $user->createToken('Laravel Password Grant Client')->accessToken;
-                $response = ['token' => $token];
-                return response()->json(['message' => $response, 'status' => 200, 'user' => $user], 200);
-            } else {
-                $response = ["Password mismatch"];
 
-                return response()->json(['message' => $response, 'status' => 422], 422);
+                $response =  $token;
+                return $this->sendResponse(['token' => $response,  'user' => $user, 'status' => 200], null);
+            } else {
+                $response = "Password mismatch";
+                return $this->sendError(($response), null);
             }
         } else {
-            $response = ["message" => 'User does not exist'];
-            return response()->json(['message' => $response, 'status' => 422], 422);
+            $response = 'User does not exist';
+            return $this->sendError(($response), null);
+
+            // return response()->json(['message' => $response, 'status' => 422], 422);
         }
     }
 
@@ -74,7 +81,9 @@ class ApiAuthController extends Controller
     {
         $token = $request->user()->token();
         $token->revoke();
-        $response = ['message' => 'You have been successfully logged out!'];
-        return response()->json(['message' => $response, 'status' => 200], 200);
+        $response = 'You have been successfully logged out!';
+        return $this->sendResponse(null, $response);
+
+        // return response()->json(['message' => $response, 'status' => 200], null);
     }
 }
