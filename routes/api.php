@@ -42,7 +42,7 @@ Route::middleware('auth:api')->group(function () {
 Route::post('password/email', [ResetPasswordController::class, 'sendResetResponse'])->name('password/email');
 
 // Admin Panel API's START------- 
-Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], function () {
+Route::group(['prefix' => '/admin', 'middleware' => ['cors', 'json.response']], function () {
     Route::get('/users_list', [UserController::class, 'allUsers']);
     Route::post('/check_operator', [UserController::class, 'networkOperator']);
     Route::post('/add_operator_data', [OperatorController::class, 'operatorData']);
