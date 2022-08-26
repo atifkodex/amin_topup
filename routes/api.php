@@ -5,9 +5,11 @@ use App\Http\Controllers\Auth\ApiAuthController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OperatorController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +48,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], f
     Route::get('/users_list', [UserController::class, 'allUsers']);
     Route::post('/check_operator', [UserController::class, 'networkOperator']);
     Route::post('/add_operator_data', [OperatorController::class, 'operatorData']);
+    Route::post('intent_payment', [OrderController::class, 'paymentIntent']);
+
 });
 // Admin Panel API's END------- 
 
