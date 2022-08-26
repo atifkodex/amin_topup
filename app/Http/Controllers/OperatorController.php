@@ -33,19 +33,19 @@ class OperatorController extends Controller
         {
             $operator->operator_image = "https://upload.wikimedia.org/wikipedia/commons/4/44/Roshan_Afghanistan_Logo.jpeg";
         }
-        elseif($request->operator_name == 'Etisalat Afghanistan')
+        elseif($request->operator_name == 'Etisalat')
         {
             $operator->operator_image = "http://www.egymatec.com/images/etisalat-logo.jpg";
         }
-        elseif($request->operator_name == 'Afghan Wireless')
+        elseif($request->operator_name == 'AWCC')
         {
             $operator->operator_image = "https://upload.wikimedia.org/wikipedia/en/b/bd/Afghan_Wireless_logo_Oct_2017.png";
         }
-        elseif($request->operator_name == 'MTN Afghanistan')
+        elseif($request->operator_name == 'MTN')
         {
             $operator->operator_image = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/MTN_Logo.svg/1200px-MTN_Logo.svg.png";
         }
-        elseif($request->operator_name == 'Salaam Network')
+        elseif($request->operator_name == 'Salaam')
         {
             $operator->operator_image = "https://tkg.af/assets/uploads/sites/2/2019/08/Salaam-Network.jpg";
         }
