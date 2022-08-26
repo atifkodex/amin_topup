@@ -338,6 +338,10 @@ body {
     color: #F89822;
 }
 
+.first-right-box {
+    padding-right: 15px;
+}
+
 .refund-req-box {
     background: linear-gradient(138.27deg, rgba(250, 250, 250, 0.749) -19.89%, rgba(255, 255, 255, 0.349) 122.48%);
     /* width: 312px; */
@@ -442,7 +446,97 @@ body {
     top: -3px;
     position: relative;
 }
+.latest-transection-sec {
+    background: linear-gradient(138.27deg, rgba(250, 250, 250, 0.749) -19.89%, rgba(255, 255, 255, 0.349) 122.48%);
+    border-radius: 11px;
+    padding: 25px 22px;
+    margin-top: 45px;
+}
+.latest-transection-sec h2 {
+    color: #F89822;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 30px;
+}
+.setting-card-body-inner table tr th {
+    padding: 10px 25px !important;
+}
+.latest-transection-sec .data {
+    padding: 10px 25px !important;
+}
+.success {
+    color: #3DAB25;
+}
+.failed {
+    color: #EF476F;
+}
+.data img {
+    width: 40px;
+}
+.latest-transection-sec .setting-card-body-inner {
+    overflow-y: scroll;
+    height: 456px;
+}
+.setting-card-body-inner::-webkit-scrollbar {
+    width: 8px;
+}
+.pagination-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.pagination>.active>a,
+.pagination>.active>span {
+    width: 50px;
+    height: 50px;
+    background-color: #F89822 !important;
+    border-color: #F89822 !important;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    color: #fff !important;
+}
+.pagination>li>a, .pagination>li>span {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #A7A7A7 !important;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    color: #A7A7A7 !important;
+    background-color: transparent !important;
+    margin: 0 15px;
+}
 
+.pagination>li#prev>span {
+    border: none !important;
+}
+.pagination>li:first-child>span,
+.pagination>li#prev>span {
+    border: none !important;
+}
+
+.pagination {
+    margin-top: 15px;
+}
+#next.active span,
+#prev.active span {
+    background: none !important;
+    color: #F89822 !important;
+}
+.setting-card-body-inner select {
+    border: 1px solid #012245;
+    padding: 6px 15px;
+}
 /* ************************ Media Query Css ************************ */
 
 @media only screen and (max-width: 1300px){ 
