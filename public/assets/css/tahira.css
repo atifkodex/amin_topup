@@ -46,6 +46,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 100vh;
 }
 
 .sidebar-inner,
@@ -53,6 +54,7 @@ body {
     position: relative;
     z-index: 1;
 }
+
 
 .menu-icon {
     width: 78px;
@@ -139,9 +141,9 @@ body {
     right: 0;
 }
 
-.sidebar-footer {
+/* .sidebar-footer {
     top: 40px;
-}
+} */
 
 /* =================== Navbar =================== */
 

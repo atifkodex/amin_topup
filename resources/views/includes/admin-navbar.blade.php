@@ -24,7 +24,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('transaction')}}">
                             <img src="{{asset('assets/images/transection-icon.svg')}}" alt="transection-icon">
                             All Transaction
                         </a>

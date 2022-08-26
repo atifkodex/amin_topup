@@ -19,10 +19,6 @@
         height:680px !important;
         overflow-y: hidden !important;
     }
-    .user-modal-time{
-        color: #666666;
-        font-size: 12px;
-    }
     #table-id tbody tr td{
     background: #f1efef;
  
@@ -33,7 +29,7 @@
     <div class="right-sidebar">
         <div class="container-fluid">
             <div class="setting-heading pl-4">
-                <h1>User</h1>
+                <h1>All Transaction</h1>
             </div>
             <div class="row">
                 <div class=" col-lg-8 col-xl-9">
@@ -57,253 +53,258 @@
                                 </select>                
                                 </div>    
                                                          
-                                <table id="table-id" class="mr-3 mb-3" style="width: 1100px">
+                                <table id="table-id" class="mr-3 mb-3" style="width: 1800px">
                                     <thead>
                                         <tr>
-                                            <th>User</th>
-                                            <th>Email</th>
-                                            <th>Country</th>
-                                            <th>Phone Number</th>
-                                            <th>Last Purchase</th>
+                                            <th>Transaction ID</th>
+                                            <th>Sender Name</th>
+                                            <th>Receiver Phone Number</th>
+                                            <th>Network</th>
+                                            <th>Topup Amount</th>
+                                            <th>Topup Amount in USD</th>
+                                            <th>Stripe Fee</th>
+                                            <th>Total Payment in USD</th>
+                                            <th>Status</th>
                                             <th>Actions</th>
                                         
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td class="data">#213652</td>
                                             <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
                                             <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
+                                            <td class="data">AWCC</td>
+                                            <td class="data">6000.76</td>
+                                            <td class="data">1.30</td>
+                                            <td class="data">$ 3.0</td>
+                                            <td class="data">$ 50</td>
+                                            <td class="data success">Sucess</td>
+                                           
                                             <td class="data">
                                                 <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                             </td>
                                            
                                         </tr>
                                         <tr>
+                                            <td class="data">#213652</td>
                                             <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
                                             <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
+                                            <td class="data">AWCC</td>
+                                            <td class="data">6000.76</td>
+                                            <td class="data">1.30</td>
+                                            <td class="data">$ 3.0</td>
+                                            <td class="data">$ 50</td>
+                                            <td class="data success">Sucess</td>
                                            
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
                                             <td class="data">
                                                 <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                             </td>
                                            
                                         </tr>
                                         <tr>
+                                            <td class="data">#213652</td>
                                             <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
                                             <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
+                                            <td class="data">AWCC</td>
+                                            <td class="data">6000.76</td>
+                                            <td class="data">1.30</td>
+                                            <td class="data">$ 3.0</td>
+                                            <td class="data">$ 50</td>
+                                            <td class="data success">Sucess</td>
+                                           
                                             <td class="data">
                                                 <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                             </td>
                                            
                                         </tr>
-                                        
                                         <tr>
+                                            <td class="data">#213652</td>
                                             <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
                                             <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
+                                            <td class="data">AWCC</td>
+                                            <td class="data">6000.76</td>
+                                            <td class="data">1.30</td>
+                                            <td class="data">$ 3.0</td>
+                                            <td class="data">$ 50</td>
+                                            <td class="data success">Sucess</td>
+                                           
                                             <td class="data">
                                                 <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                             </td>
                                            
                                         </tr>
-                                        
                                         <tr>
+                                            <td class="data">#213652</td>
                                             <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
                                             <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
+                                            <td class="data">AWCC</td>
+                                            <td class="data">6000.76</td>
+                                            <td class="data">1.30</td>
+                                            <td class="data">$ 3.0</td>
+                                            <td class="data">$ 50</td>
+                                            <td class="data success">Sucess</td>
+                                           
                                             <td class="data">
                                                 <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                             </td>
                                            
                                         </tr>
-                                        
                                         <tr>
+                                            <td class="data">#213652</td>
                                             <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
                                             <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
+                                            <td class="data">AWCC</td>
+                                            <td class="data">6000.76</td>
+                                            <td class="data">1.30</td>
+                                            <td class="data">$ 3.0</td>
+                                            <td class="data">$ 50</td>
+                                            <td class="data success">Sucess</td>
+                                           
                                             <td class="data">
                                                 <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                             </td>
                                            
                                         </tr>
-                                        
                                         <tr>
+                                            <td class="data">#213652</td>
                                             <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
                                             <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
+                                            <td class="data">AWCC</td>
+                                            <td class="data">6000.76</td>
+                                            <td class="data">1.30</td>
+                                            <td class="data">$ 3.0</td>
+                                            <td class="data">$ 50</td>
+                                            <td class="data success">Sucess</td>
+                                           
                                             <td class="data">
                                                 <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                             </td>
                                            
                                         </tr>
-                                        
                                         <tr>
+                                            <td class="data">#213652</td>
                                             <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
                                             <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
+                                            <td class="data">AWCC</td>
+                                            <td class="data">6000.76</td>
+                                            <td class="data">1.30</td>
+                                            <td class="data">$ 3.0</td>
+                                            <td class="data">$ 50</td>
+                                            <td class="data success">Sucess</td>
+                                           
                                             <td class="data">
                                                 <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                             </td>
                                            
                                         </tr>
-                                              
                                         <tr>
+                                            <td class="data">#213652</td>
                                             <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
                                             <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
+                                            <td class="data">AWCC</td>
+                                            <td class="data">6000.76</td>
+                                            <td class="data">1.30</td>
+                                            <td class="data">$ 3.0</td>
+                                            <td class="data">$ 50</td>
+                                            <td class="data success">Sucess</td>
+                                           
                                             <td class="data">
                                                 <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                             </td>
                                            
                                         </tr>
-
-                                              
                                         <tr>
+                                            <td class="data">#213652</td>
                                             <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
                                             <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
+                                            <td class="data">AWCC</td>
+                                            <td class="data">6000.76</td>
+                                            <td class="data">1.30</td>
+                                            <td class="data">$ 3.0</td>
+                                            <td class="data">$ 50</td>
+                                            <td class="data success">Sucess</td>
+                                           
                                             <td class="data">
                                                 <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                             </td>
                                            
                                         </tr>
-                                              
                                         <tr>
+                                            <td class="data">#213652</td>
                                             <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
                                             <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
+                                            <td class="data">AWCC</td>
+                                            <td class="data">6000.76</td>
+                                            <td class="data">1.30</td>
+                                            <td class="data">$ 3.0</td>
+                                            <td class="data">$ 50</td>
+                                            <td class="data success">Sucess</td>
+                                           
                                             <td class="data">
                                                 <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                             </td>
                                            
                                         </tr>
-                                              
                                         <tr>
+                                            <td class="data">#213652</td>
                                             <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
                                             <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
+                                            <td class="data">AWCC</td>
+                                            <td class="data">6000.76</td>
+                                            <td class="data">1.30</td>
+                                            <td class="data">$ 3.0</td>
+                                            <td class="data">$ 50</td>
+                                            <td class="data success">Sucess</td>
+                                           
                                             <td class="data">
                                                 <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                             </td>
                                            
                                         </tr>
-
-                                              
                                         <tr>
+                                            <td class="data">#213652</td>
                                             <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
                                             <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
+                                            <td class="data">AWCC</td>
+                                            <td class="data">6000.76</td>
+                                            <td class="data">1.30</td>
+                                            <td class="data">$ 3.0</td>
+                                            <td class="data">$ 50</td>
+                                            <td class="data success">Sucess</td>
+                                           
                                             <td class="data">
                                                 <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                             </td>
                                            
                                         </tr>
-                                              
                                         <tr>
+                                            <td class="data">#213652</td>
                                             <td class="data">Muhammad Ali</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
                                             <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
+                                            <td class="data">AWCC</td>
+                                            <td class="data">6000.76</td>
+                                            <td class="data">1.30</td>
+                                            <td class="data">$ 3.0</td>
+                                            <td class="data">$ 50</td>
+                                            <td class="data success">Sucess</td>
+                                           
                                             <td class="data">
                                                 <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                             </td>
                                            
                                         </tr>
-                                              
                                         <tr>
-                                            <td class="data">Muhammad Ali khan</td>
-                                            <td class="data">aliahmed@gmail.com</td>
-                                            <td class="data">Afghanistan</td>
+                                            <td class="data">#213652</td>
+                                            <td class="data">Muhammad Ali</td>
                                             <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">08/22/2022 <span class="user-table-time"></span></td>
+                                            <td class="data">AWCC</td>
+                                            <td class="data">6000.76</td>
+                                            <td class="data">1.30</td>
+                                            <td class="data">$ 3.0</td>
+                                            <td class="data">$ 50</td>
+                                            <td class="data success">Sucess</td>
+                                           
                                             <td class="data">
                                                 <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                             </td>
@@ -390,37 +391,44 @@
         <div class="modal-content user-modal">
             <div class="modal-body px-4">
                 <div class="user-modal-header py-3">
-                    <h1>User Details</h1>
+                    <h1>Transaction Details</h1>
+                </div>
+                <div class="user-modal-content d-flex justify-content-between">
+                    <p>Transaction ID</p>
+                    <p>#313652</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>User</p>
                     <p>Muhammad Ali</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
-                    <p>Email</p>
-                    <p>aliahmed666@gmail.com</p>
-                </div>
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>Date of Birth</p>
-                    <p>12/16/1994</p>
-                </div>
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>Country</p>
-                    <p>Afghanistan</p>
-                </div>
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>Phone Number</p>
+                    <p>Reciever Phone Number</p>
                     <p>+93 700 00 00 000</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
-                    <p>Last Purchase</p>
-                    <p>08/22/2022 <span class="user-modal-time">10:00 pm</span></p>
+                    <p>Network</p>
+                    <p>AWCC</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
-                    <p>Total Purchase</p>
-                    <p>500 USD</p>
+                    <p>Topup Amount</p>
+                    <p>3.00.76</p>
                 </div>
-                
+                <div class="user-modal-content d-flex justify-content-between">
+                    <p>Topup Amount in USD</p>
+                    <p>1.30</p>
+                </div>
+                <div class="user-modal-content d-flex justify-content-between">
+                    <p>Strip Fee</p>
+                    <p>$ 3.0</p>
+                </div>
+                <div class="user-modal-content d-flex justify-content-between">
+                    <p>Total Payment in USD</p>
+                    <p>$ 50</p>
+                </div>
+                <div class="user-modal-content d-flex justify-content-between">
+                    <p>Status</p>
+                    <p>Success</p>
+                </div>
                 <div class="user-modal-button d-flex justify-content-center">
                     <button class="mr-1">Print</button>
                     <button class="ml-1">Download</button>
@@ -585,6 +593,6 @@
         });
     </script>
             <script>
-                $('.sidebar-menu ul li:nth-of-type(2)').addClass('active');
+                $('.sidebar-menu ul li:nth-of-type(3)').addClass('active');
             </script>
         @endsection

@@ -38,6 +38,9 @@ Route::get('/support', function () {
 Route::get('/user', function () {
     return view('pages.user');
 });
+Route::get('/transaction', function () {
+    return view('pages.transaction');
+});
 
 Auth::routes();
 
