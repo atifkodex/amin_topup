@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\ApiAuthController;
+use App\Http\Controllers\Auth\ContactsController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Http\Request;
@@ -35,6 +36,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/articles', [ArticleController::class, 'index'])->middleware('api.admin')->name('articles');
     Route::post('/logout', [ApiAuthController::class, 'logout'])->name('logout.api');
     Route::post('/update', [ApiAuthController::class, 'update_user'])->name('update.api');
+    Route::post('/contact_us', [ContactsController::class, 'contacts'])->name('contact_us.api');
 });
 
 
