@@ -4,13 +4,13 @@
 @include('includes.admin-navbar')
 <div class="right-sidebar">
     <div class="container-fluid">
-        <div class="setting-heading">
+        <div class="setting-heading pl-4">
             <h1>Support</h1>
            </div>
            <div class="row">
-            <div class="col-4 col-xl-3">
-                <div class="support-card-outer-main">
-                    <div class="support-card-outer px-3 py-3" >
+            <div class="col-4 col-xl-3 support-card-outer-main ">
+                <div class="">
+                    <div class="support-card-outer px-1 py-2" >
                         <div class="support-card pl-3 py-3 my-3">
                             <div class="support-card-header d-flex align-items-center">
                                 <div class="image-outer">
@@ -124,7 +124,8 @@
             
 
             </div>
-            <div class="col-8 col-xl-9">
+          
+            <div class="col-8 col-xl-9 support-description-outer">
                 <div class="support-description">
                     <div class="support-description-header py-3 px-4">
                         <h1>Description</h1>
@@ -143,7 +144,8 @@
                         </div>
                         
                     </div>
-                    <div class="support-description-section py-5 px-4">
+                    <div class="support-description-section pt-5 px-4">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem dolor autem optio hic, eaque magni libero aspernatur porro natus deserunt! Adipisci incidunt aperiam voluptate temporibus necessitatibus explicabo assumenda aliquid?
                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem dolor autem optio hic, eaque magni libero aspernatur porro natus deserunt! Adipisci incidunt aperiam voluptate temporibus necessitatibus explicabo assumenda aliquid?
                     </div>
             

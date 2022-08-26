@@ -11,7 +11,7 @@
 <!-- ===================== Right Sidebar ===================== -->
 <div class="right-sidebar">
   <div class="container-fluid">
-    <div class="setting-heading">
+    <div class="setting-heading pl-4">
      <h1>Settings</h1>
     </div>
     <div class="setting-section p-4">
