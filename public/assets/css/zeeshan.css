@@ -451,6 +451,7 @@ font-size: 26px;
 .user-filter{
   background: linear-gradient(134.54deg, rgba(250, 250, 250, 0.749) -8.09%, rgba(255, 255, 255, 0.349) 110.07%);
   border-radius: 15px;
+  height: 731px;
 }
 .user-filter-form form div label{
   font-size: 14px;
@@ -485,4 +486,52 @@ font-size: 26px;
 height: 38px;
 color: white;
 }
-
+.user-modal{
+  border-radius: 20px;
+  border: none;
+}
+.user-modal-header h1{
+  color: #F89822;
+  font-size: 24px;
+}
+.user-modal-content p{
+  padding-bottom: 18px;
+}
+.user-modal-content p:nth-of-type(1){
+  color: #3F4765;
+  font-size: 20px;
+}
+.user-modal-content p:nth-of-type(2){
+  color: black;
+  font-weight: 600;
+  font-size: 20px;
+}
+.user-modal-button button{
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  width:115px;
+  height: 34px;
+  margin-bottom: 18px;
+}
+.user-modal-button button:nth-of-type(1){
+  background-color: #F89822;
+}
+.user-modal-button button:nth-of-type(2){
+  background-color: #063A6D;
+}
+.user-select-row select{
+  width: 80px;
+  border: 1px solid #012245;
+  font-size: 12px;
+  color: #012245
+}
+.user-select-row select:active,.user-select-row select:focus{
+  outline: none;
+  box-shadow: none;
+  border: 1px solid #012245;
+}
+#table-id thead tr th:first-of-type,#table-id tbody tr td:first-of-type{
+  display: none
+}

@@ -481,6 +481,7 @@ body {
 .setting-card-body-inner::-webkit-scrollbar {
     width: 8px;
 }
+.setting-card-body-inner::-webkit-scrollbar-corner {background-color: #ebebeb !important; }
 .pagination-container {
     width: 100%;
     display: flex;
