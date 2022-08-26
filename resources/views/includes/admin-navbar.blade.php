@@ -18,7 +18,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('user')}}">
                             <img src="{{asset('assets/images/user-icon.svg')}}" alt="user-icon">
                             User
                         </a>

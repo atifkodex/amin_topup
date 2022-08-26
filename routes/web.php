@@ -35,6 +35,9 @@ Route::get('/support', function () {
     return view('pages.support');
 });
 
+Route::get('/user', function () {
+    return view('pages.user');
+});
 
 Auth::routes();
 

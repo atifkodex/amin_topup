@@ -443,3 +443,46 @@ background: transparent !important;
 .support-description-button button:nth-of-type(2){
   background-color: rgba(248, 152, 34, 1);
 }
+/* user */
+.user-filter-header h1{
+color: #F89822;
+font-size: 26px;
+}
+.user-filter{
+  background: linear-gradient(134.54deg, rgba(250, 250, 250, 0.749) -8.09%, rgba(255, 255, 255, 0.349) 110.07%);
+  border-radius: 15px;
+}
+.user-filter-form form div label{
+  font-size: 14px;
+  color: #6E6E82;
+}
+.user-filter-form form div input{
+  height: 35px;
+  border: 1px solid #E5E5E5;
+  font-size: 12px;
+  border-radius:5px;
+  background: #F8F8F8;
+}
+.user-filter-form form div:-webkit-autofill,
+.user-filter-form form div:-webkit-autofill:hover, 
+.user-filter-form form div:-webkit-autofill:focus, 
+.user-filter-form form div:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #F8F8F8 inset !important;
+}
+.user-filter-form form div input:active,.user-filter-form form div input:focus{
+  border: 1px solid #E5E5E5;
+  outline: none;
+  box-shadow: none;
+}
+.user-filter-form form div input::placeholder{
+  font-size: 12px;
+}
+.user-filter-form form div button{
+  background: #F89822;
+  border-radius: 6px;
+  border: none;
+  width: 178px;
+height: 38px;
+color: white;
+}
+
