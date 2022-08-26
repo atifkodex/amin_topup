@@ -48,7 +48,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], f
     Route::get('/users_list', [UserController::class, 'allUsers']);
     Route::post('/check_operator', [UserController::class, 'networkOperator']);
     Route::post('/add_operator_data', [OperatorController::class, 'operatorData']);
-    Route::post('intent_payment', [OrderController::class, 'paymentIntent']);
+    Route::post('payment_url', [OrderController::class, 'stripePaymentUrl']);
+    Route::get('save_order', [OrderController::class, 'saveOrder']);
 
 });
 // Admin Panel API's END------- 
