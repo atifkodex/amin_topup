@@ -8,6 +8,7 @@ use App\OperatorNetwork;
 use Validator;
 use App\Http\Traits\ResponseTrait;
 use Stripe\Stripe;
+use Slim\Http\Response;
 
 
 class OrderController extends Controller
@@ -58,7 +59,7 @@ class OrderController extends Controller
                 'line_items' => [['price' => 'price_1LTTyMDFBGCzynQzUUnaXQIq', 'quantity' => 1]],
                 'after_completion' => [
                     'type' => 'redirect',
-                    'redirect' => ['url' => 'http://kodextech.net/amin-topup/public/api/admin/save_order'],
+                    'redirect' => ['url' => 'http://localhost/amin-topup/public/api/admin/save_order'],
                 ],
             ],
         );
@@ -96,12 +97,14 @@ class OrderController extends Controller
         function print_log($val) {
             return file_put_contents('php://stderr', print_r($val, TRUE));
         }
-
+        
         // You can find your endpoint's secret in your webhook settings
         $endpoint_secret = env('WEBHOOK_SECRET');
 
         $payload = @file_get_contents('php://input');
+        
         $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'];
+        // dd($payload);
         $event = null;
 
         try {

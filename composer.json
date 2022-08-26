@@ -18,6 +18,7 @@
         "laravel/passport": ">=8.4",
         "laravel/tinker": ">=2.0",
         "laravel/ui": ">=3.0",
+        "slim/slim": "3.*",
         "stripe/stripe-php": "^9.3"
     },
     "require-dev": {
