@@ -2,6 +2,8 @@
 
 @section('content')
 @include('includes.admin-navbar')
+
+
 <!-- ===================== Right Sidebar ===================== -->
 <div class="right-sidebar">
   <div class="container-fluid">
@@ -169,87 +171,159 @@
       </div>
       <!-- Overview Box End -->
  
-      <!-- Latest Transactions -->
-      <div class="latest-transection-sec">
-         <h2>Latest Transactions</h2>
-         <div class="row">
-           <div class="col-12">
-           <div class="setting-card-body-inner Flipped" style="overflow-x:auto;">                                   
-                <table>
-                    <tr>
-                    <th>Denomination</th>
-                    <th>Topup Amount</th>
-                    <th>topup Customer will Receive (-10% Tax)</th>
-                    <th>Exchange Rate</th>
-                    <th>Amin Topup Price</th>
-                    <th>Transaction Fee(%)</th>
-                    <th>Transaction Fees(%+Fix)</th>
-                    <th>Amount Payable to Customer</th>
-                    <th>Product Code in Topup API</th>
-                    <th>Product Code in Strip (Testbed)</th>
-                    </tr>
-                    <tr>
-                    <td class="data">-100 AFN</td>
-                    <td class="data">100</td>
-                    <td class="data">90</td>
-                    <td class="data">80</td>
-                    <td class="data">$1.25</td>
-                    <td class="data">2.90%</td>
-                    <td class="data">$0.30</td>
-                    <td class="data">$1.59</td>
-                    <td class="data">ROSHAN_EXCHANGE</td>
-                    <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                    </tr>
-                    <tr>
-                    <td class="data">-100 AFN</td>
-                    <td class="data">100</td>
-                    <td class="data">90</td>
-                    <td class="data">80</td>
-                    <td class="data">$1.25</td>
-                    <td class="data">2.90%</td>
-                    <td class="data">$0.30</td>
-                    <td class="data">$1.59</td>
-                    <td class="data">ROSHAN_EXCHANGE</td>
-                    <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                </tr>
-                <tr>
-                    <td class="data">-100 AFN</td>
-                    <td class="data">100</td>
-                    <td class="data">90</td>
-                    <td class="data">80</td>
-                    <td class="data">$1.25</td>
-                    <td class="data">2.90%</td>
-                    <td class="data">$0.30</td>
-                    <td class="data">$1.59</td>
-                    <td class="data">ROSHAN_EXCHANGE</td>
-                    <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                </tr>
-                <tr>
-                    <td class="data">-100 AFN</td>
-                    <td class="data">100</td>
-                    <td class="data">90</td>
-                    <td class="data">80</td>
-                    <td class="data">$1.25</td>
-                    <td class="data">2.90%</td>
-                    <td class="data">$0.30</td>
-                    <td class="data">$1.59</td>
-                    <td class="data">ROSHAN_EXCHANGE</td>
-                    <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                </tr>
-                
-                </table>
+      <div class="transection-tble-main">
+        <!-- Latest Transactions -->
+        <div class="latest-transection-sec">
+            <h2>Latest Transactions</h2>
+            <div class="row">
+            <div class="col-12">
+            <div class="setting-card-body-inner Flipped" style="overflow-x:auto;">   
+                <div class="form-group"> 	
+                    <!-- Show Numbers Of Rows -->
+                    <select class  ="form-control" name="state" id="maxRows">
+                        <option value="5000">Show ALL Rows</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="70">70</option>
+                        <option value="100">100</option>
+                    </select>                
+                    </div>                                
+                    <table id="table-id">
+                        <thead>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>Sender</th>
+                                <th>Network:</th>
+                                <th>Receiver Phone Number</th>
+                                <th>Topup Amount:</th>
+                                <th>Topup amount in USD</th>
+                                <th>Stripe fee</th>
+                                <th>Total Payment in USD</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="data">#213652</td>
+                                <td class="data">Muhammad Ali</td>
+                                <td class="data">
+                                    <img src="{{ asset('assets/images/pangol.svg') }}" alt="pangol">
+                                </td>
+                                <td class="data">+93 700 00 00 0000</td>
+                                <td class="data">50</td>
+                                <td class="data">1.30</td>
+                                <td class="data">1.30</td>
+                                <td class="data">USD</td>
+                                <td class="data success">Success</td>
+                            </tr>
+                            <tr>
+                                <td class="data">#213652</td>
+                                <td class="data">Muhammad Ali</td>
+                                <td class="data">
+                                    <img src="{{ asset('assets/images/roshan-afghanistan.svg') }}" alt="roshan-afghanistan">
+                                </td>
+                                <td class="data">+93 700 00 00 0000</td>
+                                <td class="data">50</td>
+                                <td class="data">1.30</td>
+                                <td class="data">1.30</td>
+                                <td class="data">USD</td>
+                                <td class="data success">Success</td>
+                            </tr>
+                            <tr>
+                                <td class="data">#213652</td>
+                                <td class="data">Muhammad Ali</td>
+                                <td class="data">
+                                    <img src="{{ asset('assets/images/etisalat.svg') }}" alt="etisalat">
+                                </td>
+                                <td class="data">+93 700 00 00 0000</td>
+                                <td class="data">50</td>
+                                <td class="data">1.30</td>
+                                <td class="data">1.30</td>
+                                <td class="data">USD</td>
+                                <td class="data success">Success</td>
+                            </tr>
+                            <tr>
+                                <td class="data">#213652</td>
+                                <td class="data">Muhammad Ali</td>
+                                <td class="data">
+                                    <img src="{{ asset('assets/images/roshan-afghanistan.svg') }}" alt="roshan-afghanistan">
+                                </td>
+                                <td class="data">+93 700 00 00 0000</td>
+                                <td class="data">50</td>
+                                <td class="data">1.30</td>
+                                <td class="data">1.30</td>
+                                <td class="data">USD</td>
+                                <td class="data failed">Failed</td>
+                            </tr>
+                            <tr>
+                                <td class="data">#213652</td>
+                                <td class="data">Muhammad Ali</td>
+                                <td class="data">
+                                    <img src="{{ asset('assets/images/pangol.svg') }}" alt="pangol">
+                                </td>
+                                <td class="data">+93 700 00 00 0000</td>
+                                <td class="data">50</td>
+                                <td class="data">1.30</td>
+                                <td class="data">1.30</td>
+                                <td class="data">USD</td>
+                                <td class="data success">Success</td>
+                            </tr>
+                            <tr>
+                                <td class="data">#213652</td>
+                                <td class="data">Muhammad Ali</td>
+                                <td class="data">
+                                    <img src="{{ asset('assets/images/afghan_telecom.svg') }}" alt="afghan_telecom">
+                                </td>
+                                <td class="data">+93 700 00 00 0000</td>
+                                <td class="data">50</td>
+                                <td class="data">1.30</td>
+                                <td class="data">1.30</td>
+                                <td class="data">USD</td>
+                                <td class="data success">Success</td>
+                            </tr>
+                            <tr>
+                                <td class="data">#213652</td>
+                                <td class="data">Muhammad Ali</td>
+                                <td class="data">
+                                    <img src="{{ asset('assets/images/roshan-afghanistan.svg') }}" alt="roshan-afghanistan">
+                                </td>
+                                <td class="data">+93 700 00 00 0000</td>
+                                <td class="data">50</td>
+                                <td class="data">1.30</td>
+                                <td class="data">1.30</td>
+                                <td class="data">USD</td>
+                                <td class="data failed">Failed</td>
+                            </tr>
+                        </tbody>               
+                    </table>
+                </div>
             </div>
-           </div>
-         </div>
+            </div>
+        </div>
+        <!-- Start Pagination -->
+        <div class='pagination-container' >
+            <nav>
+                <ul class="pagination">            
+                <li data-page="prev" id="next">
+                    <span> <i class="fa fa-angle-left"></i> </span>
+                </li>
+                <!--	Here the JS Function Will Add the Rows -->
+                <li data-page="next" id="prev">
+                    <span> <i class="fa fa-angle-right"></i> </span>
+                </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- End Pagination -->
       </div>
 
  </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
     var options = {
@@ -276,6 +350,162 @@
 
 
 </script>
+
+
+    <!--  Developed By Yasser Mas -->
+
+    <script>
+        getPagination('#table-id');
+
+        function getPagination(table) {
+        var lastPage = 1;
+
+        $('#maxRows')
+            .on('change', function(evt) {
+            //$('.paginationprev').html('');						// reset pagination
+
+            lastPage = 1;
+            $('.pagination')
+                .find('li')
+                .slice(1, -1)
+                .remove();
+            var trnum = 0; // reset tr counter
+            var maxRows = parseInt($(this).val()); // get Max Rows from select option
+
+            if (maxRows == 5000) {
+                $('.pagination').hide();
+            } else {
+                $('.pagination').show();
+            }
+
+            var totalRows = $(table + ' tbody tr').length; // numbers of rows
+            $(table + ' tr:gt(0)').each(function() {
+                // each TR in  table and not the header
+                trnum++; // Start Counter
+                if (trnum > maxRows) {
+                // if tr number gt maxRows
+
+                $(this).hide(); // fade it out
+                }
+                if (trnum <= maxRows) {
+                $(this).show();
+                } // else fade in Important in case if it ..
+            }); //  was fade out to fade it in
+            if (totalRows > maxRows) {
+                // if tr total rows gt max rows option
+                var pagenum = Math.ceil(totalRows / maxRows); // ceil total(rows/maxrows) to get ..
+                //	numbers of pages
+                for (var i = 1; i <= pagenum; ) {
+                // for each page append pagination li
+                $('.pagination #prev')
+                    .before(
+                    '<li data-page="' +
+                        i +
+                        '">\
+                                        <span>' +
+                        i++ +
+                        '<span class="sr-only">(current)</span></span>\
+                                        </li>'
+                    )
+                    .show();
+                } // end for i
+            } // end if row count > max rows
+            $('.pagination [data-page="1"]').addClass('active'); // add active class to the first li
+            $('.pagination li').on('click', function(evt) {
+                // on click each page
+                evt.stopImmediatePropagation();
+                evt.preventDefault();
+                var pageNum = $(this).attr('data-page'); // get it's number
+
+                var maxRows = parseInt($('#maxRows').val()); // get Max Rows from select option
+
+                if (pageNum == 'prev') {
+                if (lastPage == 1) {
+                    return;
+                }
+                pageNum = --lastPage;
+                }
+                if (pageNum == 'next') {
+                if (lastPage == $('.pagination li').length - 2) {
+                    return;
+                }
+                pageNum = ++lastPage;
+                }
+
+                lastPage = pageNum;
+                var trIndex = 0; // reset tr counter
+                $('.pagination li').removeClass('active'); // remove active class from all li
+                $('.pagination [data-page="' + lastPage + '"]').addClass('active'); // add active class to the clicked
+                // $(this).addClass('active');					// add active class to the clicked
+                limitPagging();
+                $(table + ' tr:gt(0)').each(function() {
+                // each tr in table not the header
+                trIndex++; // tr index counter
+                // if tr index gt maxRows*pageNum or lt maxRows*pageNum-maxRows fade if out
+                if (
+                    trIndex > maxRows * pageNum ||
+                    trIndex <= maxRows * pageNum - maxRows
+                ) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                } //else fade in
+                }); // end of for each tr in table
+            }); // end of on click pagination list
+            limitPagging();
+            })
+            .val(5)
+            .change();
+
+        // end of on select change
+
+        // END OF PAGINATION
+        }
+
+        function limitPagging(){
+            // alert($('.pagination li').length)
+
+            if($('.pagination li').length > 7 ){
+                    if( $('.pagination li.active').attr('data-page') <= 3 ){
+                    $('.pagination li:gt(5)').hide();
+                    $('.pagination li:lt(5)').show();
+                    $('.pagination [data-page="next"]').show();
+                }if ($('.pagination li.active').attr('data-page') > 3){
+                    $('.pagination li:gt(0)').hide();
+                    $('.pagination [data-page="next"]').show();
+                    for( let i = ( parseInt($('.pagination li.active').attr('data-page'))  -2 )  ; i <= ( parseInt($('.pagination li.active').attr('data-page'))  + 2 ) ; i++ ){
+                        $('.pagination [data-page="'+i+'"]').show();
+
+                    }
+
+                }
+            }
+        }
+
+        $(function() {
+            // Just to append id number for each row
+            $('table tr:eq(0)').prepend('<th> ID </th>');
+
+            var id = 0;
+
+            $('table tr:gt(0)').each(function() {
+                id++;
+                $(this).prepend('<td>' + id + '</td>');
+            });
+        });
+
+    </script>
+
+    <script>
+        $( document ).ready(function() {
+            $("#next span").click(function(){
+                $('#next').addClass('active');
+            });
+            $("#prev span").click(function(){
+                $('#prev').addClass('active');
+            });
+        });
+    </script>
 
 @endsection
 @section('javascriptwork')
