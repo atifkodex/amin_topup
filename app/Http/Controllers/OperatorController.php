@@ -27,7 +27,10 @@ class OperatorController extends Controller
         if ($validator->fails()) {
             return $this->sendError(implode(",", $validator->messages()->all()));
         }
-        $operator = new OperatorNetwork;
+        $operator = OperatorNetwork::where('operator_name', $request->operator_name)->first();
+        if ($operator == null){
+            $operator = new OperatorNetwork;
+        }
         $operator->operator_name = $request->operator_name;
         if($request->operator_name == 'Roshan')
         {
