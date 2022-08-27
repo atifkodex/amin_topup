@@ -100,13 +100,9 @@ class OrderController extends Controller
         
         // You can find your endpoint's secret in your webhook settings
         $endpoint_secret = env('WEBHOOK_SECRET');
-
         $payload = @file_get_contents('php://input');
-        
         $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'];
-        // dd($payload);
         $event = null;
-
         try {
         $event = \Stripe\Webhook::constructEvent(
             $payload, $sig_header, $endpoint_secret
@@ -120,7 +116,6 @@ class OrderController extends Controller
         http_response_code(400);
         exit();
         }
-
         print_log("Passed signature verification!");
         http_response_code(200);
     }
