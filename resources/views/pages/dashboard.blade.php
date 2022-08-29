@@ -45,30 +45,31 @@
                         <div class="overview-col px-0">
                             <p class="pl-3"><span>17 Aug 2022</span></p>
                             <h2 class="pl-3">Total Topup</h2>                            
-                            <div class="pie-chart-main " >
-                                <ul class="pl-3 pl-xl-1">
+                            <div class="pie-chart-main d-flex" >
+                                
+                                <div id="chart"></div>
+                                <ul class="pl-3 pl-xl-1 chart-list">
                                     <li>
-                                        <div class="color-box"></div>
+                                        <div class="color-box" style="background: #775DD0"></div>
                                         <span>Roshan</span>
                                     </li>
                                     <li>
-                                        <div class="color-box"></div>
+                                        <div class="color-box" style="background: #008FFB"></div>
                                         <span>Etisalat</span>
                                     </li>
                                     <li>
-                                        <div class="color-box"></div>
+                                        <div class="color-box" style="background: #00E396"></div>
                                         <span>Roshan</span>
                                     </li>
                                     <li>
-                                        <div class="color-box"></div>
+                                        <div class="color-box" style="background: #DA3B52"></div>
                                         <span>AWCC</span>
                                     </li>
                                     <li>
-                                        <div class="color-box"></div>
+                                        <div class="color-box" style="background: #FEB019"></div>
                                         <span>Afghan Telecom</span>
                                     </li>
                                 </ul>
-                                <div id="chart"></div>
                             </div>
                         </div>
                     </div>
