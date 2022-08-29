@@ -1,3 +1,124 @@
+<style>
+      /* notification */
+  .notification-dropdown{
+    left: -250px !important;
+    top: 0px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 0 20px 0 rgba(213, 213, 213, 0.5) !important;
+    border: none !important
+  }
+  @media screen and (max-width: 1199px) and (min-width:1110px) {
+    .notification-dropdown{
+    left: -305px !important;
+    top: 0px;
+    border-radius: 10px;
+    width: 400px;
+  }
+  }
+  @media screen and (max-width: 1109px) and (min-width:1029px) {
+    .notification-dropdown{
+    left: -266px !important;
+    top: 0px;
+    border-radius: 10px;
+    width: 400px;
+  }
+  }
+  @media screen and (max-width: 1028px) and (min-width:993px) {
+    .notification-dropdown{
+    left: -240px !important;
+    top: 0px;
+    border-radius: 10px;
+    width: 400px;
+  }
+  }
+  @media screen and (max-width: 1028px) and (min-width:768px) {
+    .notification-dropdown{
+      left:-246px !important;
+      border-radius: 10px;
+      width: 400px;
+    }
+  }
+  @media screen and (max-width:767px){
+    .notification-dropdown{
+      left:-212px !important;
+      border-radius: 10px;
+      width: 400px;
+    }
+  }
+  
+  .error-notification p span{
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+    padding-right: 5px;
+  }
+  .error-notification{
+    background: #F1F8FF;
+    border-radius: 10px;
+  }
+  .success-notification p span{
+    color: rgba(61, 171, 37, 1);
+    font-size: 16px;
+    font-weight: bold;
+    padding-right: 5px;
+  }
+  .notification-profile p{
+   color:  rgba(0, 0, 0, 1);
+   margin-bottom: 0px;
+  }
+  .notification-profile p:hover{
+    text-decoration: none !important;
+    border-bottom: none !important;
+
+  }
+  .notification-area:hover{
+    text-decoration: none !important;
+    border-bottom: none !important;
+   
+  }
+  .notification-profile:hover{
+    background-color: gainsboro !important;
+  }
+  .notification-profile{
+    /* border-bottom: 1px solid gainsboro !important; */
+    padding-left: 20px;
+  }
+  .notification-area:last-of-type .notification-profile{
+    border-bottom: none !important;
+  }
+
+  .dropdown-menu{
+    left: -195px;
+  }
+  .icon-button {
+    position: relative;
+    cursor: pointer;
+  }
+  .icon-button__badge {
+    position: absolute;
+    top: 3px;
+    right:2px;
+    width: 8px;
+    height: 8px;
+    background:#00FFB8;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+  .icon-button {
+    padding-top: 15px !important;
+  }
+  .bell-icon .noti-dot{
+    right: 0px !important;
+  }
+  .log-out{
+    border: none;
+    border-radius: 10px;
+  }
+</style>
 <div class="left-outer">
     <div class="sidebar-left">
         <div class="sidebar-inner">
@@ -68,8 +189,42 @@
             <!-- Notification Area  -->
             <div class="bell-section-area">
                 <div class="bell-icon">
-                    <img src="{{ asset('assets/images/bell-notify-icon.svg') }}" alt="bell-notify">
-                    <span class="noti-dot">3</span>
+                    {{-- <img src="{{ asset('assets/images/bell-notify-icon.svg') }}" alt="bell-notify">
+                    <span class="noti-dot">3</span> --}}
+                    <div class="form-group has-search">
+                        <div class="dropdown">
+                            <img src="{{ asset('assets/images/bell-notify-icon.svg') }}" class="dropdown-toggle icon-button"
+                                id="dropdownMenuButton" data-toggle="dropdown">
+                                <span class="noti-dot">3</span>
+                            <div class="dropdown-menu notification-dropdown px-2" aria-labelledby="dropdownMenuButton">
+                                <a class="notification-area " href="#">
+                                    <div class="notification-profile d-flex py-3 error-notification">
+                                      
+                                        <p class="pl-3">Unfortunately, Your Topup transaction was not successful due to <span>[Error Description]</span>.</p>
+                                    </div>
+                                </a>
+                                <a class="notification-area " href="#">
+                                    <div class="notification-profile d-flex py-3 success-notification">
+                                      
+                                        <p class="pl-3">Topup <span>successfully</span>  sent to Ali <br>Thank you for using Amin Topup!</p>
+                                    </div>
+                                </a>
+                                <a class="notification-area " href="#">
+                                    <div class="notification-profile d-flex py-3 error-notification">
+                                      
+                                        <p class="pl-3">Unfortunately, Your Topup transaction was not successful due to <span>[Error Description]</span>.</p>
+                                    </div>
+                                </a>
+                                <a class="notification-area " href="#">
+                                    <div class="notification-profile d-flex py-3 success-notification">
+                                      
+                                        <p class="pl-3">Topup <span>successfully</span>  sent to Ali <br>Thank you for using Amin Topup!</p>
+                                    </div>
+                                </a>
+                         
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="admin-top-dropdown">
                 <div class="dropdown">
@@ -78,10 +233,8 @@
                         <span>Amin Topup</span>
                         <i class="fa-solid fa-angle-down"></i>
                     </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-menu log-out">
+                        <a class="dropdown-item" href="#"> <img src="{{asset('assets/images/logout.svg')}}" alt=""> Logout</a>   
                     </div>
                     </div>
                 </div>
