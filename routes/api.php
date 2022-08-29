@@ -53,7 +53,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], f
     Route::post('/check_operator', [UserController::class, 'networkOperator']);
     Route::post('/add_operator_data', [OperatorController::class, 'operatorData']);
     Route::get('save_order', [OrderController::class, 'saveOrder']);
-
+    Route::post('/support', [ContactsController::class, 'user_support'])->name('support.api');
 });
 // Admin Panel API's END------- 
-
