@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\TopupDetails;
 use App\OperatorNetwork;
+use App\Transaction;
 use Validator;
 use App\Http\Traits\ResponseTrait;
 use Stripe\Stripe;
 use Slim\Http\Response;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class OrderController extends Controller
@@ -81,36 +84,58 @@ class OrderController extends Controller
         return $this->sendResponse($success, 'Payment Intent');
     }
 
-    public function saveOrder(Request $request)
+    public function createTransaction(Request $request)
     {
-        // Set your secret key. Remember to switch to your live secret key in production.
-        // See your keys here: https://dashboard.stripe.com/apikeys
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $validator = Validator::make($request->all(), [
+            'receiver_name' => 'required',
+            'receiver_email' => 'required',
+            'receiver_number' => 'required',
+            'country' => 'required',
+            'receiver_network' => 'required',
+            'topup_amount' => 'required',
+            'topup_amount_usd' => 'required',
+            'processing_fee' => 'required',
+            'total_amount_usd' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError(implode(",", $validator->errors()->all()), []);
+        }
 
-        function print_log($val) {
-            return file_put_contents('php://stderr', print_r($val, TRUE));
+        $loginUserId = Auth::user()->id;
+        $transaction = new Transaction;
+        $transaction->receiver_name = $request->receiver_name;
+        $transaction->receiver_email = $request->receiver_email;
+        $transaction->receiver_number = $request->receiver_number;
+        $transaction->country = $request->country;
+        $transaction->receiver_network = $request->receiver_network;
+        $transaction->topup_amount = $request->topup_amount;
+        $transaction->topup_amount_usd = $request->topup_amount_usd;
+        $transaction->processing_fee = $request->processing_fee;
+        $transaction->total_amount_usd = $request->total_amount_usd;
+        $transaction->user_id = $loginUserId;
+        $success = $transaction->save();
+        if($success){
+            $id = $transaction->id;
+            $data['transaction_id'] = $id;
+            return $this->sendResponse($data, 'Payment Intent');
+        }else{
+            return $this->sendError("Something went wrong. Please try again.");
+        }  
+    }
+
+    public function transactionStatus(Request $request){
+        $validator = Validator::make($request->all(), [
+            'transaction_id' => 'required|exists:transactions,id'
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError(implode(",", $validator->errors()->all()), []);
         }
-        
-        // You can find your endpoint's secret in your webhook settings
-        $endpoint_secret = env('WEBHOOK_SECRET');
-        $payload = @file_get_contents('php://input');
-        $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'];
-        $event = null;
-        try {
-        $event = \Stripe\Webhook::constructEvent(
-            $payload, $sig_header, $endpoint_secret
-        );
-        } catch(\UnexpectedValueException $e) {
-        // Invalid payload
-        http_response_code(400);
-        exit();
-        } catch(\Stripe\Exception\SignatureVerificationException $e) {
-        // Invalid signature
-        http_response_code(400);
-        exit();
+        $status = Transaction::where('id', $request->transaction_id)->update(['status' => 1]);
+        if($status){
+            return $this->sendResponse([], 'Transaction status updated successfully.');
+        }else{
+            return $this->sendError("Something went wrong. Please try again.");
         }
-        print_log("Passed signature verification!");
-        http_response_code(200);
     }
 
 }
