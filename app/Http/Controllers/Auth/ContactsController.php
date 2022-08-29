@@ -39,4 +39,17 @@ class ContactsController extends Controller
             return $this->sendResponse([], $response);
         }
     }
+
+    ///........admin side suport........////
+    public function user_support()
+    {
+        $post = Contacts::with('user:id,name,profile')->get();
+        if ($post) {
+
+            return $this->sendResponse(['users' => $post, 'status' => 200], 'Getting Users data Successfully');
+        } else {
+            $response = 'Gettig users data Failed';
+            return $this->sendResponse([], $response);
+        }
+    }
 }

@@ -12,4 +12,9 @@ class Contacts extends Model
     protected $fillable = [
         'user_id', 'subject', 'category', 'description'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
