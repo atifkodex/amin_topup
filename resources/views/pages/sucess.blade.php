@@ -24,7 +24,7 @@
 </style>
 
 @section('content')
-<div class="container-fluid d-flex justify-content-center">
+<div class="container-fluid d-flex justify-content-center py-5">
     <div class="success-page-content d-flex align-items-center" style="height: 100vh">
         <div class="">
             <div class="success-header text-center pb-5">
