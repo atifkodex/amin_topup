@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\ApiAuthController;
 use App\Http\Controllers\Auth\ContactsController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -54,5 +55,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], f
     Route::post('/add_operator_data', [OperatorController::class, 'operatorData']);
     Route::get('save_order', [OrderController::class, 'saveOrder']);
     Route::post('/support', [ContactsController::class, 'user_support'])->name('support.api');
+    Route::post('/create_admin', [AdminController::class, 'create_admin'])->name('create_admin.api');
 });
 // Admin Panel API's END------- 

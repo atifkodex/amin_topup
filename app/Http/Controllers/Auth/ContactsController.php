@@ -52,4 +52,6 @@ class ContactsController extends Controller
             return $this->sendResponse([], $response);
         }
     }
+
+    
 }
