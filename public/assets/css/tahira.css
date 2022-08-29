@@ -87,9 +87,11 @@ body {
 
 .sidebar-menu ul li {
     padding: 12px 0;
+    transition: all ease-in-out 0.3s;
 }
 
-.sidebar-menu ul li.active a {
+.sidebar-menu ul li.active a,
+.sidebar-menu ul li:hover a {
     color: #f89822;
     opacity: 1;
 }
@@ -109,6 +111,25 @@ body {
 .sidebar-menu ul li a img {
     padding-right: 20px;
     width: 38px;
+}
+
+.sidebar-menu ul li.active a img.active-icon,
+.sidebar-menu ul li:hover a img.active-icon {
+   display: inline;
+}
+
+.sidebar-menu ul li.active a img.normal-icon,
+.sidebar-menu ul li:hover a img.normal-icon {
+    display: none;
+}
+
+
+.sidebar-menu ul li a img.active-icon {
+    display: none;
+}
+ 
+.sidebar-menu ul li a img.normal-icon {
+    display: inline;
 }
 
 .sidebar-footer p {

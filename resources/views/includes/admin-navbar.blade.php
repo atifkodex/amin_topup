@@ -11,33 +11,38 @@
             </div>
             <div class="sidebar-menu">
                 <ul>
-                    <li class="">
+                    <li class="{{ Request::is('dashboard') ? 'active' : '' }}">
                         <a href="{{url('dashboard')}}">
-                            <img src="{{asset('assets/images/dots-icon.svg')}}" alt="dashboard-icon">
+                            <img class="active-icon" src="{{asset('assets/images/dots-icon.svg')}}" alt="dashboard-icon">
+                            <img class="normal-icon" src="{{asset('assets/images/dots-icon-gray.svg')}}" alt="dashboard-icon-gray">
                             Dashboard
                         </a>
                     </li>
                     <li>
                         <a href="{{url('user')}}">
-                            <img src="{{asset('assets/images/user-icon.svg')}}" alt="user-icon">
+                            <img class="active-icon" src="{{asset('assets/images/user-icon-active.svg')}}" alt="user-icon">
+                            <img class="normal-icon" src="{{asset('assets/images/user-icon.svg')}}" alt="user-icon">
                             User
                         </a>
                     </li>
                     <li>
                         <a href="{{url('transaction')}}">
-                            <img src="{{asset('assets/images/transection-icon.svg')}}" alt="transection-icon">
+                            <img class="active-icon" src="{{asset('assets/images/transection-icon-active.svg')}}" alt="transection-icon">
+                            <img class="normal-icon" src="{{asset('assets/images/transection-icon.svg')}}" alt="transection-icon">
                             All Transaction
                         </a>
                     </li>
                     <li>
                         <a href="{{url('setting')}}">
-                        <img src="{{asset('assets/images/setting-icon.svg')}}" alt="setting-icon">
+                           <img class="active-icon" src="{{asset('assets/images/setting-icon-active.svg')}}" alt="setting-icon">
+                           <img class="normal-icon" src="{{asset('assets/images/setting-icon.svg')}}" alt="setting-icon">
                             Settings
                         </a>
                     </li>
                     <li>
                         <a href="{{url('support')}}">
-                            <img src="{{asset('assets/images/support-icon.svg')}}" alt="support-icon">
+                            <img class="active-icon" src="{{asset('assets/images/support-icon -active.svg')}}" alt="support-icon">
+                            <img class="normal-icon" src="{{asset('assets/images/support-icon.svg')}}" alt="support-icon">
                             Support
                         </a>
                     </li>
