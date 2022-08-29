@@ -4,9 +4,13 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\ApiAuthController;
 use App\Http\Controllers\Auth\ContactsController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\OperatorController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +39,21 @@ Route::middleware('auth:api')->group(function () {
     //    Route::get('/articles', 'ArticleController@index')->middleware('api.admin')->name('articles');
     Route::get('/articles', [ArticleController::class, 'index'])->middleware('api.admin')->name('articles');
     Route::post('/logout', [ApiAuthController::class, 'logout'])->name('logout.api');
+    Route::post('payment_url', [OrderController::class, 'stripePaymentUrl']);
     Route::post('/update', [ApiAuthController::class, 'update_user'])->name('update.api');
     Route::post('/contact_us', [ContactsController::class, 'contacts'])->name('contact_us.api');
 });
 
 
 Route::post('password/email', [ResetPasswordController::class, 'sendResetResponse'])->name('password/email');
+
+// Admin Panel API's START------- 
+Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], function () {
+    Route::get('/users_list', [UserController::class, 'allUsers']);
+    Route::post('/check_operator', [UserController::class, 'networkOperator']);
+    Route::post('/add_operator_data', [OperatorController::class, 'operatorData']);
+    Route::get('save_order', [OrderController::class, 'saveOrder']);
+
+});
+// Admin Panel API's END------- 
+
