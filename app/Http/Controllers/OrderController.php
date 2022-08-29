@@ -114,6 +114,9 @@ class OrderController extends Controller
         $transaction->processing_fee = $request->processing_fee;
         $transaction->total_amount_usd = $request->total_amount_usd;
         $transaction->user_id = $loginUserId;
+        if(isset($request->receiver_image) && !empty($request->receiver_image)) {
+            $transaction->receiver_image = $request->receiver_image;
+        }
         $success = $transaction->save();
         if($success){
             $id = $transaction->id;
@@ -142,7 +145,15 @@ class OrderController extends Controller
     public function topupHistory(Request $request)
     {
         $loginUserId = Auth::user()->id;
-        $topups = Transaction::select("*")->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
-        
+        $weeklyTopups = Transaction::select("*")->where('user_id', $loginUserId)->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('topup_amount_usd');
+        $recentTopups = Transaction::where('user_id', $loginUserId)->orderBy('created_at', 'DESC')->take(5)->get();
+        if(count($recentTopups) > 0){
+            $success['WeeklyTopups'] = $weeklyTopups;
+            $success['recentTopups'] = $recentTopups;
+            return $this->sendResponse($success, 'Topup details');
+            
+        }else{
+            return $this->sendError("No topup found for user.");
+        }
     }
 }
