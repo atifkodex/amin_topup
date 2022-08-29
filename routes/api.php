@@ -44,6 +44,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/contact_us', [ContactsController::class, 'contacts'])->name('contact_us.api');
     Route::post('/create_transaction', [OrderController::class, 'createTransaction']);
     Route::post('/transaction_status', [OrderController::class, 'transactionStatus']);
+    Route::post('/topup_history', [OrderController::class, 'topupHistory']);
 });
 
 Route::post('password/email', [ResetPasswordController::class, 'sendResetResponse'])->name('password/email');

@@ -11,6 +11,7 @@ use App\Http\Traits\ResponseTrait;
 use Stripe\Stripe;
 use Slim\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 
 
@@ -138,4 +139,10 @@ class OrderController extends Controller
         }
     }
 
+    public function topupHistory(Request $request)
+    {
+        $loginUserId = Auth::user()->id;
+        $topups = Transaction::select("*")->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
+        
+    }
 }
