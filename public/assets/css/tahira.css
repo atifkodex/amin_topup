@@ -623,6 +623,9 @@ body {
 }
 
 @media only screen and (max-width: 1199px) {
+    .pie-chart-main ul li span,.overview-col p{
+        font-size: 14px;
+    }
     .overview-col {
         height: auto;
         margin-bottom: 30px;

@@ -41,11 +41,12 @@
                         </div>
                     </div>
                     <div class="col-xl-4">
-                        <div class="overview-col">
-                            <p><span>17 Aug 2022</span></p>
-                            <h2>Total Topup</h2>                            
-                            <div class="pie-chart-main">
-                                <ul>
+                        
+                        <div class="overview-col px-0">
+                            <p class="pl-3"><span>17 Aug 2022</span></p>
+                            <h2 class="pl-3">Total Topup</h2>                            
+                            <div class="pie-chart-main " >
+                                <ul class="pl-3 pl-xl-1">
                                     <li>
                                         <div class="color-box"></div>
                                         <span>Roshan</span>
@@ -659,20 +660,37 @@
 
     <script>
         var options = {
+            grid: {
+            show: false,
+            padding: {
+                left: 0,
+                right: 0
+            }
+        },
+            dataLabels: {
+              enabled: true,
+              style: {
+                fontSize: "8px",
+              }
+            },
             series: [44, 55, 41, 17, 15],
             chart: {
             type: 'donut',
-            width: 150
+            width: '100%',
+            height:120,
+           
             },
+          
             responsive: [{
             breakpoint: 1199,
             options: {
                 chart: {
-                width: 300
+                width: 300,
+                height:180,
                 },
-                legend: {
-                position: 'bottom'
-                }
+                // legend: {
+                // position: 'bottom'
+                // }
             }
             }]
         };
