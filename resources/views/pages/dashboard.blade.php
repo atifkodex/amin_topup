@@ -331,33 +331,11 @@
                                         <h1>Fri</h1>
                                         <p>19</p>
                                     </div>
+                                    
                                 </div>
                             </div>
                             <!-- Item 11 -->
-                            <div class="item">
-                               <div class="calender-dates">
-                                    <div class="date-box">
-                                        <h1>Mon</h1>
-                                        <p>15</p>
-                                    </div>
-                                    <div class="date-box">
-                                        <h1>Tue</h1>
-                                        <p>16</p>
-                                    </div>
-                                    <div class="date-box active">
-                                        <h1>Wed</h1>
-                                        <p>17</p>
-                                    </div>
-                                    <div class="date-box">
-                                        <h1>Thu</h1>
-                                        <p>18</p>
-                                    </div>
-                                    <div class="date-box">
-                                        <h1>Fri</h1>
-                                        <p>19</p>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
