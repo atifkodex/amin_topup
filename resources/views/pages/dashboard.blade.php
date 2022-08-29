@@ -323,6 +323,10 @@
  </div>
 </div>
 
+
+
+@endsection
+@section('inserfooter')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
@@ -352,7 +356,6 @@
 </script>
 
 
-    <!--  Developed By Yasser Mas -->
 
     <script>
         getPagination('#table-id');
@@ -504,8 +507,4 @@
             });
         });
     </script>
-
-@endsection
-@section('javascriptwork')
-
 @endsection

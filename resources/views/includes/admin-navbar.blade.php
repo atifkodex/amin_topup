@@ -11,32 +11,32 @@
             </div>
             <div class="sidebar-menu">
                 <ul>
-                    <li class="active">
-                        <a href="#">
+                    <li class="">
+                        <a href="{{url('dashboard')}}">
                             <img src="{{asset('assets/images/dots-icon.svg')}}" alt="dashboard-icon">
                             Dashboard
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('user')}}">
                             <img src="{{asset('assets/images/user-icon.svg')}}" alt="user-icon">
                             User
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('transaction')}}">
                             <img src="{{asset('assets/images/transection-icon.svg')}}" alt="transection-icon">
                             All Transaction
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('setting')}}">
                         <img src="{{asset('assets/images/setting-icon.svg')}}" alt="setting-icon">
                             Settings
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{{url('support')}}">
                             <img src="{{asset('assets/images/support-icon.svg')}}" alt="support-icon">
                             Support
                         </a>

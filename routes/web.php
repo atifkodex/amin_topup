@@ -25,12 +25,22 @@ Route::get('/sign-up', function () {
 
 Route::get('/dashboard', function () {
     return view('pages.dashboard');
-});
+})->name("dashboard");
 
 Route::get('/setting', function () {
     return view('pages.setting');
 });
 
+Route::get('/support', function () {
+    return view('pages.support');
+});
+
+Route::get('/user', function () {
+    return view('pages.user');
+});
+Route::get('/transaction', function () {
+    return view('pages.transaction');
+});
 
 Auth::routes();
 
