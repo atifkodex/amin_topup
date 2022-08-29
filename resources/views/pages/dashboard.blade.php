@@ -4,6 +4,12 @@
 @include('includes.admin-navbar')
 
 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+
+
 <!-- ===================== Right Sidebar ===================== -->
 <div class="right-sidebar">
   <div class="container-fluid">
@@ -72,6 +78,290 @@
           <!-- Box 2 -->
           <div class="col-xl-4">
               <div class="first-right-box">
+                <!-- ============== Date Carousel ============== -->
+                <div class="date-carousel">
+                    <div class="home-demo">
+                        <h3>August, 2022</h3>
+                        <div class="owl-carousel owl-theme">
+                            <!-- Item 1 -->
+                            <div class="item">
+                                <div class="calender-dates">
+                                    <div class="date-box">
+                                        <h1>Mon</h1>
+                                        <p>15</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Tue</h1>
+                                        <p>16</p>
+                                    </div>
+                                    <div class="date-box active">
+                                        <h1>Wed</h1>
+                                        <p>17</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Thu</h1>
+                                        <p>18</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Fri</h1>
+                                        <p>19</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Item 2 -->
+                            <div class="item">
+                                <div class="calender-dates">
+                                    <div class="date-box">
+                                        <h1>Mon</h1>
+                                        <p>15</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Tue</h1>
+                                        <p>16</p>
+                                    </div>
+                                    <div class="date-box active">
+                                        <h1>Wed</h1>
+                                        <p>17</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Thu</h1>
+                                        <p>18</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Fri</h1>
+                                        <p>19</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Item 3 -->
+                            <div class="item">
+                               <div class="calender-dates">
+                                    <div class="date-box">
+                                        <h1>Mon</h1>
+                                        <p>15</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Tue</h1>
+                                        <p>16</p>
+                                    </div>
+                                    <div class="date-box active">
+                                        <h1>Wed</h1>
+                                        <p>17</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Thu</h1>
+                                        <p>18</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Fri</h1>
+                                        <p>19</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Item 4 -->
+                            <div class="item">
+                               <div class="calender-dates">
+                                    <div class="date-box">
+                                        <h1>Mon</h1>
+                                        <p>15</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Tue</h1>
+                                        <p>16</p>
+                                    </div>
+                                    <div class="date-box active">
+                                        <h1>Wed</h1>
+                                        <p>17</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Thu</h1>
+                                        <p>18</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Fri</h1>
+                                        <p>19</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Item 5 -->
+                            <div class="item">
+                               <div class="calender-dates">
+                                    <div class="date-box">
+                                        <h1>Mon</h1>
+                                        <p>15</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Tue</h1>
+                                        <p>16</p>
+                                    </div>
+                                    <div class="date-box active">
+                                        <h1>Wed</h1>
+                                        <p>17</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Thu</h1>
+                                        <p>18</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Fri</h1>
+                                        <p>19</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Item 6 -->
+                            <div class="item">
+                               <div class="calender-dates">
+                                    <div class="date-box">
+                                        <h1>Mon</h1>
+                                        <p>15</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Tue</h1>
+                                        <p>16</p>
+                                    </div>
+                                    <div class="date-box active">
+                                        <h1>Wed</h1>
+                                        <p>17</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Thu</h1>
+                                        <p>18</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Fri</h1>
+                                        <p>19</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Item 7 -->
+                            <div class="item">
+                               <div class="calender-dates">
+                                    <div class="date-box">
+                                        <h1>Mon</h1>
+                                        <p>15</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Tue</h1>
+                                        <p>16</p>
+                                    </div>
+                                    <div class="date-box active">
+                                        <h1>Wed</h1>
+                                        <p>17</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Thu</h1>
+                                        <p>18</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Fri</h1>
+                                        <p>19</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Item 8 -->
+                            <div class="item">
+                               <div class="calender-dates">
+                                    <div class="date-box">
+                                        <h1>Mon</h1>
+                                        <p>15</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Tue</h1>
+                                        <p>16</p>
+                                    </div>
+                                    <div class="date-box active">
+                                        <h1>Wed</h1>
+                                        <p>17</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Thu</h1>
+                                        <p>18</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Fri</h1>
+                                        <p>19</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Item 9 -->
+                            <div class="item">
+                               <div class="calender-dates">
+                                    <div class="date-box">
+                                        <h1>Mon</h1>
+                                        <p>15</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Tue</h1>
+                                        <p>16</p>
+                                    </div>
+                                    <div class="date-box active">
+                                        <h1>Wed</h1>
+                                        <p>17</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Thu</h1>
+                                        <p>18</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Fri</h1>
+                                        <p>19</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Item 10 -->
+                            <div class="item">
+                               <div class="calender-dates">
+                                    <div class="date-box">
+                                        <h1>Mon</h1>
+                                        <p>15</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Tue</h1>
+                                        <p>16</p>
+                                    </div>
+                                    <div class="date-box active">
+                                        <h1>Wed</h1>
+                                        <p>17</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Thu</h1>
+                                        <p>18</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Fri</h1>
+                                        <p>19</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Item 11 -->
+                            <div class="item">
+                               <div class="calender-dates">
+                                    <div class="date-box">
+                                        <h1>Mon</h1>
+                                        <p>15</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Tue</h1>
+                                        <p>16</p>
+                                    </div>
+                                    <div class="date-box active">
+                                        <h1>Wed</h1>
+                                        <p>17</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Thu</h1>
+                                        <p>18</p>
+                                    </div>
+                                    <div class="date-box">
+                                        <h1>Fri</h1>
+                                        <p>19</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============== Refund Box ============== -->
                 <div class="refund-req-box">
                     <h2>Refund Request</h2>
                     <div class="refund-slider">
@@ -178,9 +468,9 @@
             <div class="row">
             <div class="col-12">
             <div class="setting-card-body-inner Flipped" style="overflow-x:auto;">   
-                <div class="form-group"> 	
+                <div class="form-group" style="margin-bottom: 0;"> 	
                     <!-- Show Numbers Of Rows -->
-                    <select class  ="form-control" name="state" id="maxRows">
+                    <select class="form-control d-none" name="state" id="maxRows">
                         <option value="5000">Show ALL Rows</option>
                         <option value="5">5</option>
                         <option value="10">10</option>
@@ -191,7 +481,7 @@
                         <option value="100">100</option>
                     </select>                
                     </div>                                
-                    <table id="table-id">
+                    <table id="table-id" style="width: 1600px;">
                         <thead>
                             <tr>
                                 <th>Transaction ID</th>
@@ -297,6 +587,58 @@
                                 <td class="data">USD</td>
                                 <td class="data failed">Failed</td>
                             </tr>
+                            <tr>
+                                <td class="data">#213652</td>
+                                <td class="data">Muhammad Ali</td>
+                                <td class="data">
+                                    <img src="{{ asset('assets/images/roshan-afghanistan.svg') }}" alt="roshan-afghanistan">
+                                </td>
+                                <td class="data">+93 700 00 00 0000</td>
+                                <td class="data">50</td>
+                                <td class="data">1.30</td>
+                                <td class="data">1.30</td>
+                                <td class="data">USD</td>
+                                <td class="data failed">Failed</td>
+                            </tr>
+                            <tr>
+                                <td class="data">#213652</td>
+                                <td class="data">Muhammad Ali</td>
+                                <td class="data">
+                                    <img src="{{ asset('assets/images/roshan-afghanistan.svg') }}" alt="roshan-afghanistan">
+                                </td>
+                                <td class="data">+93 700 00 00 0000</td>
+                                <td class="data">50</td>
+                                <td class="data">1.30</td>
+                                <td class="data">1.30</td>
+                                <td class="data">USD</td>
+                                <td class="data failed">Failed</td>
+                            </tr>
+                            <tr>
+                                <td class="data">#213652</td>
+                                <td class="data">Muhammad Ali</td>
+                                <td class="data">
+                                    <img src="{{ asset('assets/images/roshan-afghanistan.svg') }}" alt="roshan-afghanistan">
+                                </td>
+                                <td class="data">+93 700 00 00 0000</td>
+                                <td class="data">50</td>
+                                <td class="data">1.30</td>
+                                <td class="data">1.30</td>
+                                <td class="data">USD</td>
+                                <td class="data failed">Failed</td>
+                            </tr>
+                            <tr>
+                                <td class="data">#213652</td>
+                                <td class="data">Muhammad Ali</td>
+                                <td class="data">
+                                    <img src="{{ asset('assets/images/roshan-afghanistan.svg') }}" alt="roshan-afghanistan">
+                                </td>
+                                <td class="data">+93 700 00 00 0000</td>
+                                <td class="data">50</td>
+                                <td class="data">1.30</td>
+                                <td class="data">1.30</td>
+                                <td class="data">USD</td>
+                                <td class="data failed">Failed</td>
+                            </tr>
                         </tbody>               
                     </table>
                 </div>
@@ -329,31 +671,37 @@
 @section('inserfooter')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<script>
-    var options = {
-        series: [44, 55, 41, 17, 15],
-        chart: {
-        type: 'donut',
-        width: 150
-        },
-        responsive: [{
-        breakpoint: 480,
-        options: {
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+
+
+    <script>
+        var options = {
+            series: [44, 55, 41, 17, 15],
             chart: {
-            width: 200
+            type: 'donut',
+            width: 150
             },
-            legend: {
-            position: 'bottom'
+            responsive: [{
+            breakpoint: 1199,
+            options: {
+                chart: {
+                width: 300
+                },
+                legend: {
+                position: 'bottom'
+                }
             }
-        }
-        }]
-    };
+            }]
+        };
 
-    var chart = new ApexCharts(document.querySelector("#chart"), options);
-    chart.render();
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
 
 
-</script>
+    </script>
 
 
 
@@ -455,7 +803,7 @@
             }); // end of on click pagination list
             limitPagging();
             })
-            .val(5)
+            .val(10)
             .change();
 
         // end of on select change
@@ -507,4 +855,19 @@
             });
         });
     </script>
+
+    <script>
+        $(function() {
+            // Owl Carousel
+            var owl = $(".owl-carousel");
+            owl.owlCarousel({
+                items: 1,
+                margin: 10,
+                loop: true,
+                nav: true
+            });
+        });
+
+    </script>
+
 @endsection
