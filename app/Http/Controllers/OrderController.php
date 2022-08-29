@@ -51,12 +51,19 @@ class OrderController extends Controller
 
     public function stripePaymentUrl(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'price_id' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return $this->sendError(implode(",", $validator->errors()->all()), []);
+        }
         // Set your secret key. Remember to switch to your live secret key in production.
         // See your keys here:  https://dashboard.stripe.com/apikeys 
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
         $link = $stripe->paymentLinks->create(
             [
-                'line_items' => [['price' => 'price_1LTTyMDFBGCzynQzUUnaXQIq', 'quantity' => 1]],
+                'line_items' => [['price' => $request->price_id, 'quantity' => 1]],
                 'after_completion' => [
                     'type' => 'redirect',
                     'redirect' => ['url' => 'http://localhost/amin-topup/public/api/admin/save_order'],
@@ -64,26 +71,12 @@ class OrderController extends Controller
             ],
         );
 
-        // $session = $stripe->checkout->sessions->create([
-        //     'success_url' => 'https://example.com/success',
-        //     'cancel_url' => 'https://example.com/cancel',
-        //     'line_items' => [
-        //         [
-        //         'price' => 'price_1LTTyMDFBGCzynQzUUnaXQIq',
-        //         'quantity' => 1,
-        //         ],
-        //     ],
-        //     'mode' => 'payment',
-        // ]);
-
         $success = [
             'result' => 'Success',
             'message' => 'Link generated successfully!',
             'payment_url' => $link->url,
             'payment_id' => $link->id,
             'currency' => $link->currency,
-            // 'payment_status' => $session->payment_status,
-            // 'session_id' => $session->id,
         ];
         return $this->sendResponse($success, 'Payment Intent');
     }
