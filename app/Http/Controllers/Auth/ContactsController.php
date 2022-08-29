@@ -39,4 +39,18 @@ class ContactsController extends Controller
             return $this->sendResponse([], $response);
         }
     }
+
+    ///........admin side suport........////
+    public function user_support()
+    {
+        $post = Contacts::with('users_contact:id,name')->get();
+        if ($post) {
+            foreach ($post as $posts) {
+                // $posts('user')->name;
+                // $post->subject;
+                // $post->subject;
+                echo $post;
+            }
+        }
+    }
 }
