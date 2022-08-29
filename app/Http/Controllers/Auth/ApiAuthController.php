@@ -33,7 +33,7 @@ class ApiAuthController extends Controller
         $request['password'] = Hash::make($request['password']);
 
         $request['remember_token'] = Str::random(10);
-        $request['type'] = $request['type'] ? $request['type'] : (0);
+        $request['type'] = $request['type'] ? $request['type'] : ('user');
         $user = User::create($request->except('password_confirmation'));
         if ($user) {
             $token = $user->createToken('Laravel Password Grant Client')->accessToken;
