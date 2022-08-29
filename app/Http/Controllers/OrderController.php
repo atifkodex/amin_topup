@@ -146,14 +146,45 @@ class OrderController extends Controller
     {
         $loginUserId = Auth::user()->id;
         $weeklyTopups = Transaction::select("*")->where('user_id', $loginUserId)->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('topup_amount_usd');
+        $graphData = ($weeklyTopups * 1000) / 100;
         $recentTopups = Transaction::where('user_id', $loginUserId)->orderBy('created_at', 'DESC')->take(5)->get();
         if(count($recentTopups) > 0){
             $success['WeeklyTopups'] = $weeklyTopups;
+            $success['graphData'] = $graphData;
             $success['recentTopups'] = $recentTopups;
             return $this->sendResponse($success, 'Topup details');
-            
         }else{
             return $this->sendError("No topup found for user.");
+        }
+    }
+
+    public function allTopups(Request $request)
+    {
+        $loginUserId = Auth::user()->id;
+        $topupAmount = Transaction::where('user_id', $loginUserId)->sum('topup_amount_usd');
+        $topups = Transaction::where('user_id', $loginUserId)->get();
+        if(count($topups) > 0){
+            $success['totalTopupAmount'] = $topupAmount;
+            $success['allTopups'] = $topups;
+            return $this->sendResponse($success, 'All Topup details');
+        }else{
+            return $this->sendError("No topup found for user.");
+        }
+    }
+
+    public function transactionDetail(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'transaction_id' => 'required|exists:transactions,id'
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError(implode(",", $validator->errors()->all()), []);
+        }
+        $topupAmount = Transaction::where('id', $request->transaction_id)->first();
+        if(!empty($topupAmount)){
+            return $this->sendResponse($topupAmount, 'Topup detail');
+        }else{
+            return $this->sendError("No topup data found for user.");
         }
     }
 }
