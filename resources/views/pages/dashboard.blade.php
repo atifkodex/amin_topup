@@ -849,5 +849,7 @@
         });
 
     </script>
-
+  <script>
+    $('.sidebar-menu ul li:nth-of-type(1)').addClass('active');
+</script>
 @endsection

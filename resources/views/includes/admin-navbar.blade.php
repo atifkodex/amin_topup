@@ -5,8 +5,13 @@
     top: 0px;
     border-radius: 10px;
     width: 400px;
+    height: 320px;
+    overflow-y: auto;
     box-shadow: 0 0 20px 0 rgba(213, 213, 213, 0.5) !important;
     border: none !important
+  }
+  .notification-dropdown::-webkit-scrollbar{
+    width: 0px;
   }
   @media screen and (max-width: 1199px) and (min-width:1110px) {
     .notification-dropdown{
@@ -221,6 +226,30 @@
                                         <p class="pl-3">Topup <span>successfully</span>  sent to Ali <br>Thank you for using Amin Topup!</p>
                                     </div>
                                 </a>
+                                <a class="notification-area " href="#">
+                                  <div class="notification-profile d-flex py-3 error-notification">
+                                    
+                                      <p class="pl-3">Unfortunately, Your Topup transaction was not successful due to <span>[Error Description]</span>.</p>
+                                  </div>
+                              </a>
+                              <a class="notification-area " href="#">
+                                  <div class="notification-profile d-flex py-3 success-notification">
+                                    
+                                      <p class="pl-3">Topup <span>successfully</span>  sent to Ali <br>Thank you for using Amin Topup!</p>
+                                  </div>
+                              </a>
+                              <a class="notification-area " href="#">
+                                  <div class="notification-profile d-flex py-3 error-notification">
+                                    
+                                      <p class="pl-3">Unfortunately, Your Topup transaction was not successful due to <span>[Error Description]</span>.</p>
+                                  </div>
+                              </a>
+                              <a class="notification-area " href="#">
+                                  <div class="notification-profile d-flex py-3 success-notification">
+                                    
+                                      <p class="pl-3">Topup <span>successfully</span>  sent to Ali <br>Thank you for using Amin Topup!</p>
+                                  </div>
+                              </a>
                          
                             </div>
                         </div>
