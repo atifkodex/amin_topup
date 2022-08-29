@@ -42,6 +42,10 @@ Route::get('/transaction', function () {
     return view('pages.transaction');
 });
 
+Route::get('/sucess', function () {
+    return view('pages.sucess');
+});
+
 Auth::routes();
 
 

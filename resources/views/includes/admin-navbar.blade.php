@@ -1,4 +1,7 @@
 <style>
+  .pagination{
+    cursor: pointer;
+  }
       /* notification */
   .notification-dropdown{
     left: -250px !important;
@@ -62,6 +65,15 @@
     background: #F1F8FF;
     border-radius: 10px;
   }
+  .notification-profile:hover{
+    background: #001933!important;
+    border-radius: 10px;
+   
+  }
+  .notification-profile:hover p{
+    color: white !important;
+  }
+ 
   .success-notification p span{
     color: rgba(61, 171, 37, 1);
     font-size: 16px;
@@ -82,9 +94,7 @@
     border-bottom: none !important;
    
   }
-  .notification-profile:hover{
-    background-color: gainsboro !important;
-  }
+
   .notification-profile{
     /* border-bottom: 1px solid gainsboro !important; */
     padding-left: 20px;
