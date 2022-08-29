@@ -402,9 +402,7 @@
                 // for each page append pagination li
                 $('.pagination #prev')
                     .before(
-                    '<li data-page="' +
-                        i +
-                        '">\
+                    '<li data-page="' + i + '">\
                                         <span>' +
                         i++ +
                         '<span class="sr-only">(current)</span></span>\
