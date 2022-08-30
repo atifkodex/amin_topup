@@ -280,6 +280,16 @@ body {
     margin-right: 12px;
 }
 
+.admin-top-dropdown .dropdown-item:hover,
+.admin-top-dropdown .dropdown-item:focus {
+    background-color: transparent !important;
+    color: #212529 !important;
+}
+
+.admin-top-dropdown .dropdown-menu {
+   width: 100%;
+}
+
 .admin-top-dropdown .dropdown-toggle::after {
     display: none;
 }

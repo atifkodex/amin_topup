@@ -138,7 +138,7 @@
     <div class="sidebar-left">
         <div class="sidebar-inner">
             <div class="sidebar-logo">
-                <a href="#">
+                <a href="{{url('dashboard')}}">
                     <img src="{{ asset('assets/images/logo.svg') }}" alt="logo">
                 </a>
             </div>

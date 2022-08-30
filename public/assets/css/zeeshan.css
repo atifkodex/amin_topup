@@ -122,6 +122,7 @@ border-radius: 10px;
 .setting-heading h1{
     color: rgba(63, 71, 101, 1);
     font-size: 20px;
+    padding-bottom: 30px;
 }
 .setting-section-heading h1{
 color: rgba(248, 152, 34, 1);
@@ -504,16 +505,20 @@ color: white;
   font-size: 24px;
 }
 .user-modal-content p{
-  padding-bottom: 18px;
+  padding-bottom: 10px;
+  margin-bottom: 5px;
 }
 .user-modal-content p:nth-of-type(1){
   color: #3F4765;
-  font-size: 20px;
+  font-size: 17px;
 }
 .user-modal-content p:nth-of-type(2){
   color: black;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 17px;
+}
+.user-modal-button {
+  padding-top: 20px;
 }
 .user-modal-button button{
   color: white;
