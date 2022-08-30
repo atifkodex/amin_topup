@@ -14,7 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/adminLogin', [OrderController::class, 'topupHistory']);
+
+
 Route::get('/', function () {
+    return view('pages.auth.login');
+});
+Route::get('/login', function () {
     return view('pages.auth.login');
 });
 
