@@ -24,10 +24,10 @@
 
         .chart-inner {
             position: absolute !important;
-            top:50% !important;
+            top:45% !important;
             left:50% !important;
             transform: translateX(-50%) translateY(-50%) !important;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: bold;
         }
     }
@@ -80,9 +80,9 @@
                                 <div class="overview-col px-0">
                                     <p class="pl-3"><span>17 Aug 2022</span></p>
                                     <h2 class="pl-3">Total Topup</h2>
-                                    <div class="pie-chart-main d-flex">
+                                    <div class="pie-chart-main ">
 
-                                        <div id="chart">
+                                        <div id="chart" class="d-flex justify-content-center">
 
 
                                         </div>

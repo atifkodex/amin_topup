@@ -670,12 +670,12 @@ body {
         width: 10px;
         height: 10px;
     }
-    .pie-chart-main{
+    /* .pie-chart-main{
         flex-direction:row-reverse;
         justify-content: space-between;
-    }
+    } */
     .chart-list{
-        flex-direction: column;
+        justify-content:center;
     }
     .pie-chart-main ul li span,.overview-col p{
         font-size: 14px;
