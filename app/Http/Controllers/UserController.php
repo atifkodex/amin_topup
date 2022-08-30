@@ -28,12 +28,12 @@ class UserController extends Controller
             return $this->sendError(implode(",", $validator->messages()->all()));
         }
         $number = $request->number;
-        $checkNumber = substr($number, 0, 3);
+        $checkNumber = substr($number, 3);
         if($checkNumber == 930){
             substr($number, 0, 3);
         }
         return $number;
-        $code = substr($number, 0, 2);
+        $code = substr($number, 2);
         if($code == 70 || $code == 71)
         {
             $operatorName = "AWCC";
