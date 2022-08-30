@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OtpController;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -47,8 +48,11 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/topup_history', [OrderController::class, 'topupHistory']);
     Route::post('/all_topups', [OrderController::class, 'allTopups']);
     Route::post('/transaction_detail', [OrderController::class, 'transactionDetail']);
+    Route::post('/reset_password', [OtpController::class, 'resetPassword']);
 });
 
+Route::post('/send_otp', [OtpController::class, 'sendOTP']);
+Route::post('/verify_otp', [OtpController::class, 'verifyOtp']);
 Route::post('password/email', [ResetPasswordController::class, 'sendResetResponse'])->name('password/email');
 
 // Admin Panel API's START------- 
