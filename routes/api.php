@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OtpController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -49,7 +50,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/all_topups', [OrderController::class, 'allTopups']);
     Route::post('/transaction_detail', [OrderController::class, 'transactionDetail']);
     Route::post('/reset_password', [OtpController::class, 'resetPassword']);
-    // Route::post('/notification_list', [OtpController::class, 'resetPassword']);
+    Route::post('/notification_list', [SettingController::class, 'notificationList']);
 });
 
 Route::post('/send_otp', [OtpController::class, 'sendOTP']);
