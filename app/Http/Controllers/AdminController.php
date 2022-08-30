@@ -43,40 +43,40 @@ class AdminController extends Controller
     ////////.......get user list.........//////
     public function usersList(Request $request)
     {
-        $user = User::query()->where('type', 'user')->get();
-        if (count($user) > 0) {
-            $user = (new User())->newQuery();
-            // Check either search by day or month
-            if ($request->has('name')) {
-                $user->where('name', $request->name);
-            }
-            if ($request->has('email')) {
-                $user->where('email', $request->email);
-            }
-            if ($request->has('country')) {
-                $user->where('country', $request->country);
-            }
-            if ($request->has('phone_number')) {
-                $user->where('phone_number', $request->phone_number);
-            }
-            if ($request->has('date')) {
-
-                $user->whereDate('created_at', $request->date);
-            }
-            if ($request->has('time')) {
-                $user->whereTime('created_at', $request->time);
-            }
-
-            $user = $user->get();
-            if (count($user) == 0) {
-                $response = 'Field is not match to data';
-                return $this->sendError( $response,[]);
-            } else {
-                return $this->sendResponse(['users' => $user, 'status' => 200], 'Getting Users Successfully');
-            }
-        } else {
-            $response = 'Gettig Users  Failed';
-            return $this->sendError( $response,[]);
+    
+        $user = (new User())->newQuery()->where('type', 'user');
+        // Check either search by day or month
+        if ($request->has('name')) {
+            $user->where('name', $request->name);
         }
+        if ($request->has('email')) {
+            $user->where('email', $request->email);
+        }
+        if ($request->has('country')) {
+            $user->where('country', $request->country);
+        }
+        if ($request->has('phone_number')) {
+            $user->where('phone_number', $request->phone_number);
+        }
+        if ($request->has('date')) {
+
+            $user->whereDate('created_at', $request->date);
+        }
+        if ($request->has('time')) {
+            $user->whereTime('created_at', $request->time);
+        }
+
+        $user = $user->get();
+        if (count($user) == 0) {
+            $response = 'Field is not match to data';
+            return $this->sendError($response, []);
+        } else {
+            return $this->sendResponse(['users' => $user, 'status' => 200], 'Getting Users Successfully');
+        }
+
+        //  else {
+        //     $response = 'Gettig Users  Failed';
+        //     return $this->sendError($response, []);
+        // }
     }
 }
