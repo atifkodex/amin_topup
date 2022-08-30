@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\ApiAuthController;
 use App\Http\Controllers\Auth\ContactsController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -63,5 +64,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], f
     Route::post('/check_operator', [UserController::class, 'networkOperator']);
     Route::post('/add_operator_data', [OperatorController::class, 'operatorData']);
     Route::post('/support', [ContactsController::class, 'user_support'])->name('support.api');
+    Route::post('/create_admin', [AdminController::class, 'create_admin'])->name('create_admin.api');
+    Route::post('/users', [AdminController::class, 'usersList'])->name('users.api');
 });
 // Admin Panel API's END------- 
