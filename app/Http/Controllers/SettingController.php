@@ -58,7 +58,7 @@ class SettingController extends Controller
 
             $name = time() . '.' . $image->getClientOriginalExtension();
             $image->move($destinationPath, $name);
-            $image = $uploadPath . $name;
+            $image = "kodextech.net" . $uploadPath . $name;
             return $this->sendResponse($image,"image path generated successfully");
         }
     }
