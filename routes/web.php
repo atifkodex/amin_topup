@@ -31,6 +31,21 @@ Route::get('/setting', function () {
     return view('pages.setting');
 });
 
+Route::get('/support', function () {
+    return view('pages.support');
+});
+
+Route::get('/user', function () {
+    return view('pages.user');
+});
+Route::get('/transaction', function () {
+    return view('pages.transaction');
+});
+
+Route::get('/sucess', function () {
+    return view('pages.sucess');
+});
+
 Auth::routes();
 
 
