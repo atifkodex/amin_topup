@@ -138,7 +138,7 @@
     <div class="sidebar-left">
         <div class="sidebar-inner">
             <div class="sidebar-logo">
-                <a href="#">
+              <a href="{{url('dashboard')}}">
                     <img src="{{ asset('assets/images/logo.svg') }}" alt="logo">
                 </a>
             </div>
@@ -267,7 +267,7 @@
                 </div>
                 <div class="admin-top-dropdown">
                 <div class="dropdown">
-                    <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                    <button class="btn dropdown-toggle logout-button" type="button" data-toggle="dropdown" aria-expanded="false">
                         <img src="{{ asset('assets/images/dropdown-user.svg') }}" alt="">
                         <span>Amin Topup</span>
                         <i class="fa-solid fa-angle-down"></i>

@@ -1,4 +1,34 @@
 @extends('layouts.admin-default')
+<style>
+   .pie-chart-main{
+        position: relative !important;
+    }
+ .chart-inner{
+    color: #F89822;
+    text-align: center
+ }
+    @media screen and (min-width:1199px) {
+        .chart-inner{
+        position: absolute !important;
+  top: 39% !important;
+  left: 50% !important;
+  transform: translateX(-50%) translateY(-50%) !important;
+  font-size: 12px;
+    font-weight: bold;
+    }
+    }
+    @media screen and (max-width:1198px) {
+
+        .chart-inner{
+        position: absolute !important;
+  top: 49% !important;
+  left: 81% !important;
+  transform: translateX(-50%) translateY(-50%) !important;
+  font-size: 12px;
+    font-weight: bold;
+    }
+}
+</style>
 
 @section('content')
 @include('includes.admin-navbar')
@@ -47,7 +77,11 @@
                             <h2 class="pl-3">Total Topup</h2>                            
                             <div class="pie-chart-main d-flex" >
                                 
-                                <div id="chart"></div>
+                                <div id="chart">
+                                   
+                                   
+                                </div>
+                                <div class="chart-inner">5,000.01<br>AFN</div>
                                 <ul class="pl-3 pl-xl-1 chart-list">
                                     <li>
                                         <div class="color-box" style="background: #775DD0"></div>
