@@ -98,7 +98,8 @@ class ApiAuthController extends Controller
             'email' => $request->email,
             'phone_number' => $request->phone_number,
             'date_of_birth' => $request->date_of_birth,
-            'profile' => $request->profile
+            'profile' => $request->profile,
+            'country' => $request->country
         ]);
         if ($user) {
             $success = User::where('id', $request->id)->first();

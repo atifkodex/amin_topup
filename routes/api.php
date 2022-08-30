@@ -43,8 +43,12 @@ Route::middleware('auth:api')->group(function () {
     Route::post('payment_url', [OrderController::class, 'stripePaymentUrl']);
     Route::post('/update', [ApiAuthController::class, 'update_user'])->name('update.api');
     Route::post('/contact_us', [ContactsController::class, 'contacts'])->name('contact_us.api');
+    Route::post('/create_transaction', [OrderController::class, 'createTransaction']);
+    Route::post('/transaction_status', [OrderController::class, 'transactionStatus']);
+    Route::post('/topup_history', [OrderController::class, 'topupHistory']);
+    Route::post('/all_topups', [OrderController::class, 'allTopups']);
+    Route::post('/transaction_detail', [OrderController::class, 'transactionDetail']);
 });
-
 
 Route::post('password/email', [ResetPasswordController::class, 'sendResetResponse'])->name('password/email');
 
