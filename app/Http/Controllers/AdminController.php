@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Traits\ResponseTrait;
@@ -14,7 +16,7 @@ use App\User;
 class AdminController extends Controller
 {
     use ResponseTrait;
-
+    ////////.......create admin.........//////
     public function create_admin(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -36,6 +38,45 @@ class AdminController extends Controller
         } else {
             $response = "some thing went Wrong";
             return $this->sendError(($response), []);
+        }
+    }
+    ////////.......get user list.........//////
+    public function usersList(Request $request)
+    {
+        $user = User::query()->where('type', 'user')->get();
+        if (count($user) > 0) {
+            $user = (new User())->newQuery();
+            // Check either search by day or month
+            if ($request->has('name')) {
+                $user->where('name', $request->name);
+            }
+            if ($request->has('email')) {
+                $user->where('email', $request->email);
+            }
+            if ($request->has('country')) {
+                $user->where('country', $request->country);
+            }
+            if ($request->has('phone_number')) {
+                $user->where('phone_number', $request->phone_number);
+            }
+            if ($request->has('date')) {
+
+                $user->whereDate('created_at', $request->date);
+            }
+            if ($request->has('time')) {
+                $user->whereTime('created_at', $request->time);
+            }
+
+            $user = $user->get();
+            if (count($user) == 0) {
+                $response = 'Field is not match to data';
+                return $this->sendError( $response,[]);
+            } else {
+                return $this->sendResponse(['users' => $user, 'status' => 200], 'Getting Users Successfully');
+            }
+        } else {
+            $response = 'Gettig Users  Failed';
+            return $this->sendError( $response,[]);
         }
     }
 }
