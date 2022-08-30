@@ -34,7 +34,6 @@ class UserController extends Controller
         }else{
             $number = substr($number, 2);
         }
-        return $number;
         $code = substr($number, 2);
         if($code == 70 || $code == 71)
         {
