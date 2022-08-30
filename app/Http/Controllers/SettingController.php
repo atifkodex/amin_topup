@@ -39,4 +39,27 @@ class SettingController extends Controller
             return $this->sendError("No Notifications available");
         }
     }
+
+    public function createImageLink(Request $request){
+        $validator = Validator::make($request->all(), [
+            'image' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError(implode(',', $validator->errors()->all()), null);
+        }
+
+        if ($request->hasFile('image')) {
+            $destinationPath = base_path() . '/public/user_images/';
+            $uploadPath =  str_replace("/var/www/html", "", $destinationPath);
+            if (!is_dir($destinationPath)) {
+                mkdir($destinationPath, 777, true);
+            }
+            $image = $request->file('image');
+
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $name);
+            $image = $uploadPath . $name;
+            return $this->sendResponse($image,"image path generated successfully");
+        }
+    }
 }
