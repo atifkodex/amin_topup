@@ -30,9 +30,9 @@ class UserController extends Controller
         $number = $request->number;
         $checkNumber = substr($number, 3);
         if($number == 930 . $checkNumber){
-            substr($number, 3);
+            $number = substr($number, 3);
         }elseif($number == 93 . $checkNumber){
-            substr($number, 2);
+            $number = substr($number, 2);
         }
         return $number;
         $code = substr($number, 2);
