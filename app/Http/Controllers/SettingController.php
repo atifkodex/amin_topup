@@ -51,9 +51,9 @@ class SettingController extends Controller
         if ($request->hasFile('image')) {
             $destinationPath = base_path() . '/public/user_images/';
             $uploadPath =  str_replace("/var/www/html", "", $destinationPath);
-            if (!is_dir($destinationPath)) {
-                mkdir($destinationPath, 755, true);
-            }
+            // if (!is_dir($destinationPath)) {
+            //     mkdir($destinationPath, 755, true);
+            // }
             $image = $request->file('image');
 
             $name = time() . '.' . $image->getClientOriginalExtension();
