@@ -29,7 +29,7 @@ class UserController extends Controller
         }
         $number = $request->number;
         $checkNumber = substr($number, 3);
-        return $checkNumber;
+        return 937 . $checkNumber;
         if($checkNumber == 930){
             substr($number, 0, 3);
         }
