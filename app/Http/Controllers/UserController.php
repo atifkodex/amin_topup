@@ -8,6 +8,8 @@ use App\TopupDetails;
 use App\OperatorNetwork;
 use App\User;
 use Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
@@ -79,5 +81,10 @@ class UserController extends Controller
         return $this->sendResponse($success, 'Operator Data');
     }
 
+    public function userProfile(){
+        $loginUserId = Auth::user()->id;
+        $user = User::where('id', $loginUserId)->first();
+        return $this->sendResponse($user, 'User Data');
+    }
     
 }
