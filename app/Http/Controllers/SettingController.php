@@ -52,7 +52,7 @@ class SettingController extends Controller
             $destinationPath = base_path() . '/public/user_images/';
             $uploadPath =  str_replace("/var/www/html", "", $destinationPath);
             if (!is_dir($destinationPath)) {
-                mkdir($destinationPath, 775, true);
+                mkdir($destinationPath, 755, true);
             }
             $image = $request->file('image');
 
