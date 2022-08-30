@@ -49,6 +49,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/all_topups', [OrderController::class, 'allTopups']);
     Route::post('/transaction_detail', [OrderController::class, 'transactionDetail']);
     Route::post('/reset_password', [OtpController::class, 'resetPassword']);
+    // Route::post('/notification_list', [OtpController::class, 'resetPassword']);
 });
 
 Route::post('/send_otp', [OtpController::class, 'sendOTP']);

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\NotificationLog;
 
 
 
@@ -93,15 +94,6 @@ class ApiAuthController extends Controller
     //////....update user......./////// 
     public function update_user(Request $request)
     {
-
-        // $user = User::where('id', $request->id)->update([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'phone_number' => $request->phone_number,
-        //     'date_of_birth' => $request->date_of_birth,
-        //     'profile' => $request->profile,
-        //     'country' => $request->country
-        // ]);
         if(isset($request->name) && !empty($request->name)){
             $user = User::where('id', $request->id)->update(['name' => $request->name]);
         }elseif(isset($request->email) && !empty($request->email)){
@@ -118,6 +110,13 @@ class ApiAuthController extends Controller
             return $this->sendError("At least one parameter must be provided.");
         }
         if ($user) {
+            // Save data for notification 
+            $notification = new NotificationLog;
+            $notification->user_id = auth()->user()->id;
+            $notification->notification_type = "profile_update";
+            $notification->notification_status = 0;
+            $notification->save();
+            
             $success = User::where('id', $request->id)->first();
             return $this->sendResponse($success, 'updated Successfully');
         } else {

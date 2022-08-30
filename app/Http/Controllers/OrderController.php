@@ -12,7 +12,7 @@ use Stripe\Stripe;
 use Slim\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-
+use App\NotificationLog;
 
 
 class OrderController extends Controller
@@ -135,6 +135,15 @@ class OrderController extends Controller
             return $this->sendError(implode(",", $validator->errors()->all()), []);
         }
         $status = Transaction::where('id', $request->transaction_id)->update(['status' => 1]);
+
+        // Save data for notification 
+        $notification = new NotificationLog;
+        $notification->user_id = auth()->user()->id;
+        $notification->notification_type = "transaction";
+        $notification->transaction_id = $request->transaction_id;
+        $notification->notification_status = 0;
+        $notification->save();
+
         if($status){
             return $this->sendResponse([], 'Transaction status updated successfully.');
         }else{
