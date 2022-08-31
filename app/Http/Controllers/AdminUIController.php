@@ -39,7 +39,7 @@ class AdminUIController extends Controller
         } elseif ($test['success'] == true) {
             session::put('loginData', $test['data']);
         }
-        return view('pages.dashboard');
+        return redirect()->route('dashboard-details');
     }
 
     public function support(Request $request)
