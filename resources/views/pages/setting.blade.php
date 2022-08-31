@@ -660,13 +660,14 @@
          </div>
        </div>
    
- 
     </div>
  </div>
 </div>
 @endsection
 @section('inserfooter')
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
 <script>
   $('.save').hide();
   $(document).on('click', '.edit', function() {

@@ -1,4 +1,8 @@
 @extends('layouts.admin-default')
+
+
+
+
 <style>
     .pie-chart-main {
         position: relative !important;
@@ -35,15 +39,6 @@
 
 @section('content')
     @include('includes.admin-navbar')
-
-
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-
-
-
 
     <!-- ===================== Right Sidebar ===================== -->
     <div class="right-sidebar">
@@ -125,11 +120,12 @@
                     <div class="first-right-box">
                         <!-- ============== Date Carousel ============== -->
                         <div class="date-carousel">
-                            <div class="home-demo">
-                                <h3>August, 2022</h3>
-                                <div class="owl-carousel owl-theme">
+                            <div id="calendar"></div>
+                            <!-- <div class="home-demo">
+                                <h3>August, 2022</h3> -->
+                                <!-- <div class="owl-carousel owl-theme"> -->
                                     <!-- Item 1 -->
-                                    <div class="item">
+                                    <!-- <div class="item">
                                         <div class="calender-dates">
                                             <div class="date-box">
                                                 <h1>Mon</h1>
@@ -152,9 +148,9 @@
                                                 <p>19</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- Item 2 -->
-                                    <div class="item">
+                                    <!-- <div class="item">
                                         <div class="calender-dates">
                                             <div class="date-box">
                                                 <h1>Mon</h1>
@@ -177,9 +173,9 @@
                                                 <p>19</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- Item 3 -->
-                                    <div class="item">
+                                    <!-- <div class="item">
                                         <div class="calender-dates">
                                             <div class="date-box">
                                                 <h1>Mon</h1>
@@ -202,10 +198,9 @@
                                                 <p>19</p>
                                             </div>
                                         </div>
-                                    </div>
-
+                                    </div> -->
                                     <!-- Item 4 -->
-                                    <div class="item">
+                                    <!-- <div class="item">
                                         <div class="calender-dates">
                                             <div class="date-box">
                                                 <h1>Mon</h1>
@@ -228,9 +223,9 @@
                                                 <p>19</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- Item 5 -->
-                                    <div class="item">
+                                    <!-- <div class="item">
                                         <div class="calender-dates">
                                             <div class="date-box">
                                                 <h1>Mon</h1>
@@ -253,9 +248,9 @@
                                                 <p>19</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- Item 6 -->
-                                    <div class="item">
+                                    <!-- <div class="item">
                                         <div class="calender-dates">
                                             <div class="date-box">
                                                 <h1>Mon</h1>
@@ -278,9 +273,9 @@
                                                 <p>19</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- Item 7 -->
-                                    <div class="item">
+                                    <!-- <div class="item">
                                         <div class="calender-dates">
                                             <div class="date-box">
                                                 <h1>Mon</h1>
@@ -303,9 +298,9 @@
                                                 <p>19</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- Item 8 -->
-                                    <div class="item">
+                                    <!-- <div class="item">
                                         <div class="calender-dates">
                                             <div class="date-box">
                                                 <h1>Mon</h1>
@@ -328,9 +323,9 @@
                                                 <p>19</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- Item 9 -->
-                                    <div class="item">
+                                    <!-- <div class="item">
                                         <div class="calender-dates">
                                             <div class="date-box">
                                                 <h1>Mon</h1>
@@ -353,9 +348,9 @@
                                                 <p>19</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- Item 10 -->
-                                    <div class="item">
+                                    <!-- <div class="item">
                                         <div class="calender-dates">
                                             <div class="date-box">
                                                 <h1>Mon</h1>
@@ -379,12 +374,10 @@
                                             </div>
 
                                         </div>
-                                    </div>
-                                    <!-- Item 11 -->
+                                    </div> -->
 
-
-                                </div>
-                            </div>
+                                <!-- </div> -->
+                            <!-- </div> -->
                         </div>
                         <!-- ============== Refund Box ============== -->
                         <div class="refund-req-box">
@@ -701,6 +694,7 @@
 @endsection
 @section('inserfooter')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 
@@ -935,7 +929,19 @@
             });
         });
     </script>
+
     <script>
         $('.sidebar-menu ul li:nth-of-type(1)').addClass('active');
     </script>
+
+
+    <script>
+        $('#calendar').datepicker({
+            inline:true,
+            firstDay: 1,
+            showOtherMonths:true,
+            dayNamesMin:['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        });
+    </script>
+
 @endsection
