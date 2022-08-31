@@ -97,13 +97,51 @@ class AdminController extends Controller
         $afghanTelecom = Transaction::whereDate('created_at', $date)->where('receiver_network', 'Afghan Telecom')->count();
         $mtn = Transaction::whereDate('created_at', $date)->where('receiver_network', 'MTN')->count();
 
-        $awccPercentage = ($allTransactionCount * 100) / $awcc;
-        $roshanPercentage = ($allTransactionCount * 100) / $roshan;
-        $etisalatPercentage = ($allTransactionCount * 100) / $etisalat;
-        $salaamPercentage = ($allTransactionCount * 100) / $salaam;
-        $afghanTelecomPercentage = ($allTransactionCount * 100) / $afghanTelecom;
-        $mtnPercentage = ($allTransactionCount * 100) / $mtn;
+        if($awcc == 0){
+            $awccPercentage = 0;
+        }else{
+            $awccPercentage = ($allTransactionCount * 100) / $awcc;
+        }
+        if($roshan == 0){
+            $roshanPercentage = 0;
+        }else{
+            $roshanPercentage = ($allTransactionCount * 100) / $awcc;
+        }
+        if($etisalat == 0){
+            $etisalatPercentage = 0;
+        }else{
+            $etisalatPercentage = ($allTransactionCount * 100) / $awcc;
+        }
+        if($salaam == 0){
+            $salaamPercentage = 0;
+        }else{
+            $salaamPercentage = ($allTransactionCount * 100) / $awcc;
+        }
+        if($afghanTelecom == 0){
+            $afghanTelecomPercentage = 0;
+        }else{
+            $afghanTelecomPercentage = ($allTransactionCount * 100) / $awcc;
+        }
+        if($mtn == 0){
+            $mtnPercentage = 0;
+        }else{
+            $mtnPercentage = ($allTransactionCount * 100) / $awcc;
+        }
 
-        return $awccPercentage;
+        $latestTransaction = Transaction::orderBy('created_at', 'DESC')->take(15)->get();
+
+        // Generate Response 
+        $success['date'] = $date; 
+        $success['allUsers'] = $allUsers; 
+        $success['sales'] = $sales; 
+        $success['awccPercentage'] = $awccPercentage; 
+        $success['roshanPercentage'] = $roshanPercentage; 
+        $success['etisalatPercentage'] = $etisalatPercentage; 
+        $success['salaamPercentage'] = $salaamPercentage; 
+        $success['afghanTelecomPercentage'] = $afghanTelecomPercentage; 
+        $success['mtnPercentage'] = $mtnPercentage; 
+        $success['latestTransaction'] = $latestTransaction; 
+        return $this->sendResponse($success, 'Dashboard Details');
+
     }
 }

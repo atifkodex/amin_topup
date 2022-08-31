@@ -60,4 +60,9 @@ class AdminUIController extends Controller
 
         return view(('pages.support'), compact('data'));
     }
+    
+    public function dashboardDetails(Request $request)
+    {
+
+    }
 }
