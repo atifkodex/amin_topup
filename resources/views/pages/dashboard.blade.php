@@ -520,7 +520,7 @@
                                                 <td class="data">{{$transaction['id']}}</td>
                                                 <td class="data">{{$transaction['user']['name']}}</td>
                                                 <td class="data">
-                                                    <img src="{{$transaction['id']}}" alt="pangol">
+                                                    <img src="{{$transaction['networkImage']}}" alt="pangol">
                                                 </td>
                                                 <td class="data">{{$transaction['receiver_number']}}</td>
                                                 <td class="data">{{$transaction['topup_amount']}}</td>

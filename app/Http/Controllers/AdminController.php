@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\User;
 use App\Transaction;
+use App\OperatorNetwork;
 
 
 
@@ -133,6 +134,8 @@ class AdminController extends Controller
         if(count($latestTransaction) > 0){
             foreach($latestTransaction as $transaction){
                 $transaction->user = User::where('id', $transaction['user_id'])->first();
+                $transaction->networkImage = OperatorNetwork::where('operator_name', $transaction['receiver_network'])->pluck('operator_image')->first();
+
             }
         }
 
