@@ -16,6 +16,8 @@ use App\Http\Controllers\AdminUIController;
 */
 
 Route::post('/admin_login', [AdminUIController::class, 'adminLogin'])->name('adminLogin');
+Route::post('/support', [AdminUIController::class, 'support'])->name('/support');
+
 
 Route::get('/', function () {
     return view('pages.auth.login');
@@ -37,9 +39,6 @@ Route::get('/setting', function () {
     return view('pages.setting');
 });
 
-Route::get('/support', function () {
-    return view('pages.support');
-});
 
 Route::get('/user', function () {
     return view('pages.user');
@@ -53,5 +52,3 @@ Route::get('/sucess', function () {
 });
 
 Auth::routes();
-
-
