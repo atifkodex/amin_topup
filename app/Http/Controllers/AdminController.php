@@ -85,7 +85,7 @@ class AdminController extends Controller
             $date = Carbon::now();
         }
         $formatedDate = 
-        $allUsers = User::all();
+        $allUsers = User::all()->count();
         $usersOnDate = User::whereDate('created_at', $date)->get();
         $sales = Transaction::whereDate('created_at', $date)->sum('topup_amount_usd');
 

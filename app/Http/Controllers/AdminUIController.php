@@ -74,6 +74,7 @@ class AdminUIController extends Controller
         $convertor = $response->body();
         $response = json_decode($convertor, true);
         $data = $response['data'];
+        dd($data);
         return view(('pages.dashboard'), compact('data'));
     }
 }
