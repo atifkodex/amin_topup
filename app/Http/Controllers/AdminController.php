@@ -88,6 +88,7 @@ class AdminController extends Controller
         $allUsers = User::all()->count();
         $usersOnDate = User::whereDate('created_at', $date)->count();
         $sales = Transaction::whereDate('created_at', $date)->sum('topup_amount_usd');
+        $salesAfn = Transaction::whereDate('created_at', $date)->sum('topup_amount');
 
         // For Graph Data 
         $allTransactionCount = Transaction::whereDate('created_at', $date)->count();
@@ -136,6 +137,7 @@ class AdminController extends Controller
         $success['allUsers'] = $allUsers; 
         $success['usersOnDate'] = $usersOnDate; 
         $success['sales'] = $sales; 
+        $success['salesAfn'] = $salesAfn; 
         $success['awccPercentage'] = $awccPercentage; 
         $success['roshanPercentage'] = $roshanPercentage; 
         $success['etisalatPercentage'] = $etisalatPercentage; 

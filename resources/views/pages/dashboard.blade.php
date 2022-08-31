@@ -62,16 +62,16 @@
                                     <p><span>{{$data['date']}}</span></p>
                                     <h2>Total Active Users</h2>
                                     <div class="box-data">
-                                        <h3>204 <span>/ {{$data['allUsers']}}</span></h3>
+                                        <h3>{{$data['usersOnDate']}} <span>/ {{$data['allUsers']}}</span></h3>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-4">
                                 <div class="overview-col">
-                                    <p><span>17 Aug 2022</span></p>
+                                    <p><span>{{$data['date']}}</span></p>
                                     <h2>Total Sales</h2>
                                     <div class="box-data">
-                                        <h3>40000 <span>USD</span></h3>
+                                        <h3>{{$data['sales']}} <span>USD</span></h3>
                                     </div>
                                 </div>
                             </div>
