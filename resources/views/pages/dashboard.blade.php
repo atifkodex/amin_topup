@@ -1,9 +1,9 @@
 @extends('layouts.admin-default')
 
-
-
-
 <style>
+    #table-id thead tr td:first-of-type{
+        display: none !important;
+    }
     .pie-chart-main {
         position: relative !important;
     }

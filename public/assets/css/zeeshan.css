@@ -550,7 +550,7 @@ color: white;
   box-shadow: none;
   border: 1px solid #012245;
 }
-#table-id thead tr th:first-of-type,#table-id tbody tr td:first-of-type{
+#table-id tbody tr td:first-of-type{
   display: none
 }
 .logout-button:hover,.logout-button:active,.logout-button:focus{
