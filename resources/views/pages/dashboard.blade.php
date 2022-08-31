@@ -518,16 +518,24 @@
                                         @foreach ($data['latestTransaction'] as $transaction)
                                             <tr>
                                                 <td class="data">{{$transaction['id']}}</td>
-                                                <td class="data">{{$transaction['id']}}</td>
+                                                <td class="data">{{$transaction['user']['name']}}</td>
                                                 <td class="data">
                                                     <img src="{{$transaction['id']}}" alt="pangol">
                                                 </td>
-                                                <td class="data">{{$transaction['id']}}</td>
-                                                <td class="data">{{$transaction['id']}}</td>
-                                                <td class="data">{{$transaction['id']}}</td>
-                                                <td class="data">1.30{{$transaction['id']}}</td>
-                                                <td class="data">{{$transaction['id']}}</td>
-                                                <td class="data success">{{$transaction['id']}}</td>
+                                                <td class="data">{{$transaction['receiver_number']}}</td>
+                                                <td class="data">{{$transaction['topup_amount']}}</td>
+                                                <td class="data">{{$transaction['topup_amount_usd']}}</td>
+                                                <td class="data">{{$transaction['processing_fee']}}</td>
+                                                <td class="data">{{$transaction['total_amount_usd']}}</td>
+                                                @if($transaction['status'] == 0)    
+                                                <td class="data failed ">
+                                                    Failure
+                                                </td>
+                                                @elseif($transaction['status'] == 1)
+                                                <td class="data success">
+                                                    Success
+                                                </td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                         <!-- <tr>
