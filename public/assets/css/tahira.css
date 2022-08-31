@@ -688,16 +688,30 @@ body {
     right: 20px;
     color: #F89822;
   }
+  /* .ui-datepicker-calendar th:first-of-type{
+    display: none !important;
+  } */
+  /* .ui-datepicker-calendar tbody tr td:first-of-type{
+    display: none !important;
+  } */
   .ui-datepicker-calendar th{
     padding:10px;
     color: #F89822;
     font-size: 12px;
+  }
+  #calendar{
+    overflow-y: auto !important;
+  }
+  #calendar::-webkit-scrollbar{
+    width: 0px;
+    height: 0px;
   }
   
   .ui-datepicker-calendar {
       text-align:center;
       margin:0 auto;
       padding:8px;
+      width: 100% !important;
   }
   
   .ui-datepicker-title{
