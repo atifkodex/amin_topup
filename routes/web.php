@@ -32,9 +32,9 @@ Route::get('/sign-up', function () {
     return view('pages.auth.sign-up');
 });
 
-Route::get('/dashboard', function () {
-    return view('pages.dashboard');
-})->name("dashboard");
+// Route::get('/dashboard', function () {
+//     return view('pages.dashboard');
+// })->name("dashboard");
 
 Route::get('/setting', function () {
     return view('pages.setting');

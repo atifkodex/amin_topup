@@ -60,9 +60,20 @@ class AdminUIController extends Controller
 
         return view(('pages.support'), compact('data'));
     }
-    
+
     public function dashboardDetails(Request $request)
     {
-
+        $value = Session::get('loginData');
+        $token = $value['user']['token'];
+        $data = $request->all();
+        
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post('http://kodextech.net/amin-topup/public/api/admin/dashboard', $data);
+        $convertor = $response->body();
+        $response = json_decode($convertor, true);
+        $data = $response['data'];
+        return view(('pages.dashboard'), compact('data'));
     }
 }

@@ -59,7 +59,7 @@
                         <div class="row">
                             <div class="col-xl-4">
                                 <div class="overview-col">
-                                    <p><span>17 Aug 2022</span></p>
+                                    <p><span>{{$data['date']}}</span></p>
                                     <h2>Total Active Users</h2>
                                     <div class="box-data">
                                         <h3>204 <span>/ 6000</span></h3>

@@ -84,6 +84,7 @@ class AdminController extends Controller
         }else{
             $date = Carbon::now();
         }
+        $formatedDate = 
         $allUsers = User::all();
         $usersOnDate = User::whereDate('created_at', $date)->get();
         $sales = Transaction::whereDate('created_at', $date)->sum('topup_amount_usd');
@@ -131,7 +132,7 @@ class AdminController extends Controller
         $latestTransaction = Transaction::orderBy('created_at', 'DESC')->take(15)->get();
 
         // Generate Response 
-        $success['date'] = $date; 
+        $success['date'] = $date->format('d M Y'); 
         $success['allUsers'] = $allUsers; 
         $success['sales'] = $sales; 
         $success['awccPercentage'] = $awccPercentage; 
