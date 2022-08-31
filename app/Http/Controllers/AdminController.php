@@ -44,7 +44,7 @@ class AdminController extends Controller
     ////////.......get user list.........//////
     public function usersList(Request $request)
     {
-    
+
         $user = (new User())->newQuery()->where('type', 'user');
         // Check either search by day or month
         if ($request->has('name')) {
@@ -74,11 +74,6 @@ class AdminController extends Controller
         } else {
             return $this->sendResponse(['users' => $user, 'status' => 200], 'Getting Users Successfully');
         }
-
-        //  else {
-        //     $response = 'Gettig Users  Failed';
-        //     return $this->sendError($response, []);
-        // }
     }
 
     // Admin Dashboard API 
