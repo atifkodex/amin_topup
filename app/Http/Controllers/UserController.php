@@ -8,6 +8,8 @@ use App\TopupDetails;
 use App\OperatorNetwork;
 use App\User;
 use Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
@@ -27,8 +29,14 @@ class UserController extends Controller
         if ($validator->fails()) {
             return $this->sendError(implode(",", $validator->messages()->all()));
         }
-
-        $code = substr($request->number, 0, 2);
+        $number = $request->number;
+        $checkNumber = substr($number, 3);
+        if($number == 930 . $checkNumber){
+            $number = substr($number, 3);
+        }else{
+            $number = substr($number, 2);
+        }
+        $code = substr($number,0, 2);
         if($code == 70 || $code == 71)
         {
             $operatorName = "AWCC";
@@ -73,5 +81,10 @@ class UserController extends Controller
         return $this->sendResponse($success, 'Operator Data');
     }
 
+    public function userProfile(){
+        $loginUserId = Auth::user()->id;
+        $user = User::where('id', $loginUserId)->first();
+        return $this->sendResponse($user, 'User Data');
+    }
     
 }

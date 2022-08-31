@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminUIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/admin_login', [AdminUIController::class, 'adminLogin'])->name('adminLogin');
+
 Route::get('/', function () {
+    return view('pages.auth.login');
+});
+Route::get('/login', function () {
     return view('pages.auth.login');
 });
 
@@ -29,6 +35,21 @@ Route::get('/dashboard', function () {
 
 Route::get('/setting', function () {
     return view('pages.setting');
+});
+
+Route::get('/support', function () {
+    return view('pages.support');
+});
+
+Route::get('/user', function () {
+    return view('pages.user');
+});
+Route::get('/transaction', function () {
+    return view('pages.transaction');
+});
+
+Route::get('/sucess', function () {
+    return view('pages.sucess');
 });
 
 Auth::routes();

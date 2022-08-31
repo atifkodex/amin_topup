@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\NotificationLog;
 
 
 
@@ -93,20 +94,33 @@ class ApiAuthController extends Controller
     //////....update user......./////// 
     public function update_user(Request $request)
     {
-        $user = User::where('id', $request->id)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone_number' => $request->phone_number,
-            'date_of_birth' => $request->date_of_birth,
-            'profile' => $request->profile,
-            'country' => $request->country
-        ]);
+        if(isset($request->name) && !empty($request->name)){
+            $user = User::where('id', $request->id)->update(['name' => $request->name]);
+        }elseif(isset($request->email) && !empty($request->email)){
+            $user = User::where('id', $request->id)->update(['email' => $request->email]);
+        }elseif(isset($request->phone_number) && !empty($request->phone_number)){
+            $user = User::where('id', $request->id)->update(['phone_number' => $request->phone_number]);
+        }elseif(isset($request->date_of_birth) && !empty($request->date_of_birth)){
+            $user = User::where('id', $request->id)->update(['date_of_birth' => $request->date_of_birth]);
+        }elseif(isset($request->profile) && !empty($request->profile)){
+            $user = User::where('id', $request->id)->update(['profile' => $request->profile]);
+        }elseif(isset($request->country) && !empty($request->country)){
+            $user = User::where('id', $request->id)->update(['country' => $request->country]);
+        }else{
+            return $this->sendError("At least one parameter must be provided.");
+        }
         if ($user) {
+            // Save data for notification 
+            $notification = new NotificationLog;
+            $notification->user_id = auth()->user()->id;
+            $notification->notification_type = "profile_update";
+            $notification->notification_status = 0;
+            $notification->save();
+            
             $success = User::where('id', $request->id)->first();
-            return $this->sendResponse(['user' => $success, 'status' => 200], 'update Successfully');
+            return $this->sendResponse($success, 'updated Successfully');
         } else {
-            $response = 'User updation Fail';
-            return $this->sendError(($response), []);
+            return $this->sendError("Updation failed. Try again later");
         }
     }
 }

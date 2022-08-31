@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Traits\ResponseTrait;
 use Illuminate\Support\Str;
 use App\Contacts;
+use App\NotificationLog;
 
 class ContactsController extends Controller
 {
@@ -31,7 +32,16 @@ class ContactsController extends Controller
         $post->subject = $request->get('subject');
         $post->category = $request->get('category');
         $post->description = $request->get('description');
-        if ($post->save()) {
+        $save = $post->save();
+        if ($save) {
+            // Save data for notification 
+            $notification = new NotificationLog;
+            $notification->user_id = auth()->user()->id;
+            $notification->notification_type = "contact";
+            $notification->contact_id = $post->id;
+            $notification->notification_status = 0;
+            $notification->save();
+
             $response = 'Request Submit Successfully';
             return $this->sendResponse([], $response);
         } else {
