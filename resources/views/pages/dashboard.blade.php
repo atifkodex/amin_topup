@@ -515,20 +515,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/pangol.svg') }}" alt="pangol">
-                                            </td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">50</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">USD</td>
-                                            <td class="data success">Success</td>
-                                        </tr>
-                                        <tr>
+                                        @foreach ($data['latestTransaction'] as $transaction)
+                                            <tr>
+                                                <td class="data">{{$transaction['id']}}</td>
+                                                <td class="data">{{$transaction['id']}}</td>
+                                                <td class="data">
+                                                    <img src="{{$transaction['id']}}" alt="pangol">
+                                                </td>
+                                                <td class="data">{{$transaction['id']}}</td>
+                                                <td class="data">{{$transaction['id']}}</td>
+                                                <td class="data">{{$transaction['id']}}</td>
+                                                <td class="data">1.30{{$transaction['id']}}</td>
+                                                <td class="data">{{$transaction['id']}}</td>
+                                                <td class="data success">{{$transaction['id']}}</td>
+                                            </tr>
+                                        @endforeach
+                                        <!-- <tr>
                                             <td class="data">#213652</td>
                                             <td class="data">Muhammad Ali</td>
                                             <td class="data">
@@ -540,8 +542,8 @@
                                             <td class="data">1.30</td>
                                             <td class="data">1.30</td>
                                             <td class="data">USD</td>
-                                            <td class="data success">Success</td>
-                                        </tr>
+                                            <td class="data success">Success</td> -->
+                                        <!-- </tr>
                                         <tr>
                                             <td class="data">#213652</td>
                                             <td class="data">Muhammad Ali</td>
@@ -665,7 +667,7 @@
                                             <td class="data">1.30</td>
                                             <td class="data">USD</td>
                                             <td class="data failed">Failed</td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>

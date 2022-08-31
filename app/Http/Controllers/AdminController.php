@@ -84,7 +84,6 @@ class AdminController extends Controller
         }else{
             $date = Carbon::now();
         }
-        $formatedDate = 
         $allUsers = User::all()->count();
         $usersOnDate = User::whereDate('created_at', $date)->count();
         $sales = Transaction::whereDate('created_at', $date)->sum('topup_amount_usd');
@@ -98,7 +97,7 @@ class AdminController extends Controller
         $salaam = Transaction::whereDate('created_at', $date)->where('receiver_network', 'Salaam')->count();
         $afghanTelecom = Transaction::whereDate('created_at', $date)->where('receiver_network', 'Afghan Telecom')->count();
         $mtn = Transaction::whereDate('created_at', $date)->where('receiver_network', 'MTN')->count();
-
+        
         if($awcc == 0){
             $awccPercentage = 0;
         }else{
@@ -131,6 +130,11 @@ class AdminController extends Controller
         }
 
         $latestTransaction = Transaction::orderBy('created_at', 'DESC')->take(15)->get();
+        if(count($latestTransaction) > 0){
+            foreach($latestTransaction as $transaction){
+                $transaction->user = User::where('id', $transaction['user_id'])->first();
+            }
+        }
 
         // Generate Response 
         $success['date'] = $date->format('d M Y'); 
