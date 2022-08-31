@@ -10,6 +10,7 @@ use App\Http\Traits\ResponseTrait;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\User;
+use App\Transaction;
 
 
 
@@ -78,5 +79,36 @@ class AdminController extends Controller
         //     $response = 'Gettig Users  Failed';
         //     return $this->sendError($response, []);
         // }
+    }
+
+    // Admin Dashboard API 
+    public function adminDashboard(Request $request)
+    {
+        if(isset($request->date) && !empty($request->date)){
+            $date = $request->date;
+        }else{
+            $date = Carbon::now();
+        }
+        $allUsers = User::all();
+        $usersOnDate = User::whereDate('created_at', $date)->get();
+        $sales = Transaction::whereDate('created_at', $date)->sum('topup_amount_usd');
+
+        // For Graph Data 
+        $allTransactionCount = Transaction::whereDate('created_at', $date)->count();
+        $awcc = Transaction::whereDate('created_at', $date)->where('receiver_network', 'AWCC')->count();
+        $roshan = Transaction::whereDate('created_at', $date)->where('receiver_network', 'Roshan')->count();
+        $etisalat = Transaction::whereDate('created_at', $date)->where('receiver_network', 'Etisalat')->count();
+        $salaam = Transaction::whereDate('created_at', $date)->where('receiver_network', 'Salaam')->count();
+        $afghanTelecom = Transaction::whereDate('created_at', $date)->where('receiver_network', 'Afghan Telecom')->count();
+        $mtn = Transaction::whereDate('created_at', $date)->where('receiver_network', 'MTN')->count();
+
+        $awccPercentage = ($allTransactionCount * 100) / $awcc;
+        $roshanPercentage = ($allTransactionCount * 100) / $roshan;
+        $etisalatPercentage = ($allTransactionCount * 100) / $etisalat;
+        $salaamPercentage = ($allTransactionCount * 100) / $salaam;
+        $afghanTelecomPercentage = ($allTransactionCount * 100) / $afghanTelecom;
+        $mtnPercentage = ($allTransactionCount * 100) / $mtn;
+
+        return $awccPercentage;
     }
 }

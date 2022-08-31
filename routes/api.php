@@ -66,5 +66,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], f
     Route::post('/support', [ContactsController::class, 'user_support'])->name('support.api');
     Route::post('/create_admin', [AdminController::class, 'create_admin'])->name('create_admin.api');
     Route::post('/users', [AdminController::class, 'usersList'])->name('users.api');
+    Route::post('/dashboard', [AdminController::class, 'adminDashboard']);
 });
 // Admin Panel API's END------- 
