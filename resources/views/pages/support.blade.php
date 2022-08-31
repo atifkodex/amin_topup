@@ -132,7 +132,7 @@
                         <h1>Description</h1>
                     </div>
                     <div class="support-description-cat py-3 px-4 d-flex align-items-center">
-                        <p>Description:</p>
+                        <p>Category:</p>
                         <div>
                             <p>General</p>
                         </div>
