@@ -31,6 +31,10 @@ body,html{
 color: #8B8B8A;
 font-size: 18px;
 }
+.login-email-field{
+  width: 80%;
+  margin: 0 auto;
+}
 .login-email-field label{
     color: #001933;
     font-size: 14px;
