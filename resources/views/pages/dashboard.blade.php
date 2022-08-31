@@ -78,7 +78,7 @@
                             <div class="col-xl-4">
 
                                 <div class="overview-col px-0">
-                                    <p class="pl-3"><span>17 Aug 2022</span></p>
+                                    <p class="pl-3"><span>{{$data['date']}}</span></p>
                                     <h2 class="pl-3">Total Topup</h2>
                                     <div class="pie-chart-main ">
 
@@ -86,7 +86,7 @@
 
 
                                         </div>
-                                        <div class="chart-inner">5,000.01<br>AFN</div>
+                                        <div class="chart-inner">{{$data['salesAfn']}}<br>AFN</div>
                                         <ul class="pl-3 pl-xl-1 chart-list">
                                             <li>
                                                 <div class="color-box" style="background: #775DD0"></div>
@@ -98,7 +98,7 @@
                                             </li>
                                             <li>
                                                 <div class="color-box" style="background: #00E396"></div>
-                                                <span>Roshan</span>
+                                                <span>Salaam</span>
                                             </li>
                                             <li>
                                                 <div class="color-box" style="background: #DA3B52"></div>
@@ -107,6 +107,10 @@
                                             <li>
                                                 <div class="color-box" style="background: #FEB019"></div>
                                                 <span>Afghan Telecom</span>
+                                            </li>
+                                            <li>
+                                                <div class="color-box" style="background: #FEB099"></div>
+                                                <span>MTN</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -703,7 +707,18 @@
 <!-- ================ Owl Carousel Cdn =================== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
-
+<script>
+    var app = @json($data);
+    var data = [
+        app['roshanPercentage'],
+        app['etisalatPercentage'],
+        app['salaamPercentage'],
+        app['awccPercentage'],
+        app['afghanTelecomPercentage'],
+        app['mtnPercentage'],
+    ];
+    console.log(data);
+</script>
     <script>
         var options = {
             grid: {
@@ -719,13 +734,21 @@
                     fontSize: "8px",
                 }
             },
-            series: [44, 55, 41, 17, 15],
+            tooltip: {
+                enabled: false,
+            },
+            series: data,
+            labels: ["Roshan", "Etisalat", "Salaam", "AWCC", "Afghan Telecom", "MTN" ],
             chart: {
                 type: 'donut',
                 width: '100%',
                 height: 120,
 
             },
+            fill: {
+                colors: ['#775DD0', '#008FFB', '#00E396', '#DA3B52',  '#FEB019','#FEB099',]
+            },
+            
 
             responsive: [{
                 breakpoint: 1199,
