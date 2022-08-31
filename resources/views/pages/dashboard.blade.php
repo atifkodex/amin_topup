@@ -62,7 +62,7 @@
                                     <p><span>{{$data['date']}}</span></p>
                                     <h2>Total Active Users</h2>
                                     <div class="box-data">
-                                        <h3>204 <span>/ 6000</span></h3>
+                                        <h3>204 <span>/ {{$data['allUsers']}}</span></h3>
                                     </div>
                                 </div>
                             </div>
