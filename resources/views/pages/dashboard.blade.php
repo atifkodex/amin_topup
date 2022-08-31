@@ -527,7 +527,7 @@
                                                 <td class="data">{{$transaction['topup_amount_usd']}}</td>
                                                 <td class="data">{{$transaction['processing_fee']}}</td>
                                                 <td class="data">{{$transaction['total_amount_usd']}}</td>
-                                                @if($transaction['status'] == 0)    
+                                                @if($transaction['status'] == 0)
                                                 <td class="data failed ">
                                                     Failure
                                                 </td>
@@ -721,9 +721,10 @@
         app['afghanTelecomPercentage'],
         app['mtnPercentage'],
     ];
-    console.log(data);
+    
 </script>
-    <script>
+<script>
+        
         var options = {
             grid: {
                 show: false,
@@ -924,6 +925,7 @@
             $("#prev span").click(function() {
                 $('#prev').addClass('active');
             });
+
         });
     </script>
 
