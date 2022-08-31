@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminUIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/adminLogin', [OrderController::class, 'topupHistory']);
-
+Route::post('/admin_login', [AdminUIController::class, 'adminLogin'])->name('adminLogin');
 
 Route::get('/', function () {
     return view('pages.auth.login');
