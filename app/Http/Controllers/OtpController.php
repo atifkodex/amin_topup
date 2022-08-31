@@ -29,8 +29,8 @@ class OtpController extends Controller
         Log::info("otp = ".$otp);
         $user = User::where('email','=',$request->email)->update(['otp' => $otp]);
         if($user){
-        \Mail::to($request->email)->send(new SendOTPMail($otp));
-        return response(["status" => 200, "message" => "OTP sent successfully"]);
+        // \Mail::to($request->email)->send(new SendOTPMail($otp));
+        return response(["status" => 200, "data" => $otp,"message" => "OTP sent successfully"]);
         }
         else{
             return response(["status" => 401, 'message' => 'Invalid']);
