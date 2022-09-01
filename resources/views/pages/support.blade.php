@@ -86,6 +86,7 @@
 <script>
     $('.sidebar-menu ul li:nth-of-type(5)').addClass('active');
 </script>
+<!-- show data click to card -->
 <script>
     $('.getuserdata').click(function() {
         var subject = $(this).find('.subject').text();
