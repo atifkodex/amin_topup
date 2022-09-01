@@ -96,16 +96,5 @@
         $("#subject_id").html(subject);
         $("#description_id").html(description);
     });
-    // function ajaxcall(id) {
-    //     // alert(id);
-    //     $.ajax({
-    //         url: "{{ url('getData')}}/" + id,
-    //         type: 'get',
-    //         dataType: 'json',
-
-    //     });
-
-
-    // }
 </script>
 @endsection
