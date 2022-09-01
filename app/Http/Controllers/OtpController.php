@@ -52,7 +52,7 @@ class OtpController extends Controller
             auth()->login($user, true);
             User::where('email','=',$request->email)->update(['otp' => null]);
             $success['user'] = auth()->user();
-            $success['user']['accessToken'] = auth()->user()->createToken('authToken')->accessToken;
+            $success['user']['token'] = auth()->user()->createToken('authToken')->accessToken;
             
             // return response(["status" => 200, "message" => "Success", 'user' => auth()->user(), 'access_token' => $accessToken]);
             return $this->sendResponse($success, 'verified successfulyy');
