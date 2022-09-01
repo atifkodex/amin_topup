@@ -31,6 +31,10 @@ body,html{
 color: #8B8B8A;
 font-size: 18px;
 }
+.login-email-field{
+  width: 80%;
+  margin: 0 auto;
+}
 .login-email-field label{
     color: #001933;
     font-size: 14px;
@@ -408,7 +412,8 @@ border-radius: 10px;
 }
 .support-description-cat div{
   background:rgba(23, 23, 37, 1) ;
-  width: 100px;
+  min-width: 100px;
+  padding: 0px 10px;
   height: 35px;
   border-radius: 30px;
   display: flex;
@@ -550,9 +555,9 @@ color: white;
   box-shadow: none;
   border: 1px solid #012245;
 }
-#table-id thead tr th:first-of-type,#table-id tbody tr td:first-of-type{
+/* #table-id tbody tr td:first-of-type{
   display: none
-}
+} */
 .logout-button:hover,.logout-button:active,.logout-button:focus{
   box-shadow: none;
   outline: none;

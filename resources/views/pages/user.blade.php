@@ -11,9 +11,9 @@
         box-shadow: none;
         border: 1px solid #012245;
     }
-    #table-id thead tr th:first-of-type,#table-id tbody tr td:first-of-type{
+    /* #table-id thead tr th:first-of-type,#table-id tbody tr td:first-of-type{
         display: none
-    }
+    } */
     .setting-card-body-inner{
         overflow-x:auto;
         height:680px !important;
@@ -560,17 +560,17 @@
             }
         }
 
-        $(function() {
-            // Just to append id number for each row
-            $('table tr:eq(0)').prepend('<th> ID </th>');
+        // $(function() {
+        //     // Just to append id number for each row
+        //     $('table tr:eq(0)').prepend('<th> ID </th>');
 
-            var id = 0;
+        //     var id = 0;
 
-            $('table tr:gt(0)').each(function() {
-                id++;
-                $(this).prepend('<td>' + id + '</td>');
-            });
-        });
+        //     $('table tr:gt(0)').each(function() {
+        //         id++;
+        //         $(this).prepend('<td>' + id + '</td>');
+        //     });
+        // });
 
     </script>
 
