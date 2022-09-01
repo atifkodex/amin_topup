@@ -16,7 +16,8 @@ use App\Http\Controllers\AdminUIController;
 */
 
 Route::post('/admin_login', [AdminUIController::class, 'adminLogin'])->name('adminLogin');
-Route::post('/support', [AdminUIController::class, 'support'])->name('/support');
+Route::get('/support_page', [AdminUIController::class, 'support'])->name('support-page');
+
 
 
 Route::get('/', function () {
@@ -39,6 +40,9 @@ Route::get('/setting', function () {
     return view('pages.setting');
 });
 
+// Route::get('/support', function () {
+//     return view('pages.support');
+// });
 
 Route::get('/user', function () {
     return view('pages.user');

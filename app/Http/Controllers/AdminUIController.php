@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Traits\ResponseTrait;
 // use Validator;
+use App\Contacts;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 
@@ -44,8 +45,10 @@ class AdminUIController extends Controller
 
     public function support(Request $request)
     {
+
         $value = Session::get('loginData');
-        $token = $value['token'];
+
+        $token = $value['user']['token'];
         $data = $request->all();
 
         $response = Http::withHeaders([
@@ -54,10 +57,9 @@ class AdminUIController extends Controller
         ])->post('http://kodextech.net/amin-topup/public/api/admin/support', $data);
         $convertor = $response->body();
         $response = json_decode($convertor, true);
-        dd($response);
 
-        $data = $response['data'];
+        $data = $response['data']['users'];
 
-        return view(('pages.support'), compact('data'));
+        return view('pages.support', ['data' => $data]);
     }
 }
