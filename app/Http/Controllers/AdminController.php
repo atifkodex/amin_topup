@@ -83,7 +83,7 @@ class AdminController extends Controller
         if(isset($request->date) && !empty($request->date)){
             $date = $request->date;
         }else{
-            $date = Carbon::now();
+            $date = Carbon::now()->format('d M Y');
         }
         $allUsers = User::all()->count();
         $usersOnDate = User::whereDate('created_at', $date)->count();
@@ -140,7 +140,7 @@ class AdminController extends Controller
         }
 
         // Generate Response 
-        $success['date'] = $date->format('d M Y'); 
+        $success['date'] = $date; 
         $success['allUsers'] = $allUsers; 
         $success['usersOnDate'] = $usersOnDate; 
         $success['sales'] = $sales; 

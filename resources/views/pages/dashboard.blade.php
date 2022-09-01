@@ -1000,17 +1000,26 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.de.min.js"></script>
     <script>
 $('#pickyDate').datepicker({
-  format: "dd.mm.yyyy",
+  format: "yyyy/mm/dd",
   todayBtn: "linked",
   language: "en",
-  daysOfWeekDisabled: "0,6",
   daysOfWeekHighlighted: "4",
   todayHighlight: true,
 }).on('changeDate', showTestDate);
 
 function showTestDate(){
-  var value = $('#pickyDate').datepicker('getFormattedDate');
-  alert(value);
+    var value = $('#pickyDate').datepicker('getFormattedDate');
+
+    // Ajax call 
+    $.ajax({
+        url: "http://kodextech.net/amin-topup/public/api/admin/dashboard",
+        type: 'POST',
+        dataType: 'json', // added data type
+        data: value,
+        success: function(response) {
+            console.log(response.data.afghanTelecomPercentage);
+        }
+    });
 }
     </script>
 
