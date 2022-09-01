@@ -30,7 +30,9 @@ class OtpController extends Controller
         $user = User::where('email','=',$request->email)->update(['otp' => $otp]);
         if($user){
         // \Mail::to($request->email)->send(new SendOTPMail($otp));
-        return response(["status" => 200, "data" => $otp,"message" => "OTP sent successfully"]);
+        // return response(["status" => 200, "data" => $otp,"message" => "OTP sent successfully"]);
+            return $this->sendResponse($otp, 'OTP sent successfully.');
+
         }
         else{
             return response(["status" => 401, 'message' => 'Invalid']);
@@ -49,9 +51,11 @@ class OtpController extends Controller
         if($user){
             auth()->login($user, true);
             User::where('email','=',$request->email)->update(['otp' => null]);
-            $accessToken = auth()->user()->createToken('authToken')->accessToken;
-
-            return response(["status" => 200, "message" => "Success", 'user' => auth()->user(), 'access_token' => $accessToken]);
+            $success['accessToken'] = auth()->user()->createToken('authToken')->accessToken;
+            $success['user'] = auth()->user();
+            
+            // return response(["status" => 200, "message" => "Success", 'user' => auth()->user(), 'access_token' => $accessToken]);
+            return $this->sendResponse($success, 'verified successfulyy');
         }
         else{
             return response(["status" => 401, 'message' => 'Invalid']);
