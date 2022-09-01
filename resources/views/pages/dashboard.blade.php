@@ -1,8 +1,47 @@
 @extends('layouts.admin-default')
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.css" rel="stylesheet"/>
 <style>
-    #table-id thead tr td:first-of-type{
+    .table-condensed thead tr:nth-of-type(2) th{
+        color: #F89822 !important;
+    }
+    .table-condensed thead tr:nth-of-type(3) th{
+        color: #F89822 !important;
+        font-weight: normal !important;
+        font-size: 14px !important;
+    }
+    .datepicker-months .table-condensed tbody tr:nth-of-type(1),.datepicker-years .table-condensed tbody tr:nth-of-type(1){
+        background: #F89822 !important;
+        color: white !important;
+    }
+    .datepicker-months .table-condensed tbody tr:nth-of-type(1) td .month:hover, .datepicker-years .table-condensed tbody tr:nth-of-type(1) td .year:hover{
+        background: #ac6d1cc4 !important;
+        color: white !important;
+    }
+    .datepicker-months .table-condensed tbody tr:nth-of-type(1) td .month.focused,.datepicker-years .table-condensed tbody tr:nth-of-type(1) td .year.focused{
+        background: #ac6d1cc4 !important;
+        color: white !important;
+    }
+    .table-condensed tbody tr td{
+        font-size: 14px !important;
+    }
+    .table-condensed,.datepicker-inline{
+        width: 100% !important;
+    }
+    .table-condensed tfoot{
         display: none !important;
+    }
+    .datepicker table tr td.highlighted{
+        background: transparent !important;
+        color: black !important;
+    }
+    .datepicker table tr td.today{
+        background: transparent !important;
+        color: black !important;
+    }
+    .datepicker table tr td.active.active,.datepicker table tr td:hover{
+        background: #F89822 !important;
+        color: white !important;
     }
     .pie-chart-main {
         position: relative !important;
@@ -120,7 +159,15 @@
                     <div class="first-right-box">
                         <!-- ============== Date Carousel ============== -->
                         <div class="date-carousel">
-                            <div id="calendar"></div>
+                            <div style="overflow:hidden;">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div id="pickyDate"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- <div class="home-demo">
                                 <h3>August, 2022</h3> -->
                                 <!-- <div class="owl-carousel owl-theme"> -->
@@ -904,17 +951,17 @@
             }
         }
 
-        $(function() {
-            // Just to append id number for each row
-            $('table tr:eq(0)').prepend('<th> ID </th>');
+        // $(function() {
+        //     // Just to append id number for each row
+        //     $('table tr:eq(0)').prepend('<th> ID </th>');
 
-            var id = 0;
+        //     var id = 0;
 
-            $('table tr:gt(0)').each(function() {
-                id++;
-                $(this).prepend('<td>' + id + '</td>');
-            });
-        });
+        //     $('table tr:gt(0)').each(function() {
+        //         id++;
+        //         $(this).prepend('<td>' + id + '</td>');
+        //     });
+        // });
     </script>
 
     <script>
@@ -944,16 +991,27 @@
 
     <script>
         $('.sidebar-menu ul li:nth-of-type(1)').addClass('active');
+        
     </script>
 
-
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.de.min.js"></script>
     <script>
-        $('#calendar').datepicker({
-            inline:true,
-            firstDay: 1,
-            showOtherMonths:true,
-            dayNamesMin:['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        });
+$('#pickyDate').datepicker({
+  format: "dd.mm.yyyy",
+  todayBtn: "linked",
+  language: "en",
+  daysOfWeekDisabled: "0,6",
+  daysOfWeekHighlighted: "4",
+  todayHighlight: true,
+}).on('changeDate', showTestDate);
+
+function showTestDate(){
+  var value = $('#pickyDate').datepicker('getFormattedDate');
+  alert(value);
+}
     </script>
 
 @endsection
