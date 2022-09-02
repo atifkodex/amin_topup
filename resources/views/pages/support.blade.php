@@ -21,11 +21,9 @@
         <div class="row">
             <div class="col-4 col-xl-3 support-card-outer-main ">
                 <div class="">
-                    @foreach($data as $post)
-                    <div class="support-card-outer px-1 py-2 getuserdata">
-                        <!-- <input type="hidden" name="spec_id" id="spec_id" value="{{$post['id']}}"> -->
-
-                        <div class="support-card pl-3 py-3 my-3">
+                    <div class="support-card-outer px-1 py-2">
+                        @foreach($data as $post)
+                        <div class="support-card pl-3 py-3 my-3 getuserdata">
                             <div class="support-card-header d-flex align-items-center">
                                 <div class="image-outer">
                                     @if(!empty($post['user']['profile']))
@@ -42,15 +40,19 @@
 
 
 
+
                                 <p>Category</p>
                                 <h1 class="category">{{$post['category']}}</h1>
                                 <p class="pb-1">Description</p>
                                 <p class="description">{{$post['description']}}</p>
+
+
+
+
                             </div>
                         </div>
-
+                        @endforeach
                     </div>
-                    @endforeach
 
                 </div>
 
@@ -76,20 +78,15 @@
                         </div>
 
                     </div>
-
-                    <div class="support-description-section pt-5 px-4" id="description_id">
+                    <div class="support-description-section pt-5 px-4">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem dolor autem optio hic, eaque magni libero aspernatur porro natus deserunt! Adipisci incidunt aperiam voluptate temporibus necessitatibus explicabo assumenda aliquid?
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem dolor autem optio hic, eaque magni libero aspernatur porro natus deserunt! Adipisci incidunt aperiam voluptate temporibus necessitatibus explicabo assumenda aliquid?
-
                     </div>
 
                     <div class="support-description-button py-5 px-4 text-right">
-
-
                         <button data-toggle="modal" data-target="#basicsubsModal">Reply</button>
                         <button>Archived</button>
                     </div>
-
 
                 </div>
 

@@ -82,6 +82,12 @@
     @include('includes.admin-navbar')
 
     <!-- ===================== Right Sidebar ===================== -->
+    <input type="hidden" class="roshanPercentage" value="{{$data['roshanPercentage']}}" />
+    <input type="hidden" class="etisalatPercentage" value="{{$data['etisalatPercentage']}}" />
+    <input type="hidden" class="salaamPercentage" value="{{$data['salaamPercentage']}}" />
+    <input type="hidden" class="awccPercentage" value="{{$data['awccPercentage']}}" />
+    <input type="hidden" class="afghanTelecomPercentage" value="{{$data['afghanTelecomPercentage']}}" />
+    <input type="hidden" class="mtnPercentage" value="{{$data['mtnPercentage']}}" />
     <div class="right-sidebar">
         <div class="container-fluid">
             <!-- Overview Box -->
@@ -95,26 +101,26 @@
                         <div class="row">
                             <div class="col-xl-4">
                                 <div class="overview-col">
-                                    <p><span>17 Aug 2022</span></p>
+                                    <p><span class="selectedDate">{{$data['date']}}</span></p>
                                     <h2>Total Active Users</h2>
                                     <div class="box-data">
-                                        <h3>204 <span>/ 6000</span></h3>
+                                        <h3><span style="color: #3590f3; font-weight: 600;font-size: 30px;line-height: 54px;margin-bottom: 0;" class="usersOnDate">{{$data['usersOnDate']}}</span> <span class="allUsers">/ {{$data['allUsers']}}</span></h3>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-4">
                                 <div class="overview-col">
-                                    <p><span>17 Aug 2022</span></p>
+                                    <p><span class="selectedDate">{{$data['date']}}</span></p>
                                     <h2>Total Sales</h2>
                                     <div class="box-data">
-                                        <h3>40000 <span>USD</span></h3>
+                                        <h3  class="salesTotal">{{$data['sales']}} <span>USD</span></h3>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-4">
 
                                 <div class="overview-col px-0">
-                                    <p class="pl-3"><span>17 Aug 2022</span></p>
+                                    <p class="pl-3"><span class="selectedDate">{{$data['date']}}</span></p>
                                     <h2 class="pl-3">Total Topup</h2>
                                     <div class="pie-chart-main ">
 
@@ -122,7 +128,7 @@
 
 
                                         </div>
-                                        <div class="chart-inner">5,000.01<br>AFN</div>
+                                        <div class="chart-inner salesAfn">{{$data['salesAfn']}}<br>AFN</div>
                                         <ul class="pl-3 pl-xl-1 chart-list">
                                             <li>
                                                 <div class="color-box" style="background: #775DD0"></div>
@@ -134,7 +140,7 @@
                                             </li>
                                             <li>
                                                 <div class="color-box" style="background: #00E396"></div>
-                                                <span>Roshan</span>
+                                                <span>Salaam</span>
                                             </li>
                                             <li>
                                                 <div class="color-box" style="background: #DA3B52"></div>
@@ -143,6 +149,10 @@
                                             <li>
                                                 <div class="color-box" style="background: #FEB019"></div>
                                                 <span>Afghan Telecom</span>
+                                            </li>
+                                            <li>
+                                                <div class="color-box" style="background: #FEB099"></div>
+                                                <span>MTN</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -166,263 +176,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="home-demo">
-                                <h3>August, 2022</h3> -->
-                                <!-- <div class="owl-carousel owl-theme"> -->
-                                    <!-- Item 1 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
-                                            </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- Item 2 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
-                                            </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- Item 3 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
-                                            </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- Item 4 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
-                                            </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- Item 5 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
-                                            </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- Item 6 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
-                                            </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- Item 7 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
-                                            </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- Item 8 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
-                                            </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- Item 9 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
-                                            </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- Item 10 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
-                                            </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
-
-                                        </div>
-                                    </div> -->
-
-                                <!-- </div> -->
-                            <!-- </div> -->
+                            
                         </div>
                         <!-- ============== Refund Box ============== -->
                         <div class="refund-req-box">
@@ -560,214 +314,30 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/pangol.svg') }}" alt="pangol">
-                                            </td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">50</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">USD</td>
-                                            <td class="data success">Success</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/roshan-afghanistan.svg') }}"
-                                                    alt="roshan-afghanistan">
-                                            </td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">50</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">USD</td>
-                                            <td class="data success">Success</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/etisalat.svg') }}" alt="etisalat">
-                                            </td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">50</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">USD</td>
-                                            <td class="data success">Success</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/roshan-afghanistan.svg') }}"
-                                                    alt="roshan-afghanistan">
-                                            </td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">50</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">USD</td>
-                                            <td class="data failed">Failed</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/pangol.svg') }}" alt="pangol">
-                                            </td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">50</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">USD</td>
-                                            <td class="data success">Success</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/afghan_telecom.svg') }}"
-                                                    alt="afghan_telecom">
-                                            </td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">50</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">USD</td>
-                                            <td class="data success">Success</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/roshan-afghanistan.svg') }}"
-                                                    alt="roshan-afghanistan">
-                                            </td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">50</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">USD</td>
-                                            <td class="data failed">Failed</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/roshan-afghanistan.svg') }}"
-                                                    alt="roshan-afghanistan">
-                                            </td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">50</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">USD</td>
-                                            <td class="data failed">Failed</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/roshan-afghanistan.svg') }}"
-                                                    alt="roshan-afghanistan">
-                                            </td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">50</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">USD</td>
-                                            <td class="data failed">Failed</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/roshan-afghanistan.svg') }}"
-                                                    alt="roshan-afghanistan">
-                                            </td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">50</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">USD</td>
-                                            <td class="data failed">Failed</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/roshan-afghanistan.svg') }}"
-                                                    alt="roshan-afghanistan">
-                                            </td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">50</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">USD</td>
-                                            <td class="data failed">Failed</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/roshan-afghanistan.svg') }}"
-                                                    alt="roshan-afghanistan">
-                                            </td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">50</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">USD</td>
-                                            <td class="data failed">Failed</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/roshan-afghanistan.svg') }}"
-                                                    alt="roshan-afghanistan">
-                                            </td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">50</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">USD</td>
-                                            <td class="data failed">Failed</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/roshan-afghanistan.svg') }}"
-                                                    alt="roshan-afghanistan">
-                                            </td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">50</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">USD</td>
-                                            <td class="data failed">Failed</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali ali</td>
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/roshan-afghanistan.svg') }}"
-                                                    alt="roshan-afghanistan">
-                                            </td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">50</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">USD</td>
-                                            <td class="data failed">Failed</td>
-                                        </tr>
-
+                                        @foreach ($data['latestTransaction'] as $transaction)
+                                            <tr>
+                                                <td class="data">{{$transaction['id']}}</td>
+                                                <td class="data">{{$transaction['user']['name']}}</td>
+                                                <td class="data">
+                                                    <img src="{{$transaction['networkImage']}}" alt="pangol">
+                                                </td>
+                                                <td class="data">{{$transaction['receiver_number']}}</td>
+                                                <td class="data">{{$transaction['topup_amount']}}</td>
+                                                <td class="data">{{$transaction['topup_amount_usd']}}</td>
+                                                <td class="data">{{$transaction['processing_fee']}}</td>
+                                                <td class="data">{{$transaction['total_amount_usd']}}</td>
+                                                @if($transaction['status'] == 0)
+                                                <td class="data failed ">
+                                                    Failure
+                                                </td>
+                                                @elseif($transaction['status'] == 1)
+                                                <td class="data success">
+                                                    Success
+                                                </td>
+                                                @endif
+                                            </tr>
+                                        @endforeach
+                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -802,9 +372,63 @@
 
 <!-- ================ Owl Carousel Cdn =================== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.de.min.js"></script>
+<script>
+    $('#pickyDate').datepicker({
+    format: "yyyy/mm/dd",
+    todayBtn: "linked",
+    language: "en",
+    daysOfWeekHighlighted: "4",
+    todayHighlight: true,
+    }).on('changeDate', showTestDate);
 
-
-    <script>
+    function showTestDate(){
+        var value = $('#pickyDate').datepicker('getFormattedDate');
+        // Ajax call 
+        var route = "{{route('dashboard-details')}}"
+        $.ajax({
+            url: route,
+            type: 'POST',
+            dataType: 'json', // added data type
+            data: {
+                date: value
+            },
+            success: function(response) {
+                $(".selectedDate").text(response.data.date);
+                $(".usersOnDate").text(response.data.usersOnDate);
+                $(".salesTotal").text(response.data.sales);
+                $(".salesAfn").text(response.data.salesAfn);
+                $(".roshanPercentage").val(response.data.roshanPercentage);
+                $(".etisalatPercentage").val(response.data.etisalatPercentage);
+                $(".salaamPercentage").val(response.data.salaamPercentage);
+                $(".awccPercentage").val(response.data.awccPercentage);
+                $(".afghanTelecomPercentage").val(response.data.afghanTelecomPercentage);
+                $(".mtnPercentage").val(response.data.mtnPercentage);
+            }
+        });
+    }
+</script>
+<script>
+    var roshanPercentage = $(".roshanPercentage").val();
+    var etisalatPercentage = $(".etisalatPercentage").val();
+    var salaamPercentage = $(".salaamPercentage").val();
+    var awccPercentage = $(".awccPercentage").val();
+    var afghanTelecomPercentage = $(".afghanTelecomPercentage").val();
+    var mtnPercentage = $(".mtnPercentage").val();
+    var dataGraph = [
+        parseInt(roshanPercentage),
+        parseInt(etisalatPercentage),
+        parseInt(salaamPercentage),
+        parseInt(awccPercentage),
+        parseInt(afghanTelecomPercentage),
+        parseInt(mtnPercentage),
+    ];
+</script>
+<script>
+        console.log(dataGraph);
         var options = {
             grid: {
                 show: false,
@@ -819,13 +443,21 @@
                     fontSize: "8px",
                 }
             },
-            series: [44, 55, 41, 17, 15],
+            tooltip: {
+                enabled: false,
+            },
+            series: dataGraph,
+            labels: ["Roshan", "Etisalat", "Salaam", "AWCC", "Afghan Telecom", "MTN" ],
             chart: {
                 type: 'donut',
                 width: '100%',
                 height: 120,
 
             },
+            fill: {
+                colors: ['#775DD0', '#008FFB', '#00E396', '#DA3B52',  '#FEB019','#FEB099',]
+            },
+            
 
             responsive: [{
                 breakpoint: 1199,
@@ -997,6 +629,7 @@
             $("#prev span").click(function() {
                 $('#prev').addClass('active');
             });
+
         });
     </script>
 
@@ -1018,23 +651,7 @@
         
     </script>
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.de.min.js"></script>
-    <script>
-$('#pickyDate').datepicker({
-  format: "dd.mm.yyyy",
-  todayBtn: "linked",
-  language: "en",
-  daysOfWeekHighlighted: "4",
-  todayHighlight: true,
-}).on('changeDate', showTestDate);
 
-function showTestDate(){
-  var value = $('#pickyDate').datepicker('getFormattedDate');
-  alert(value);
-}
-    </script>
+
 
 @endsection

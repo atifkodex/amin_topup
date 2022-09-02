@@ -10,6 +10,8 @@ use App\Http\Traits\ResponseTrait;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\User;
+use App\Transaction;
+use App\OperatorNetwork;
 
 
 
@@ -73,5 +75,85 @@ class AdminController extends Controller
         } else {
             return $this->sendResponse(['users' => $user, 'status' => 200], 'Getting Users Successfully');
         }
+    }
+
+    // Admin Dashboard API 
+    public function adminDashboard(Request $request)
+    {
+        if(isset($request->date) && !empty($request->date)){
+            $requestDate = $request->date;
+            $date = parse_int($requestDate);
+        }else{
+            $date = Carbon::now();
+        }
+        $allUsers = User::all()->count();
+        $usersOnDate = User::whereDate('created_at', $date)->count();
+        $sales = Transaction::whereDate('created_at', $date)->sum('topup_amount_usd');
+        $salesAfn = Transaction::whereDate('created_at', $date)->sum('topup_amount');
+
+        // For Graph Data 
+        $allTransactionCount = Transaction::whereDate('created_at', $date)->count();
+        $awcc = Transaction::whereDate('created_at', $date)->where('receiver_network', 'AWCC')->count();
+        $roshan = Transaction::whereDate('created_at', $date)->where('receiver_network', 'Roshan')->count();
+        $etisalat = Transaction::whereDate('created_at', $date)->where('receiver_network', 'Etisalat')->count();
+        $salaam = Transaction::whereDate('created_at', $date)->where('receiver_network', 'Salaam')->count();
+        $afghanTelecom = Transaction::whereDate('created_at', $date)->where('receiver_network', 'Afghan Telecom')->count();
+        $mtn = Transaction::whereDate('created_at', $date)->where('receiver_network', 'MTN')->count();
+        
+        if($awcc == 0){
+            $awccPercentage = 0;
+        }else{
+            $awccPercentage = ($allTransactionCount * 100) / $awcc;
+        }
+        if($roshan == 0){
+            $roshanPercentage = 0;
+        }else{
+            $roshanPercentage = ($allTransactionCount * 100) / $awcc;
+        }
+        if($etisalat == 0){
+            $etisalatPercentage = 0;
+        }else{
+            $etisalatPercentage = ($allTransactionCount * 100) / $awcc;
+        }
+        if($salaam == 0){
+            $salaamPercentage = 0;
+        }else{
+            $salaamPercentage = ($allTransactionCount * 100) / $awcc;
+        }
+        if($afghanTelecom == 0){
+            $afghanTelecomPercentage = 0;
+        }else{
+            $afghanTelecomPercentage = ($allTransactionCount * 100) / $awcc;
+        }
+        if($mtn == 0){
+            $mtnPercentage = 0;
+        }else{
+            $mtnPercentage = ($allTransactionCount * 100) / $awcc;
+        }
+
+        $latestTransaction = Transaction::orderBy('created_at', 'DESC')->take(15)->get();
+        if(count($latestTransaction) > 0){
+            foreach($latestTransaction as $transaction){
+                $transaction->user = User::where('id', $transaction['user_id'])->first();
+                $transaction->networkImage = OperatorNetwork::where('operator_name', $transaction['receiver_network'])->pluck('operator_image')->first();
+
+            }
+        }
+
+        // Generate Response 
+        $success['date'] = $date->format('d M Y'); 
+        $success['allUsers'] = $allUsers; 
+        $success['usersOnDate'] = $usersOnDate; 
+        $success['sales'] = $sales; 
+        $success['salesAfn'] = $salesAfn; 
+        $success['awccPercentage'] = $awccPercentage; 
+        $success['roshanPercentage'] = $roshanPercentage; 
+        $success['etisalatPercentage'] = $etisalatPercentage; 
+        $success['salaamPercentage'] = $salaamPercentage; 
+        $success['afghanTelecomPercentage'] = $afghanTelecomPercentage; 
+        $success['mtnPercentage'] = $mtnPercentage; 
+        $success['latestTransaction'] = $latestTransaction; 
+        return $this->sendResponse($success, 'Dashboard Details');
+
     }
 }

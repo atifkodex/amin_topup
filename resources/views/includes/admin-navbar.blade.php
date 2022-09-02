@@ -160,6 +160,7 @@
 
         <a href="{{url('dashboard')}}">
 
+
           <img src="{{ asset('assets/images/logo.svg') }}" alt="logo">
         </a>
       </div>

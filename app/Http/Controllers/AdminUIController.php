@@ -40,7 +40,7 @@ class AdminUIController extends Controller
         } elseif ($test['success'] == true) {
             session::put('loginData', $test['data']);
         }
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard-details');
     }
     ///////........show user contact list.....///
     public function support(Request $request)
@@ -61,5 +61,22 @@ class AdminUIController extends Controller
         $data = $response['data']['users'];
 
         return view('pages.support', ['data' => $data]);
+    }
+
+    public function dashboardDetails(Request $request)
+    {
+        $value = Session::get('loginData');
+        $token = $value['user']['token'];
+        $data = $request->all();
+        
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post('http://kodextech.net/amin-topup/public/api/admin/dashboard', $data);
+        $convertor = $response->body();
+        $response = json_decode($convertor, true);
+        $data = $response['data'];
+        // dd($data);
+        return view(('pages.dashboard'), compact('data'));
     }
 }
