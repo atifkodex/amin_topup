@@ -1,5 +1,16 @@
 @extends('layouts.admin-default')
+<style>
+    .user-modal-content textarea {
+        resize: none;
+    }
 
+    .user-modal-content textarea:active,
+    .user-modal-content textarea:focus {
+        outline: none;
+        box-shadow: none;
+        border: 1px solid #F89822;
+    }
+</style>
 @section('content')
 @include('includes.admin-navbar')
 <div class="right-sidebar">
@@ -27,11 +38,14 @@
                             </div>
                             <div class="support-card-body pt-2">
                                 <p>Subject</p>
-                                <h1 class="subject">{{$post['subject']}}</h1>
-                                <p>Category</p>
-                                <h1 class="category">{{$post['category']}}</h1>
-                                <p class="pb-1">Description</p>
-                                <p class="description">{{$post['description']}}</p>
+                                <<<<<<< HEAD <h1 class="subject">{{$post['subject']}}</h1>
+                                    =======
+                                    <h1>Any Problem </h1>
+                                    >>>>>>> athar/azadmin
+                                    <p>Category</p>
+                                    <h1 class="category">{{$post['category']}}</h1>
+                                    <p class="pb-1">Description</p>
+                                    <p class="description">{{$post['description']}}</p>
                             </div>
                         </div>
 
@@ -62,21 +76,53 @@
                         </div>
 
                     </div>
+
                     <div class="support-description-section pt-5 px-4" id="description_id">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem dolor autem optio hic, eaque magni libero aspernatur porro natus deserunt! Adipisci incidunt aperiam voluptate temporibus necessitatibus explicabo assumenda aliquid?
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem dolor autem optio hic, eaque magni libero aspernatur porro natus deserunt! Adipisci incidunt aperiam voluptate temporibus necessitatibus explicabo assumenda aliquid?
+
                     </div>
 
                     <div class="support-description-button py-5 px-4 text-right">
-                        <button>Resolved</button>
+
+
+                        <button data-toggle="modal" data-target="#basicsubsModal">Reply</button>
                         <button>Archived</button>
                     </div>
+
 
                 </div>
 
 
 
             </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="basicsubsModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content user-modal">
+            <div class="modal-body px-4">
+                <div class="user-modal-header py-3">
+                    <h1>Reply</h1>
+                </div>
+                <div class="user-modal-content d-flex justify-content-start flex-wrap">
+                    <p class="pr-2">To:</p>
+                    <p>aliahmed666@gmail.com</p>
+                </div>
+                <div class="user-modal-content">
+                    <p>Message:</p>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+                </div>
+
+
+                <div class="user-modal-button d-flex justify-content-center">
+                    <button class="mr-1">Cancel</button>
+                    <button class="ml-1">Send</button>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

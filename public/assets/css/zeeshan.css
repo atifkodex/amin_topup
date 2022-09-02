@@ -39,9 +39,21 @@ html {
   font-size: 18px;
 }
 
+
 .login-email-field label {
   color: #001933;
   font-size: 14px;
+}
+
+.login-email-field {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.login-email-field label {
+  color: #001933;
+  font-size: 14px;
+
 }
 
 .login-email-field input {
@@ -162,6 +174,9 @@ html {
   color: rgba(248, 152, 34, 1);
   font-size: 20px;
 }
+
+
+
 
 /* setting dropdown collapse */
 
@@ -655,11 +670,14 @@ html {
   border: 1px solid #012245;
 }
 
-#table-id thead tr th:first-of-type,
-#table-id tbody tr td:first-of-type {
-  display: none
-}
 
+
+
+
+
+/* #table-id tbody tr td:first-of-type{
+  display: none
+} */
 .logout-button:hover,
 .logout-button:active,
 .logout-button:focus {
