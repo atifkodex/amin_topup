@@ -392,8 +392,8 @@ html {
 }
 
 .support-card-outer {
-  overflow-y: auto;
-  max-height: 100vh;
+  overflow-y: auto !important;
+  max-height: 100vh !important;
 }
 
 .support-card-outer::-webkit-scrollbar,

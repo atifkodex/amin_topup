@@ -38,14 +38,14 @@
                             </div>
                             <div class="support-card-body pt-2">
                                 <p>Subject</p>
-                                <<<<<<< HEAD <h1 class="subject">{{$post['subject']}}</h1>
-                                    =======
-                                    <h1>Any Problem </h1>
-                                    >>>>>>> athar/azadmin
-                                    <p>Category</p>
-                                    <h1 class="category">{{$post['category']}}</h1>
-                                    <p class="pb-1">Description</p>
-                                    <p class="description">{{$post['description']}}</p>
+                                <h1 class="subject">{{$post['subject']}}</h1>
+
+
+
+                                <p>Category</p>
+                                <h1 class="category">{{$post['category']}}</h1>
+                                <p class="pb-1">Description</p>
+                                <p class="description">{{$post['description']}}</p>
                             </div>
                         </div>
 
