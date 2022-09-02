@@ -38,16 +38,10 @@
                                 <p>Subject</p>
                                 <h1 class="subject">{{$post['subject']}}</h1>
 
-
-
-
                                 <p>Category</p>
                                 <h1 class="category">{{$post['category']}}</h1>
                                 <p class="pb-1">Description</p>
                                 <p class="description">{{$post['description']}}</p>
-
-
-
 
                             </div>
                         </div>
@@ -78,7 +72,7 @@
                         </div>
 
                     </div>
-                    <div class="support-description-section pt-5 px-4">
+                    <div class="support-description-section pt-5 px-4" id="description_id">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem dolor autem optio hic, eaque magni libero aspernatur porro natus deserunt! Adipisci incidunt aperiam voluptate temporibus necessitatibus explicabo assumenda aliquid?
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem dolor autem optio hic, eaque magni libero aspernatur porro natus deserunt! Adipisci incidunt aperiam voluptate temporibus necessitatibus explicabo assumenda aliquid?
                     </div>
