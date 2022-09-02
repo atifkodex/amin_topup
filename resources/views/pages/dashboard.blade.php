@@ -370,7 +370,45 @@
 
 <!-- ================ Owl Carousel Cdn =================== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.de.min.js"></script>
+<script>
+    $('#pickyDate').datepicker({
+    format: "yyyy/mm/dd",
+    todayBtn: "linked",
+    language: "en",
+    daysOfWeekHighlighted: "4",
+    todayHighlight: true,
+    }).on('changeDate', showTestDate);
 
+    function showTestDate(){
+        var value = $('#pickyDate').datepicker('getFormattedDate');
+        // Ajax call 
+        var route = "{{route('dashboard-details')}}"
+        $.ajax({
+            url: route,
+            type: 'POST',
+            dataType: 'json', // added data type
+            data: {
+                date: value
+            },
+            success: function(response) {
+                $(".selectedDate").text(response.data.date);
+                $(".usersOnDate").text(response.data.usersOnDate);
+                $(".salesTotal").text(response.data.sales);
+                $(".salesAfn").text(response.data.salesAfn);
+                $(".roshanPercentage").val(response.data.roshanPercentage);
+                $(".etisalatPercentage").val(response.data.etisalatPercentage);
+                $(".salaamPercentage").val(response.data.salaamPercentage);
+                $(".awccPercentage").val(response.data.awccPercentage);
+                $(".afghanTelecomPercentage").val(response.data.afghanTelecomPercentage);
+                $(".mtnPercentage").val(response.data.mtnPercentage);
+            }
+        });
+    }
+</script>
 <script>
     var roshanPercentage = $(".roshanPercentage").val();
     var etisalatPercentage = $(".etisalatPercentage").val();
@@ -378,18 +416,17 @@
     var awccPercentage = $(".awccPercentage").val();
     var afghanTelecomPercentage = $(".afghanTelecomPercentage").val();
     var mtnPercentage = $(".mtnPercentage").val();
-    var data = [
-        roshanPercentage,
-        etisalatPercentage,
-        salaamPercentage,
-        awccPercentage,
-        afghanTelecomPercentage,
-        mtnPercentage,
+    var dataGraph = [
+        parseInt(roshanPercentage),
+        parseInt(etisalatPercentage),
+        parseInt(salaamPercentage),
+        parseInt(awccPercentage),
+        parseInt(afghanTelecomPercentage),
+        parseInt(mtnPercentage),
     ];
-    
 </script>
 <script>
-        
+        console.log(dataGraph);
         var options = {
             grid: {
                 show: false,
@@ -407,7 +444,7 @@
             tooltip: {
                 enabled: false,
             },
-            series: data,
+            series: dataGraph,
             labels: ["Roshan", "Etisalat", "Salaam", "AWCC", "Afghan Telecom", "MTN" ],
             chart: {
                 type: 'donut',
@@ -612,37 +649,6 @@
         
     </script>
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.de.min.js"></script>
-    <script>
-$('#pickyDate').datepicker({
-  format: "yyyy/mm/dd",
-  todayBtn: "linked",
-  language: "en",
-  daysOfWeekHighlighted: "4",
-  todayHighlight: true,
-}).on('changeDate', showTestDate);
 
-function showTestDate(){
-    var value = $('#pickyDate').datepicker('getFormattedDate');
-    // Ajax call 
-    $.ajax({
-        url: "http://kodextech.net/amin-topup/public/api/admin/dashboard",
-        type: 'POST',
-        dataType: 'json', // added data type
-        data: {
-            date: value
-        },
-        success: function(response) {
-            $(".selectedDate").text(response.data.date);
-            $(".usersOnDate").text(response.data.usersOnDate);
-            $(".salesTotal").text(response.data.sales);
-            $(".salesAfn").text(response.data.salesAfn);
-        }
-    });
-}
-    </script>
 
 @endsection
