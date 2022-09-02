@@ -21,11 +21,120 @@
         <div class="row">
             <div class="col-4 col-xl-3 support-card-outer-main ">
                 <div class="">
-                    @foreach($data as $post)
-                    <div class="support-card-outer px-1 py-2 getuserdata">
-                        <!-- <input type="hidden" name="spec_id" id="spec_id" value="{{$post['id']}}"> -->
-
+                    <!-- <div class="support-card-outer px-1 py-2" >
                         <div class="support-card pl-3 py-3 my-3">
+                            <div class="support-card-header d-flex align-items-center">
+                                <div class="image-outer">
+                                    <img src="{{asset('assets/images/profile-image.jpg')}}" alt="image">
+                                </div>
+                               
+                                <h1 class="pl-3 pt-2">Muhammad Ali</h1>
+                            </div>
+                            <div class="support-card-body pt-2">
+                                <p>Subject</p>
+                                <h1>Any Problem </h1>
+                                <p>Category</p>
+                                <h1>General</h1>
+                                <p class="pb-1">Description</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            </div>
+    
+                        </div>
+                        <div class="support-card pl-3 py-3 my-3">
+                            <div class="support-card-header d-flex align-items-center">
+                                <div class="image-outer">
+                                    <img src="{{asset('assets/images/profile-image.jpg')}}" alt="image">
+                                </div>
+                               
+                                <h1 class="pl-3 pt-2">Muhammad Ali</h1>
+                            </div>
+                            <div class="support-card-body pt-2">
+                                <p>Subject</p>
+                                <h1>Any Problem</h1>
+                                <p>Category</p>
+                                <h1>General</h1>
+                                <p class="pb-1">Description</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            </div>
+    
+                        </div>
+                        <div class="support-card pl-3 py-3 my-3">
+                            <div class="support-card-header d-flex align-items-center">
+                                <div class="image-outer">
+                                    <img src="{{asset('assets/images/profile-image.jpg')}}" alt="image">
+                                </div>
+                               
+                                <h1 class="pl-3 pt-2">Muhammad Ali</h1>
+                            </div>
+                            <div class="support-card-body pt-2">
+                                <p>Subject</p>
+                                <h1>Any Problem</h1>
+                                <p>Category</p>
+                                <h1>General</h1>
+                                <p class="pb-1">Description</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            </div>
+    
+                        </div>
+                        <div class="support-card pl-3 py-3 my-3">
+                            <div class="support-card-header d-flex align-items-center">
+                                <div class="image-outer">
+                                    <img src="{{asset('assets/images/profile-image.jpg')}}" alt="image">
+                                </div>
+                               
+                                <h1 class="pl-3 pt-2">Muhammad Ali</h1>
+                            </div>
+                            <div class="support-card-body pt-2">
+                                <p>Subject</p>
+                                <h1>Any Problem</h1>
+                                <p>Category</p>
+                                <h1>General</h1>
+                                <p class="pb-1">Description</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            </div>
+    
+                        </div>
+                        <div class="support-card pl-3 py-3 my-3">
+                            <div class="support-card-header d-flex align-items-center">
+                                <div class="image-outer">
+                                    <img src="{{asset('assets/images/profile-image.jpg')}}" alt="image">
+                                </div>
+                               
+                                <h1 class="pl-3 pt-2">Muhammad Ali</h1>
+                            </div>
+                            <div class="support-card-body pt-2">
+                                <p>Subject</p>
+                                <h1>Any Problem</h1>
+                                <p>Category</p>
+                                <h1>General</h1>
+                                <p class="pb-1">Description</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            </div>
+    
+                        </div>
+                        <div class="support-card pl-3 py-3 my-3">
+                            <div class="support-card-header d-flex align-items-center">
+                                <div class="image-outer">
+                                    <img src="{{asset('assets/images/profile-image.jpg')}}" alt="image">
+                                </div>
+                               
+                                <h1 class="pl-3 pt-2">Muhammad Ali</h1>
+                            </div>
+                            <div class="support-card-body pt-2">
+                                <p>Subject</p>
+                                <h1>Any Problem</h1>
+                                <p>Category</p>
+                                <h1>General</h1>
+                                <p class="pb-1">Description</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            </div>
+    
+                        </div>
+                    </div> -->
+                    <div class="support-card-outer px-1 py-2">
+                        
+                        @foreach($data as $post)
+                        <div class="support-card pl-3 py-3 my-3 getuserdata">
                             <div class="support-card-header d-flex align-items-center">
                                 <div class="image-outer">
                                     @if(!empty($post['user']['profile']))
@@ -38,19 +147,17 @@
                             </div>
                             <div class="support-card-body pt-2">
                                 <p>Subject</p>
-                                <<<<<<< HEAD <h1 class="subject">{{$post['subject']}}</h1>
-                                    =======
-                                    <h1>Any Problem </h1>
-                                    >>>>>>> athar/azadmin
+                                <h1 class="subject">{{$post['subject']}}</h1>
+                                    
                                     <p>Category</p>
                                     <h1 class="category">{{$post['category']}}</h1>
                                     <p class="pb-1">Description</p>
                                     <p class="description">{{$post['description']}}</p>
                             </div>
                         </div>
+                        @endforeach
 
                     </div>
-                    @endforeach
 
                 </div>
 
