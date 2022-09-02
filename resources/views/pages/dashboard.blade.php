@@ -8,7 +8,7 @@
     .table-condensed thead tr:nth-of-type(3) th{
         color: #F89822 !important;
         font-weight: normal !important;
-        font-size: 14px !important;
+        font-size: 13px !important;
     }
     .datepicker-months .table-condensed tbody tr:nth-of-type(1),.datepicker-years .table-condensed tbody tr:nth-of-type(1){
         background: #F89822 !important;
@@ -23,7 +23,7 @@
         color: white !important;
     }
     .table-condensed tbody tr td{
-        font-size: 14px !important;
+        font-size: 13px !important;
     }
     .table-condensed,.datepicker-inline{
         width: 100% !important;
@@ -42,7 +42,9 @@
     .datepicker table tr td.active.active,.datepicker table tr td:hover{
         background: #F89822 !important;
         color: white !important;
+        border-radius: 5px !important;
     }
+   
     .pie-chart-main {
         position: relative !important;
     }
@@ -648,6 +650,7 @@
         $('.sidebar-menu ul li:nth-of-type(1)').addClass('active');
         
     </script>
+
 
 
 
