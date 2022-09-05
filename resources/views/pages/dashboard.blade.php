@@ -377,57 +377,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.de.min.js"></script>
 <script>
-    $('#pickyDate').datepicker({
-    format: "yyyy/mm/dd",
-    todayBtn: "linked",
-    language: "en",
-    daysOfWeekHighlighted: "4",
-    todayHighlight: true,
-    }).on('changeDate', showTestDate);
-
-    function showTestDate(){
-        var value = $('#pickyDate').datepicker('getFormattedDate');
-
-        // Ajax call 
-        // var route = "{{route('dashboard-details')}}"
-        $.ajax({
-            url: 'http://kodextech.net/amin-topup/public/api/admin/dashboard',
-            type: 'POST',
-            dataType: 'json', // added data type
-            data: {
-                date: value
-            },
-            success: function(response) {
-                $(".selectedDate").text(response.data.date);
-                $(".usersOnDate").text(response.data.usersOnDate);
-                $(".salesTotal").text(response.data.sales);
-                $(".salesAfn").text(response.data.salesAfn + " AFN");
-                $(".roshanPercentage").val(response.data.roshanPercentage);
-                $(".etisalatPercentage").val(response.data.etisalatPercentage);
-                $(".salaamPercentage").val(response.data.salaamPercentage);
-                $(".awccPercentage").val(response.data.awccPercentage);
-                $(".afghanTelecomPercentage").val(response.data.afghanTelecomPercentage);
-                $(".mtnPercentage").val(response.data.mtnPercentage);
-                var roshanPercentage = $(".roshanPercentage").val();
-    var etisalatPercentage = $(".etisalatPercentage").val();
-    var salaamPercentage = $(".salaamPercentage").val();
-    var awccPercentage = $(".awccPercentage").val();
-    var afghanTelecomPercentage = $(".afghanTelecomPercentage").val();
-    var mtnPercentage = $(".mtnPercentage").val();
-
-    var dataGraph = [
-        parseInt(roshanPercentage),
-        parseInt(etisalatPercentage),
-        parseInt(salaamPercentage),
-        parseInt(awccPercentage),
-        parseInt(afghanTelecomPercentage),
-        parseInt(mtnPercentage),
-    ];
-            }
-        });
-    }
-</script>
-<script>
     var roshanPercentage = $(".roshanPercentage").val();
     var etisalatPercentage = $(".etisalatPercentage").val();
     var salaamPercentage = $(".salaamPercentage").val();
@@ -491,9 +440,78 @@
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
+
+        $('#pickyDate').datepicker({
+    format: "yyyy/mm/dd",
+    todayBtn: "linked",
+    language: "en",
+    daysOfWeekHighlighted: "4",
+    todayHighlight: true,
+    }).on('changeDate', showTestDate);
+
+    function showTestDate(){
+        var value = $('#pickyDate').datepicker('getFormattedDate');
+
+        // Ajax call 
+        // var route = "{{route('dashboard-details')}}"
+        $.ajax({
+            url: 'http://kodextech.net/amin-topup/public/api/admin/dashboard',
+            type: 'POST',
+            dataType: 'json', // added data type
+            data: {
+                date: value
+            },
+            success: function(response) {
+                $(".selectedDate").text(response.data.date);
+                $(".usersOnDate").text(response.data.usersOnDate);
+                $(".salesTotal").text(response.data.sales);
+                $(".salesAfn").text(response.data.salesAfn + " AFN");
+                $(".roshanPercentage").val(response.data.roshanPercentage);
+                $(".etisalatPercentage").val(response.data.etisalatPercentage);
+                $(".salaamPercentage").val(response.data.salaamPercentage);
+                $(".awccPercentage").val(response.data.awccPercentage);
+                $(".afghanTelecomPercentage").val(response.data.afghanTelecomPercentage);
+                $(".mtnPercentage").val(response.data.mtnPercentage);
+                var roshanPercentage = $(".roshanPercentage").val();
+                var etisalatPercentage = $(".etisalatPercentage").val();
+                var salaamPercentage = $(".salaamPercentage").val();
+                var awccPercentage = $(".awccPercentage").val();
+                var afghanTelecomPercentage = $(".afghanTelecomPercentage").val();
+                var mtnPercentage = $(".mtnPercentage").val();
+                
+                var dataGraph = [
+                    parseInt(etisalatPercentage),
+                    parseInt(salaamPercentage),
+                    parseInt(awccPercentage),
+                    parseInt(afghanTelecomPercentage),
+                    parseInt(mtnPercentage),
+                    parseInt(roshanPercentage),
+                ];
+                chart.updateOptions([{
+                    series: [{
+                        data: dataGraph
+                    }],
+                }])
+                // console.log(dataGraph);
+                // chart.updateSeries([{
+                // data: [
+                //         parseInt(etisalatPercentage),
+                //         parseInt(salaamPercentage),
+                //         parseInt(awccPercentage),
+                //         parseInt(afghanTelecomPercentage),
+                //         parseInt(mtnPercentage),
+                //         parseInt(roshanPercentage),
+                //     ]
+                // }])
+            }
+        });
+    }
         
 </script>
 
+<script>
+    
+</script>
 
 
     <script>
