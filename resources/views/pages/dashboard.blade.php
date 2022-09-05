@@ -387,16 +387,18 @@
 
     function showTestDate(){
         var value = $('#pickyDate').datepicker('getFormattedDate');
+
         // Ajax call 
-        var route = "{{route('dashboard-details')}}"
+        // var route = "{{route('dashboard-details')}}"
         $.ajax({
-            url: route,
+            url: 'http://kodextech.net/amin-topup/public/api/admin/dashboard',
             type: 'POST',
             dataType: 'json', // added data type
             data: {
                 date: value
             },
             success: function(response) {
+                alert()
                 $(".selectedDate").text(response.data.date);
                 $(".usersOnDate").text(response.data.usersOnDate);
                 $(".salesTotal").text(response.data.sales);

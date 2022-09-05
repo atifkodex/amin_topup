@@ -18,7 +18,6 @@ use App\Http\Controllers\AdminUIController;
 Route::post('/admin_login', [AdminUIController::class, 'adminLogin'])->name('adminLogin');
 Route::post('/support', [AdminUIController::class, 'support'])->name('/support');
 Route::get('/dashboard', [AdminUIController::class, 'dashboardDetails'])->name('dashboard-details');
-// Route::get('/setting', [AdminUIController::class, 'settingDetails'])->name('dashboard-details');
 Route::get('/support_page', [AdminUIController::class, 'support'])->name('support-page');
 
 
