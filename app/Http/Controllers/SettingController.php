@@ -75,7 +75,9 @@ class SettingController extends Controller
                 $topup = TopupDetails::where('operator_id', $opeartorId)->get();
                 $topupData['name_'.$opeartorName] = $topup;
             }
+            return $this->sendResponse($network,"All topup Details");
         }
-        return $network;
+        return $this->sendError("No Data available");
+
     }
 }
