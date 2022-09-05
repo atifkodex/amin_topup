@@ -21,6 +21,7 @@
      <div id="main">
        <div class="container-fluid px-0">
           <div class="accordion" id="faq">
+            @foreach($data as operator)
               <div class="card setting-card">
                   <div class="card-header setting-card-header" id="faqhead1">
                       <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq1"
@@ -205,94 +206,94 @@
                   </div>
               </div>
               <div class="card setting-card">
-              <div class="card-header setting-card-header" id="faqhead3">
-                  <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq3"
-                  aria-expanded="true" aria-controls="faq3"> <img class="pr-4" src="{{asset('assets/images/awcc.png')}}" alt="">Afghan Wireless</a>
-              </div>
+                <div class="card-header setting-card-header" id="faqhead3">
+                    <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq3"
+                    aria-expanded="true" aria-controls="faq3"> <img class="pr-4" src="{{asset('assets/images/awcc.png')}}" alt="">Afghan Wireless</a>
+                </div>
 
-              <div id="faq3" class="collapse" aria-labelledby="faqhead3" data-parent="#faq">
-                <div class="card-body setting-card-body">
-                  <div class="setting-card-body-inner" style="overflow-x:auto;">
-                    <table>
-                      <tr>
-                        <th>Denomination</th>
-                        <th>Topup Amount</th>
-                        <th>topup Customer will Receive (-10% Tax)</th>
-                        <th>Exchange Rate</th>
-                        <th>Amin Topup Price</th>
-                        <th>Transaction Fee(%)</th>
-                        <th>Transaction Fees(%+Fix)</th>
-                        <th>Amount Payable to Customer</th>
-                        <th>Product Code in Topup API</th>
-                        <th>Product Code in Strip (Testbed)</th>
-                      </tr>
-                      <tr>
-                        <td class="data">-100 AFN</td>
-                        <td class="data">100</td>
-                        <td class="data">90</td>
-                        <td class="data">80</td>
-                        <td class="data">$1.25</td>
-                        <td class="data">2.90%</td>
-                        <td class="data">$0.30</td>
-                        <td class="data">$1.59</td>
-                        <td class="data">ROSHAN_EXCHANGE</td>
-                        <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
+                <div id="faq3" class="collapse" aria-labelledby="faqhead3" data-parent="#faq">
+                  <div class="card-body setting-card-body">
+                    <div class="setting-card-body-inner" style="overflow-x:auto;">
+                      <table>
+                        <tr>
+                          <th>Denomination</th>
+                          <th>Topup Amount</th>
+                          <th>topup Customer will Receive (-10% Tax)</th>
+                          <th>Exchange Rate</th>
+                          <th>Amin Topup Price</th>
+                          <th>Transaction Fee(%)</th>
+                          <th>Transaction Fees(%+Fix)</th>
+                          <th>Amount Payable to Customer</th>
+                          <th>Product Code in Topup API</th>
+                          <th>Product Code in Strip (Testbed)</th>
+                        </tr>
+                        <tr>
+                          <td class="data">-100 AFN</td>
+                          <td class="data">100</td>
+                          <td class="data">90</td>
+                          <td class="data">80</td>
+                          <td class="data">$1.25</td>
+                          <td class="data">2.90%</td>
+                          <td class="data">$0.30</td>
+                          <td class="data">$1.59</td>
+                          <td class="data">ROSHAN_EXCHANGE</td>
+                          <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
 
-                      </tr>
-                      <tr>
-                        <td class="data">-100 AFN</td>
-                        <td class="data">100</td>
-                        <td class="data">90</td>
-                        <td class="data">80</td>
-                        <td class="data">$1.25</td>
-                        <td class="data">2.90%</td>
-                        <td class="data">$0.30</td>
-                        <td class="data">$1.59</td>
-                        <td class="data">ROSHAN_EXCHANGE</td>
-                        <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
+                        </tr>
+                        <tr>
+                          <td class="data">-100 AFN</td>
+                          <td class="data">100</td>
+                          <td class="data">90</td>
+                          <td class="data">80</td>
+                          <td class="data">$1.25</td>
+                          <td class="data">2.90%</td>
+                          <td class="data">$0.30</td>
+                          <td class="data">$1.59</td>
+                          <td class="data">ROSHAN_EXCHANGE</td>
+                          <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
 
-                      </tr>
-                      <tr>
-                        <td class="data">-100 AFN</td>
-                        <td class="data">100</td>
-                        <td class="data">90</td>
-                        <td class="data">80</td>
-                        <td class="data">$1.25</td>
-                        <td class="data">2.90%</td>
-                        <td class="data">$0.30</td>
-                        <td class="data">$1.59</td>
-                        <td class="data">ROSHAN_EXCHANGE</td>
-                        <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
+                        </tr>
+                        <tr>
+                          <td class="data">-100 AFN</td>
+                          <td class="data">100</td>
+                          <td class="data">90</td>
+                          <td class="data">80</td>
+                          <td class="data">$1.25</td>
+                          <td class="data">2.90%</td>
+                          <td class="data">$0.30</td>
+                          <td class="data">$1.59</td>
+                          <td class="data">ROSHAN_EXCHANGE</td>
+                          <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
 
-                      </tr>
-                      <tr>
-                        <td class="data">-100 AFN</td>
-                        <td class="data">100</td>
-                        <td class="data">90</td>
-                        <td class="data">80</td>
-                        <td class="data">$1.25</td>
-                        <td class="data">2.90%</td>
-                        <td class="data">$0.30</td>
-                        <td class="data">$1.59</td>
-                        <td class="data">ROSHAN_EXCHANGE</td>
-                        <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
+                        </tr>
+                        <tr>
+                          <td class="data">-100 AFN</td>
+                          <td class="data">100</td>
+                          <td class="data">90</td>
+                          <td class="data">80</td>
+                          <td class="data">$1.25</td>
+                          <td class="data">2.90%</td>
+                          <td class="data">$0.30</td>
+                          <td class="data">$1.59</td>
+                          <td class="data">ROSHAN_EXCHANGE</td>
+                          <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
 
-                      </tr>
-                      
-                    </table>
+                        </tr>
+                        
+                      </table>
+                    </div>
+
+                    
                   </div>
-
-                  
+                  <div class="setting-card-button text-right pr-4 pb-4">
+                    <button class="edit">
+                      Edit
+                    </button>
+                    <button class="save">
+                    Update
+                    </button>
+                  </div>
                 </div>
-                <div class="setting-card-button text-right pr-4 pb-4">
-                  <button class="edit">
-                    Edit
-                  </button>
-                  <button class="save">
-                  Update
-                  </button>
-                </div>
-              </div>
               </div>
               <div class="card setting-card">
                 <div class="card-header setting-card-header" id="faqhead4">
@@ -461,16 +462,16 @@
                       
                       </table>
                     </div>
-
+                    
                     
                   </div>
                   <div class="setting-card-button text-right pr-4 pb-4">
-                  <button class="edit">
-                    Edit
-                  </button>
-                  <button class="save">
-                    Update
-                  </button>
+                    <button class="edit">
+                      Edit
+                    </button>
+                    <button class="save">
+                      Update
+                    </button>
                   </div>
                 </div>
               </div>

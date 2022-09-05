@@ -191,7 +191,7 @@
             </a>
           </li>
           <li>
-            <a href="{{url('setting')}}">
+            <a href="{{route('setting-details')}}">
               <img class="active-icon" src="{{asset('assets/images/setting-icon-active.svg')}}" alt="setting-icon">
               <img class="normal-icon" src="{{asset('assets/images/setting-icon.svg')}}" alt="setting-icon">
               Settings

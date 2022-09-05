@@ -22,7 +22,7 @@ Route::post('/admin_login', [AdminUIController::class, 'adminLogin'])->name('adm
 Route::middleware([IsAdmin::class])->group(function () {
     Route::post('/support', [AdminUIController::class, 'support'])->name('/support');
     Route::get('/dashboard', [AdminUIController::class, 'dashboardDetails'])->name('dashboard-details');
-    // Route::get('/setting', [AdminUIController::class, 'settingDetails'])->name('dashboard-details');
+    Route::get('/setting', [AdminUIController::class, 'settingDetails'])->name('setting-details');
     Route::get('/support_page', [AdminUIController::class, 'support'])->name('support-page');
     Route::post('/admin_reply', [AdminUIController::class, 'reply'])->name('admin.reply');
 });
@@ -43,9 +43,9 @@ Route::get('/sign-up', function () {
 //     return view('pages.dashboard');
 // })->name("dashboard");
 
-Route::get('/setting', function () {
-    return view('pages.setting');
-});
+// Route::get('/setting', function () {
+//     return view('pages.setting');
+// });
 
 // Route::get('/support', function () {
 //     return view('pages.support');
