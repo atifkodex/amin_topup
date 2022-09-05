@@ -74,6 +74,8 @@ class UserController extends Controller
                 $detail->totalAmount = $detail['stripe_fee'] + $amountAfterAminFees;
                 // $aminFeesAFN = ($detail['topup_usd'] * $detail['fee_percentage']) / 100;
                 $detail->processing_fee = $aminFees + $detail['stripe_fee'];
+                $tax = ($detail['denomination'] * 10) /100;
+                $detail->receiver_get_AFN = $detail['denomination'] - $tax;
             }
         }
         $network->details = $details;
