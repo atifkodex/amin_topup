@@ -398,17 +398,31 @@
                 date: value
             },
             success: function(response) {
-                alert()
                 $(".selectedDate").text(response.data.date);
                 $(".usersOnDate").text(response.data.usersOnDate);
                 $(".salesTotal").text(response.data.sales);
-                $(".salesAfn").text(response.data.salesAfn);
+                $(".salesAfn").text(response.data.salesAfn + " AFN");
                 $(".roshanPercentage").val(response.data.roshanPercentage);
                 $(".etisalatPercentage").val(response.data.etisalatPercentage);
                 $(".salaamPercentage").val(response.data.salaamPercentage);
                 $(".awccPercentage").val(response.data.awccPercentage);
                 $(".afghanTelecomPercentage").val(response.data.afghanTelecomPercentage);
                 $(".mtnPercentage").val(response.data.mtnPercentage);
+                var roshanPercentage = $(".roshanPercentage").val();
+    var etisalatPercentage = $(".etisalatPercentage").val();
+    var salaamPercentage = $(".salaamPercentage").val();
+    var awccPercentage = $(".awccPercentage").val();
+    var afghanTelecomPercentage = $(".afghanTelecomPercentage").val();
+    var mtnPercentage = $(".mtnPercentage").val();
+
+    var dataGraph = [
+        parseInt(roshanPercentage),
+        parseInt(etisalatPercentage),
+        parseInt(salaamPercentage),
+        parseInt(awccPercentage),
+        parseInt(afghanTelecomPercentage),
+        parseInt(mtnPercentage),
+    ];
             }
         });
     }
@@ -420,6 +434,7 @@
     var awccPercentage = $(".awccPercentage").val();
     var afghanTelecomPercentage = $(".afghanTelecomPercentage").val();
     var mtnPercentage = $(".mtnPercentage").val();
+
     var dataGraph = [
         parseInt(roshanPercentage),
         parseInt(etisalatPercentage),
@@ -430,7 +445,6 @@
     ];
 </script>
 <script>
-        console.log(dataGraph);
         var options = {
             grid: {
                 show: false,
@@ -477,7 +491,8 @@
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
-    </script>
+        
+</script>
 
 
 

@@ -72,6 +72,8 @@ class UserController extends Controller
                 $aminFees = ($detail['topup_usd'] * $detail['fee_percentage']) / 100;
                 $amountAfterAminFees = $detail['topup_usd'] + $aminFees;
                 $detail->totalAmount = $detail['stripe_fee'] + $amountAfterAminFees;
+                $aminFeesAFN = ($detail['denomination'] * $detail['fee_percentage']) / 100;
+                $detail->processing_fee = $aminFeesAFN + $detail['stripe_fee'];
             }
         }
         $network->details = $details;
