@@ -94,21 +94,17 @@ class ApiAuthController extends Controller
     //////....update user......./////// 
     public function update_user(Request $request)
     {
-        if(isset($request->name) && !empty($request->name)){
-            $user = User::where('id', $request->id)->update(['name' => $request->name]);
-        }elseif(isset($request->email) && !empty($request->email)){
-            $user = User::where('id', $request->id)->update(['email' => $request->email]);
-        }elseif(isset($request->phone_number) && !empty($request->phone_number)){
-            $user = User::where('id', $request->id)->update(['phone_number' => $request->phone_number]);
-        }elseif(isset($request->date_of_birth) && !empty($request->date_of_birth)){
-            $user = User::where('id', $request->id)->update(['date_of_birth' => $request->date_of_birth]);
-        }elseif(isset($request->profile) && !empty($request->profile)){
-            $user = User::where('id', $request->id)->update(['profile' => $request->profile]);
-        }elseif(isset($request->country) && !empty($request->country)){
-            $user = User::where('id', $request->id)->update(['country' => $request->country]);
-        }else{
-            return $this->sendError("At least one parameter must be provided.");
-        }
+
+
+        $user =  User::where('id', $request->id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
+            'profile' => $request->profile,
+            'date_of_birth' => $request->date_of_birth,
+            'country' => $request->country
+
+        ]);
         if ($user) {
             // Save data for notification 
             $notification = new NotificationLog;
@@ -116,7 +112,7 @@ class ApiAuthController extends Controller
             $notification->notification_type = "profile_update";
             $notification->notification_status = 0;
             $notification->save();
-            
+
             $success = User::where('id', $request->id)->first();
             return $this->sendResponse($success, 'updated Successfully');
         } else {

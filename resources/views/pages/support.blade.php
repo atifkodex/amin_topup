@@ -37,6 +37,8 @@
                             <div class="support-card-body pt-2">
                                 <p>Subject</p>
                                 <h1 class="subject">{{$post['subject']}}</h1>
+                                <h1 style="display: none;" class="email">{{$post['user']['email']}}</h1>
+                                <h1 style="display: none;" class="user_id">{{$post['user']['id']}}</h1>
 
                                 <p>Category</p>
                                 <h1 class="category">{{$post['category']}}</h1>
@@ -93,27 +95,31 @@
 <div class="modal fade" id="basicsubsModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content user-modal">
-            <div class="modal-body px-4">
-                <div class="user-modal-header py-3">
-                    <h1>Reply</h1>
-                </div>
-                <div class="user-modal-content d-flex justify-content-start flex-wrap">
-                    <p class="pr-2">To:</p>
-                    <p>aliahmed666@gmail.com</p>
-                </div>
-                <div class="user-modal-content">
-                    <p>Message:</p>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <form action="{{ route('admin.reply')}}" method="POST">
+                @csrf
+                <div class="modal-body px-4">
+                    <div class="user-modal-header py-3">
 
+                        <h1>Reply</h1>
+                    </div>
+                    <div class="user-modal-content d-flex justify-content-start flex-wrap">
+                        <p class="pr-2">To:</p>
+                        <p id="email_id" name="email"></p>
+                        <input style="display: none;" type="hidden" value="" id="reciever_id" name="reciever_id">
+                    </div>
+                    <div class=" user-modal-content">
+                        <p>Message:</p>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="message"></textarea>
+
+                    </div>
+
+
+                    <div class="user-modal-button d-flex justify-content-center">
+                        <button type="button" class="mr-1">Cancel</button>
+                        <button type="submit" class="ml-1">Send</button>
+                    </div>
                 </div>
-
-
-                <div class="user-modal-button d-flex justify-content-center">
-                    <button class="mr-1">Cancel</button>
-                    <button class="ml-1">Send</button>
-                </div>
-            </div>
-
+            </form>
         </div>
     </div>
 </div>
@@ -129,10 +135,16 @@
         var subject = $(this).find('.subject').text();
         var category = $(this).find('.category').text();
         var description = $(this).find('.description').text();
+        var email = $(this).find('.email').text();
+        var user_id = $(this).find('.user_id').text();
 
         $("#category_id").html(category);
         $("#subject_id").html(subject);
         $("#description_id").html(description);
+        $("#email_id").html(email);
+        $("#reciever_id").val(user_id);
+
+
     });
 </script>
 @endsection

@@ -7,11 +7,16 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Traits\ResponseTrait;
+// use App\Message;
+use App\Message;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\User;
 use App\Transaction;
 use App\OperatorNetwork;
+use Illuminate\Support\Facades\Mail;
+
+
 
 
 
@@ -80,10 +85,10 @@ class AdminController extends Controller
     // Admin Dashboard API 
     public function adminDashboard(Request $request)
     {
-        if(isset($request->date) && !empty($request->date)){
+        if (isset($request->date) && !empty($request->date)) {
             $requestDate = $request->date;
             $date = parse_int($requestDate);
-        }else{
+        } else {
             $date = Carbon::now();
         }
         $allUsers = User::all()->count();
@@ -99,61 +104,104 @@ class AdminController extends Controller
         $salaam = Transaction::whereDate('created_at', $date)->where('receiver_network', 'Salaam')->count();
         $afghanTelecom = Transaction::whereDate('created_at', $date)->where('receiver_network', 'Afghan Telecom')->count();
         $mtn = Transaction::whereDate('created_at', $date)->where('receiver_network', 'MTN')->count();
-        
-        if($awcc == 0){
+
+        if ($awcc == 0) {
             $awccPercentage = 0;
-        }else{
+        } else {
             $awccPercentage = ($allTransactionCount * 100) / $awcc;
         }
-        if($roshan == 0){
+        if ($roshan == 0) {
             $roshanPercentage = 0;
-        }else{
+        } else {
             $roshanPercentage = ($allTransactionCount * 100) / $awcc;
         }
-        if($etisalat == 0){
+        if ($etisalat == 0) {
             $etisalatPercentage = 0;
-        }else{
+        } else {
             $etisalatPercentage = ($allTransactionCount * 100) / $awcc;
         }
-        if($salaam == 0){
+        if ($salaam == 0) {
             $salaamPercentage = 0;
-        }else{
+        } else {
             $salaamPercentage = ($allTransactionCount * 100) / $awcc;
         }
-        if($afghanTelecom == 0){
+        if ($afghanTelecom == 0) {
             $afghanTelecomPercentage = 0;
-        }else{
+        } else {
             $afghanTelecomPercentage = ($allTransactionCount * 100) / $awcc;
         }
-        if($mtn == 0){
+        if ($mtn == 0) {
             $mtnPercentage = 0;
-        }else{
+        } else {
             $mtnPercentage = ($allTransactionCount * 100) / $awcc;
         }
 
         $latestTransaction = Transaction::orderBy('created_at', 'DESC')->take(15)->get();
-        if(count($latestTransaction) > 0){
-            foreach($latestTransaction as $transaction){
+        if (count($latestTransaction) > 0) {
+            foreach ($latestTransaction as $transaction) {
                 $transaction->user = User::where('id', $transaction['user_id'])->first();
                 $transaction->networkImage = OperatorNetwork::where('operator_name', $transaction['receiver_network'])->pluck('operator_image')->first();
-
             }
         }
 
         // Generate Response 
-        $success['date'] = $date->format('d M Y'); 
-        $success['allUsers'] = $allUsers; 
-        $success['usersOnDate'] = $usersOnDate; 
-        $success['sales'] = $sales; 
-        $success['salesAfn'] = $salesAfn; 
-        $success['awccPercentage'] = $awccPercentage; 
-        $success['roshanPercentage'] = $roshanPercentage; 
-        $success['etisalatPercentage'] = $etisalatPercentage; 
-        $success['salaamPercentage'] = $salaamPercentage; 
-        $success['afghanTelecomPercentage'] = $afghanTelecomPercentage; 
-        $success['mtnPercentage'] = $mtnPercentage; 
-        $success['latestTransaction'] = $latestTransaction; 
+        $success['date'] = $date->format('d M Y');
+        $success['allUsers'] = $allUsers;
+        $success['usersOnDate'] = $usersOnDate;
+        $success['sales'] = $sales;
+        $success['salesAfn'] = $salesAfn;
+        $success['awccPercentage'] = $awccPercentage;
+        $success['roshanPercentage'] = $roshanPercentage;
+        $success['etisalatPercentage'] = $etisalatPercentage;
+        $success['salaamPercentage'] = $salaamPercentage;
+        $success['afghanTelecomPercentage'] = $afghanTelecomPercentage;
+        $success['mtnPercentage'] = $mtnPercentage;
+        $success['latestTransaction'] = $latestTransaction;
         return $this->sendResponse($success, 'Dashboard Details');
+    }
 
+
+    public function replySend(Request $request)
+
+    {
+        $request->validate([
+
+            'email' => 'required|email',
+            'message' => 'required',
+            'contacts_id' => 'required'
+        ]);
+
+
+        // $input = $request->all();
+        // dd($input);
+        // Message::create($input);
+
+        //  Send mail to admin 
+        $input = new Message();
+        $input->sender_id = (auth()->user()->id);
+        $input->contacts_id = $request->get('contacts_id');
+        $input->message = $request->get('message');
+        $input->email=
+
+        $send_mail = Mail::send('contactMail', array(
+
+            'email' => $input['email'],
+
+            'subject' => 'Admin',
+
+            'message' => $input['message'],
+
+        ), function ($message) use ($request) {
+
+            $message->to($request->email);
+
+            $message->from('admin@admin.com', 'Admin')->subject($request->get('subject'));
+        });
+
+
+        Message::create($input);
+
+        echo 'success';
+        // return redirect()->back()->with(['success' => 'Contact Form Submit Successfully']);
     }
 }
