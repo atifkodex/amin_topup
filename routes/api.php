@@ -31,7 +31,7 @@ Route::middleware(['cors', 'json.response', 'auth:api'])->get('/user', function 
 });
 
 Route::group(['middleware' => ['cors', 'json.response']], function () {
-    
+
     // public routes
     Route::post('/login', [ApiAuthController::class, 'login'])->name('login.api');
     Route::post('/register', [ApiAuthController::class, 'register'])->name('register.api');
@@ -67,5 +67,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], f
     Route::post('/create_admin', [AdminController::class, 'create_admin'])->name('create_admin.api');
     Route::post('/users', [AdminController::class, 'usersList'])->name('users.api');
     Route::post('/dashboard', [AdminController::class, 'adminDashboard']);
+    Route::post('/reply_send', [AdminController::class, 'replySend'])->name('reply_send.api');
 });
 // Admin Panel API's END------- 

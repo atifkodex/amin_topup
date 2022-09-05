@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminUIController;
+use App\Http\Middleware\IsAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,17 @@ use App\Http\Controllers\AdminUIController;
 */
 
 Route::post('/admin_login', [AdminUIController::class, 'adminLogin'])->name('adminLogin');
-Route::post('/support', [AdminUIController::class, 'support'])->name('/support');
-Route::get('/dashboard', [AdminUIController::class, 'dashboardDetails'])->name('dashboard-details');
-Route::get('/support_page', [AdminUIController::class, 'support'])->name('support-page');
+
+// Route::group(['middleware' => ['auth']], function () {
+Route::middleware([IsAdmin::class])->group(function () {
+    Route::post('/support', [AdminUIController::class, 'support'])->name('/support');
+    Route::get('/dashboard', [AdminUIController::class, 'dashboardDetails'])->name('dashboard-details');
+    // Route::get('/setting', [AdminUIController::class, 'settingDetails'])->name('dashboard-details');
+    Route::get('/support_page', [AdminUIController::class, 'support'])->name('support-page');
+    Route::post('/admin_reply', [AdminUIController::class, 'reply'])->name('admin.reply');
+});
+
+
 
 
 

@@ -9,8 +9,10 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Traits\ResponseTrait;
 // use Validator;
 use App\Contacts;
+use App\Message;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+
 
 // use Session;
 
@@ -35,12 +37,13 @@ class AdminUIController extends Controller
         $responseBody = $response->body();
         $test = json_decode($responseBody, true);
         if ($test['success'] == false) {
+
             session::flash('message', $test['message']);
             return redirect()->back();
         } elseif ($test['success'] == true) {
             session::put('loginData', $test['data']);
+            return redirect()->route('dashboard-details');
         }
-        return redirect()->route('dashboard-details');
     }
     ///////........show user contact list.....///
     public function support(Request $request)
@@ -59,16 +62,18 @@ class AdminUIController extends Controller
         $response = json_decode($convertor, true);
 
         $data = $response['data']['users'];
-
+        // dd($data);
         return view('pages.support', ['data' => $data]);
     }
 
     public function dashboardDetails(Request $request)
     {
+
         $value = Session::get('loginData');
         $token = $value['user']['token'];
         $data = $request->all();
-        
+
+
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
@@ -76,7 +81,19 @@ class AdminUIController extends Controller
         $convertor = $response->body();
         $response = json_decode($convertor, true);
         $data = $response['data'];
-        // dd($data);
+
         return view(('pages.dashboard'), compact('data'));
     }
+    // public function reply(Request $request)
+    // {
+
+    //     $post = new Message;
+
+    //     // dd(auth()->user());
+    //     $post->sender_id = Auth::user()->id;
+    //     // dd(auth()->user()->id);
+    //     $post->reciever_id = $request->get('reciever_id');
+    //     $post->message = $request->get('message');
+    //     $post->save();
+    // }
 }
