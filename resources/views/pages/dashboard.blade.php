@@ -450,8 +450,9 @@
     }).on('changeDate', showTestDate);
 
     function showTestDate(){
+        chart.destroy();
         var value = $('#pickyDate').datepicker('getFormattedDate');
-
+        
         // Ajax call 
         // var route = "{{route('dashboard-details')}}"
         $.ajax({
@@ -487,22 +488,52 @@
                     parseInt(mtnPercentage),
                     parseInt(roshanPercentage),
                 ];
-                chart.updateOptions([{
-                    series: [{
-                        data: dataGraph
-                    }],
-                }])
-                // console.log(dataGraph);
-                // chart.updateSeries([{
-                // data: [
-                //         parseInt(etisalatPercentage),
-                //         parseInt(salaamPercentage),
-                //         parseInt(awccPercentage),
-                //         parseInt(afghanTelecomPercentage),
-                //         parseInt(mtnPercentage),
-                //         parseInt(roshanPercentage),
-                //     ]
-                // }])
+
+                 var options = {
+            grid: {
+                show: false,
+                padding: {
+                    left: 0,
+                    right: 0
+                }
+            },
+            dataLabels: {
+                enabled: true,
+                style: {
+                    fontSize: "8px",
+                }
+            },
+            tooltip: {
+                enabled: false,
+            },
+            series: dataGraph,
+            labels: ["Roshan", "Etisalat", "Salaam", "AWCC", "Afghan Telecom", "MTN" ],
+            chart: {
+                type: 'donut',
+                width: '100%',
+                height: 120,
+
+            },
+            fill: {
+                colors: ['#775DD0', '#008FFB', '#00E396', '#DA3B52',  '#FEB019','#FEB099',]
+            },
+            
+
+            responsive: [{
+                breakpoint: 1199,
+                options: {
+                    chart: {
+                        width: 300,
+                        height: 180,
+                    },
+                    // legend: {
+                    // position: 'bottom'
+                    // }
+                }
+            }]
+        };
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
             }
         });
     }
