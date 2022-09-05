@@ -27,10 +27,6 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::post('/admin_reply', [AdminUIController::class, 'reply'])->name('admin.reply');
 });
 
-
-
-
-
 Route::get('/', function () {
     return view('pages.auth.login');
 });

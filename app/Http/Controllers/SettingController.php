@@ -11,6 +11,8 @@ use App\Transaction;
 use Illuminate\Support\Str;
 use App\Contacts;
 use App\NotificationLog;
+use App\OperatorNetwork;
+use App\TopupDetails;
 use Illuminate\Support\Facades\Auth;
 
 class SettingController extends Controller
@@ -61,5 +63,19 @@ class SettingController extends Controller
             $image = "kodextech.net" . $uploadPath . $name;
             return $this->sendResponse($image,"image path generated successfully");
         }
+    }
+
+    public function settingsData(Request $request)
+    {
+        $network = OperatorNetwork::get();
+        if(count($network) > 0){
+            foreach($network as $topupData){
+                $opeartorId = $topupData['id'];
+                $opeartorName = $topupData['operator_name'];
+                $topup = TopupDetails::where('operator_id', $opeartorId)->get();
+                $topupData['name_'.$opeartorName] = $topup;
+            }
+        }
+        return $network;
     }
 }
