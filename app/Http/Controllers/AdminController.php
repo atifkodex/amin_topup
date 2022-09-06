@@ -15,6 +15,7 @@ use App\User;
 use App\Transaction;
 use App\OperatorNetwork;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -162,33 +163,31 @@ class AdminController extends Controller
 
 
     public function replySend(Request $request)
-
     {
+
         $request->validate([
 
             'email' => 'required|email',
             'message' => 'required',
-            'contacts_id' => 'required'
+
         ]);
-
-
+        $input = new Message;
         // $input = $request->all();
-        // dd($input);
+        $input->sender_id = auth()->user()->id;
+
+        $input->contacts_id = $request->contacts_id;
+        $input->massege = $request->message;
+        $input->email = $request->email;
+
+        $input->save();
+
         // Message::create($input);
 
         //  Send mail to admin 
-        $input = new Message();
-        $input->sender_id = (auth()->user()->id);
-        $input->contacts_id = $request->get('contacts_id');
-        $input->message = $request->get('message');
-        $input->email=
-
         $send_mail = Mail::send('contactMail', array(
 
             'email' => $input['email'],
-
             'subject' => 'Admin',
-
             'message' => $input['message'],
 
         ), function ($message) use ($request) {
@@ -198,10 +197,23 @@ class AdminController extends Controller
             $message->from('admin@admin.com', 'Admin')->subject($request->get('subject'));
         });
 
+        if ($send_mail) {
 
-        Message::create($input);
+            // $input->sender_id = Auth::user();
+            // // dd($input);
 
-        echo 'success';
+            // $input->contacts_id = $request->get('contacts_id');
+            // $input->message = $request->get('message');
+            // $input->email = $request->get('eamil');
+            // Message::create($input);
+
+
+
+            echo 'Send Mail Successfully';
+        } else {
+            echo 'Sending Mail Fail';
+        }
+
         // return redirect()->back()->with(['success' => 'Contact Form Submit Successfully']);
     }
 }

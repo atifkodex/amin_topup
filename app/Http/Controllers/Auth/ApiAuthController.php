@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\NotificationLog;
-
-
+use Dotenv\Validator as DotenvValidator;
+use Nette\Utils\Validators;
 
 class ApiAuthController extends Controller
 {
@@ -94,9 +94,15 @@ class ApiAuthController extends Controller
     //////....update user......./////// 
     public function update_user(Request $request)
     {
+        $user_auth = auth()->user();
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|unique:users,email,' . $user_auth->id,
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError(implode(",", $validator->errors()->all()), []);
+        }
 
-
-        $user =  User::where('id', $request->id)->update([
+        $user =  User::where('id', $user_auth->id)->update([
             'name' => $request->name,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
@@ -113,7 +119,7 @@ class ApiAuthController extends Controller
             $notification->notification_status = 0;
             $notification->save();
 
-            $success = User::where('id', $request->id)->first();
+            $success = User::where('id', $user_auth->id)->first();
             return $this->sendResponse($success, 'updated Successfully');
         } else {
             return $this->sendError("Updation failed. Try again later");
