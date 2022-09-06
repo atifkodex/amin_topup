@@ -582,7 +582,7 @@
       $(this).contents().unwrap();
     });
     $(this).hide();
-    $('.edit').show();
+    $(this).parent().find('.edit').show();
     
   });
 
