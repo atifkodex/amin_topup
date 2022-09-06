@@ -15,6 +15,7 @@ use App\User;
 use App\Transaction;
 use App\OperatorNetwork;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -166,48 +167,47 @@ class AdminController extends Controller
         return $this->sendResponse($success, 'Dashboard Details');
     }
 
-
+    ////////....send reply api Admin....///////
     public function replySend(Request $request)
-
     {
+
         $request->validate([
 
             'email' => 'required|email',
             'message' => 'required',
-            'contacts_id' => 'required'
+
         ]);
+        $input = new Message;
+
+        $input->sender_id = auth()->user()->id;
+
+        $input->contacts_id = $request->contacts_id;
+        $input->massege = $request->message;
+        $input->email = $request->email;
+
+        if ($input->save()) {
+            // Message::create($input);
+
+            //  Send mail to admin 
+            Mail::send('contactMail', array(
+
+                'email' => $input['email'],
+                'subject' => 'Admin',
+                'messege' => $input['massege'],
+
+            ), function ($message) use ($request) {
+
+                $message->to($request->email);
+
+                $message->from('admin@admin.com', 'Admin')->subject($request->get('subject'));
+            });
+
+            echo "send mail success";
+        } else {
+            echo "send mail Fail";
+        }
 
 
-        // $input = $request->all();
-        // dd($input);
-        // Message::create($input);
-
-        //  Send mail to admin 
-        $input = new Message();
-        $input->sender_id = (auth()->user()->id);
-        $input->contacts_id = $request->get('contacts_id');
-        $input->message = $request->get('message');
-        $input->email=
-
-        $send_mail = Mail::send('contactMail', array(
-
-            'email' => $input['email'],
-
-            'subject' => 'Admin',
-
-            'message' => $input['message'],
-
-        ), function ($message) use ($request) {
-
-            $message->to($request->email);
-
-            $message->from('admin@admin.com', 'Admin')->subject($request->get('subject'));
-        });
-
-
-        Message::create($input);
-
-        echo 'success';
         // return redirect()->back()->with(['success' => 'Contact Form Submit Successfully']);
     }
 }

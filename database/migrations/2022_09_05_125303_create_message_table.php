@@ -13,7 +13,7 @@ class CreateMessageTable extends Migration
      */
     public function up()
     {
-        Schema::create('message', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->integer('contacts_id');
             $table->integer('sender_id');
@@ -30,6 +30,6 @@ class CreateMessageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('message');
+        Schema::dropIfExists('messages');
     }
 }
