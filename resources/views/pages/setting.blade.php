@@ -47,7 +47,7 @@
                               <th>Product Code in Strip (Testbed)</th>
                             </tr>
                             <tr>
-                              <td class="data">-100 AFN</td>
+                              <td class="data">-{{$data[0]['operator_data']}}</td>
                               <td class="data">100</td>
                               <td class="data">90</td>
                               <td class="data">80</td>

@@ -73,7 +73,7 @@ class SettingController extends Controller
                 $opeartorId = $topupData['id'];
                 $opeartorName = $topupData['operator_name'];
                 $topup = TopupDetails::where('operator_id', $opeartorId)->get();
-                $topupData['name_'.$opeartorName] = $topup;
+                $topupData['operator_data'] = $topup;
             }
             return $this->sendResponse($network,"All topup Details");
         }
