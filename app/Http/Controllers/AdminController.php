@@ -178,7 +178,7 @@ class AdminController extends Controller
         $input->contacts_id = $request->contacts_id;
         $input->massege = $request->message;
         $input->email = $request->email;
-        $input->save()
+        $input->save();
         // if ($input->save()) {
         //     // Message::create($input);
 
