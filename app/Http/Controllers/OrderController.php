@@ -91,7 +91,6 @@ class OrderController extends Controller
             'receiver_name' => 'required',
             'receiver_email' => 'required',
             'receiver_number' => 'required',
-            'country' => 'required',
             'receiver_network' => 'required',
             'topup_amount' => 'required',
             'topup_amount_usd' => 'required',
@@ -107,7 +106,9 @@ class OrderController extends Controller
         $transaction->receiver_name = $request->receiver_name;
         $transaction->receiver_email = $request->receiver_email;
         $transaction->receiver_number = $request->receiver_number;
-        $transaction->country = $request->country;
+        if(isset($request->country) && !empty($request->country)) {
+            $transaction->country = $request->country;
+        }
         $transaction->receiver_network = $request->receiver_network;
         $transaction->topup_amount = $request->topup_amount;
         $transaction->topup_amount_usd = $request->topup_amount_usd;

@@ -50,12 +50,12 @@
                               <tr>
                                 <td class="data">-{{$oprator['denomination']}}</td>
                                 <td class="data topupAfn">{{$oprator['denomination']}}</td>
-                                <td class=" afterTax_d">90</td>
+                                <td class=" afterTax_d">{{$oprator['afterTax']}}</td>
                                 <td class="data exchange_rate">{{$oprator['exchange_rate']}}</td>
                                 <td class="aminPrice">${{$oprator['topup_usd']}}</td>
                                 <td class="data percentageDeduct">2.90</td>
                                 <td class="data stripeFee">0.30</td>
-                                <td class="userTotal">${{$oprator['exchange_rate']}}</td>
+                                <td class="userTotal">${{$oprator['TotalPayable']}}</td>
                                 <td class="data">{{$oprator['product_code_topup']}}</td>
                                 <td class="data">{{$oprator['product_code_stripe']}}</td>
                               </tr>
@@ -99,7 +99,21 @@
                           <th>Product Code in Topup API</th>
                           <th>Product Code in Strip (Testbed)</th>
                         </tr>
-                        <tr>
+                        @foreach($data[1]['operator_data'] as $oprator)
+                              <tr>
+                                <td class="data">-{{$oprator['denomination']}}</td>
+                                <td class="data topupAfn">{{$oprator['denomination']}}</td>
+                                <td class=" afterTax_d">{{$oprator['afterTax']}}</td>
+                                <td class="data exchange_rate">{{$oprator['exchange_rate']}}</td>
+                                <td class="aminPrice">${{$oprator['topup_usd']}}</td>
+                                <td class="data percentageDeduct">2.90</td>
+                                <td class="data stripeFee">0.30</td>
+                                <td class="userTotal">${{$oprator['TotalPayable']}}</td>
+                                <td class="data">{{$oprator['product_code_topup']}}</td>
+                                <td class="data">{{$oprator['product_code_stripe']}}</td>
+                              </tr>
+                            @endforeach
+                        <!-- <tr>
                           <td class="data">-100 AFN</td>
                           <td class="data">100</td>
                           <td class="data">90</td>
@@ -150,7 +164,7 @@
                           <td class="data">ROSHAN_EXCHANGE</td>
                           <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
 
-                        </tr>
+                        </tr> -->
                         
                       </table>
                     </div>
@@ -189,59 +203,20 @@
                           <th>Product Code in Topup API</th>
                           <th>Product Code in Strip (Testbed)</th>
                         </tr>
-                        <tr>
-                          <td class="data">-100 AFN</td>
-                          <td class="data">100</td>
-                          <td class="data">90</td>
-                          <td class="data">80</td>
-                          <td class="data">$1.25</td>
-                          <td class="data">2.90%</td>
-                          <td class="data">$0.30</td>
-                          <td class="data">$1.59</td>
-                          <td class="data">ROSHAN_EXCHANGE</td>
-                          <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                        </tr>
-                        <tr>
-                          <td class="data">-100 AFN</td>
-                          <td class="data">100</td>
-                          <td class="data">90</td>
-                          <td class="data">80</td>
-                          <td class="data">$1.25</td>
-                          <td class="data">2.90%</td>
-                          <td class="data">$0.30</td>
-                          <td class="data">$1.59</td>
-                          <td class="data">ROSHAN_EXCHANGE</td>
-                          <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                        </tr>
-                        <tr>
-                          <td class="data">-100 AFN</td>
-                          <td class="data">100</td>
-                          <td class="data">90</td>
-                          <td class="data">80</td>
-                          <td class="data">$1.25</td>
-                          <td class="data">2.90%</td>
-                          <td class="data">$0.30</td>
-                          <td class="data">$1.59</td>
-                          <td class="data">ROSHAN_EXCHANGE</td>
-                          <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                        </tr>
-                        <tr>
-                          <td class="data">-100 AFN</td>
-                          <td class="data">100</td>
-                          <td class="data">90</td>
-                          <td class="data">80</td>
-                          <td class="data">$1.25</td>
-                          <td class="data">2.90%</td>
-                          <td class="data">$0.30</td>
-                          <td class="data">$1.59</td>
-                          <td class="data">ROSHAN_EXCHANGE</td>
-                          <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                        </tr>
-                        
+                        @foreach($data[2]['operator_data'] as $oprator)
+                              <tr>
+                                <td class="data">-{{$oprator['denomination']}}</td>
+                                <td class="data topupAfn">{{$oprator['denomination']}}</td>
+                                <td class=" afterTax_d">{{$oprator['afterTax']}}</td>
+                                <td class="data exchange_rate">{{$oprator['exchange_rate']}}</td>
+                                <td class="aminPrice">${{$oprator['topup_usd']}}</td>
+                                <td class="data percentageDeduct">2.90</td>
+                                <td class="data stripeFee">0.30</td>
+                                <td class="userTotal">${{$oprator['TotalPayable']}}</td>
+                                <td class="data">{{$oprator['product_code_topup']}}</td>
+                                <td class="data">{{$oprator['product_code_stripe']}}</td>
+                              </tr>
+                            @endforeach
                       </table>
                     </div>
 
@@ -279,58 +254,20 @@
                           <th>Product Code in Topup API</th>
                           <th>Product Code in Strip (Testbed)</th>
                         </tr>
-                        <tr>
-                          <td class="data">-100 AFN</td>
-                          <td class="data">100</td>
-                          <td class="data">90</td>
-                          <td class="data">80</td>
-                          <td class="data">$1.25</td>
-                          <td class="data">2.90%</td>
-                          <td class="data">$0.30</td>
-                          <td class="data">$1.59</td>
-                          <td class="data">ROSHAN_EXCHANGE</td>
-                          <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                        </tr>
-                        <tr>
-                        <td class="data">-100 AFN</td>
-                        <td class="data">100</td>
-                        <td class="data">90</td>
-                        <td class="data">80</td>
-                        <td class="data">$1.25</td>
-                        <td class="data">2.90%</td>
-                        <td class="data">$0.30</td>
-                        <td class="data">$1.59</td>
-                        <td class="data">ROSHAN_EXCHANGE</td>
-                        <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                      </tr>
-                      <tr>
-                        <td class="data">-100 AFN</td>
-                        <td class="data">100</td>
-                        <td class="data">90</td>
-                        <td class="data">80</td>
-                        <td class="data">$1.25</td>
-                        <td class="data">2.90%</td>
-                        <td class="data">$0.30</td>
-                        <td class="data">$1.59</td>
-                        <td class="data">ROSHAN_EXCHANGE</td>
-                        <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                      </tr>
-                      <tr>
-                        <td class="data">-100 AFN</td>
-                        <td class="data">100</td>
-                        <td class="data">90</td>
-                        <td class="data">80</td>
-                        <td class="data">$1.25</td>
-                        <td class="data">2.90%</td>
-                        <td class="data">$0.30</td>
-                        <td class="data">$1.59</td>
-                        <td class="data">ROSHAN_EXCHANGE</td>
-                        <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                      </tr>
+                        @foreach($data[3]['operator_data'] as $oprator)
+                              <tr>
+                                <td class="data">-{{$oprator['denomination']}}</td>
+                                <td class="data topupAfn">{{$oprator['denomination']}}</td>
+                                <td class=" afterTax_d">{{$oprator['afterTax']}}</td>
+                                <td class="data exchange_rate">{{$oprator['exchange_rate']}}</td>
+                                <td class="aminPrice">${{$oprator['topup_usd']}}</td>
+                                <td class="data percentageDeduct">2.90</td>
+                                <td class="data stripeFee">0.30</td>
+                                <td class="userTotal">${{$oprator['TotalPayable']}}</td>
+                                <td class="data">{{$oprator['product_code_topup']}}</td>
+                                <td class="data">{{$oprator['product_code_stripe']}}</td>
+                              </tr>
+                            @endforeach
                       
                       </table>
                     </div>
@@ -369,58 +306,21 @@
                           <th>Product Code in Topup API</th>
                           <th>Product Code in Strip (Testbed)</th>
                         </tr>
-                        <tr>
-                          <td class="data">-100 AFN</td>
-                          <td class="data">100</td>
-                          <td class="data">90</td>
-                          <td class="data">80</td>
-                          <td class="data">$1.25</td>
-                          <td class="data">2.90%</td>
-                          <td class="data">$0.30</td>
-                          <td class="data">$1.59</td>
-                          <td class="data">ROSHAN_EXCHANGE</td>
-                          <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                        </tr>
-                        <tr>
-                        <td class="data">-100 AFN</td>
-                        <td class="data">100</td>
-                        <td class="data">90</td>
-                        <td class="data">80</td>
-                        <td class="data">$1.25</td>
-                        <td class="data">2.90%</td>
-                        <td class="data">$0.30</td>
-                        <td class="data">$1.59</td>
-                        <td class="data">ROSHAN_EXCHANGE</td>
-                        <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                      </tr>
-                      <tr>
-                        <td class="data">-100 AFN</td>
-                        <td class="data">100</td>
-                        <td class="data">90</td>
-                        <td class="data">80</td>
-                        <td class="data">$1.25</td>
-                        <td class="data">2.90%</td>
-                        <td class="data">$0.30</td>
-                        <td class="data">$1.59</td>
-                        <td class="data">ROSHAN_EXCHANGE</td>
-                        <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                      </tr>
-                      <tr>
-                        <td class="data">-100 AFN</td>
-                        <td class="data">100</td>
-                        <td class="data">90</td>
-                        <td class="data">80</td>
-                        <td class="data">$1.25</td>
-                        <td class="data">2.90%</td>
-                        <td class="data">$0.30</td>
-                        <td class="data">$1.59</td>
-                        <td class="data">ROSHAN_EXCHANGE</td>
-                        <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                      </tr>
+                        @foreach($data[4]['operator_data'] as $oprator)
+                              <tr>
+                                <td class="data">-{{$oprator['denomination']}}</td>
+                                <td class="data topupAfn">{{$oprator['denomination']}}</td>
+                                <td class=" afterTax_d">{{$oprator['afterTax']}}</td>
+                                <td class="data exchange_rate">{{$oprator['exchange_rate']}}</td>
+                                <td class="aminPrice">${{$oprator['topup_usd']}}</td>
+                                <td class="data percentageDeduct">2.90</td>
+                                <td class="data stripeFee">0.30</td>
+                                <td class="userTotal">${{$oprator['TotalPayable']}}</td>
+                                <td class="data">{{$oprator['product_code_topup']}}</td>
+                                <td class="data">{{$oprator['product_code_stripe']}}</td>
+                              </tr>
+                            @endforeach
+                        
                       
                       </table>
                     </div>
@@ -459,59 +359,20 @@
                           <th>Product Code in Topup API</th>
                           <th>Product Code in Strip (Testbed)</th>
                         </tr>
-                        <tr>
-                          <td class="data">-100 AFN</td>
-                          <td class="data">100</td>
-                          <td class="data">90</td>
-                          <td class="data">80</td>
-                          <td class="data">$1.25</td>
-                          <td class="data">2.90%</td>
-                          <td class="data">$0.30</td>
-                          <td class="data">$1.59</td>
-                          <td class="data">ROSHAN_EXCHANGE</td>
-                          <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                        </tr>
-                        <tr>
-                        <td class="data">-100 AFN</td>
-                        <td class="data">100</td>
-                        <td class="data">90</td>
-                        <td class="data">80</td>
-                        <td class="data">$1.25</td>
-                        <td class="data">2.90%</td>
-                        <td class="data">$0.30</td>
-                        <td class="data">$1.59</td>
-                        <td class="data">ROSHAN_EXCHANGE</td>
-                        <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                      </tr>
-                      <tr>
-                        <td class="data">-100 AFN</td>
-                        <td class="data">100</td>
-                        <td class="data">90</td>
-                        <td class="data">80</td>
-                        <td class="data">$1.25</td>
-                        <td class="data">2.90%</td>
-                        <td class="data">$0.30</td>
-                        <td class="data">$1.59</td>
-                        <td class="data">ROSHAN_EXCHANGE</td>
-                        <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                      </tr>
-                      <tr>
-                        <td class="data">-100 AFN</td>
-                        <td class="data">100</td>
-                        <td class="data">90</td>
-                        <td class="data">80</td>
-                        <td class="data">$1.25</td>
-                        <td class="data">2.90%</td>
-                        <td class="data">$0.30</td>
-                        <td class="data">$1.59</td>
-                        <td class="data">ROSHAN_EXCHANGE</td>
-                        <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                      </tr>
-                      
+                        @foreach($data[5]['operator_data'] as $oprator)
+                          <tr>
+                            <td class="data">-{{$oprator['denomination']}}</td>
+                            <td class="data topupAfn">{{$oprator['denomination']}}</td>
+                            <td class=" afterTax_d">{{$oprator['afterTax']}}</td>
+                            <td class="data exchange_rate">{{$oprator['exchange_rate']}}</td>
+                            <td class="aminPrice">${{$oprator['topup_usd']}}</td>
+                            <td class="data percentageDeduct">2.90</td>
+                            <td class="data stripeFee">0.30</td>
+                            <td class="userTotal">${{$oprator['TotalPayable']}}</td>
+                            <td class="data">{{$oprator['product_code_topup']}}</td>
+                            <td class="data">{{$oprator['product_code_stripe']}}</td>
+                          </tr>
+                        @endforeach
                       </table>
                     </div>
 
@@ -527,6 +388,8 @@
                   </div>
                 </div>
               </div>
+
+              <!-- Publishable Key Section  -->
               <div class="card setting-card mt-5">
                 <div class="card-header stripe-key-header setting-card-header" id="faqhead7">
                     <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq7"
@@ -633,7 +496,7 @@
 
 <!-- Backend Script -- Start --  -->
 <script>
-  
+
   // For Denomination 
   $(".topupAfn").keyup(function() {
     let amount = $(this).find('input').val();
@@ -666,7 +529,6 @@
     // Amin Percentage 
     let priceAminCalculation = (aminPrice * percentage) / 100;
     let priceAmin = parseFloat(aminPrice) + parseFloat(priceAminCalculation);
-    // alert(priceAmin);
     // Stripe Fees
     let stripeFeeDollar = $(this).parent().find(".stripeFee").find('input').val();
     let stripeFee = stripeFeeDollar.replace(/\$/g, '');
@@ -688,7 +550,7 @@
     // Amin Price 
     let aminPriceDollar = $(this).parent().find(".aminPrice").text();
     let aminPrice = aminPriceDollar.replace(/\$/g, '');
-    // Amin Percentage 
+    // Amin Percentage
     let aminPercentage = $(this).parent().find(".percentageDeduct").find('input').val();
     let priceAminCalculation = (aminPrice * aminPercentage) / 100;
     let priceAmin = parseFloat(aminPrice) + parseFloat(priceAminCalculation);
@@ -701,24 +563,25 @@
 
 <script>
   $('.save').hide();
+
   $(document).on('click', '.edit', function() {
-    $('td.data').each(function() {
+    $(this).parent().parent().find('td.data').each(function() {
       var content = $(this).html();
       $(this).html('<input value="' + content + '" />');
     });
     
-    $('.edit').hide();
-    $('.save').show();
+    $(this).hide();
+    $(this).parent().find('.save').show();
   });
 
   $(document).on('click', '.save', function() {
     
-    $('input').each(function() {
+    $(this).parent().parent().find('input').each(function() {
       var content = $(this).val();
       $(this).html(content);
       $(this).contents().unwrap();
     });
-    $('.save').hide();
+    $(this).hide();
     $('.edit').show();
     
   });
