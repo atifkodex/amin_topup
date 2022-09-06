@@ -91,13 +91,13 @@ class AdminUIController extends Controller
         $token = $value['user']['token'];
         $data = $request->all();
 
-
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
         ])->post('http://kodextech.net/amin-topup/public/api/reply_send', $data);
         $convertor = $response->body();
         $response = json_decode($convertor, true);
+        dd($response);
         $data = $response['data'];
 
         // dd($data);
