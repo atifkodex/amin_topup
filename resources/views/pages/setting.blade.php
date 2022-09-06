@@ -41,63 +41,26 @@
                               <th>Exchange Rate</th>
                               <th>Amin Topup Price</th>
                               <th>Transaction Fee(%)</th>
-                              <th>Transaction Fees(%+Fix)</th>
+                              <th>Transaction Fees(Fix)</th>
                               <th>Amount Payable to Customer</th>
                               <th>Product Code in Topup API</th>
                               <th>Product Code in Strip (Testbed)</th>
                             </tr>
-                            <tr>
-                              <td class="data">-{{$data[0]['operator_data']}}</td>
-                              <td class="data">100</td>
-                              <td class="data">90</td>
-                              <td class="data">80</td>
-                              <td class="data">$1.25</td>
-                              <td class="data">2.90%</td>
-                              <td class="data">$0.30</td>
-                              <td class="data">$1.59</td>
-                              <td class="data">ROSHAN_EXCHANGE</td>
-                              <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                            </tr>
-                            <tr>
-                            <td class="data">-100 AFN</td>
-                            <td class="data">100</td>
-                            <td class="data">90</td>
-                            <td class="data">80</td>
-                            <td class="data">$1.25</td>
-                            <td class="data">2.90%</td>
-                            <td class="data">$0.30</td>
-                            <td class="data">$1.59</td>
-                            <td class="data">ROSHAN_EXCHANGE</td>
-                            <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                          </tr>
-                          <tr>
-                            <td class="data">-100 AFN</td>
-                            <td class="data">100</td>
-                            <td class="data">90</td>
-                            <td class="data">80</td>
-                            <td class="data">$1.25</td>
-                            <td class="data">2.90%</td>
-                            <td class="data">$0.30</td>
-                            <td class="data">$1.59</td>
-                            <td class="data">ROSHAN_EXCHANGE</td>
-                            <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                          </tr>
-                          <tr>
-                            <td class="data">-100 AFN</td>
-                            <td class="data">100</td>
-                            <td class="data">90</td>
-                            <td class="data">80</td>
-                            <td class="data">$1.25</td>
-                            <td class="data">2.90%</td>
-                            <td class="data">$0.30</td>
-                            <td class="data">$1.59</td>
-                            <td class="data">ROSHAN_EXCHANGE</td>
-                            <td class="data">price_1LTTxnDFBGCzynQzohlnw2xe</td>
-
-                          </tr>
+                            @foreach($data[0]['operator_data'] as $oprator)
+                              <tr>
+                                <td class="data">-{{$oprator['denomination']}}</td>
+                                <td class="data topupAfn">{{$oprator['denomination']}}</td>
+                                <td class=" afterTax_d">90</td>
+                                <td class="data exchange_rate">{{$oprator['exchange_rate']}}</td>
+                                <td class="aminPrice">${{$oprator['topup_usd']}}</td>
+                                <td class="data percentageDeduct">2.90</td>
+                                <td class="data stripeFee">0.30</td>
+                                <td class="userTotal">${{$oprator['exchange_rate']}}</td>
+                                <td class="data">{{$oprator['product_code_topup']}}</td>
+                                <td class="data">{{$oprator['product_code_stripe']}}</td>
+                              </tr>
+                            @endforeach
+                            
                           
                           </table>
                         </div>
@@ -667,6 +630,59 @@
 @section('inserfooter')
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<!-- Backend Script -- Start --  -->
+<script>
+  // For Denomination 
+  $(".topupAfn").keyup(function() {
+    let amount = $(this).find('input').val();
+    let tax = (amount * 10) /100;
+    let amountAfterTax = amount - tax;
+    $(this).parent().find(".afterTax_d").text(amountAfterTax);
+  });
+  // For Exchange Rate 
+  $(".exchange_rate").keyup(function() {
+    let rate = $(this).find('input').val();
+    let money = $(this).parent().find(".topupAfn").find('input').val();
+    let usdAmount = money / rate;
+    $(this).parent().find(".aminPrice").text("$"+usdAmount);
+  });
+  // For Percentage 
+  $(".percentageDeduct").keyup(function() {
+    let percentage = $(this).find('input').val();
+    let aminPriceDollar = $(this).parent().find(".aminPrice").text();
+    let aminPrice = aminPriceDollar.replace(/\$/g, '');
+    let price = (aminPrice * percentage) / 100;
+    let totalAminPrice = parseFloat(aminPrice) + parseFloat(price);
+    let userTotalDollar = $(this).parent().find(".userTotal").text();
+    let userTotal = userTotalDollar.replace(/\$/g, '');
+    let total =  parseFloat(userTotal) + parseFloat(totalAminPrice);
+    $(this).parent().find(".userTotal").text("$"+total);
+  });
+  // For Fix Fees Stripe 
+  $(".stripeFee").keyup(function() {
+    debugger;
+    let feesDollar = $(this).find('input').val();
+    let fees = feesDollar.replace(/\$/g, '');
+    if(fees == ""){
+      fees = 0;
+    }
+    let userTotalDollar = $(this).parent().find(".userTotal").text();
+    let userTotal = userTotalDollar.replace(/\$/g, '');
+    let total = parseFloat(fees) + parseFloat(userTotal);
+    // alert(total)
+    // let aminPriceDollar = $(this).parent().find(".aminPrice").text();
+    // let aminPrice = aminPriceDollar.replace(/\$/g, '');
+    // let price = (aminPrice * percentage) / 100;
+    // let totalAminPrice = parseFloat(aminPrice) + parseFloat(price);
+    // let userTotalDollar = $(this).parent().find(".userTotal").text();
+    // let userTotal = userTotalDollar.replace(/\$/g, '');
+    // alert(userTotal);
+    // let total =  parseFloat(userTotal) + parseFloat(totalAminPrice);
+    $(this).parent().find(".userTotal").text("$"+total);
+  });
+</script>
+<!-- Backend Script -- END --  -->
 
 <script>
   $('.save').hide();
