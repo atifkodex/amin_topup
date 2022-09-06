@@ -84,16 +84,23 @@ class AdminUIController extends Controller
 
         return view(('pages.dashboard'), compact('data'));
     }
-    // public function reply(Request $request)
-    // {
+    public function reply(Request $request)
+    {
+        // dd($request->all());
+        $value = Session::get('loginData');
+        $token = $value['user']['token'];
+        $data = $request->all();
 
-    //     $post = new Message;
 
-    //     // dd(auth()->user());
-    //     $post->sender_id = Auth::user()->id;
-    //     // dd(auth()->user()->id);
-    //     $post->reciever_id = $request->get('reciever_id');
-    //     $post->message = $request->get('message');
-    //     $post->save();
-    // }
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post('http://kodextech.net/amin-topup/public/api/reply_send', $data);
+        $convertor = $response->body();
+        $response = json_decode($convertor, true);
+        $data = $response['data'];
+
+        // dd($data);
+        return redirect()->back();
+    }
 }

@@ -178,28 +178,28 @@ class AdminController extends Controller
         $input->contacts_id = $request->contacts_id;
         $input->massege = $request->message;
         $input->email = $request->email;
+        $input->save()
+        // if ($input->save()) {
+        //     // Message::create($input);
 
-        if ($input->save()) {
-            // Message::create($input);
+        //     //  Send mail to admin 
+        //     Mail::send('contactMail', array(
 
-            //  Send mail to admin 
-            Mail::send('contactMail', array(
+        //         'email' => $input['email'],
+        //         'subject' => 'Admin',
+        //         'messege' => $input['massege'],
 
-                'email' => $input['email'],
-                'subject' => 'Admin',
-                'messege' => $input['massege'],
+        //     ), function ($message) use ($request) {
 
-            ), function ($message) use ($request) {
+        //         $message->to($request->email);
 
-                $message->to($request->email);
+        //         $message->from('admin@admin.com', 'Admin')->subject($request->get('subject'));
+        //     });
 
-                $message->from('admin@admin.com', 'Admin')->subject($request->get('subject'));
-            });
-
-            echo "send mail success";
-        } else {
-            echo "send mail Fail";
-        }
+        //     echo "send mail success";
+        // } else {
+        //     echo "send mail Fail";
+        // }
 
 
         // return redirect()->back()->with(['success' => 'Contact Form Submit Successfully']);

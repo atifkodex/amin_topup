@@ -22,6 +22,7 @@
             <div class="col-4 col-xl-3 support-card-outer-main ">
                 <div class="">
                     <div class="support-card-outer px-1 py-2">
+                        @if(isset($data) && $data != null)
                         @foreach($data as $post)
                         <div class="support-card pl-3 py-3 my-3 getuserdata">
                             <div class="support-card-header d-flex align-items-center">
@@ -48,6 +49,7 @@
                             </div>
                         </div>
                         @endforeach
+                        @endif;
                     </div>
 
                 </div>
