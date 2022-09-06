@@ -633,6 +633,7 @@
 
 <!-- Backend Script -- Start --  -->
 <script>
+  
   // For Denomination 
   $(".topupAfn").keyup(function() {
     let amount = $(this).find('input').val();
@@ -640,6 +641,7 @@
     let amountAfterTax = amount - tax;
     $(this).parent().find(".afterTax_d").text(amountAfterTax);
   });
+
   // For Exchange Rate 
   $(".exchange_rate").keyup(function() {
     let rate = $(this).find('input').val();
@@ -647,6 +649,7 @@
     let usdAmount = money / rate;
     $(this).parent().find(".aminPrice").text("$"+usdAmount);
   });
+
   // For Percentage 
   $(".percentageDeduct").keyup(function() {
     debugger;
@@ -663,18 +666,15 @@
     // Amin Percentage 
     let priceAminCalculation = (aminPrice * percentage) / 100;
     let priceAmin = parseFloat(aminPrice) + parseFloat(priceAminCalculation);
-    alert(priceAmin);
+    // alert(priceAmin);
     // Stripe Fees
-    let stripeFeeDollar = $(this).parent().find(".percentageDeduct").find('input').val();
+    let stripeFeeDollar = $(this).parent().find(".stripeFee").find('input').val();
     let stripeFee = stripeFeeDollar.replace(/\$/g, '');
-    // let aminPriceDollar = $(this).parent().find(".aminPrice").text();
-    // let price = (aminPrice * percentage) / 100;
-    // let totalAminPrice = parseFloat(aminPrice) + parseFloat(price);
-    // let userTotalDollar = $(this).parent().find(".userTotal").text();
-    // let userTotal = userTotalDollar.replace(/\$/g, '');
+    
     let total =  parseFloat(priceAmin) + parseFloat(stripeFee);
     $(this).parent().find(".userTotal").text("$"+total);
   });
+
   // For Fix Fees Stripe 
   $(".stripeFee").keyup(function() {
     let feesDollar = $(this).find('input').val();

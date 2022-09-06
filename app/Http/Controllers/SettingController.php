@@ -73,6 +73,16 @@ class SettingController extends Controller
                 $opeartorId = $topupData['id'];
                 $opeartorName = $topupData['operator_name'];
                 $topup = TopupDetails::where('operator_id', $opeartorId)->get();
+                if (count($topup) > 0) {
+                    foreach ($topup as $data) {
+                        $calc = ($data['denomination'] * 10) /100;
+                        $data['afterTax'] = $data['denomination'] - $calc;
+
+                        $aminPercent = ($data['topup_usd'] * $data['fee_percentage']) / 100;
+                        $withAminFees = $aminPercent + $data['topup_usd'];
+                        $data['TotalPayable'] = $withAminFees + $data['stripe_fee'];
+                    }
+                }
                 $topupData['operator_data'] = $topup;
             }
             return $this->sendResponse($network,"All topup Details");
