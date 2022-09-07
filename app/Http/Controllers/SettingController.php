@@ -101,19 +101,20 @@ class SettingController extends Controller
         }
 
         $operator = TopupDetails::find($request->id);
-        $operator->denomination = $request->denomination;
-        $operator->topup_usd = $request->topup_usd;
+        // In exchange case 
         if(isset($request->exchange_rate) && !empty($request->exchange_rate)) {
             $operator->exchange_rate = $request->exchange_rate;
+            $operator->topup_usd = $request->topup_usd;
+            $operator->denomination = $request->denomination;
         }
+        // In Amin fees Case 
         if(isset($request->fee_percentage) && !empty($request->fee_percentage)) {
             $operator->fee_percentage = $request->fee_percentage;
         }
         if(isset($request->stripe_fee) && !empty($request->stripe_fee)) {
             $operator->stripe_fee = $request->stripe_fee;
         }
-
-        $operator->operator_id = $request->operator_id;
+        // $operator->operator_id = $request->operator_id;
         
         if(isset($request->product_code_topup) && !empty($request->product_code_topup)) {
             $operator->product_code_topup = $request->product_code_topup;
