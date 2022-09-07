@@ -58,6 +58,7 @@
                                 <td class="userTotal">${{$oprator['TotalPayable']}}</td>
                                 <td class="data">{{$oprator['product_code_topup']}}</td>
                                 <td class="data">{{$oprator['product_code_stripe']}}</td>
+                                <input type="hidden" class="operator_id" value="{{$oprator['id']}}">
                               </tr>
                             @endforeach
                             
@@ -503,6 +504,9 @@
     let tax = (amount * 10) /100;
     let amountAfterTax = amount - tax;
     $(this).parent().find(".afterTax_d").text(amountAfterTax);
+    let id = $(this).parent().find(".operator_id").val();
+
+    
   });
 
   // For Exchange Rate 
@@ -511,11 +515,28 @@
     let money = $(this).parent().find(".topupAfn").find('input').val();
     let usdAmount = money / rate;
     $(this).parent().find(".aminPrice").text("$"+usdAmount);
+    let id = $(this).parent().find(".operator_id").val();
+
+    // Ajax call 
+    $.ajax({
+            url: 'http://kodextech.net/amin-topup/public/api/admin/update_operator',
+            type: 'POST',
+            dataType: 'json', // added data type
+            data: {
+                id: id,
+                denomination: money,
+                topup_usd: usdAmount,
+                exchange_rate: rate,
+            },
+            success: function(response) {
+              
+            }
+        });
   });
 
   // For Percentage 
   $(".percentageDeduct").keyup(function() {
-    debugger;
+    let id = $(this).parent().find(".operator_id").val();
     let percentage = $(this).find('input').val();
     if(percentage == ""){
       percentage = 0;
@@ -535,6 +556,20 @@
     
     let total =  parseFloat(priceAmin) + parseFloat(stripeFee);
     $(this).parent().find(".userTotal").text("$"+total);
+
+    // Ajax call 
+    $.ajax({
+            url: 'http://kodextech.net/amin-topup/public/api/admin/update_operator',
+            type: 'POST',
+            dataType: 'json', // added data type
+            data: {
+                id: id,
+                fee_percentage: percentage,
+            },
+            success: function(response) {
+              
+            }
+        });
   });
 
   // For Fix Fees Stripe 
@@ -557,6 +592,21 @@
 
     let total = parseFloat(fees) + parseFloat(priceAmin);
     $(this).parent().find(".userTotal").text("$"+total);
+    let id = $(this).parent().find(".operator_id").val();
+
+    // Ajax call 
+    $.ajax({
+            url: 'http://kodextech.net/amin-topup/public/api/admin/update_operator',
+            type: 'POST',
+            dataType: 'json', // added data type
+            data: {
+                id: id,
+                stripe_fee: fees,
+            },
+            success: function(response) {
+              
+            }
+        });
   });
 </script>
 <!-- Backend Script -- END --  -->

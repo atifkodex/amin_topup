@@ -70,7 +70,7 @@ class OrderController extends Controller
                 'line_items' => [['price' => $request->price_id, 'quantity' => 1]],
                 'after_completion' => [
                     'type' => 'redirect',
-                    'redirect' => ['url' => 'http://localhost/amin-topup/public/api/admin/save_order'],
+                    'redirect' => ['url' => 'http://kodextech.net/amin-topup/public/sucess'],
                 ],
             ],
         );
