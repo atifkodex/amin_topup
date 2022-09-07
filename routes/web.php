@@ -27,9 +27,12 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::post('/admin_reply', [AdminUIController::class, 'reply'])->name('admin.reply');
 });
 
-
-    Route::post('/', [AdminUIController::class, 'loginPage']);
-    Route::post('/login', [AdminUIController::class, 'loginPage']);
+Route::get('/', function () {
+    return view('pages.auth.login');
+});
+Route::get('/login', function () {
+    return view('pages.auth.login');
+}); 
 
 Route::get('/sign-up', function () {
     return view('pages.auth.sign-up');
