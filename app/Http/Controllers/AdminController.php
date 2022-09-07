@@ -117,27 +117,27 @@ class AdminController extends Controller
         if ($roshan == 0) {
             $roshanPercentage = 0;
         } else {
-            $roshanPercentage = ($allTransactionCount * 100) / $awcc;
+            $roshanPercentage = ($allTransactionCount * 100) / $roshan;
         }
         if ($etisalat == 0) {
             $etisalatPercentage = 0;
         } else {
-            $etisalatPercentage = ($allTransactionCount * 100) / $awcc;
+            $etisalatPercentage = ($allTransactionCount * 100) / $etisalat;
         }
         if ($salaam == 0) {
             $salaamPercentage = 0;
         } else {
-            $salaamPercentage = ($allTransactionCount * 100) / $awcc;
+            $salaamPercentage = ($allTransactionCount * 100) / $salaam;
         }
         if ($afghanTelecom == 0) {
             $afghanTelecomPercentage = 0;
         } else {
-            $afghanTelecomPercentage = ($allTransactionCount * 100) / $awcc;
+            $afghanTelecomPercentage = ($allTransactionCount * 100) / $afghanTelecom;
         }
         if ($mtn == 0) {
             $mtnPercentage = 0;
         } else {
-            $mtnPercentage = ($allTransactionCount * 100) / $awcc;
+            $mtnPercentage = ($allTransactionCount * 100) / $mtn;
         }
 
         $latestTransaction = Transaction::orderBy('created_at', 'DESC')->take(15)->get();

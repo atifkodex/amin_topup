@@ -80,6 +80,7 @@ class AdminUIController extends Controller
         ])->post('http://kodextech.net/amin-topup/public/api/admin/dashboard', $data);
         $convertor = $response->body();
         $response = json_decode($convertor, true);
+        dd($response);
         $data = $response['data'];
 
         return view(('pages.dashboard'), compact('data'));
