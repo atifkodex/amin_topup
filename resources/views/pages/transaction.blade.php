@@ -53,7 +53,7 @@
                                 </select>                
                                 </div>    
                                                          
-                                <table id="table-id" class="mr-3 mb-3" style="width: 1800px">
+                                <table id="table-id" class="mr-3 mb-3" style="width: 1300px">
                                     <thead>
                                         <tr>
                                             <th>Transaction ID</th>

@@ -36,7 +36,7 @@
                 <h1>User</h1>
             </div>
             <div class="row">
-                <div class=" col-lg-8 col-xl-9">
+                <div class="  col-xl-9">
                   <div class="transection-tble-main">
                     <!-- Latest Transactions -->
                     <div class="latest-transection-sec mt-0">
@@ -57,7 +57,7 @@
                                 </select>                
                                 </div>    
                                                          
-                                <table id="table-id" class="mr-3 mb-3" style="width: 1100px">
+                                <table id="table-id" class="mr-3 mb-3" style="width: 1000px">
                                     <thead>
                                         <tr>
                                             <th>User</th>
@@ -336,7 +336,7 @@
                     <!-- End Pagination -->
                   </div>
                 </div>
-                <div class="col-lg-4 col-xl-3 pb-5">
+                <div class=" col-xl-3 pb-5">
                     <div class="user-filter px-3 py-2">
                         <div class="user-filter-header py-3">
                             <h1>Filter</h1>

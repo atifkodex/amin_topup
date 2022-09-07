@@ -64,7 +64,7 @@ font-size: 18px;
     color: white;
     border: none;
     height: 50px;
-    width: 300px;
+    width: 250px;
     border-radius: 10px;
 }
 .login-footer p{
@@ -308,8 +308,8 @@ border-radius: 10px;
 .stripe-key-btn button{
   background: #063A6D;
   border-radius: 7px;
-  height: 56px;
-  width: 270px;
+  height: 50px;
+  width: 200px;
   color: white;
   font-size: 18px;
   border: none;
@@ -447,7 +447,7 @@ background: transparent !important;
   }
 }
 .support-description-button button{
-  width:180px;
+  width:150px;
   height: 38px;
   border-radius: 6px;
   border: none;

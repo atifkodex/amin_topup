@@ -76,13 +76,14 @@
  
   .success-notification p span{
     color: rgba(61, 171, 37, 1);
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     padding-right: 5px;
   }
   .notification-profile p{
    color:  rgba(0, 0, 0, 1);
    margin-bottom: 0px;
+   font-size: 14px;
   }
   .notification-profile p:hover{
     text-decoration: none !important;
