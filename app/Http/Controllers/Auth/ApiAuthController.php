@@ -103,7 +103,7 @@ class ApiAuthController extends Controller
             return $this->sendError(implode(",", $validator->errors()->all()), []);
         }
         $user = User::find($request->id);
-        // dd($user);
+
         if (isset($request->name) && !empty($request->name)) {
             $user->name = $request->name;
         }
@@ -122,19 +122,9 @@ class ApiAuthController extends Controller
         if (isset($request->country) && !empty($request->country)) {
             $user->country = $request->country;
         }
-        // dd($user);
+
         $userResult = $user->save();
 
-
-        // $user =  User::where('id', $user_auth->id)->update([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'phone_number' => $request->phone_number,
-        //     'profile' => $request->profile,
-        //     'date_of_birth' => $request->date_of_birth,
-        //     'country' => $request->country
-
-        // ]);
         if ($userResult) {
             // Save data for notification 
             $notification = new NotificationLog;
