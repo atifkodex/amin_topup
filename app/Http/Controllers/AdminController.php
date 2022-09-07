@@ -212,4 +212,42 @@ class AdminController extends Controller
 
         // return redirect()->back()->with(['success' => 'Contact Form Submit Successfully']);
     }
+
+    public function TransactionList(Request $request)
+    {   
+        if(isset($request->email) && !empty($request->email)){
+            $transactions = Transaction::where('receiver_email' ,$request->email)->get(); 
+        }
+        if(isset($request->country) && !empty($request->country)){
+            $transactions = Transaction::where('country' ,$request->country)->get(); 
+        }
+        if(isset($request->number) && !empty($request->number)){
+            $transactions = Transaction::where('receiver_number' ,$request->number)->get(); 
+        }
+        if(isset($request->date) && !empty($request->date)){
+            $transactions = Transaction::where('created_at' ,$request->date)->get(); 
+        }
+        if(count($request->all()) == 0){
+            $transactions = Transaction::get(); 
+        }
+        if(isset($request->name) && !empty($request->name)){
+            $user = User::where('name', $request->name)->pluck('id')->first();
+            $transactions = Transaction::where('user_id', $user)->get();
+            if(count($transactions) > 0) {
+                foreach($transactions as $transaction) {
+                    $transaction['senderName'] = $request->name;
+                }
+            }else{
+                return $this->sendError("No Transaction found for user");
+            }
+        }
+        if(count($transactions) > 0) {
+            foreach($transactions as $transaction) {
+                $transaction['senderName'] = User::where('id', $transaction['user_id'])->pluck('name')->first();
+            }
+            return $this->sendResponse($transactions, 'All transactions');
+        }else{
+                return $this->sendError("No Transaction found for user");
+            }
+    }
 }

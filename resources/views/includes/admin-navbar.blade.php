@@ -184,7 +184,7 @@
             </a>
           </li>
           <li>
-            <a href="{{url('transaction')}}">
+            <a href="{{route('transactionList')}}">
               <img class="active-icon" src="{{asset('assets/images/transection-icon-active.svg')}}" alt="transection-icon">
               <img class="normal-icon" src="{{asset('assets/images/transection-icon.svg')}}" alt="transection-icon">
               All Transaction
