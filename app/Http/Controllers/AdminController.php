@@ -87,12 +87,12 @@ class AdminController extends Controller
     // Admin Dashboard API 
     public function adminDashboard(Request $request)
     {
-        if(isset($request->date) && !empty($request->date)){
+        if (isset($request->date) && !empty($request->date)) {
             // $requestDate = $request->date;
             $date = date("Y-m-d", strtotime($request->date));
-            
+
             // dd(is_string($requestDate));
-        }else{
+        } else {
             $date = Carbon::now();
         }
         $allUsers = User::all()->count();
@@ -149,22 +149,22 @@ class AdminController extends Controller
         }
 
         // Generate Response 
-        if(isset($request->date) && !empty($request->date)){
-            $success['date'] = $date; 
-        }else{
-            $success['date'] = $date->format('d M Y'); 
+        if (isset($request->date) && !empty($request->date)) {
+            $success['date'] = $date;
+        } else {
+            $success['date'] = $date->format('d M Y');
         }
-        $success['allUsers'] = $allUsers; 
-        $success['usersOnDate'] = $usersOnDate; 
-        $success['sales'] = $sales; 
-        $success['salesAfn'] = $salesAfn; 
-        $success['awccPercentage'] = $awccPercentage; 
-        $success['roshanPercentage'] = $roshanPercentage; 
-        $success['etisalatPercentage'] = $etisalatPercentage; 
-        $success['salaamPercentage'] = $salaamPercentage; 
-        $success['afghanTelecomPercentage'] = $afghanTelecomPercentage; 
-        $success['mtnPercentage'] = $mtnPercentage; 
-        $success['latestTransaction'] = $latestTransaction; 
+        $success['allUsers'] = $allUsers;
+        $success['usersOnDate'] = $usersOnDate;
+        $success['sales'] = $sales;
+        $success['salesAfn'] = $salesAfn;
+        $success['awccPercentage'] = $awccPercentage;
+        $success['roshanPercentage'] = $roshanPercentage;
+        $success['etisalatPercentage'] = $etisalatPercentage;
+        $success['salaamPercentage'] = $salaamPercentage;
+        $success['afghanTelecomPercentage'] = $afghanTelecomPercentage;
+        $success['mtnPercentage'] = $mtnPercentage;
+        $success['latestTransaction'] = $latestTransaction;
         return $this->sendResponse($success, 'Dashboard Details');
     }
 
