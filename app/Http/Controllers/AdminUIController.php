@@ -20,6 +20,10 @@ class AdminUIController extends Controller
 {
     use ResponseTrait;
 
+    public function loginPage(){
+        return view('pages.auth.login');
+    }
+
     // Admin Login 
     public function adminLogin(Request $request)
     {
