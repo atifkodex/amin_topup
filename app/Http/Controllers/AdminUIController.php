@@ -137,22 +137,33 @@ class AdminUIController extends Controller
         $response = json_decode($convertor, true);
 
         $data = $response['data']['users'];
-        // dd($data);
-        return view('pages.transaction', ['data' => $data]);
+        return view('pages.user', ['data' => $data]);
     }
 
     public function transactionList(){
         $value = Session::get('loginData');
         $token = $value['user']['token'];
-
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/public/api/admin/settings',);
+        ])->post('http://kodextech.net/amin-topup/public/api/admin/transactions');
         $convertor = $response->body();
         $response = json_decode($convertor, true);
         $data = $response['data'];
-        return view('pages.transaction');
+        return view('pages.transaction', ['data' => $data]);
+    }
 
+    public function transactionsList(Request $request){
+        dd('alert');
+        $value = Session::get('loginData');
+        $token = $value['user']['token'];
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post('http://kodextech.net/amin-topup/public/api/admin/transactions', $request->all());
+        $convertor = $response->body();
+        $response = json_decode($convertor, true);
+        $data = $response['data'];
+        return view('pages.transaction', ['data' => $data]);
     }
 }

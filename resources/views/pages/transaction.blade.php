@@ -1,392 +1,178 @@
 @extends('layouts.admin-default')
 <style>
-    .user-select-row select{
-        width: 80px;
-        border: 1px solid #012245;
-        font-size: 12px;
-        color: #012245
-    }
-    .user-select-row select:active,.user-select-row select:focus{
-        outline: none;
-        box-shadow: none;
-        border: 1px solid #012245;
-    }
-    /* #table-id thead tr th:first-of-type,#table-id tbody tr td:first-of-type{
+.user-select-row select {
+    width: 80px;
+    border: 1px solid #012245;
+    font-size: 12px;
+    color: #012245
+}
+
+.user-select-row select:active,
+.user-select-row select:focus {
+    outline: none;
+    box-shadow: none;
+    border: 1px solid #012245;
+}
+
+/* #table-id thead tr th:first-of-type,#table-id tbody tr td:first-of-type{
         display: none
     } */
-    .setting-card-body-inner{
-        overflow-x:auto;
-        height:680px !important;
-        overflow-y: hidden !important;
-    }
-    #table-id tbody tr td{
+.setting-card-body-inner {
+    overflow-x: auto;
+    height: 680px !important;
+    overflow-y: hidden !important;
+}
+
+#table-id tbody tr td {
     background: #f1efef;
- 
-    }
+
+}
 </style>
 @section('content')
-    @include('includes.admin-navbar')
-    <div class="right-sidebar">
-        <div class="container-fluid">
-            <div class="setting-heading pl-4">
-                <h1>All Transaction</h1>
-            </div>
-            <div class="row">
-                <div class=" col-lg-8 col-xl-9">
-                  <div class="transection-tble-main">
+@include('includes.admin-navbar')
+<div class="right-sidebar">
+    <div class="container-fluid">
+        <div class="setting-heading pl-4">
+            <h1>All Transaction</h1>
+        </div>
+        <div class="row">
+            <div class=" col-lg-8 col-xl-9">
+                <div class="transection-tble-main">
                     <!-- Latest Transactions -->
                     <div class="latest-transection-sec mt-0">
                         <div class="row">
-                        <div class="col-12">
-                        <div class="setting-card-body-inner Flipped">   
-                            <div class="form-group user-select-row"> 	
-                                <!-- Show Numbers Of Rows -->
-                                <select class  ="form-control d-none" name="state" id="maxRows">
-                                    <option value="5000">ALL</option>
-                                    <option value="5">5</option>
-                                    <option value="10">10</option>
-                                    <option value="15">15</option>
-                                    <option value="20">20</option>
-                                    <option value="50">50</option>
-                                    <option value="70">70</option>
-                                    <option value="100">100</option>
-                                </select>                
-                                </div>    
-                                                         
-                                <table id="table-id" class="mr-3 mb-3" style="width: 1300px">
-                                    <thead>
-                                        <tr>
-                                            <th>Transaction ID</th>
-                                            <th>Sender Name</th>
-                                            <th>Receiver Phone Number</th>
-                                            <th>Network</th>
-                                            <th>Topup Amount</th>
-                                            <th>Topup Amount in USD</th>
-                                            <th>Stripe Fee</th>
-                                            <th>Total Payment in USD</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
-                                        
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">AWCC</td>
-                                            <td class="data">6000.76</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">$ 3.0</td>
-                                            <td class="data">$ 50</td>
-                                            <td class="data success">Sucess</td>
-                                           
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">AWCC</td>
-                                            <td class="data">6000.76</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">$ 3.0</td>
-                                            <td class="data">$ 50</td>
-                                            <td class="data success">Sucess</td>
-                                           
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">AWCC</td>
-                                            <td class="data">6000.76</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">$ 3.0</td>
-                                            <td class="data">$ 50</td>
-                                            <td class="data success">Sucess</td>
-                                           
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">AWCC</td>
-                                            <td class="data">6000.76</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">$ 3.0</td>
-                                            <td class="data">$ 50</td>
-                                            <td class="data success">Sucess</td>
-                                           
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">AWCC</td>
-                                            <td class="data">6000.76</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">$ 3.0</td>
-                                            <td class="data">$ 50</td>
-                                            <td class="data success">Sucess</td>
-                                           
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">AWCC</td>
-                                            <td class="data">6000.76</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">$ 3.0</td>
-                                            <td class="data">$ 50</td>
-                                            <td class="data success">Sucess</td>
-                                           
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">AWCC</td>
-                                            <td class="data">6000.76</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">$ 3.0</td>
-                                            <td class="data">$ 50</td>
-                                            <td class="data success">Sucess</td>
-                                           
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">AWCC</td>
-                                            <td class="data">6000.76</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">$ 3.0</td>
-                                            <td class="data">$ 50</td>
-                                            <td class="data success">Sucess</td>
-                                           
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">AWCC</td>
-                                            <td class="data">6000.76</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">$ 3.0</td>
-                                            <td class="data">$ 50</td>
-                                            <td class="data success">Sucess</td>
-                                           
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">AWCC</td>
-                                            <td class="data">6000.76</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">$ 3.0</td>
-                                            <td class="data">$ 50</td>
-                                            <td class="data success">Sucess</td>
-                                           
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">AWCC</td>
-                                            <td class="data">6000.76</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">$ 3.0</td>
-                                            <td class="data">$ 50</td>
-                                            <td class="data success">Sucess</td>
-                                           
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">AWCC</td>
-                                            <td class="data">6000.76</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">$ 3.0</td>
-                                            <td class="data">$ 50</td>
-                                            <td class="data success">Sucess</td>
-                                           
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">AWCC</td>
-                                            <td class="data">6000.76</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">$ 3.0</td>
-                                            <td class="data">$ 50</td>
-                                            <td class="data success">Sucess</td>
-                                           
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">AWCC</td>
-                                            <td class="data">6000.76</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">$ 3.0</td>
-                                            <td class="data">$ 50</td>
-                                            <td class="data success">Sucess</td>
-                                           
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        <tr>
-                                            <td class="data">#213652</td>
-                                            <td class="data">Muhammad Ali</td>
-                                            <td class="data">+93 700 00 00 0000</td>
-                                            <td class="data">AWCC</td>
-                                            <td class="data">6000.76</td>
-                                            <td class="data">1.30</td>
-                                            <td class="data">$ 3.0</td>
-                                            <td class="data">$ 50</td>
-                                            <td class="data success">Sucess</td>
-                                           
-                                            <td class="data">
-                                                <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                            </td>
-                                           
-                                        </tr>
-                                        
-                                        
-                                        
-                                  
-                                    </tbody>               
-                                </table>
+                            <div class="col-12">
+                                <div class="setting-card-body-inner Flipped">
+                                    <div class="form-group user-select-row">
+                                        <!-- Show Numbers Of Rows -->
+                                        <select class="form-control d-none" name="state" id="maxRows">
+                                            <option value="5000">ALL</option>
+                                            <option value="5">5</option>
+                                            <option value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="20">20</option>
+                                            <option value="50">50</option>
+                                            <option value="70">70</option>
+                                            <option value="100">100</option>
+                                        </select>
+                                    </div>
+
+                                    <table id="table-id" class="mr-3 mb-3" style="width: 1300px">
+                                        <thead>
+                                            <tr>
+                                                <th>Transaction ID</th>
+                                                <th>Sender Name</th>
+                                                <th>Receiver Phone Number</th>
+                                                <th>Network</th>
+                                                <th>Topup Amount</th>
+                                                <th>Topup Amount in USD</th>
+                                                <th>Pocessing Fee</th>
+                                                <th>Total Payment in USD</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($data as $transaction)
+                                            <tr class="newData">
+                                                <td class="data">{{$transaction['id']}}</td>
+                                                <td class="data">{{$transaction['senderName']}}</td>
+                                                <td class="data">{{$transaction['receiver_number']}}</td>
+                                                <td class="data">{{$transaction['receiver_network']}}</td>
+                                                <td class="data">{{$transaction['topup_amount']}}</td>
+                                                <td class="data">{{$transaction['topup_amount_usd']}}</td>
+                                                <td class="data">${{$transaction['processing_fee']}}</td>
+                                                <td class="data">$ {{$transaction['total_amount_usd']}}</td>
+                                                @if($transaction['status'] == 0)
+                                                    <td class="data text-danger">
+                                                        False
+                                                    </td>
+                                                @else
+                                                    <td class="data success">
+                                                        Success
+                                                    </td>
+                                                @endif
+                                                <td class="data">
+                                                    <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
+                                                        data-toggle="modal" data-target="#basicsubsModal"
+                                                        style="cursor: pointer">
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                     <!-- Start Pagination -->
-                    <div class='pagination-container' >
+                    <div class='pagination-container'>
                         <nav>
-                            <ul class="pagination">            
-                            <li data-page="prev" id="next">
-                                <span> <i class="fa fa-angle-left"></i> </span>
-                            </li>
-                            <!--	Here the JS Function Will Add the Rows -->
-                            <li data-page="next" id="prev">
-                                <span> <i class="fa fa-angle-right"></i> </span>
-                            </li>
+                            <ul class="pagination">
+                                <li data-page="prev" id="next">
+                                    <span> <i class="fa fa-angle-left"></i> </span>
+                                </li>
+                                <!--	Here the JS Function Will Add the Rows -->
+                                <li data-page="next" id="prev">
+                                    <span> <i class="fa fa-angle-right"></i> </span>
+                                </li>
                             </ul>
                         </nav>
                     </div>
                     <!-- End Pagination -->
-                  </div>
                 </div>
-                <div class="col-lg-4 col-xl-3 pb-5">
-                    <div class="user-filter px-3 py-2">
-                        <div class="user-filter-header py-3">
-                            <h1>Filter</h1>
-                        </div>
-                        <div class="user-filter-form">
-                            <form>
-                                <div class="form-group">
-                                  <label for="username">User Name</label>
-                                  <input type="text" class="form-control" id="username"  placeholder="Type Here..">
-                                  
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email"  placeholder="Type Here..">
-                                    
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="country">Country</label>
-                                    <input type="text" class="form-control" id="country" placeholder="Type Here..">
-                                    
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="userphonenumber">User Phone Number</label>
-                                    <input type="text" class="form-control" id="userphonenumber"  placeholder="Type Here..">
-                                    
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="date">Date</label>
-                                    <input type="text" class="form-control" id="date"  placeholder="Type Here..">
-                                    
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="time">Time</label>
-                                    <input type="text" class="form-control" id="time"  placeholder="Type Here..">
-                                    
-                                  </div>
-                                  <div class="text-center py-3">
-                                    <button>Search</button>
-                                  </div>
-                              
-                              </form>
-                        </div>
+            </div>
+            <div class="col-lg-4 col-xl-3 pb-5">
+                <div class="user-filter px-3 py-2">
+                    <div class="user-filter-header py-3">
+                        <h1>Filter</h1>
+                    </div>
+                    <div class="user-filter-form">
+                        <form method="post" id="transactionFilterForm" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group">
+                                <label for="username">User Name</label>
+                                <input type="text" class="form-control" name="name" id="username" placeholder="Type Here..">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Type Here..">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <input type="text" name="country" class="form-control" id="country" placeholder="Type Here..">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="userphonenumber">User Phone Number</label>
+                                <input type="text" name="number" class="form-control" id="userphonenumber" placeholder="Type Here..">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Date</label>
+                                <input type="text" name="date" class="form-control" id="date" placeholder="Type Here..">
+
+                            </div>
+                            <!-- <div class="form-group">
+                                <label for="time">Time</label>
+                                <input type="text" class="form-control" id="time" placeholder="Type Here..">
+
+                            </div> -->
+                            <div class="text-center py-3">
+                                <button type="submit">Search</button>
+                            </div>
+
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="basicsubsModal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
-    aria-hidden="true">
+</div>
+<div class="modal fade" id="basicsubsModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content user-modal">
             <div class="modal-body px-4">
@@ -437,17 +223,58 @@
 
         </div>
     </div>
-    </div>
-        @endsection
-       @section('inserfooter')
-       <script>
-        getPagination('#table-id');
+</div>
+@endsection
+@section('inserfooter')
 
-        function getPagination(table) {
-        var lastPage = 1;
+<!-- Backend Script for Transaction Page - START  -->
+<script>
+    $("#transactionFilterForm").submit(function (e) {
+        e.preventDefault();
+        var form = $(this);
+        // let route = '{{url("transaction_list")}}';
+        // Ajax call 
+        $.ajax({
+            url: 'http://kodextech.net/amin-topup/public/api/admin/transactions',
+            type: 'POST',
+            dataType: 'json', 
+            data: form.serialize(),
+            success: function(response) {
+                let arr = [];
+                response.data.forEach(element => {
+                    arr.push(element);
+                }); 
+                $(arr).each(function (i, e) {
+                    let div = `<td class="data">${e.id}</td>
+                                <td class="data">${e.senderName}</td>
+                                <td class="data">${e.receiver_number}</td>
+                                <td class="data">${e.receiver_network}</td>
+                                <td class="data">${e.topup_amount}</td>
+                                <td class="data">${e.topup_amount_usd}</td>
+                                <td class="data">${e.processing_fee}</td>
+                                <td class="data">${e.total_amount_usd}</td>
+                                <td class="data">${e.status}</td>
+                                <td class="data">
+                                    <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
+                                        data-toggle="modal" data-target="#basicsubsModal"
+                                        style="cursor: pointer">
+                                </td>`;
+                        $(".newData").html(div);
+                });
+            }
+        });
+    });
+</script>
+<!-- Backend Script for Transaction Page - END  -->
 
-        $('#maxRows')
-            .on('change', function(evt) {
+<script>
+getPagination('#table-id');
+
+function getPagination(table) {
+    var lastPage = 1;
+
+    $('#maxRows')
+        .on('change', function(evt) {
             //$('.paginationprev').html('');						// reset pagination
 
             lastPage = 1;
@@ -469,31 +296,31 @@
                 // each TR in  table and not the header
                 trnum++; // Start Counter
                 if (trnum > maxRows) {
-                // if tr number gt maxRows
+                    // if tr number gt maxRows
 
-                $(this).hide(); // fade it out
+                    $(this).hide(); // fade it out
                 }
                 if (trnum <= maxRows) {
-                $(this).show();
+                    $(this).show();
                 } // else fade in Important in case if it ..
             }); //  was fade out to fade it in
             if (totalRows > maxRows) {
                 // if tr total rows gt max rows option
                 var pagenum = Math.ceil(totalRows / maxRows); // ceil total(rows/maxrows) to get ..
                 //	numbers of pages
-                for (var i = 1; i <= pagenum; ) {
-                // for each page append pagination li
-                $('.pagination #prev')
-                    .before(
-                    '<li data-page="' +
-                        i +
-                        '">\
+                for (var i = 1; i <= pagenum;) {
+                    // for each page append pagination li
+                    $('.pagination #prev')
+                        .before(
+                            '<li data-page="' +
+                            i +
+                            '">\
                                         <span>' +
-                        i++ +
-                        '<span class="sr-only">(current)</span></span>\
+                            i++ +
+                            '<span class="sr-only">(current)</span></span>\
                                         </li>'
-                    )
-                    .show();
+                        )
+                        .show();
                 } // end for i
             } // end if row count > max rows
             $('.pagination [data-page="1"]').addClass('active'); // add active class to the first li
@@ -506,93 +333,95 @@
                 var maxRows = parseInt($('#maxRows').val()); // get Max Rows from select option
 
                 if (pageNum == 'prev') {
-                if (lastPage == 1) {
-                    return;
-                }
-                pageNum = --lastPage;
+                    if (lastPage == 1) {
+                        return;
+                    }
+                    pageNum = --lastPage;
                 }
                 if (pageNum == 'next') {
-                if (lastPage == $('.pagination li').length - 2) {
-                    return;
-                }
-                pageNum = ++lastPage;
+                    if (lastPage == $('.pagination li').length - 2) {
+                        return;
+                    }
+                    pageNum = ++lastPage;
                 }
 
                 lastPage = pageNum;
                 var trIndex = 0; // reset tr counter
                 $('.pagination li').removeClass('active'); // remove active class from all li
-                $('.pagination [data-page="' + lastPage + '"]').addClass('active'); // add active class to the clicked
+                $('.pagination [data-page="' + lastPage + '"]').addClass(
+                    'active'); // add active class to the clicked
                 // $(this).addClass('active');					// add active class to the clicked
                 limitPagging();
                 $(table + ' tr:gt(0)').each(function() {
-                // each tr in table not the header
-                trIndex++; // tr index counter
-                // if tr index gt maxRows*pageNum or lt maxRows*pageNum-maxRows fade if out
-                if (
-                    trIndex > maxRows * pageNum ||
-                    trIndex <= maxRows * pageNum - maxRows
-                ) {
-                    $(this).hide();
-                } else {
-                    $(this).show();
-                } //else fade in
+                    // each tr in table not the header
+                    trIndex++; // tr index counter
+                    // if tr index gt maxRows*pageNum or lt maxRows*pageNum-maxRows fade if out
+                    if (
+                        trIndex > maxRows * pageNum ||
+                        trIndex <= maxRows * pageNum - maxRows
+                    ) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    } //else fade in
                 }); // end of for each tr in table
             }); // end of on click pagination list
             limitPagging();
-            })
-            .val(10)
-            .change();
+        })
+        .val(10)
+        .change();
 
-        // end of on select change
+    // end of on select change
 
-        // END OF PAGINATION
+    // END OF PAGINATION
+}
+
+function limitPagging() {
+    // alert($('.pagination li').length)
+
+    if ($('.pagination li').length > 7) {
+        if ($('.pagination li.active').attr('data-page') <= 3) {
+            $('.pagination li:gt(5)').hide();
+            $('.pagination li:lt(5)').show();
+            $('.pagination [data-page="next"]').show();
         }
+        if ($('.pagination li.active').attr('data-page') > 3) {
+            $('.pagination li:gt(0)').hide();
+            $('.pagination [data-page="next"]').show();
+            for (let i = (parseInt($('.pagination li.active').attr('data-page')) - 2); i <= (parseInt($(
+                    '.pagination li.active').attr('data-page')) + 2); i++) {
+                $('.pagination [data-page="' + i + '"]').show();
 
-        function limitPagging(){
-            // alert($('.pagination li').length)
-
-            if($('.pagination li').length > 7 ){
-                    if( $('.pagination li.active').attr('data-page') <= 3 ){
-                    $('.pagination li:gt(5)').hide();
-                    $('.pagination li:lt(5)').show();
-                    $('.pagination [data-page="next"]').show();
-                }if ($('.pagination li.active').attr('data-page') > 3){
-                    $('.pagination li:gt(0)').hide();
-                    $('.pagination [data-page="next"]').show();
-                    for( let i = ( parseInt($('.pagination li.active').attr('data-page'))  -2 )  ; i <= ( parseInt($('.pagination li.active').attr('data-page'))  + 2 ) ; i++ ){
-                        $('.pagination [data-page="'+i+'"]').show();
-
-                    }
-
-                }
             }
+
         }
+    }
+}
 
-        // $(function() {
-        //     // Just to append id number for each row
-        //     $('table tr:eq(0)').prepend('<th> ID </th>');
+// $(function() {
+//     // Just to append id number for each row
+//     $('table tr:eq(0)').prepend('<th> ID </th>');
 
-        //     var id = 0;
+//     var id = 0;
 
-        //     $('table tr:gt(0)').each(function() {
-        //         id++;
-        //         $(this).prepend('<td>' + id + '</td>');
-        //     });
-        // });
+//     $('table tr:gt(0)').each(function() {
+//         id++;
+//         $(this).prepend('<td>' + id + '</td>');
+//     });
+// });
+</script>
 
-    </script>
-
-    <script>
-        $( document ).ready(function() {
-            $("#next span").click(function(){
-                $('#next').addClass('active');
-            });
-            $("#prev span").click(function(){
-                $('#prev').addClass('active');
-            });
-        });
-    </script>
-            <script>
-                $('.sidebar-menu ul li:nth-of-type(3)').addClass('active');
-            </script>
-        @endsection
+<script>
+$(document).ready(function() {
+    $("#next span").click(function() {
+        $('#next').addClass('active');
+    });
+    $("#prev span").click(function() {
+        $('#prev').addClass('active');
+    });
+});
+</script>
+<script>
+$('.sidebar-menu ul li:nth-of-type(3)').addClass('active');
+</script>
+@endsection

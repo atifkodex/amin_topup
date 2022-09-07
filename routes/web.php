@@ -27,6 +27,7 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::post('/admin_reply', [AdminUIController::class, 'reply'])->name('admin.reply');
     Route::post('/user_list', [AdminUIController::class, 'user_list'])->name('admin.user_list');
     Route::get('/transactions', [AdminUIController::class, 'transactionList'])->name('transactionList');
+    Route::post('/transaction_list', [AdminUIController::class, 'transactionsList'])->name('transactionsList');
 });
 
 Route::get('/', function () {
