@@ -123,7 +123,7 @@ class SettingController extends Controller
         }
         $success = $operator -> save();
         if ($success){
-            return $this->sendResponse($network,"Data saved successfully");
+            return $this->sendResponse($success,"Data saved successfully");
         }else{
             return $this->sendError("Something went wrong");
         }
