@@ -177,7 +177,7 @@
             </a>
           </li>
           <li>
-            <a href="{{url('user')}}">
+            <a href="{{route('user')}}">
               <img class="active-icon" src="{{asset('assets/images/user-icon-active.svg')}}" alt="user-icon">
               <img class="normal-icon" src="{{asset('assets/images/user-icon.svg')}}" alt="user-icon">
               User

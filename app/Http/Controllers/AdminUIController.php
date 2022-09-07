@@ -121,7 +121,7 @@ class AdminUIController extends Controller
     }
     public function user_list(Request $request)
     {
-
+        dd('coming');
 
         $value = Session::get('loginData');
 
@@ -136,7 +136,7 @@ class AdminUIController extends Controller
         $response = json_decode($convertor, true);
 
         $data = $response['data']['users'];
-        // dd($data);
+
         return view('pages.transaction', ['data' => $data]);
     }
 }
