@@ -28,8 +28,8 @@ Route::middleware([IsAdmin::class])->group(function () {
 });
 
 
-    Route::get('/', [AdminUIController::class, 'loginPage']);
-    Route::get('/login', [AdminUIController::class, 'loginPage']);
+    Route::post('/', [AdminUIController::class, 'loginPage']);
+    Route::post('/login', [AdminUIController::class, 'loginPage']);
 
 Route::get('/sign-up', function () {
     return view('pages.auth.sign-up');
