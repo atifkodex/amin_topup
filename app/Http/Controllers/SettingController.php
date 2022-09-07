@@ -121,5 +121,12 @@ class SettingController extends Controller
         if(isset($request->product_code_stripe) && !empty($request->product_code_stripe)) {
             $operator->product_code_stripe = $request->product_code_stripe;
         }
+        $success = $operator -> save();
+        if ($success){
+            return $this->sendResponse($network,"Data saved successfully");
+        }else{
+            return $this->sendError("Something went wrong");
+        }
+
     }
 }
