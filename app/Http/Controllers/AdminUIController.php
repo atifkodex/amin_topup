@@ -137,6 +137,6 @@ class AdminUIController extends Controller
 
         $data = $response['data']['users'];
         // dd($data);
-        return view('pages.support', ['data' => $data]);
+        return view('pages.transaction', ['data' => $data]);
     }
 }

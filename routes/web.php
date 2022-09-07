@@ -25,6 +25,7 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::get('/setting', [AdminUIController::class, 'settingDetails'])->name('setting-details');
     Route::get('/support_page', [AdminUIController::class, 'support'])->name('support-page');
     Route::post('/admin_reply', [AdminUIController::class, 'reply'])->name('admin.reply');
+    Route::post('/user_list', [AdminUIController::class, 'user_list'])->name('admin.user_list');
 });
 
 Route::get('/', function () {
@@ -54,9 +55,9 @@ Route::get('/sign-up', function () {
 Route::get('/user', function () {
     return view('pages.user');
 });
-Route::get('/transaction', function () {
-    return view('pages.transaction');
-});
+// Route::get('/transaction', function () {
+//     return view('pages.transaction');
+// });
 
 Route::get('/sucess', function () {
     return view('pages.sucess');
