@@ -48,7 +48,7 @@
                             </tr>
                             @foreach($data[0]['operator_data'] as $oprator)
                               <tr>
-                                <td class="data">-{{$oprator['denomination']}}</td>
+                                <td class="">-{{$oprator['denomination']}}</td>
                                 <td class="data topupAfn">{{$oprator['denomination']}}</td>
                                 <td class=" afterTax_d">{{$oprator['afterTax']}}</td>
                                 <td class="data exchange_rate">{{$oprator['exchange_rate']}}</td>
@@ -101,7 +101,7 @@
                         </tr>
                         @foreach($data[1]['operator_data'] as $oprator)
                               <tr>
-                                <td class="data">-{{$oprator['denomination']}}</td>
+                                <td class="">-{{$oprator['denomination']}}</td>
                                 <td class="data topupAfn">{{$oprator['denomination']}}</td>
                                 <td class=" afterTax_d">{{$oprator['afterTax']}}</td>
                                 <td class="data exchange_rate">{{$oprator['exchange_rate']}}</td>
@@ -205,7 +205,7 @@
                         </tr>
                         @foreach($data[2]['operator_data'] as $oprator)
                               <tr>
-                                <td class="data">-{{$oprator['denomination']}}</td>
+                                <td class="">-{{$oprator['denomination']}}</td>
                                 <td class="data topupAfn">{{$oprator['denomination']}}</td>
                                 <td class=" afterTax_d">{{$oprator['afterTax']}}</td>
                                 <td class="data exchange_rate">{{$oprator['exchange_rate']}}</td>
@@ -256,7 +256,7 @@
                         </tr>
                         @foreach($data[3]['operator_data'] as $oprator)
                               <tr>
-                                <td class="data">-{{$oprator['denomination']}}</td>
+                                <td class="">-{{$oprator['denomination']}}</td>
                                 <td class="data topupAfn">{{$oprator['denomination']}}</td>
                                 <td class=" afterTax_d">{{$oprator['afterTax']}}</td>
                                 <td class="data exchange_rate">{{$oprator['exchange_rate']}}</td>
@@ -308,7 +308,7 @@
                         </tr>
                         @foreach($data[4]['operator_data'] as $oprator)
                               <tr>
-                                <td class="data">-{{$oprator['denomination']}}</td>
+                                <td class="">-{{$oprator['denomination']}}</td>
                                 <td class="data topupAfn">{{$oprator['denomination']}}</td>
                                 <td class=" afterTax_d">{{$oprator['afterTax']}}</td>
                                 <td class="data exchange_rate">{{$oprator['exchange_rate']}}</td>
@@ -361,7 +361,7 @@
                         </tr>
                         @foreach($data[5]['operator_data'] as $oprator)
                           <tr>
-                            <td class="data">-{{$oprator['denomination']}}</td>
+                            <td class="">-{{$oprator['denomination']}}</td>
                             <td class="data topupAfn">{{$oprator['denomination']}}</td>
                             <td class=" afterTax_d">{{$oprator['afterTax']}}</td>
                             <td class="data exchange_rate">{{$oprator['exchange_rate']}}</td>

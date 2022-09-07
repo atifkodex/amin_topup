@@ -69,5 +69,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], f
     Route::post('/dashboard', [AdminController::class, 'adminDashboard']);
     Route::post('/reply_send', [AdminController::class, 'replySend'])->name('reply_send.api');
     Route::post('/settings', [SettingController::class, 'settingsData']);
+    Route::post('/update_operator', [SettingController::class, 'updateOperator']);
 });
 // Admin Panel API's END------- 

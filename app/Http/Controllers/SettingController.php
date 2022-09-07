@@ -90,4 +90,36 @@ class SettingController extends Controller
         return $this->sendError("No Data available");
 
     }
+
+    public function updateOperator(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|exists:topup_details,id'
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError(implode(",", $validator->errors()->all()), []);
+        }
+
+        $operator = TopupDetails::find($request->id);
+        $operator->denomination = $request->denomination;
+        $operator->topup_usd = $request->topup_usd;
+        if(isset($request->exchange_rate) && !empty($request->exchange_rate)) {
+            $operator->exchange_rate = $request->exchange_rate;
+        }
+        if(isset($request->fee_percentage) && !empty($request->fee_percentage)) {
+            $operator->fee_percentage = $request->fee_percentage;
+        }
+        if(isset($request->stripe_fee) && !empty($request->stripe_fee)) {
+            $operator->stripe_fee = $request->stripe_fee;
+        }
+
+        $operator->operator_id = $request->operator_id;
+        
+        if(isset($request->product_code_topup) && !empty($request->product_code_topup)) {
+            $operator->product_code_topup = $request->product_code_topup;
+        }
+        if(isset($request->product_code_stripe) && !empty($request->product_code_stripe)) {
+            $operator->product_code_stripe = $request->product_code_stripe;
+        }
+    }
 }
