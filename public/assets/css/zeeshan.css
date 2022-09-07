@@ -79,14 +79,13 @@ html {
 .login-email-field input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #E5E5E5 inset !important;
 }
-
-.login-btn {
-  background-color: #063A6D;
-  color: white;
-  border: none;
-  height: 50px;
-  width: 300px;
-  border-radius: 10px;
+.login-btn{
+    background-color:#063A6D ;
+    color: white;
+    border: none;
+    height: 50px;
+    width: 250px;
+    border-radius: 10px;
 }
 
 .login-footer p {
@@ -372,8 +371,8 @@ html {
 .stripe-key-btn button {
   background: #063A6D;
   border-radius: 7px;
-  height: 56px;
-  width: 270px;
+  height: 50px;
+  width: 200px;
   color: white;
   font-size: 18px;
   border: none;
@@ -536,9 +535,8 @@ html {
     margin-top: 10px;
   }
 }
-
-.support-description-button button {
-  width: 180px;
+.support-description-button button{
+  width:150px;
   height: 38px;
   border-radius: 6px;
   border: none;

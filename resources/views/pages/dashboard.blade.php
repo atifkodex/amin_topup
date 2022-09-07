@@ -299,7 +299,7 @@
                                         <option value="100">100</option>
                                     </select>
                                 </div>
-                                <table id="table-id" style="width: 1600px;">
+                                <table id="table-id" style="width: 1300px;">
                                     <thead>
                                         <tr>
                                             <th>Transaction ID</th>
