@@ -96,22 +96,36 @@ class ApiAuthController extends Controller
     {
         $user_auth = auth()->user();
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email|unique:users,email,' . $user_auth->id,
+            'id' => 'required',
+            'email' => 'email|unique:users,email,' . $user_auth->id
         ]);
         if ($validator->fails()) {
             return $this->sendError(implode(",", $validator->errors()->all()), []);
         }
+        $user = User::find($request->id);
 
-        $user =  User::where('id', $user_auth->id)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone_number' => $request->phone_number,
-            'profile' => $request->profile,
-            'date_of_birth' => $request->date_of_birth,
-            'country' => $request->country
+        if (isset($request->name) && !empty($request->name)) {
+            $user->name = $request->name;
+        }
+        if (isset($request->email) && !empty($request->email)) {
+            $user->email = $request->email;
+        }
+        if (isset($request->phone_number) && !empty($request->phone_number)) {
+            $user->phone_number = $request->phone_number;
+        }
+        if (isset($request->profile) && !empty($request->profile)) {
+            $user->profile = $request->profile;
+        }
+        if (isset($request->date_of_birth) && !empty($request->date_of_birth)) {
+            $user->date_of_birth = $request->date_of_birth;
+        }
+        if (isset($request->country) && !empty($request->country)) {
+            $user->country = $request->country;
+        }
 
-        ]);
-        if ($user) {
+        $userResult = $user->save();
+
+        if ($userResult) {
             // Save data for notification 
             $notification = new NotificationLog;
             $notification->user_id = auth()->user()->id;
@@ -122,7 +136,7 @@ class ApiAuthController extends Controller
             $success = User::where('id', $user_auth->id)->first();
             return $this->sendResponse($success, 'updated Successfully');
         } else {
-            return $this->sendError("Updation failed. Try again later");
+            return $this->sendError("Updation failed. Please Contact Support");
         }
     }
 }

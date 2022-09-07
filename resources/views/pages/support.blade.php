@@ -39,7 +39,7 @@
                                 <p>Subject</p>
                                 <h1 class="subject">{{$post['subject']}}</h1>
                                 <h1 style="display: none;" class="email">{{$post['user']['email']}}</h1>
-                                <h1 style="display: none;" class="user_id">{{$post['user']['id']}}</h1>
+                                <h1 style="display: none;" class="contacts">{{$post['id']}}</h1>
 
                                 <p>Category</p>
                                 <h1 class="category">{{$post['category']}}</h1>
@@ -106,8 +106,9 @@
                     </div>
                     <div class="user-modal-content d-flex justify-content-start flex-wrap">
                         <p class="pr-2">To:</p>
-                        <p id="email_id" name="email"></p>
-                        <input style="display: none;" type="hidden" value="" id="reciever_id" name="reciever_id">
+                        <div id="email_div" '></div>
+                        <input style="display: none;" type="hidden" value="" id="email" name="email">
+                        <input style="display: none;" type="hidden" value="" id="contacts_id" name="contacts_id">
                     </div>
                     <div class=" user-modal-content">
                         <p>Message:</p>
@@ -127,7 +128,7 @@
 </div>
 
 @endsection
-@section('inserfooter')
+<!-- @section('inserfooter') -->
 <script>
     $('.sidebar-menu ul li:nth-of-type(5)').addClass('active');
 </script>
@@ -138,15 +139,16 @@
         var category = $(this).find('.category').text();
         var description = $(this).find('.description').text();
         var email = $(this).find('.email').text();
-        var user_id = $(this).find('.user_id').text();
+        var user_id = $(this).find('.contacts').text();
 
         $("#category_id").html(category);
         $("#subject_id").html(subject);
         $("#description_id").html(description);
-        $("#email_id").html(email);
-        $("#reciever_id").val(user_id);
+        $("#email").val(email);
+        $("#email_div").html(email);
+        $("#contacts_id").val(user_id);
 
 
     });
 </script>
-@endsection
+<!-- @endsection -->

@@ -53,7 +53,7 @@ class ContactsController extends Controller
     ///........admin side suport........////
     public function user_support()
     {
-        $post = Contacts::with('user:id,name,profile,email')->get();
+        $post = Contacts::where('status', 0)->with('user:id,name,profile,email')->get();
         if ($post) {
 
             return $this->sendResponse(['users' => $post, 'status' => 200], 'Getting Users data Successfully');
