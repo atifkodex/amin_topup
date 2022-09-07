@@ -128,7 +128,7 @@
 </div>
 
 @endsection
-@section('inserfooter')
+<!-- @section('inserfooter') -->
 <script>
     $('.sidebar-menu ul li:nth-of-type(5)').addClass('active');
 </script>
@@ -145,9 +145,10 @@
         $("#subject_id").html(subject);
         $("#description_id").html(description);
         $("#email").val(email);
+        $("#email_div").html(email);
         $("#contacts_id").val(user_id);
 
 
     });
 </script>
-@endsection
+<!-- @endsection -->
