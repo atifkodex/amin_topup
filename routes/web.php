@@ -25,7 +25,7 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::get('/setting', [AdminUIController::class, 'settingDetails'])->name('setting-details');
     Route::get('/support_page', [AdminUIController::class, 'support'])->name('support-page');
     Route::post('/admin_reply', [AdminUIController::class, 'reply'])->name('admin.reply');
-    Route::post('/user', [AdminUIController::class, 'user_list'])->name('user');
+    Route::get('/user', [AdminUIController::class, 'user_list'])->name('user');
 });
 
 Route::get('/', function () {
