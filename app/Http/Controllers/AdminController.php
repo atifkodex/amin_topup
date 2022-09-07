@@ -53,19 +53,19 @@ class AdminController extends Controller
     public function usersList(Request $request)
     {
 
-        $user = (new User())->newQuery()->where('type', 'user');
+        $user = (new Transaction())->newQuery();
         // Check either search by day or month
         if ($request->has('name')) {
-            $user->where('name', $request->name);
+            $user->where('reciever_name', $request->name);
         }
         if ($request->has('email')) {
-            $user->where('email', $request->email);
+            $user->where('receiver_email', $request->email);
         }
         if ($request->has('country')) {
             $user->where('country', $request->country);
         }
         if ($request->has('phone_number')) {
-            $user->where('phone_number', $request->phone_number);
+            $user->where('receiver_number', $request->phone_number);
         }
         if ($request->has('date')) {
 
