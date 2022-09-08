@@ -128,7 +128,7 @@
 </div>
 
 @endsection
-<!-- @section('inserfooter') -->
+@section('inserfooter')
 <script>
     $('.sidebar-menu ul li:nth-of-type(5)').addClass('active');
 </script>
@@ -151,4 +151,4 @@
 
     });
 </script>
-<!-- @endsection -->
+@endsection
