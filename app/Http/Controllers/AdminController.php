@@ -76,11 +76,18 @@ class AdminController extends Controller
         }
 
         $user = $user->get();
-        if (count($user) == 0) {
+        if (count($user) > 0) {
+            foreach ($user as $nuser) {
+                $nuser['last_transaction'] = Transaction::where('user_id', $nuser['id'])->orderBy('created_at', 'desc')->pluck('created_at')->first();
+            }
+        }
+
+        if ($user) {
+
+            return $this->sendResponse(['users' => $user, 'status' => 200], 'Getting Users Successfully');
+        } else {
             $response = 'Field is not match to data';
             return $this->sendError($response, []);
-        } else {
-            return $this->sendResponse(['users' => $user, 'status' => 200], 'Getting Users Successfully');
         }
     }
 

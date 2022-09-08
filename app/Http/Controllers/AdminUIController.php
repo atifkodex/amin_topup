@@ -103,7 +103,7 @@ class AdminUIController extends Controller
 
     public function reply(Request $request)
     {
-        // dd($request->all());
+
         $value = Session::get('loginData');
         $token = $value['user']['token'];
         $data = $request->all();
@@ -122,7 +122,6 @@ class AdminUIController extends Controller
     }
     public function user_list(Request $request)
     {
-
 
         $value = Session::get('loginData');
 
