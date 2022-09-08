@@ -18,7 +18,7 @@ use App\Http\Middleware\IsAdmin;
 
 Route::post('/admin_login', [AdminUIController::class, 'adminLogin'])->name('adminLogin');
 
-Route::middleware('auth:api')->group(function () {
+// Route::middleware('auth:api')->group(function () {
     // Route::middleware([IsAdmin::class])->group(function () {
         Route::post('/support', [AdminUIController::class, 'support'])->name('/support');
         Route::get('/dashboard', [AdminUIController::class, 'dashboardDetails'])->name('dashboard-details');
@@ -30,7 +30,7 @@ Route::middleware('auth:api')->group(function () {
         Route::post('/transaction_list', [AdminUIController::class, 'transactionsList'])->name('transactionsList');
         Route::get('/user', [AdminUIController::class, 'user_list'])->name('user');
     // });
-});
+// });
 
 Route::get('/', function () {
     return view('pages.auth.login');
