@@ -78,7 +78,7 @@ class AdminUIController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/public/api/admin/dashboard', $data);
+        ])->post('http://kodextech.net/amin-topup/public/api/dashboard', $data);
         $convertor = $response->body();
         $response = json_decode($convertor, true);
         $data = $response['data'];
