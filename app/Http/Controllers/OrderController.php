@@ -172,7 +172,7 @@ class OrderController extends Controller
     {
         $loginUserId = Auth::user()->id;
         $topupAmount = Transaction::where('user_id', $loginUserId)->sum('topup_amount_usd');
-        $topups = Transaction::where('user_id', $loginUserId)->get();
+        $topups = Transaction::where('user_id', $loginUserId)->orderBy('created_at', 'desc')->get();
         if(count($topups) > 0){
             $success['totalTopupAmount'] = $topupAmount;
             $success['allTopups'] = $topups;
