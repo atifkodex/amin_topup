@@ -216,7 +216,7 @@
                 </div>
                 <div class="user-modal-button d-flex justify-content-center">
                     <button class="mr-1" id="printBtn">Refund</button>
-                    <button class="ml-1">Download</button>
+                    <button class="ml-1" id="downloadBtn" onclick="getScreenShot()">Download</button>
                 </div>
             </div>
 
@@ -230,6 +230,7 @@
 <!-- PrintThis CDN -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 <script>
     $("#transactionFilterForm").submit(function (e) {
         e.preventDefault();
@@ -299,6 +300,24 @@
             pageTitle: "Transaction Details",
         });
     });
+
+    // $("#downloadBtn").click(function(){
+        function getScreenShot(){
+            let c = $(this).find('#printSection'); // or document.getElementById('canvas');
+            html2canvas(c).then((canvas=any)=>{
+                var t = canvas.toDataURL().replace("data:image/png;base64,", "");
+                this.downloadBase64File('image/png',t,'image');
+            })
+        }
+    
+        function downloadBase64File(contentType=any, base64Data=any, fileName=any) {
+            const linkSource = `data:${contentType};base64,${base64Data}`;
+            const downloadLink = document.createElement("a");
+            downloadLink.href = linkSource;
+            downloadLink.download = fileName;
+            downloadLink.click();
+        }
+    // });
 </script>
 <!-- Backend Script for Transaction Page - END  -->
 
