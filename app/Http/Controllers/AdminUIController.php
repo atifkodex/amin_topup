@@ -122,7 +122,6 @@ class AdminUIController extends Controller
     public function user_list(Request $request)
     {
 
-
         $value = Session::get('loginData');
 
         $token = $value['user']['token'];

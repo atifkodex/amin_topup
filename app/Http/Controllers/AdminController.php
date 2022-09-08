@@ -82,7 +82,6 @@ class AdminController extends Controller
             }
         }
 
-        // $users = $user->groupBy('Dec')->first();
         if ($user) {
 
             return $this->sendResponse(['users' => $user, 'status' => 200], 'Getting Users Successfully');
