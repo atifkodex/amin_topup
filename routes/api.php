@@ -41,7 +41,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
 Route::middleware('auth:api')->group(function () {
     // Route::middleware([IsAdmin::class])->group(function () {
-        // Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], function () {
+        Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], function () {
             Route::post('/dashboard', [AdminController::class, 'adminDashboard']);
             Route::get('/users_list', [UserController::class, 'allUsers']);
             Route::post('/check_operator', [UserController::class, 'networkOperator']);
@@ -52,7 +52,7 @@ Route::middleware('auth:api')->group(function () {
             Route::post('/settings', [SettingController::class, 'settingsData']);
             Route::post('/reply_send', [AdminController::class, 'replySend'])->name('reply_send.api');
             Route::post('/update_operator', [SettingController::class, 'updateOperator']);
-        // });
+        });
     // });
 
     Route::get('/articles', [ArticleController::class, 'index'])->middleware('api.admin')->name('articles');
