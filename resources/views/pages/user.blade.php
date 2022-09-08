@@ -33,7 +33,7 @@
     <div class="right-sidebar">
         <div class="container-fluid">
             <div class="setting-heading pl-4">
-                <h1>User</h1>
+                <h1>All User</h1>
             </div>
             <div class="row">
                 <div class="  col-xl-9">
@@ -364,15 +364,11 @@
                                     
                                   </div>
                                   <div class="form-group">
-                                    <label for="date">Date</label>
-                                    <input type="text" class="form-control" id="date"  placeholder="Type Here..">
+                                    <label for="lpurchase">Last Purchase</label>
+                                    <input type="text" class="form-control" id="lpurchase"  placeholder="Type Here..">
                                     
                                   </div>
-                                  <div class="form-group">
-                                    <label for="time">Time</label>
-                                    <input type="text" class="form-control" id="time"  placeholder="Type Here..">
-                                    
-                                  </div>
+                               
                                   <div class="text-center py-3">
                                     <button>Search</button>
                                   </div>

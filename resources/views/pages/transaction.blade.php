@@ -23,6 +23,7 @@
     background: #f1efef;
  
     }
+
 </style>
 @section('content')
     @include('includes.admin-navbar')
