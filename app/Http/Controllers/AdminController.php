@@ -110,6 +110,7 @@ class AdminController extends Controller
         $salesAfn = Transaction::whereDate('created_at', $date)->sum('topup_amount');
 
         // For Graph Data 
+          
         $allTransactionCount = Transaction::whereDate('created_at', $date)->count();
         $awcc = Transaction::whereDate('created_at', $date)->where('receiver_network', 'AWCC')->count();
         $roshan = Transaction::whereDate('created_at', $date)->where('receiver_network', 'Roshan')->count();
