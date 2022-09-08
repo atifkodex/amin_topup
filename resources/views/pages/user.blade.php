@@ -86,7 +86,7 @@
                                                 <td class="data">{{$post['country']}}</td>
                                                 <td class="data">{{$post['receiver_number']}}</td>
                                                 <!-- $date_arr = explode(" ", $post['created_at']);  -->
-                                                <td class="data"><span class="user-table-time">{{ $post['created_at'] }}</span></td>
+                                                <td class="data"><span class="user-table-time">{{ $post['last_transaction'] }}</span></td>
                                                 <td class="data">
                                                     <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                                 </td>
@@ -150,7 +150,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="date">Date</label>
-                                <input type="text" class="form-control" id="date" placeholder="Type Here.." name="date">
+                                <input type="text" class="form-control" id="date" placeholder="Type Here.." name="">
 
                             </div>
                             <!-- <div class="form-group">
