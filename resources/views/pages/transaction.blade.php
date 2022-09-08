@@ -73,19 +73,19 @@
 
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="newData">
                                             @foreach($data as $transaction)
-                                            <tr class="newData">
-                                                <td class="data">{{$transaction['id']}}</td>
-                                                <td class="data">{{$transaction['senderName']}}</td>
-                                                <td class="data">{{$transaction['receiver_number']}}</td>
-                                                <td class="data">{{$transaction['receiver_network']}}</td>
-                                                <td class="data">{{$transaction['topup_amount']}}</td>
-                                                <td class="data">{{$transaction['topup_amount_usd']}}</td>
-                                                <td class="data">${{$transaction['processing_fee']}}</td>
-                                                <td class="data">$ {{$transaction['total_amount_usd']}}</td>
+                                            <tr>
+                                                <td class="data transactionId">{{$transaction['id']}}</td>
+                                                <td class="data senderName">{{$transaction['senderName']}}</td>
+                                                <td class="data receiverNumber">{{$transaction['receiver_number']}}</td>
+                                                <td class="data network">{{$transaction['receiver_network']}}</td>
+                                                <td class="data topupAmount">{{$transaction['topup_amount']}}</td>
+                                                <td class="data amountUsd">{{$transaction['topup_amount_usd']}}</td>
+                                                <td class="data processingFee">${{$transaction['processing_fee']}}</td>
+                                                <td class="data totalAmountUsd">$ {{$transaction['total_amount_usd']}}</td>
                                                 @if($transaction['status'] == 0)
-                                                    <td class="data text-danger">
+                                                    <td class="data text-danger statusTransaction">
                                                         False
                                                     </td>
                                                 @else
@@ -96,7 +96,7 @@
                                                 <td class="data">
                                                     <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
                                                         data-toggle="modal" data-target="#basicsubsModal"
-                                                        style="cursor: pointer">
+                                                        style="cursor: pointer" class="actionBtnTransaction">
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -181,39 +181,39 @@
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>Transaction ID</p>
-                    <p>#313652</p>
+                    <p id="transactionIdModal">#313652</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>User</p>
-                    <p>Muhammad Ali</p>
+                    <p id="senderNameModal">Muhammad Ali</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>Reciever Phone Number</p>
-                    <p>+93 700 00 00 000</p>
+                    <p id="receiverNumberModal">+93 700 00 00 000</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>Network</p>
-                    <p>AWCC</p>
+                    <p id="networkModal">AWCC</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>Topup Amount</p>
-                    <p>3.00.76</p>
+                    <p id="topupAmountModal">3.00.76</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>Topup Amount in USD</p>
-                    <p>1.30</p>
+                    <p id="amountUsdModal">1.30</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
-                    <p>Strip Fee</p>
-                    <p>$ 3.0</p>
+                    <p>Processing Fee</p>
+                    <p id="processingFeeModal">$ 3.0</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>Total Payment in USD</p>
-                    <p>$ 50</p>
+                    <p id="totalAmountUsdModal">$ 50</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>Status</p>
-                    <p>Success</p>
+                    <p id="statusTransactionModal">Success</p>
                 </div>
                 <div class="user-modal-button d-flex justify-content-center">
                     <button class="mr-1">Print</button>
@@ -243,26 +243,53 @@
                 let arr = [];
                 response.data.forEach(element => {
                     arr.push(element);
-                }); 
+                });
+                $(".newData").empty(); 
                 $(arr).each(function (i, e) {
-                    let div = `<td class="data">${e.id}</td>
-                                <td class="data">${e.senderName}</td>
-                                <td class="data">${e.receiver_number}</td>
-                                <td class="data">${e.receiver_network}</td>
-                                <td class="data">${e.topup_amount}</td>
-                                <td class="data">${e.topup_amount_usd}</td>
-                                <td class="data">${e.processing_fee}</td>
-                                <td class="data">${e.total_amount_usd}</td>
-                                <td class="data">${e.status}</td>
-                                <td class="data">
-                                    <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
-                                        data-toggle="modal" data-target="#basicsubsModal"
-                                        style="cursor: pointer">
-                                </td>`;
-                        $(".newData").html(div);
+                    console.log(i,e)
+                    let div = `<tr>
+                                    <td class="data">${e.id}</td>
+                                    <td class="data">${e.senderName}</td>
+                                    <td class="data">${e.receiver_number}</td>
+                                    <td class="data">${e.receiver_network}</td>
+                                    <td class="data">${e.topup_amount}</td>
+                                    <td class="data">${e.topup_amount_usd}</td>
+                                    <td class="data">${e.processing_fee}</td>
+                                    <td class="data">${e.total_amount_usd}</td>
+                                    <td class="data">${e.status}</td>
+                                    <td class="data">
+                                        <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
+                                            data-toggle="modal" data-target="#basicsubsModal"
+                                            style="cursor: pointer">
+                                    </td>
+                                </tr>`;
+                        $(".newData").append(div);
                 });
             }
         });
+    });
+
+    $(".actionBtnTransaction").click(function(){
+        let transactionId = $(this).parent().parent().find(".transactionId").text();
+        let senderName = $(this).parent().parent().find(".senderName").text();
+        let receiverNumber = $(this).parent().parent().find(".receiverNumber").text();
+        let network = $(this).parent().parent().find(".network").text();
+        let topupAmount = $(this).parent().parent().find(".topupAmount").text();
+        let amountUsd = $(this).parent().parent().find(".amountUsd").text();
+        let processingFee = $(this).parent().parent().find(".processingFee").text();
+        let totalAmountUsd = $(this).parent().parent().find(".totalAmountUsd").text();
+        let statusTransaction = $(this).parent().parent().find(".statusTransaction").text();
+
+        $("#transactionIdModal").text(transactionId);
+        $("#senderNameModal").text(senderName);
+        $("#receiverNumberModal").text(receiverNumber);
+        $("#networkModal").text(network);
+        $("#topupAmountModal").text(topupAmount);
+        $("#amountUsdModal").text(amountUsd);
+        $("#processingFeeModal").text(processingFee);
+        $("#totalAmountUsdModal").text(totalAmountUsd);
+        $("#statusTransactionModal").text(statusTransaction);
+
     });
 </script>
 <!-- Backend Script for Transaction Page - END  -->

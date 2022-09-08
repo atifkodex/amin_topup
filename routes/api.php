@@ -71,5 +71,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], f
     Route::post('/settings', [SettingController::class, 'settingsData']);
     Route::post('/update_operator', [SettingController::class, 'updateOperator']);
     Route::post('/transactions', [AdminController::class, 'TransactionList']);
+    Route::post('/', [AdminController::class, 'TransactionList']);
 });
 // Admin Panel API's END------- 
