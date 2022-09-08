@@ -41,7 +41,6 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
 Route::middleware('auth:api')->group(function () {
     Route::middleware([IsAdmin::class])->group(function () {
-
         // Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], function () {
             Route::get('/users_list', [UserController::class, 'allUsers']);
             Route::post('/check_operator', [UserController::class, 'networkOperator']);
