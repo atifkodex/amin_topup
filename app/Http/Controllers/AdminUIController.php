@@ -19,7 +19,15 @@ use Illuminate\Support\Facades\Session;
 class AdminUIController extends Controller
 {
     use ResponseTrait;
-
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     // Admin Login 
     public function adminLogin(Request $request)

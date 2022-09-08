@@ -20,6 +20,7 @@ Route::post('/admin_login', [AdminUIController::class, 'adminLogin'])->name('adm
 
 // Route::middleware('auth:api')->group(function () {
     // Route::middleware([IsAdmin::class])->group(function () {
+    Route::group(['middleware' => ['is_admin']], function () {
         Route::post('/support', [AdminUIController::class, 'support'])->name('/support');
         Route::get('/dashboard', [AdminUIController::class, 'dashboardDetails'])->name('dashboard-details');
         Route::get('/setting', [AdminUIController::class, 'settingDetails'])->name('setting-details');
@@ -29,7 +30,7 @@ Route::post('/admin_login', [AdminUIController::class, 'adminLogin'])->name('adm
         Route::get('/transactions', [AdminUIController::class, 'transactionList'])->name('transactionList');
         Route::post('/transaction_list', [AdminUIController::class, 'transactionsList'])->name('transactionsList');
         Route::get('/user', [AdminUIController::class, 'user_list'])->name('user');
-    // });
+    });
 // });
 
 Route::get('/', function () {
