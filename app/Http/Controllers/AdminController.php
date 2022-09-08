@@ -226,14 +226,14 @@ class AdminController extends Controller
 
     public function TransactionList(Request $request)
     {   
-        if(isset($request->email) && !empty($request->email)){
-            $transactions = Transaction::where('receiver_email' ,$request->email)->get(); 
+        if(isset($request->network) && !empty($request->network)){
+            $transactions = Transaction::where('receiver_network' ,$request->network)->get(); 
         }
         if(isset($request->country) && !empty($request->country)){
             $transactions = Transaction::where('country' ,$request->country)->get(); 
         }
-        if(isset($request->number) && !empty($request->number)){
-            $transactions = Transaction::where('receiver_number' ,$request->number)->get(); 
+        if(isset($request->amountTopup) && !empty($request->amountTopup)){
+            $transactions = Transaction::where('topup_amount' ,$request->amountTopup)->get(); 
         }
         if(isset($request->date) && !empty($request->date)){
             $transactions = Transaction::whereDate('created_at' ,$request->date)->get(); 
