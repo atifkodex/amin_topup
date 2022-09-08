@@ -176,47 +176,50 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content user-modal">
             <div class="modal-body px-4">
-                <div class="user-modal-header py-3">
-                    <h1>Transaction Details</h1>
-                </div>
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>Transaction ID</p>
-                    <p id="transactionIdModal">#313652</p>
-                </div>
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>User</p>
-                    <p id="senderNameModal">Muhammad Ali</p>
-                </div>
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>Reciever Phone Number</p>
-                    <p id="receiverNumberModal">+93 700 00 00 000</p>
-                </div>
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>Network</p>
-                    <p id="networkModal">AWCC</p>
-                </div>
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>Topup Amount</p>
-                    <p id="topupAmountModal">3.00.76</p>
-                </div>
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>Topup Amount in USD</p>
-                    <p id="amountUsdModal">1.30</p>
-                </div>
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>Processing Fee</p>
-                    <p id="processingFeeModal">$ 3.0</p>
-                </div>
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>Total Payment in USD</p>
-                    <p id="totalAmountUsdModal">$ 50</p>
-                </div>
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>Status</p>
-                    <p id="statusTransactionModal">Success</p>
+                <div id="printSection">
+
+                    <div class="user-modal-header py-3">
+                        <h1>Transaction Details</h1>
+                    </div>
+                    <div class="user-modal-content d-flex justify-content-between">
+                        <p>Transaction ID</p>
+                        <p id="transactionIdModal">#313652</p>
+                    </div>
+                    <div class="user-modal-content d-flex justify-content-between">
+                        <p>User</p>
+                        <p id="senderNameModal">Muhammad Ali</p>
+                    </div>
+                    <div class="user-modal-content d-flex justify-content-between">
+                        <p>Reciever Phone Number</p>
+                        <p id="receiverNumberModal">+93 700 00 00 000</p>
+                    </div>
+                    <div class="user-modal-content d-flex justify-content-between">
+                        <p>Network</p>
+                        <p id="networkModal">AWCC</p>
+                    </div>
+                    <div class="user-modal-content d-flex justify-content-between">
+                        <p>Topup Amount</p>
+                        <p id="topupAmountModal">3.00.76</p>
+                    </div>
+                    <div class="user-modal-content d-flex justify-content-between">
+                        <p>Topup Amount in USD</p>
+                        <p id="amountUsdModal">1.30</p>
+                    </div>
+                    <div class="user-modal-content d-flex justify-content-between">
+                        <p>Processing Fee</p>
+                        <p id="processingFeeModal">$ 3.0</p>
+                    </div>
+                    <div class="user-modal-content d-flex justify-content-between">
+                        <p>Total Payment in USD</p>
+                        <p id="totalAmountUsdModal">$ 50</p>
+                    </div>
+                    <div class="user-modal-content d-flex justify-content-between">
+                        <p>Status</p>
+                        <p id="statusTransactionModal">Success</p>
+                    </div>
                 </div>
                 <div class="user-modal-button d-flex justify-content-center">
-                    <button class="mr-1">Print</button>
+                    <button class="mr-1" id="printBtn">Print</button>
                     <button class="ml-1">Download</button>
                 </div>
             </div>
@@ -228,6 +231,9 @@
 @section('inserfooter')
 
 <!-- Backend Script for Transaction Page - START  -->
+<!-- PrintThis CDN -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"></script>
 <script>
     $("#transactionFilterForm").submit(function (e) {
         e.preventDefault();
@@ -290,6 +296,12 @@
         $("#totalAmountUsdModal").text(totalAmountUsd);
         $("#statusTransactionModal").text(statusTransaction);
 
+    });
+
+    $("#printBtn").click(function(){
+        $("#printSection").printThis({
+            pageTitle: "Transaction Details",
+        });
     });
 </script>
 <!-- Backend Script for Transaction Page - END  -->
