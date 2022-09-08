@@ -79,7 +79,9 @@ class AdminController extends Controller
         if (count($user) > 0) {
             foreach ($user as $nuser) {
                 $date = Transaction::where('user_id', $nuser['id'])->orderBy('created_at', 'desc')->pluck('created_at')->first();
-                $nuser['last_transaction'] = $date->format('y-m-d');
+                if(!empty($date)){
+                    $nuser['last_transaction'] = $date->format('y-m-d');
+                }
             }
         }
 
