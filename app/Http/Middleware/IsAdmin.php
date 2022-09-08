@@ -19,10 +19,12 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user() &&  Auth::user()->type == "admin") {
+        $value = Session::get('loginData');
+        $type = $value['user']['type'];
+        if ($type == "admin") {
         return $next($request);
         }
-
-        return redirect('/')->with('error', "you don't have admin access");
+        $message = session::flash('message', "Only admins can access");
+        return redirect('/')->with('error', $message);
     }
 }
