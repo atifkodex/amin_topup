@@ -123,39 +123,39 @@
                         <h1>Filter</h1>
                     </div>
                     <div class="user-filter-form">
-                        <form>
+                        <form action="{{route('user')}}" method="GET">
                             <div class="form-group">
                                 <label for="username">User Name</label>
-                                <input type="text" class="form-control" id="username" placeholder="Type Here..">
+                                <input type="text" class="form-control" id="username" placeholder="Type Here.." name="name">
 
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Type Here..">
+                                <input type="email" class="form-control" id="email" placeholder="Type Here.." name="email">
 
                             </div>
                             <div class="form-group">
                                 <label for="country">Country</label>
-                                <input type="text" class="form-control" id="country" placeholder="Type Here..">
+                                <input type="text" class="form-control" id="country" placeholder="Type Here.." name="country">
 
                             </div>
                             <div class="form-group">
                                 <label for="userphonenumber">User Phone Number</label>
-                                <input type="text" class="form-control" id="userphonenumber" placeholder="Type Here..">
+                                <input type="text" class="form-control" id="userphonenumber" placeholder="Type Here.." name="phone_number">
 
                             </div>
                             <div class="form-group">
                                 <label for="date">Date</label>
-                                <input type="text" class="form-control" id="date" placeholder="Type Here..">
+                                <input type="text" class="form-control" id="date" placeholder="Type Here.." name="date">
 
                             </div>
                             <div class="form-group">
                                 <label for="time">Time</label>
-                                <input type="text" class="form-control" id="time" placeholder="Type Here..">
+                                <input type="text" class="form-control" id="time" placeholder="Type Here.." name="time">
 
                             </div>
                             <div class="text-center py-3">
-                                <button>Search</button>
+                                <button type="submit" name="submit">Search</button>
                             </div>
 
                         </form>
