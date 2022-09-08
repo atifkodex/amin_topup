@@ -90,5 +90,16 @@ class UserController extends Controller
         $user = User::where('id', $loginUserId)->first();
         return $this->sendResponse($user, 'User Data');
     }
+
+    public function changePassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'old_pass' => 'required',
+            'new_pass' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError(implode(",", $validator->messages()->all()));
+        }
+    }
     
 }

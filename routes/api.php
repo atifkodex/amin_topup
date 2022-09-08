@@ -53,6 +53,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/image_link', [SettingController::class, 'createImageLink']);
     Route::post('/user_profile', [UserController::class, 'userProfile']);
     Route::post('/reply_send', [AdminController::class, 'replySend'])->name('reply_send.api');
+    Route::post('/change_password', [UserController::class, 'changePassword']);
 });
 
 Route::post('/send_otp', [OtpController::class, 'sendOTP']);
