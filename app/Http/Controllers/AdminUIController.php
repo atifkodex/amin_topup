@@ -58,7 +58,7 @@ class AdminUIController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/public/api/admin/support', $data);
+        ])->post('http://kodextech.net/amin-topup/public/api/support', $data);
         $convertor = $response->body();
         $response = json_decode($convertor, true);
 
@@ -94,7 +94,7 @@ class AdminUIController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/public/api/admin/settings',);
+        ])->post('http://kodextech.net/amin-topup/public/api/settings',);
         $convertor = $response->body();
         $response = json_decode($convertor, true);
         $data = $response['data'];
@@ -131,7 +131,7 @@ class AdminUIController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/public/api/admin/users', $data);
+        ])->post('http://kodextech.net/amin-topup/public/api/users', $data);
         $convertor = $response->body();
         $response = json_decode($convertor, true);
 
@@ -145,7 +145,7 @@ class AdminUIController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/public/api/admin/transactions');
+        ])->post('http://kodextech.net/amin-topup/public/api/transactions');
         $convertor = $response->body();
         $response = json_decode($convertor, true);
         $data = $response['data'];
@@ -159,7 +159,7 @@ class AdminUIController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/public/api/admin/transactions', $request->all());
+        ])->post('http://kodextech.net/amin-topup/public/api/transactions', $request->all());
         $convertor = $response->body();
         $response = json_decode($convertor, true);
         $data = $response['data'];
