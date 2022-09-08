@@ -40,7 +40,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 });
 
 Route::middleware('auth:api')->group(function () {
-    Route::middleware([IsAdmin::class])->group(function () {
+    Route::middleware('is_admin')->group(function () {
         // Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], function () {
             Route::post('/dashboard', [AdminController::class, 'adminDashboard']);
             Route::get('/users_list', [UserController::class, 'allUsers']);
