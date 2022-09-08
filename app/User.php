@@ -44,8 +44,8 @@ class User extends Authenticatable
     {
         $this->notify(new \App\Notifications\MailResetPasswordNotification($token));
     }
-    public function contact()
+    public function transaction()
     {
-        return $this->hasMany(Contacts::class);
+        return $this->hasMany(Transaction::class, 'user_id');
     }
 }

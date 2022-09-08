@@ -53,19 +53,20 @@ class AdminController extends Controller
     public function usersList(Request $request)
     {
 
-        $user = (new Transaction())->newQuery();
+        $user = (User::with('transaction:user_id,created_at'))->newQuery();
+        // $user=User::with('transactions');
         // Check either search by day or month
         if ($request->has('name')) {
-            $user->where('reciever_name', $request->name);
+            $user->where('name', $request->name);
         }
         if ($request->has('email')) {
-            $user->where('receiver_email', $request->email);
+            $user->where('email', $request->email);
         }
         if ($request->has('country')) {
             $user->where('country', $request->country);
         }
         if ($request->has('phone_number')) {
-            $user->where('receiver_number', $request->phone_number);
+            $user->where('phone_number', $request->phone_number);
         }
         if ($request->has('date')) {
 
@@ -79,7 +80,7 @@ class AdminController extends Controller
         if (count($user) > 0) {
             foreach ($user as $nuser) {
                 $date = Transaction::where('user_id', $nuser['id'])->orderBy('created_at', 'desc')->pluck('created_at')->first();
-                if(!empty($date)){
+                if (!empty($date)) {
                     $nuser['last_transaction'] = $date->format('y-m-d');
                 }
             }
