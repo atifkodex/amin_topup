@@ -77,24 +77,46 @@
                                         </thead>
                                         <tbody>
                                             @foreach($data as $post)
-                                            @if(!empty($post['last_transaction']))
+                                            <div class="newData">
+                                                <tr>
+                                                    @if(!empty($post['name']))
+                                                    <td class="data">{{$post['name']}}</td>
+                                                    @else
+                                                    <td class="data">Not Set</td>
+                                                    @endif
 
+                                                    @if(!empty($post['email']))
+                                                    <td class="data">{{$post['email']}}</td>
+                                                    @else
+                                                    <td class="data">Not Set</td>
+                                                    @endif
 
-                                            <tr>
-                                                <td class="data">{{$post['receiver_name']}}</td>
-                                                <td class="data">{{$post['receiver_email']}}</td>
-                                                <td class="data">{{$post['country']}}</td>
-                                                <td class="data">{{$post['receiver_number']}}</td>
-                                                <!-- $date_arr = explode(" ", $post['created_at']);  -->
-                                                <td class="data"><span class="user-table-time">{{ $post['last_transaction'] }}</span></td>
-                                                <td class="data">
-                                                    <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                                </td>
+                                                    @if(!empty($post['country']))
+                                                    <td class="data">{{$post['country']}}</td>
+                                                    @else
+                                                    <td class="data">Not Set</td>
+                                                    @endif
 
+                                                    @if(!empty($post['phone_number']))
+                                                    <td class="data">{{$post['phone_number']}}</td>
+                                                    @else
+                                                    <td class="data">Not Set</td>
+                                                    @endif
 
-                                            </tr>
-                                            @endif
-                                            @endforeach;
+                                                    @if(isset($post['last_transaction']))
+                                                    <td class="data"><span class="user-table-time">{{ $post['last_transaction'] }}</span></td>
+                                                    @else
+                                                    <td class="data"><span class="user-table-time">No Trasaction</span></td>
+                                                    @endif
+
+                                                    <td class="data">
+                                                        <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
+                                                    </td>
+
+                                                </tr>
+                                            </div>
+
+                                            @endforeach
 
 
 
@@ -127,7 +149,7 @@
                         <h1>Filter</h1>
                     </div>
                     <div class="user-filter-form">
-                        <form action="{{route('user')}}" method="GET">
+                        <form method="get" id="userFilterForm" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="username">User Name</label>
                                 <input type="text" class="form-control" id="username" placeholder="Type Here.." name="name">
@@ -153,13 +175,9 @@
                                 <input type="text" class="form-control" id="date" placeholder="Type Here.." name="">
 
                             </div>
-                            <!-- <div class="form-group">
-                                <label for="time">Time</label>
-                                <input type="text" class="form-control" id="time" placeholder="Type Here.." name="time">
 
-                            </div> -->
                             <div class="text-center py-3">
-                                <button type="submit" name="submit">Search</button>
+                                <button class="submit" type="submit" name="submit">Search</button>
                             </div>
 
                         </form>
@@ -178,11 +196,11 @@
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>User</p>
-                    <p>Muhammad Ali</p>
+                    <p id="name">Muhammad Ali</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>Email</p>
-                    <p>aliahmed666@gmail.com</p>
+                    <p id="email">aliahmed666@gmail.com</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>Date of Birth</p>
@@ -370,5 +388,47 @@
 </script>
 <script>
     $('.sidebar-menu ul li:nth-of-type(2)').addClass('active');
+</script>
+
+<script>
+    $("#userFilterForm").submit(function(e) {
+        e.preventDefault();
+        var form = $(this);
+        // let route = '{{url("transaction_list")}}';
+        // Ajax call 
+        $.ajax({
+            url: 'http://kodextech.net/amin-topup/public/api/admin/users',
+            type: 'GET',
+            dataType: 'json',
+            data: form.serialize(),
+            success: function(response) {
+                let arr = [];
+                response.data.forEach(element => {
+                    arr.push(element);
+                });
+                $(".newData").empty();
+                $(arr).each(function(i, e) {
+                    console.log(i, e)
+                    let div = `<tr>
+                                    <td class="data">${e.id}</td>
+                                    <td class="data">${e.name}</td>
+                                    <td class="data">${e.email}</td>
+                                    <td class="data">${e.country}</td>
+                                    <td class="data">${e.phone_number}</td>
+                                    <td class="data">${e.topup_amount_usd}</td>
+                                    <td class="data">${e.processing_fee}</td>
+                                    <td class="data">${e.total_amount_usd}</td>
+                                    <td class="data">${e.status}</td>
+                                    <td class="data">
+                                        <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
+                                            data-toggle="modal" data-target="#basicsubsModal"
+                                            style="cursor: pointer">
+                                    </td>
+                                </tr>`;
+                    $(".newData").append(div);
+                });
+            }
+        });
+    });
 </script>
 @endsection

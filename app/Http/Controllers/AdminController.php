@@ -53,7 +53,7 @@ class AdminController extends Controller
     public function usersList(Request $request)
     {
 
-        $user = (User::with('transaction:user_id,created_at'))->newQuery();
+        $user = (User::with('transaction:user_id,created_at,total_amount_usd'))->newQuery();
         // $user=User::with('transactions');
         // Check either search by day or month
         if ($request->has('name')) {
@@ -72,9 +72,7 @@ class AdminController extends Controller
 
             $user->whereDate('created_at', $request->date);
         }
-        // if ($request->has('time')) {
-        //     $user->whereTime('created_at', $request->time);
-        // }
+
 
         $user = $user->get();
         if (count($user) > 0) {
