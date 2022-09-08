@@ -76,8 +76,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($data as $post)
                                             <div class="newData">
+
+                                                @foreach($data as $post)
                                                 <tr>
                                                     @if(!empty($post['name']))
                                                     <td class="data">{{$post['name']}}</td>
@@ -114,9 +115,9 @@
                                                     </td>
 
                                                 </tr>
-                                            </div>
 
-                                            @endforeach
+                                                @endforeach
+                                            </div>
 
 
 
@@ -398,12 +399,13 @@
         // Ajax call 
         $.ajax({
             url: 'http://kodextech.net/amin-topup/public/api/admin/users',
-            type: 'GET',
+            type: 'POST',
             dataType: 'json',
             data: form.serialize(),
             success: function(response) {
+                // console.log(response);
                 let arr = [];
-                response.data.forEach(element => {
+                response.data.users.forEach(element => {
                     arr.push(element);
                 });
                 $(".newData").empty();
@@ -415,10 +417,7 @@
                                     <td class="data">${e.email}</td>
                                     <td class="data">${e.country}</td>
                                     <td class="data">${e.phone_number}</td>
-                                    <td class="data">${e.topup_amount_usd}</td>
-                                    <td class="data">${e.processing_fee}</td>
-                                    <td class="data">${e.total_amount_usd}</td>
-                                    <td class="data">${e.status}</td>
+                                    
                                     <td class="data">
                                         <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
                                             data-toggle="modal" data-target="#basicsubsModal"
