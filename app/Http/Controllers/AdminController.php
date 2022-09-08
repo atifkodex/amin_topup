@@ -71,14 +71,15 @@ class AdminController extends Controller
 
             $user->whereDate('created_at', $request->date);
         }
-        if ($request->has('time')) {
-            $user->whereTime('created_at', $request->time);
-        }
+        // if ($request->has('time')) {
+        //     $user->whereTime('created_at', $request->time);
+        // }
 
         $user = $user->get();
         if (count($user) > 0) {
             foreach ($user as $nuser) {
-                $nuser['last_transaction'] = Transaction::where('user_id', $nuser['id'])->orderBy('created_at', 'desc')->pluck('created_at')->first();
+                $date = Transaction::where('user_id', $nuser['id'])->orderBy('created_at', 'desc')->pluck('created_at')->first();
+                $nuser['last_transaction'] = $date->format('y-m-d');
             }
         }
 

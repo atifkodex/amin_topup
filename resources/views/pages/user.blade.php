@@ -77,6 +77,7 @@
                                         </thead>
                                         <tbody>
                                             @foreach($data as $post)
+                                            @if(!empty($post['last_transaction']))
 
 
                                             <tr>
@@ -84,14 +85,17 @@
                                                 <td class="data">{{$post['receiver_email']}}</td>
                                                 <td class="data">{{$post['country']}}</td>
                                                 <td class="data">{{$post['receiver_number']}}</td>
-                                                <td class="data">{{$post['created_at']}}<span class="user-table-time"></span></td>
+                                                <!-- $date_arr = explode(" ", $post['created_at']);  -->
+                                                <td class="data"><span class="user-table-time">{{ $post['created_at'] }}</span></td>
                                                 <td class="data">
                                                     <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                                 </td>
 
 
                                             </tr>
+                                            @endif
                                             @endforeach;
+
 
 
                                         </tbody>
@@ -149,11 +153,11 @@
                                 <input type="text" class="form-control" id="date" placeholder="Type Here.." name="date">
 
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="time">Time</label>
                                 <input type="text" class="form-control" id="time" placeholder="Type Here.." name="time">
 
-                            </div>
+                            </div> -->
                             <div class="text-center py-3">
                                 <button type="submit" name="submit">Search</button>
                             </div>
