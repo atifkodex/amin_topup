@@ -13,6 +13,8 @@ use App\Http\Controllers\SettingController;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Hash;
+
 
 
 /*

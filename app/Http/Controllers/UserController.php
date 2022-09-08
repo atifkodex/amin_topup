@@ -9,6 +9,8 @@ use App\OperatorNetwork;
 use App\User;
 use Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
 
 
 class UserController extends Controller
@@ -99,6 +101,17 @@ class UserController extends Controller
         ]);
         if ($validator->fails()) {
             return $this->sendError(implode(",", $validator->messages()->all()));
+        }
+        $loginUserId = auth()->user()->id;
+        $user = User::find($loginUserId);
+            if (Hash::check($request->old_pass, $user->password)) {
+
+            $passoword = Hash::make($request->new_pass);
+            User::where('id', $loginUserId)->update(['password' => $passoword]);
+            return $this->sendResponse([], 'Password Updated Successfully');
+        } else {
+            $response = "Old Password is incorrect";
+            return $this->sendError(($response), []);
         }
     }
     
