@@ -34,15 +34,15 @@
     }
 </style>
 @section('content')
-@include('includes.admin-navbar')
-<div class="right-sidebar">
-    <div class="container-fluid">
-        <div class="setting-heading pl-4">
-            <h1>User</h1>
-        </div>
-        <div class="row">
-            <div class=" col-lg-8 col-xl-9">
-                <div class="transection-tble-main">
+    @include('includes.admin-navbar')
+    <div class="right-sidebar">
+        <div class="container-fluid">
+            <div class="setting-heading pl-4">
+                <h1>All User</h1>
+            </div>
+            <div class="row">
+                <div class="  col-xl-9">
+                  <div class="transection-tble-main">
                     <!-- Latest Transactions -->
                     <div class="latest-transection-sec mt-0">
                         <div class="row">
@@ -142,45 +142,45 @@
                     </div>
                     <!-- End Pagination -->
                 </div>
-            </div>
-            <div class="col-lg-4 col-xl-3 pb-5">
-                <div class="user-filter px-3 py-2">
-                    <div class="user-filter-header py-3">
-                        <h1>Filter</h1>
-                    </div>
-                    <div class="user-filter-form">
-                        <form method="get" id="userFilterForm" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="username">User Name</label>
-                                <input type="text" class="form-control" id="username" placeholder="Type Here.." name="name">
-
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Type Here.." name="email">
-
-                            </div>
-                            <div class="form-group">
-                                <label for="country">Country</label>
-                                <input type="text" class="form-control" id="country" placeholder="Type Here.." name="country">
-
-                            </div>
-                            <div class="form-group">
-                                <label for="userphonenumber">User Phone Number</label>
-                                <input type="text" class="form-control" id="userphonenumber" placeholder="Type Here.." name="phone_number">
-
-                            </div>
-                            <div class="form-group">
-                                <label for="date">Date</label>
-                                <input type="text" class="form-control" id="date" placeholder="Type Here.." name="">
-
-                            </div>
-
-                            <div class="text-center py-3">
-                                <button class="submit" type="submit" name="submit">Search</button>
-                            </div>
-
-                        </form>
+                <div class=" col-xl-3 pb-5">
+                    <div class="user-filter px-3 py-2">
+                        <div class="user-filter-header py-3">
+                            <h1>Filter</h1>
+                        </div>
+                        <div class="user-filter-form">
+                            <form>
+                                <div class="form-group">
+                                  <label for="username">User Name</label>
+                                  <input type="text" class="form-control" id="username"  placeholder="Type Here..">
+                                  
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email"  placeholder="Type Here..">
+                                    
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <input type="text" class="form-control" id="country" placeholder="Type Here..">
+                                    
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="userphonenumber">User Phone Number</label>
+                                    <input type="text" class="form-control" id="userphonenumber"  placeholder="Type Here..">
+                                    
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="lpurchase">Last Purchase</label>
+                                    <input type="text" class="form-control" id="lpurchase"  placeholder="Type Here..">
+                                    
+                                  </div>
+                               
+                                  <div class="text-center py-3">
+                                    <button>Search</button>
+                                  </div>
+                              
+                              </form>
+                        </div>
                     </div>
                 </div>
             </div>

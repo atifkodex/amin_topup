@@ -440,12 +440,16 @@
               <div class="card setting-card">
                 <div class="card-header stripe-key-header setting-card-header" id="faqhead8">
                     <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq8"
-                    aria-expanded="true" aria-controls="faq8"><img src="{{('assets/images/profile-icon.svg')}}" alt=""> Create new admin</a>
+                    aria-expanded="true" aria-controls="faq8"><img src="{{('assets/images/profile-icon.svg')}}" alt="">Admins</a>
                 </div>
 
                 <div id="faq8" class="collapse" aria-labelledby="faqhead8" data-parent="#faq">
-                  <div class="card-body setting-card-body">
-                    <form>
+                  <div class="card-body setting-card-body latest-transection-sec">
+                    <div class="text-right add-admin">
+                      <button class="open-admin-form mb-2">+</button>
+                      <button class="close-admin-form mb-2">-</button>
+                    </div>
+                    <form class="admin-form">
                       <div class="row">
                         <div class="col-6">
                           <div class="form-group stripe-key">
@@ -477,9 +481,96 @@
                       </div>
                     </form>
           
+                    <div class="setting-card-body-inner" style="overflow-x:auto;">
+                      <table style="width:100%">
+                        <tr>
+                          <th>Admin</th>
+                          <th>Email</th>
+                          <th>Country</th>
+                          <th>Phone Number</th>
+                          <th>Action</th>                   
+                        </tr>
+                        <tr>
+                          <td class="data">Muhammad Ali</td>
+                          <td class="data">aliahmed@gmail.com</td>
+                          <td class="data">Afghanistan</td>
+                          <td class="data">+93 700 00 00 0000</td>
+                          <td class="data">
+                              <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
+                          </td>
 
+                        </tr>
+                        <tr>
+                          <td class="data">Muhammad Ali</td>
+                          <td class="data">aliahmed@gmail.com</td>
+                          <td class="data">Afghanistan</td>
+                          <td class="data">+93 700 00 00 0000</td>
+                          <td class="data">
+                              <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td class="data">Muhammad Ali</td>
+                          <td class="data">aliahmed@gmail.com</td>
+                          <td class="data">Afghanistan</td>
+                          <td class="data">+93 700 00 00 0000</td>
+                          <td class="data">
+                              <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td class="data">Muhammad Ali</td>
+                          <td class="data">aliahmed@gmail.com</td>
+                          <td class="data">Afghanistan</td>
+                          <td class="data">+93 700 00 00 0000</td>
+                          <td class="data">
+                              <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td class="data">Muhammad Ali</td>
+                          <td class="data">aliahmed@gmail.com</td>
+                          <td class="data">Afghanistan</td>
+                          <td class="data">+93 700 00 00 0000</td>
+                          <td class="data">
+                              <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td class="data">Muhammad Ali</td>
+                          <td class="data">aliahmed@gmail.com</td>
+                          <td class="data">Afghanistan</td>
+                          <td class="data">+93 700 00 00 0000</td>
+                          <td class="data">
+                              <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
+                          </td>
+
+                        </tr>
+
+                          <tr>
+                          <td class="data">Muhammad Ali</td>
+                          <td class="data">aliahmed@gmail.com</td>
+                          <td class="data">Afghanistan</td>
+                          <td class="data">+93 700 00 00 0000</td>
+                          <td class="data">
+                              <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
+                          </td>
+
+                        </tr>
+                     
+                       
+                   
+                  
+                      
+                      </table>
+                    </div>
                     
                   </div>
+                 
                 
                 </div>
               </div>          
@@ -489,6 +580,51 @@
    
     </div>
  </div>
+</div>
+<div class="modal fade" id="basicsubsModal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content user-modal">
+        <div class="modal-body px-4">
+            <div class="user-modal-header py-3">
+                <h1>Edit Admin Details</h1>
+            </div>
+            <form>
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group stripe-key admin-detail">
+                    <label for="adminname">Name</label>
+                    <input type="text" class="form-control" id="adminname"  placeholder="Type here...">
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group stripe-key admin-detail">
+                    <label for="adminemail">Email</label>
+                    <input type="email" class="form-control" id="adminemail"  placeholder="Type here...">
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group stripe-key admin-detail">
+                    <label for="country">Country</label>
+                    <input type="text" class="form-control" id="country"  placeholder="Type here...">
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group stripe-key admin-detail">
+                    <label for="phonenumber">Phone Number</label>
+                    <input type="text" class="form-control" id="phonenumber"  placeholder="Type here...">
+                  </div>
+                </div>
+                <div class="col-12 text-center stripe-key-btn py-4 admin-detail-btn">
+                <button type="submit">Update</button>
+                </div>
+              </div>
+            </form>
+            
+        </div>
+
+    </div>
+</div>
 </div>
 @endsection
 @section('inserfooter')
@@ -611,6 +747,20 @@
 </script>
 <!-- Backend Script -- END --  -->
 
+<script>
+   $('.admin-form').hide();
+   $('.close-admin-form').hide();
+   $(".open-admin-form").click(function(){
+    $(".admin-form").show(1000);
+    $('.open-admin-form').hide();
+    $('.close-admin-form').show();
+  });
+  $(".close-admin-form").click(function(){
+    $(".admin-form").hide(1000);
+    $('.open-admin-form').show();
+    $('.close-admin-form').hide();
+  });
+</script>
 <script>
   $('.save').hide();
 

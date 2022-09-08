@@ -25,8 +25,9 @@
 
 #table-id tbody tr td {
     background: #f1efef;
+ 
+    }
 
-}
 </style>
 @section('content')
 @include('includes.admin-navbar')

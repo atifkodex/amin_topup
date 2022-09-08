@@ -9,7 +9,7 @@
             <div class="login-content py-5">
                 <div class="login-heading text-center">
                     <h1>Sign in</h1>
-                    <p>Welcome to Amin Pay</p>
+                    <p>Welcome to Amin Topup</p>
                 </div>
                 <div class="login-form">
                     <form action="{{route('adminLogin')}}" method="post" enctype="multipart/form-data">

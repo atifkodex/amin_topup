@@ -158,9 +158,32 @@ html {
 }
 
 /* setting */
-.setting-section {
-  background: linear-gradient(134.54deg, rgba(250, 250, 250, 0.749) -8.09%, rgba(255, 255, 255, 0.349) 110.07%);
-  border-radius: 10px;
+.admin-detail input{
+  height: 40px !important;
+}
+.admin-detail input::placeholder{
+  font-size: 12px !important;
+}
+.admin-detail-btn button {
+  background: #063A6D;
+  border-radius: 7px;
+  height: 40px !important;
+  width: 125px !important;
+  color: white;
+  font-size: 16px;
+  border: none;
+}
+.add-admin button{
+  background: #063A6D;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: none;
+}
+.setting-section{
+    background: linear-gradient(134.54deg, rgba(250, 250, 250, 0.749) -8.09%, rgba(255, 255, 255, 0.349) 110.07%);
+border-radius: 10px;
 }
 
 .setting-heading h1 {

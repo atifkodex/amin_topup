@@ -42,13 +42,18 @@ body {
 
 .sidebar-left {
     position: relative;
-    padding: 50px 40px;
+   
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
 }
-
+.sidebar-inner{
+    padding: 50px 40px;
+}
+.sidebar-footer{
+    padding-bottom: 20px;
+}
 .sidebar-inner,
 .sidebar-footer {
     position: relative;
@@ -136,7 +141,7 @@ body {
     margin-bottom: 0;
     color: #f89822;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 11px;
     line-height: 22px;
     text-align: center;
 }
@@ -390,7 +395,7 @@ body {
         rgba(255, 255, 255, 0.349) 122.48%
     );
     border-radius: 11px;
-    padding: 10px 24px;
+    padding: 26px 24px;
 }
 
 .refund-req-box h2 {
@@ -408,7 +413,7 @@ body {
 .refund-list {
     display: flex;
     justify-content: space-between;
-    padding: 0 5px;
+    padding: 2px 5px;
 }
 .refund-list p {
     color: #3f4765;
@@ -469,7 +474,7 @@ body {
 .chart-list{
     display: flex;
     flex-wrap:wrap;
-    justify-content: start;
+    justify-content:center;
 }
 .pie-chart-main ul li {
     font-weight: 600;
@@ -482,18 +487,19 @@ body {
     position: relative;
 }
 .color-box {
-    width:8px;
+    width:12px;
     top: 2px;
-    height:8px;
+    height:12px;
     border-radius: 2px;
     margin-right: 7px;
     position: absolute;
     left: 0;
 }
 .pie-chart-main ul li span {
-    padding-left: 12px;
-    top: -3px;
+    padding-left: 14px;
+    top: -4px;
     position: relative;
+    font-size: 12px;
 }
 .latest-transection-sec {
     background: linear-gradient(

@@ -57,7 +57,7 @@
     @media screen and (min-width:1199px) {
         .chart-inner {
             position: absolute !important;
-            top: 39% !important;
+            top:45% !important;
             left: 50% !important;
             transform: translateX(-50%) translateY(-50%) !important;
             font-size: 12px;
@@ -99,7 +99,7 @@
                             <h2>Overview</h2>
                         </div>
                         <div class="row">
-                            <div class="col-xl-4">
+                            <div class="col-xl-6">
                                 <div class="overview-col">
                                     <p><span class="selectedDate">{{$data['date']}}</span></p>
                                     <h2>Total Active Users</h2>
@@ -108,7 +108,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4">
+                            <div class="col-xl-6">
                                 <div class="overview-col">
                                     <p><span class="selectedDate">{{$data['date']}}</span></p>
                                     <h2>Total Sales</h2>
@@ -117,7 +117,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4">
+                            <div class="col-xl-12 mt-4">
 
                                 <div class="overview-col px-0">
                                     <p class="pl-3"><span class="selectedDate">{{$data['date']}}</span></p>
@@ -416,7 +416,7 @@
             chart: {
                 type: 'donut',
                 width: '100%',
-                height: 120,
+                height: 180,
 
             },
             fill: {
