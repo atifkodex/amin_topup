@@ -236,7 +236,7 @@ class AdminController extends Controller
             $transactions = Transaction::where('receiver_number' ,$request->number)->get(); 
         }
         if(isset($request->date) && !empty($request->date)){
-            $transactions = Transaction::where('created_at' ,$request->date)->get(); 
+            $transactions = Transaction::whereDate('created_at' ,$request->date)->get(); 
         }
         if(count($request->all()) == 0){
             $transactions = Transaction::get(); 

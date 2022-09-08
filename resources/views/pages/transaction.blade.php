@@ -57,11 +57,12 @@
                                         </select>
                                     </div>
 
-                                    <table id="table-id" class="mr-3 mb-3" style="width: 1300px">
+                                    <table id="table-id" class="mr-3 mb-3" style="width: 1370px">
                                         <thead>
                                             <tr>
                                                 <th>Transaction ID</th>
-                                                <th>Sender Name</th>
+                                                <th >Date & Time</th>
+                                                <th>User Name</th>
                                                 <th>Receiver Phone Number</th>
                                                 <th>Network</th>
                                                 <th>Topup Amount</th>
@@ -77,6 +78,7 @@
                                             @foreach($data as $transaction)
                                             <tr>
                                                 <td class="data transactionId">{{$transaction['id']}}</td>
+                                                <td class="data transactionId">22-10-10 02:08PM</td>
                                                 <td class="data senderName">{{$transaction['senderName']}}</td>
                                                 <td class="data receiverNumber">{{$transaction['receiver_number']}}</td>
                                                 <td class="data network">{{$transaction['receiver_network']}}</td>
@@ -137,30 +139,24 @@
 
                             </div>
                             <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" name="email" class="form-control" id="email" placeholder="Type Here..">
-
+                                <label for="network">Network</label>
+                                <input type="text" name="network" class="form-control" id="network" placeholder="Type Here..">
+                                
                             </div>
                             <div class="form-group">
-                                <label for="country">Country</label>
-                                <input type="text" name="country" class="form-control" id="country" placeholder="Type Here..">
-
-                            </div>
-                            <div class="form-group">
-                                <label for="userphonenumber">User Phone Number</label>
+                                <label for="userphonenumber">Receiver Phone Number</label>
                                 <input type="text" name="number" class="form-control" id="userphonenumber" placeholder="Type Here..">
-
+                                
+                            </div>
+                            <div class="form-group">
+                                <label for="amountTotal">Topup Amount</label>
+                                <input type="text" name="amountTotal" class="form-control" id="amountTotal" placeholder="Type Here..">
                             </div>
                             <div class="form-group">
                                 <label for="date">Date</label>
                                 <input type="text" name="date" class="form-control" id="date" placeholder="Type Here..">
 
                             </div>
-                            <!-- <div class="form-group">
-                                <label for="time">Time</label>
-                                <input type="text" class="form-control" id="time" placeholder="Type Here..">
-
-                            </div> -->
                             <div class="text-center py-3">
                                 <button type="submit">Search</button>
                             </div>
@@ -182,7 +178,7 @@
                         <h1>Transaction Details</h1>
                     </div>
                     <div class="user-modal-content d-flex justify-content-between">
-                        <p>Transaction ID</p>
+                        <p>Transaction Date</p>
                         <p id="transactionIdModal">#313652</p>
                     </div>
                     <div class="user-modal-content d-flex justify-content-between">
@@ -190,7 +186,7 @@
                         <p id="senderNameModal">Muhammad Ali</p>
                     </div>
                     <div class="user-modal-content d-flex justify-content-between">
-                        <p>Reciever Phone Number</p>
+                        <p>Receiver Phone Number</p>
                         <p id="receiverNumberModal">+93 700 00 00 000</p>
                     </div>
                     <div class="user-modal-content d-flex justify-content-between">
@@ -219,7 +215,7 @@
                     </div>
                 </div>
                 <div class="user-modal-button d-flex justify-content-center">
-                    <button class="mr-1" id="printBtn">Print</button>
+                    <button class="mr-1" id="printBtn">Refund</button>
                     <button class="ml-1">Download</button>
                 </div>
             </div>

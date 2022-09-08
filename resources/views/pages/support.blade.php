@@ -60,7 +60,7 @@
             <div class="col-8 col-xl-9 support-description-outer">
                 <div class="support-description">
                     <div class="support-description-header py-3 px-4">
-                        <h1>Description</h1>
+                        <h1>Ticket Description</h1>
                     </div>
                     <div class="support-description-cat py-3 px-4 d-flex align-items-center">
                         <p>Category:</p>
@@ -76,6 +76,14 @@
                         </div>
 
                     </div>
+                    <div class="support-description-cat support-description-sub py-3 px-4 d-flex  align-items-center">
+                        <p>User Name:</p>
+
+                        <div>
+                            <p id="subject_id">Name</p>
+                        </div>
+
+                    </div>
                     <div class="support-description-section pt-5 px-4" id="description_id">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem dolor autem optio hic, eaque magni libero aspernatur porro natus deserunt! Adipisci incidunt aperiam voluptate temporibus necessitatibus explicabo assumenda aliquid?
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem dolor autem optio hic, eaque magni libero aspernatur porro natus deserunt! Adipisci incidunt aperiam voluptate temporibus necessitatibus explicabo assumenda aliquid?
@@ -83,7 +91,7 @@
 
                     <div class="support-description-button py-5 px-4 text-right">
                         <button data-toggle="modal" data-target="#basicsubsModal">Reply</button>
-                        <button>Archived</button>
+                        <button>Resolved</button>
                     </div>
 
                 </div>
