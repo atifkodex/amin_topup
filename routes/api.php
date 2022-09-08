@@ -38,11 +38,11 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::post('/login', [ApiAuthController::class, 'login'])->name('login.api');
     Route::post('/register', [ApiAuthController::class, 'register'])->name('register.api');
 });
-Route::post('/dashboard', [AdminController::class, 'adminDashboard']);
 
 Route::middleware('auth:api')->group(function () {
     // Route::middleware([IsAdmin::class])->group(function () {
         // Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], function () {
+            Route::post('/dashboard', [AdminController::class, 'adminDashboard']);
             Route::get('/users_list', [UserController::class, 'allUsers']);
             Route::post('/check_operator', [UserController::class, 'networkOperator']);
             Route::post('/add_operator_data', [OperatorController::class, 'operatorData']);
