@@ -13,7 +13,7 @@ use App\Http\Controllers\SettingController;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Hash;
+use App\Http\Middleware\IsAdmin;
 
 
 
@@ -28,9 +28,9 @@ use Illuminate\Support\Facades\Hash;
 |
 */
 
-Route::middleware(['cors', 'json.response', 'auth:api'])->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware(['cors', 'json.response', 'auth:api'])->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::group(['middleware' => ['cors', 'json.response']], function () {
 
@@ -40,6 +40,22 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 });
 
 Route::middleware('auth:api')->group(function () {
+    Route::middleware([IsAdmin::class])->group(function () {
+
+        Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], function () {
+            Route::get('/users_list', [UserController::class, 'allUsers']);
+            Route::post('/check_operator', [UserController::class, 'networkOperator']);
+            Route::post('/add_operator_data', [OperatorController::class, 'operatorData']);
+            Route::post('/support', [ContactsController::class, 'user_support'])->name('support.api');
+            Route::post('/create_admin', [AdminController::class, 'create_admin'])->name('create_admin.api');
+            Route::post('/users', [AdminController::class, 'usersList'])->name('users.api');
+            Route::post('/dashboard', [AdminController::class, 'adminDashboard']);
+            Route::post('/settings', [SettingController::class, 'settingsData']);
+            Route::post('/reply_send', [AdminController::class, 'replySend'])->name('reply_send.api');
+            Route::post('/update_operator', [SettingController::class, 'updateOperator']);
+        });
+    });
+
     Route::get('/articles', [ArticleController::class, 'index'])->middleware('api.admin')->name('articles');
     Route::post('/logout', [ApiAuthController::class, 'logout'])->name('logout.api');
     Route::post('payment_url', [OrderController::class, 'stripePaymentUrl']);
@@ -54,26 +70,14 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/notification_list', [SettingController::class, 'notificationList']);
     Route::post('/image_link', [SettingController::class, 'createImageLink']);
     Route::post('/user_profile', [UserController::class, 'userProfile']);
-    Route::post('/reply_send', [AdminController::class, 'replySend'])->name('reply_send.api');
-    Route::post('/change_password', [UserController::class, 'changePassword']);
+
+    Route::post('/send_otp', [OtpController::class, 'sendOTP']);
+    Route::post('/verify_otp', [OtpController::class, 'verifyOtp']);
+    Route::post('password/email', [ResetPasswordController::class, 'sendResetResponse'])->name('password/email');
+
+    // Admin Panel API's START------- 
+
 });
 
-Route::post('/send_otp', [OtpController::class, 'sendOTP']);
-Route::post('/verify_otp', [OtpController::class, 'verifyOtp']);
-Route::post('password/email', [ResetPasswordController::class, 'sendResetResponse'])->name('password/email');
 
-// Admin Panel API's START------- 
-Route::group(['prefix' => 'admin', 'middleware' => ['cors', 'json.response']], function () {
-    Route::get('/users_list', [UserController::class, 'allUsers']);
-    Route::post('/check_operator', [UserController::class, 'networkOperator']);
-    Route::post('/add_operator_data', [OperatorController::class, 'operatorData']);
-    Route::post('/support', [ContactsController::class, 'user_support'])->name('support.api');
-    Route::post('/create_admin', [AdminController::class, 'create_admin'])->name('create_admin.api');
-    Route::post('/users', [AdminController::class, 'usersList'])->name('users.api');
-    Route::post('/dashboard', [AdminController::class, 'adminDashboard']);
-    Route::post('/settings', [SettingController::class, 'settingsData']);
-    Route::post('/update_operator', [SettingController::class, 'updateOperator']);
-    Route::post('/transactions', [AdminController::class, 'TransactionList']);
-    Route::post('/', [AdminController::class, 'TransactionList']);
-});
 // Admin Panel API's END------- 
