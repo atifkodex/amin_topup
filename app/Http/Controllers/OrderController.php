@@ -70,7 +70,7 @@ class OrderController extends Controller
                 'line_items' => [['price' => $request->price_id, 'quantity' => 1]],
                 'after_completion' => [
                     'type' => 'redirect',
-                    'redirect' => ['url' => 'http://kodextech.net/amin-topup/public/sucess'],
+                    'redirect' => ['url' => 'http://localhost/amin-topup/public/api/admin/save_order'],
                 ],
             ],
         );
@@ -89,6 +89,7 @@ class OrderController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'receiver_name' => 'required',
+            'receiver_email' => 'required',
             'receiver_number' => 'required',
             'country' => 'required',
             'receiver_network' => 'required',
@@ -104,9 +105,7 @@ class OrderController extends Controller
         $loginUserId = Auth::user()->id;
         $transaction = new Transaction;
         $transaction->receiver_name = $request->receiver_name;
-        if(isset($request->receiver_email) && !empty($request->receiver_email)){
-            $transaction->receiver_email = $request->receiver_email;
-        }
+        $transaction->receiver_email = $request->receiver_email;
         $transaction->receiver_number = $request->receiver_number;
         $transaction->country = $request->country;
         $transaction->receiver_network = $request->receiver_network;
@@ -172,7 +171,7 @@ class OrderController extends Controller
     {
         $loginUserId = Auth::user()->id;
         $topupAmount = Transaction::where('user_id', $loginUserId)->sum('topup_amount_usd');
-        $topups = Transaction::where('user_id', $loginUserId)->orderBy('created_at', 'desc')->get();
+        $topups = Transaction::where('user_id', $loginUserId)->get();
         if(count($topups) > 0){
             $success['totalTopupAmount'] = $topupAmount;
             $success['allTopups'] = $topups;

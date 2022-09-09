@@ -32,7 +32,6 @@ class ContactsController extends Controller
         $post->subject = $request->get('subject');
         $post->category = $request->get('category');
         $post->description = $request->get('description');
-        $post->status = 0;
         $save = $post->save();
         if ($save) {
             // Save data for notification 
@@ -54,7 +53,7 @@ class ContactsController extends Controller
     ///........admin side suport........////
     public function user_support()
     {
-        $post = Contacts::where('status', 0)->with('user:id,name,profile,email')->get();
+        $post = Contacts::with('user:id,name,profile')->get();
         if ($post) {
 
             return $this->sendResponse(['users' => $post, 'status' => 200], 'Getting Users data Successfully');
@@ -63,4 +62,6 @@ class ContactsController extends Controller
             return $this->sendResponse([], $response);
         }
     }
+
+    
 }

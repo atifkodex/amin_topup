@@ -9,8 +9,6 @@ use App\OperatorNetwork;
 use App\User;
 use Validator;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-
 
 
 class UserController extends Controller
@@ -74,10 +72,6 @@ class UserController extends Controller
                 $aminFees = ($detail['topup_usd'] * $detail['fee_percentage']) / 100;
                 $amountAfterAminFees = $detail['topup_usd'] + $aminFees;
                 $detail->totalAmount = $detail['stripe_fee'] + $amountAfterAminFees;
-                // $aminFeesAFN = ($detail['topup_usd'] * $detail['fee_percentage']) / 100;
-                $detail->processing_fee = $aminFees + $detail['stripe_fee'];
-                $tax = ($detail['denomination'] * 10) /100;
-                $detail->receiver_get_AFN = $detail['denomination'] - $tax;
             }
         }
         $network->details = $details;
@@ -91,28 +85,6 @@ class UserController extends Controller
         $loginUserId = Auth::user()->id;
         $user = User::where('id', $loginUserId)->first();
         return $this->sendResponse($user, 'User Data');
-    }
-
-    public function changePassword(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'old_pass' => 'required',
-            'new_pass' => 'required'
-        ]);
-        if ($validator->fails()) {
-            return $this->sendError(implode(",", $validator->messages()->all()));
-        }
-        $loginUserId = auth()->user()->id;
-        $user = User::find($loginUserId);
-            if (Hash::check($request->old_pass, $user->password)) {
-
-            $passoword = Hash::make($request->new_pass);
-            User::where('id', $loginUserId)->update(['password' => $passoword]);
-            return $this->sendResponse([], 'Password Updated Successfully');
-        } else {
-            $response = "Old Password is incorrect";
-            return $this->sendError(($response), []);
-        }
     }
     
 }
