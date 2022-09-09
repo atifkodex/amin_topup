@@ -868,6 +868,7 @@
         total: {
           show: true,
           label: 'AFN',
+          fontSize: '20px',
           color: '#F89822',
           formatter: function (w) {
             return w=9000.01;
@@ -875,7 +876,7 @@
         },
         value: {
           show: true,
-          fontSize: '16px',
+          fontSize: '20px',
           label: 'AFN',
           fontFamily: 'Helvetica, Arial, sans-serif',
           color: '#F89822',
