@@ -12,31 +12,32 @@
                     <p>Welcome to Amin Topup</p>
                 </div>
                 <div class="login-form">
-                    <form>
+                    <form action="{{route('adminLogin')}}" method="post" enctype="multipart/form-data">
+                      @csrf
                         <div class="form-group login-email-field">
                           <label for="loginemail">E-Mail</label>
                           <img src="{{asset('assets/images/mail.svg')}}" alt="image">
-                          <input type="email" class="form-control" id="loginemail" aria-describedby="emailHelp" placeholder="Enter your eMail">
+                          <input type="email" name="email" class="form-control" id="loginemail" aria-describedby="emailHelp" placeholder="Enter your eMail">
                         
                         </div>
                         <div class="form-group login-email-field">
                           <label for="loginpassword">Password</label>
                           <img src="{{asset('assets/images/hide.svg')}}" alt="image" onclick="myFunction()" style="cursor: pointer">
-                          <input type="password" class="form-control" id="loginpassword" placeholder="Enter your password">
+                          <input type="password" class="form-control" id="loginpassword" name="password" placeholder="Enter your password">
                           {{-- <div class="text-right create-account">
                             <a href="{{url('sign-up')}}" >create new account</a>
                           </div> --}}
-                         
                         </div>
+                        @if (Session::has('message'))
+                            <div class=" text-danger">{{ Session::get('message') }}</div>
+                        @endif
                         
+                        <div class="d-flex justify-content-center login-button-outer">
+                          <a href="javascript:void(0)">
+                            <button type="submit" class="btn  login-btn">Sign in</button>
+                          </a>
+                        </div>
                       </form>
-                      <div class="d-flex justify-content-center login-button-outer">
-                        <a href="{{route('dashboard')}}">
-                          <button class="btn  login-btn">Sign in</button>
-                        </a>
-                          
-                          
-                      </div>
                 </div>
                 <div class="login-footer text-center">
                     <p>&copy; Amin Technologies Inc. All Right Reserved.</p>

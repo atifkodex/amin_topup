@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateUsersTableToIncludeType extends Migration
+class MakeColumNullableToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,8 @@ class UpdateUsersTableToIncludeType extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('type')->nullable();
+            $table->string('phone_number')->nullable()->change();
+            $table->string('country')->nullable()->change();
         });
     }
 
@@ -26,7 +27,8 @@ class UpdateUsersTableToIncludeType extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropIfExists('type');
+            $table->string('phone_number');
+            $table->string('country');
         });
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateUsersTableToIncludeType extends Migration
+class RemoveOperatorNameColumnInTopupDetails extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class UpdateUsersTableToIncludeType extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('type')->nullable();
+        Schema::table('topup_details', function (Blueprint $table) {
+            $table->dropColumn('operator_name');
         });
     }
 
@@ -25,8 +25,8 @@ class UpdateUsersTableToIncludeType extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropIfExists('type');
+        Schema::table('topup_details', function (Blueprint $table) {
+            $table->string('operator_name');
         });
     }
 }

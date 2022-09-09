@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateUsersTableToIncludeType extends Migration
+class CreateContactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,13 @@ class UpdateUsersTableToIncludeType extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('type')->nullable();
+        Schema::create('contacts', function (Blueprint $table) {
+            $table->id();
+            $table->integer('user_id');
+            $table->string('subject');
+            $table->string('category');
+            $table->text('description');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +30,6 @@ class UpdateUsersTableToIncludeType extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropIfExists('type');
-        });
+        Schema::dropIfExists('contacts');
     }
 }
