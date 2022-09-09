@@ -32,6 +32,11 @@
         background: #f1efef;
 
     }
+    @media screen and (min-width:1700px) {
+     #table-id{
+        width: 100% !important;
+     }
+    }
 </style>
 @section('content')
     @include('includes.admin-navbar')
