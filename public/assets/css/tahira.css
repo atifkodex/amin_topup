@@ -309,6 +309,9 @@ body {
 }
 
 /* ************************ Dashboard Css ************************ */
+.chart-area{
+    margin-top: 20px;
+}
 .dashboard-first-sec {
     display: flex;
 }

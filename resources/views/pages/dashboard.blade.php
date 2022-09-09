@@ -127,7 +127,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-12 mt-4">
+                            <div class="col-xl-12 chart-area">
 
                                 <div class="overview-col px-0">
                                     <p class="pl-3"><span>17 Aug 2022</span></p>
@@ -850,7 +850,7 @@
             chart: {
                 type: 'donut',
                 width: '100%',
-                height: 260,
+                height: 250,
 
             },
             plotOptions: {
