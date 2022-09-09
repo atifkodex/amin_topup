@@ -246,6 +246,7 @@ class AdminController extends Controller
             if(count($transactions) > 0) {
                 foreach($transactions as $transaction) {
                     $transaction['senderName'] = $request->name;
+                    $transaction['dateTime'] = $transaction['created_at']->format('Y-m-d H:i:s');
                 }
             }else{
                 return $this->sendError("No Transaction found for user");
@@ -254,6 +255,8 @@ class AdminController extends Controller
         if(count($transactions) > 0) {
             foreach($transactions as $transaction) {
                 $transaction['senderName'] = User::where('id', $transaction['user_id'])->pluck('name')->first();
+                $transaction['dateTime'] = $transaction['created_at']->format('Y-m-d H:i:s');
+
             }
             return $this->sendResponse($transactions, 'All transactions');
         }else{
