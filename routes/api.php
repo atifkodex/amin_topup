@@ -49,6 +49,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/reply_send', [AdminController::class, 'replySend'])->name('reply_send.api');
     Route::post('/update_operator', [SettingController::class, 'updateOperator']);
     Route::post('/transactions', [AdminController::class, 'TransactionList']);
+    Route::post('/admin_notifications', [AdminController::class, 'adminNotifications']);
 
     Route::get('/articles', [ArticleController::class, 'index'])->middleware('api.admin')->name('articles');
     Route::post('/logout', [ApiAuthController::class, 'logout'])->name('logout.api');
@@ -64,6 +65,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/notification_list', [SettingController::class, 'notificationList']);
     Route::post('/image_link', [SettingController::class, 'createImageLink']);
     Route::post('/user_profile', [UserController::class, 'userProfile']);
+    Route::post('/change_password', [UserController::class, 'changePassword']);
 
 });
 

@@ -263,4 +263,15 @@ class AdminController extends Controller
                 return $this->sendError("No Transaction found for user");
             }
     }
+
+    public function adminNotifications()
+    {
+        $notifications = NotificationLog::where('notification_type', 'contact')->orwhere('notification_type', 'transaction')->get();
+        if(count($notifications) > 0){
+            foreach($notifications as $notification){
+
+            }
+        }
+
+    }
 }
