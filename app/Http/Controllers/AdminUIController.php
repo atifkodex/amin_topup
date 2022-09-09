@@ -151,17 +151,17 @@ class AdminUIController extends Controller
         return view('pages.transaction', ['data' => $data]);
     }
 
-    public function transactionsList(Request $request){
-        dd('alert');
-        $value = Session::get('loginData');
-        $token = $value['user']['token'];
-        $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $token,
-            'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/public/api/transactions', $request->all());
-        $convertor = $response->body();
-        $response = json_decode($convertor, true);
-        $data = $response['data'];
-        return view('pages.transaction', ['data' => $data]);
-    }
+    // public function transactionsList(Request $request){
+    //     dd('alert');
+    //     $value = Session::get('loginData');
+    //     $token = $value['user']['token'];
+    //     $response = Http::withHeaders([
+    //         'Authorization' => 'Bearer ' . $token,
+    //         'Content-Type' => 'application/json'
+    //     ])->post('http://kodextech.net/amin-topup/public/api/transactions', $request->all());
+    //     $convertor = $response->body();
+    //     $response = json_decode($convertor, true);
+    //     $data = $response['data'];
+    //     return view('pages.transaction', ['data' => $data]);
+    // }
 }
