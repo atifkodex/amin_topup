@@ -78,7 +78,7 @@
                                         <tbody class="newData">
                                             @foreach($data as $transaction)
                                             <tr>
-                                                <td class="data transactionId">{{$transaction['id']}}</td>
+                                                <td class="data">{{$transaction['id']}}</td>
                                                 <td class="data transactionId">{{$transaction['dateTime']}}</td>
                                                 <td class="data senderName">{{$transaction['senderName']}}</td>
                                                 <td class="data receiverNumber">{{$transaction['receiver_number']}}</td>
@@ -256,18 +256,19 @@
                     console.log(i,e)
                     let div = `<tr>
                                     <td class="data">${e.id}</td>
-                                    <td class="data">${e.senderName}</td>
-                                    <td class="data">${e.receiver_number}</td>
-                                    <td class="data">${e.receiver_network}</td>
-                                    <td class="data">${e.topup_amount}</td>
-                                    <td class="data">${e.topup_amount_usd}</td>
-                                    <td class="data">${e.processing_fee}</td>
-                                    <td class="data">${e.total_amount_usd}</td>
-                                    <td class="data">${e.status}</td>
+                                    <td class="data transactionId">${e.dateTime}</td>
+                                    <td class="data senderName">${e.senderName}</td>
+                                    <td class="data receiverNumber">${e.receiver_number}</td>
+                                    <td class="data network">${e.receiver_network}</td>
+                                    <td class="data topupAmount">${e.topup_amount}</td>
+                                    <td class="data amountUsd">${e.topup_amount_usd}</td>
+                                    <td class="data processingFee">${e.processing_fee}</td>
+                                    <td class="data totalAmountUsd">${e.total_amount_usd}</td>
+                                    <td class="data statusTransaction">${e.status}</td>
                                     <td class="data">
                                         <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
                                             data-toggle="modal" data-target="#basicsubsModal"
-                                            style="cursor: pointer">
+                                            style="cursor: pointer" class="actionBtnTransaction">
                                     </td>
                                 </tr>`;
                         $(".newData").append(div);
