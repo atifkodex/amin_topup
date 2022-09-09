@@ -27,6 +27,11 @@
     background: #f1efef;
  
     }
+    @media screen and (min-width:1700px) {
+     #table-id{
+        width: 100% !important;
+     }
+    }
 </style>
 @section('content')
     @include('includes.admin-navbar')
@@ -57,7 +62,7 @@
                                 </select>                
                                 </div>    
                                                          
-                                <table id="table-id" class="mr-3 mb-3" style="width: 1000px">
+                                <table id="table-id" class="mr-3 mb-3" style="width:1000px">
                                     <thead>
                                         <tr>
                                             <th>User</th>

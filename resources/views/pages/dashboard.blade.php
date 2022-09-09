@@ -92,6 +92,11 @@
             font-weight: bold;
         }
     }
+    @media screen and (min-width:1640px) {
+     #table-id{
+        width: 100% !important;
+     }
+    }
 </style>
 
 @section('content')
