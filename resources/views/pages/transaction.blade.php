@@ -236,15 +236,24 @@
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script>
+    var token = @json($token);
     $("#transactionFilterForm").submit(function (e) {
         e.preventDefault();
         var form = $(this);
-        // let route = '{{url("transaction_list")}}';
+        $(document).ready(function(e) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    'Authorization': 'Bearer ' + token,
+                }
+            });
+        });
         // Ajax call 
         $.ajax({
-            url: 'http://kodextech.net/amin-topup/public/api/admin/transactions',
-            type: 'POST',
+            url: 'http://kodextech.net/amin-topup/public/api/transactions',
             dataType: 'json', 
+            type: 'POST',
             data: form.serialize(),
             success: function(response) {
                 let arr = [];

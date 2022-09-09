@@ -148,7 +148,7 @@ class AdminUIController extends Controller
         $convertor = $response->body();
         $response = json_decode($convertor, true);
         $data = $response['data'];
-        return view('pages.transaction', ['data' => $data]);
+        return view('pages.transaction', ['data' => $data, 'token' => $token]);
     }
 
     // public function transactionsList(Request $request){
