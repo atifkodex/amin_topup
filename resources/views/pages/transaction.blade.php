@@ -27,11 +27,6 @@
     background: #f1efef;
  
     }
-    @media screen and (min-width:2100px) {
-     #table-id{
-        width: 100% !important;
-     }
-    }
 
 </style>
 @section('content')

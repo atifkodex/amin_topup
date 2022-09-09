@@ -152,15 +152,6 @@
     border: none;
     border-radius: 10px;
   }
-  .log-out a{
-    font-size: 12px;
-    border-bottom: 1px solid rgba(134, 133, 133, 0.26);
-  }
-
-  .log-out a:last-of-type{
-    border-bottom: none;
-  }
- 
 </style>
 <div class="left-outer">
   <div class="sidebar-left">
@@ -233,86 +224,6 @@
         <!-- Search Bar -->
         <div class="search-bar">
           <input type="text" placeholder="Search anything here ...">
-        <div class="col-xl-4 col-sm-5 col-6">
-            <!-- Notification Area  -->
-            <div class="bell-section-area">
-                <div class="bell-icon">
-                    {{-- <img src="{{ asset('assets/images/bell-notify-icon.svg') }}" alt="bell-notify">
-                    <span class="noti-dot">3</span> --}}
-                    <div class="form-group has-search">
-                        <div class="dropdown">
-                            <img src="{{ asset('assets/images/bell-notify-icon.svg') }}" class="dropdown-toggle icon-button"
-                                id="dropdownMenuButton" data-toggle="dropdown">
-                                <span class="noti-dot">3</span>
-                            <div class="dropdown-menu notification-dropdown px-2" aria-labelledby="dropdownMenuButton">
-                                <a class="notification-area " href="#">
-                                    <div class="notification-profile d-flex py-3 error-notification">
-                                      
-                                        <p class="pl-3">Unfortunately, Your Topup transaction was not successful due to <span>[Error Description]</span>.</p>
-                                    </div>
-                                </a>
-                                <a class="notification-area " href="#">
-                                    <div class="notification-profile d-flex py-3 success-notification">
-                                      
-                                        <p class="pl-3">Topup <span>successfully</span>  sent to Ali <br>Thank you for using Amin Topup!</p>
-                                    </div>
-                                </a>
-                                <a class="notification-area " href="#">
-                                    <div class="notification-profile d-flex py-3 error-notification">
-                                      
-                                        <p class="pl-3">Unfortunately, Your Topup transaction was not successful due to <span>[Error Description]</span>.</p>
-                                    </div>
-                                </a>
-                                <a class="notification-area " href="#">
-                                    <div class="notification-profile d-flex py-3 success-notification">
-                                      
-                                        <p class="pl-3">Topup <span>successfully</span>  sent to Ali <br>Thank you for using Amin Topup!</p>
-                                    </div>
-                                </a>
-                                <a class="notification-area " href="#">
-                                  <div class="notification-profile d-flex py-3 error-notification">
-                                    
-                                      <p class="pl-3">Unfortunately, Your Topup transaction was not successful due to <span>[Error Description]</span>.</p>
-                                  </div>
-                              </a>
-                              <a class="notification-area " href="#">
-                                  <div class="notification-profile d-flex py-3 success-notification">
-                                    
-                                      <p class="pl-3">Topup <span>successfully</span>  sent to Ali <br>Thank you for using Amin Topup!</p>
-                                  </div>
-                              </a>
-                              <a class="notification-area " href="#">
-                                  <div class="notification-profile d-flex py-3 error-notification">
-                                    
-                                      <p class="pl-3">Unfortunately, Your Topup transaction was not successful due to <span>[Error Description]</span>.</p>
-                                  </div>
-                              </a>
-                              <a class="notification-area " href="#">
-                                  <div class="notification-profile d-flex py-3 success-notification">
-                                    
-                                      <p class="pl-3">Topup <span>successfully</span>  sent to Ali <br>Thank you for using Amin Topup!</p>
-                                  </div>
-                              </a>
-                         
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="admin-top-dropdown">
-                <div class="dropdown nav-right-button">
-                    <button class="btn dropdown-toggle logout-button" type="button" data-toggle="dropdown" aria-expanded="false">
-                        <img src="{{ asset('assets/images/dropdown-user.svg') }}" alt="">
-                        <span>Amin Topup</span>
-                        <i class="fa-solid fa-angle-down"></i>
-                    </button>
-                    <div class="dropdown-menu log-out">
-                        <a class="dropdown-item" href="#"> <img src="{{asset('assets/images/logout.svg')}}" alt=""> Logout</a>  
-                        <a class="dropdown-item" href="{{url('changepassword')}}"> <img src="{{asset('assets/images/padlock.png')}}" alt="">Change Password</a>    
-                    </div>
-                 
-                    </div>
-                </div>
-            </div>
         </div>
       </div>
     </div>
