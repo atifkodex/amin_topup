@@ -79,7 +79,7 @@
                                             @foreach($data as $transaction)
                                             <tr>
                                                 <td class="data transactionId">{{$transaction['id']}}</td>
-                                                <td class="data transactionId">22-10-10 02:08PM</td>
+                                                <td class="data transactionId">{{$transaction['dateTime']}}</td>
                                                 <td class="data senderName">{{$transaction['senderName']}}</td>
                                                 <td class="data receiverNumber">{{$transaction['receiver_number']}}</td>
                                                 <td class="data network">{{$transaction['receiver_network']}}</td>
