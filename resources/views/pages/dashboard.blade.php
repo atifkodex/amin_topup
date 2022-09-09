@@ -116,26 +116,26 @@
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="overview-col">
-                                    <p><span>{{$data['date']}}</span></p>
+                                    <p><span>17 Aug 2022</span></p>
                                     <h2>Total Active Users</h2>
                                     <div class="box-data">
-                                        <h3>{{$data['usersOnDate']}} <span>/ {{$data['allUsers']}}</span></h3>
+                                        <h3>204 <span>/ 6000</span></h3>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="overview-col">
-                                    <p><span>{{$data['date']}}</span></p>
+                                    <p><span>17 Aug 2022</span></p>
                                     <h2>Total Sales</h2>
                                     <div class="box-data">
-                                        <h3>{{$data['sales']}} <span>USD</span></h3>
+                                        <h3>40000 <span>USD</span></h3>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-12 chart-area">
 
                                 <div class="overview-col px-0">
-                                    <p class="pl-3"><span>{{$data['date']}}</span></p>
+                                    <p class="pl-3"><span>17 Aug 2022</span></p>
                                     <h2 class="pl-3">Total Topup</h2>
                                     <div class="pie-chart-main ">
 
@@ -144,7 +144,6 @@
 
                                         </div>
                                         {{-- <div class="chart-inner">5,000.01<br>AFN</div> --}}
-                                        {{-- <div class="chart-inner">{{$data['salesAfn']}}<br>AFN</div> --}}
                                         <ul class="pl-3 pl-xl-1 chart-list">
                                             <li>
                                                 <div class="color-box" style="background: #775DD0"></div>
@@ -156,7 +155,7 @@
                                             </li>
                                             <li>
                                                 <div class="color-box" style="background: #00E396"></div>
-                                                <span>Salaam</span>
+                                                <span>Roshan</span>
                                             </li>
                                             <li>
                                                 <div class="color-box" style="background: #DA3B52"></div>
@@ -167,9 +166,11 @@
                                                 <span>Afghan Telecom</span>
                                             </li>
                                             <li>
-                                                <div class="color-box" style="background: #FEB099"></div>
-                                                <span>MTN</span>
+                                                <div class="color-box" style="background: #FEB019"></div>
+                                                <span>Dummy</span>
                                             </li>
+                                         
+
                                         </ul>
                                     </div>
                                 </div>
@@ -829,18 +830,7 @@
     <!-- ================ Owl Carousel Cdn =================== -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
-<script>
-    var app = @json($data);
-    var data = [
-        app['roshanPercentage'],
-        app['etisalatPercentage'],
-        app['salaamPercentage'],
-        app['awccPercentage'],
-        app['afghanTelecomPercentage'],
-        app['mtnPercentage'],
-    ];
-    console.log(data);
-</script>
+
     <script>
         var options = {
             tooltip: {
@@ -861,11 +851,7 @@
                     fontSize: "8px",
                 }
             },
-            tooltip: {
-                enabled: false,
-            },
-            series: data,
-            labels: ["Roshan", "Etisalat", "Salaam", "AWCC", "Afghan Telecom", "MTN" ],
+            series: [44, 55, 41, 17, 15],
             chart: {
                 type: 'donut',
                 width: '100%',
@@ -909,11 +895,6 @@
       }
     }
   },
-            fill: {
-                colors: ['#775DD0', '#008FFB', '#00E396', '#DA3B52',  '#FEB019','#FEB099',]
-            },
-            
-
             responsive: [{
                 breakpoint: 1199,
                 options: {

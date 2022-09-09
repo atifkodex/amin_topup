@@ -7,11 +7,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use \Illuminate\Http\Request;
-
 class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
-    protected $table = 'users';
+    protected $table='users';
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'password_confirmation', 'type', 'phone_number', 'country', 'date_of_birth', 'profile'
+        'name', 'email', 'password', 'password_confirmation', 'type'
     ];
 
     /**
@@ -44,8 +43,5 @@ class User extends Authenticatable
     {
         $this->notify(new \App\Notifications\MailResetPasswordNotification($token));
     }
-    public function contact()
-    {
-        return $this->hasMany(Contacts::class);
-    }
+
 }

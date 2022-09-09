@@ -160,7 +160,7 @@
             <div class="sidebar-menu">
                 <ul>
                     <li class="{{ Request::is('dashboard') ? 'active' : '' }}">
-                        <a href="{{route('dashboard-details')}}">
+                        <a href="{{url('dashboard')}}">
                             <img class="active-icon" src="{{asset('assets/images/dots-icon.svg')}}" alt="dashboard-icon">
                             <img class="normal-icon" src="{{asset('assets/images/dots-icon-gray.svg')}}" alt="dashboard-icon-gray">
                             Dashboard
