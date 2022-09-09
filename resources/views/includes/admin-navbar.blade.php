@@ -134,6 +134,15 @@
     border: none;
     border-radius: 10px;
   }
+  .log-out a{
+    font-size: 12px;
+    border-bottom: 1px solid rgba(134, 133, 133, 0.26);
+  }
+
+  .log-out a:last-of-type{
+    border-bottom: none;
+  }
+ 
 </style>
 <div class="left-outer">
     <div class="sidebar-left">
@@ -274,15 +283,17 @@
                     </div>
                 </div>
                 <div class="admin-top-dropdown">
-                <div class="dropdown">
+                <div class="dropdown nav-right-button">
                     <button class="btn dropdown-toggle logout-button" type="button" data-toggle="dropdown" aria-expanded="false">
                         <img src="{{ asset('assets/images/dropdown-user.svg') }}" alt="">
                         <span>Amin Topup</span>
                         <i class="fa-solid fa-angle-down"></i>
                     </button>
                     <div class="dropdown-menu log-out">
-                        <a class="dropdown-item" href="#"> <img src="{{asset('assets/images/logout.svg')}}" alt=""> Logout</a>   
+                        <a class="dropdown-item" href="#"> <img src="{{asset('assets/images/logout.svg')}}" alt=""> Logout</a>  
+                        <a class="dropdown-item" href="{{url('changepassword')}}"> <img src="{{asset('assets/images/padlock.png')}}" alt="">Change Password</a>    
                     </div>
+                 
                     </div>
                 </div>
             </div>

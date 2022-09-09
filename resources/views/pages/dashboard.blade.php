@@ -1,50 +1,66 @@
 @extends('layouts.admin-default')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.css"
+    rel="stylesheet" />
 <style>
-    .table-condensed thead tr:nth-of-type(2) th{
+    .table-condensed thead tr:nth-of-type(2) th {
         color: #F89822 !important;
     }
-    .table-condensed thead tr:nth-of-type(3) th{
+
+    .table-condensed thead tr:nth-of-type(3) th {
         color: #F89822 !important;
         font-weight: normal !important;
         font-size: 13px !important;
     }
-    .datepicker-months .table-condensed tbody tr:nth-of-type(1),.datepicker-years .table-condensed tbody tr:nth-of-type(1){
+
+    .datepicker-months .table-condensed tbody tr:nth-of-type(1),
+    .datepicker-years .table-condensed tbody tr:nth-of-type(1) {
         background: #F89822 !important;
         color: white !important;
     }
-    .datepicker-months .table-condensed tbody tr:nth-of-type(1) td .month:hover, .datepicker-years .table-condensed tbody tr:nth-of-type(1) td .year:hover{
+
+    .datepicker-months .table-condensed tbody tr:nth-of-type(1) td .month:hover,
+    .datepicker-years .table-condensed tbody tr:nth-of-type(1) td .year:hover {
         background: #ac6d1cc4 !important;
         color: white !important;
     }
-    .datepicker-months .table-condensed tbody tr:nth-of-type(1) td .month.focused,.datepicker-years .table-condensed tbody tr:nth-of-type(1) td .year.focused{
+
+    .datepicker-months .table-condensed tbody tr:nth-of-type(1) td .month.focused,
+    .datepicker-years .table-condensed tbody tr:nth-of-type(1) td .year.focused {
         background: #ac6d1cc4 !important;
         color: white !important;
     }
-    .table-condensed tbody tr td{
+
+    .table-condensed tbody tr td {
         font-size: 13px !important;
     }
-    .table-condensed,.datepicker-inline{
+
+    .table-condensed,
+    .datepicker-inline {
         width: 100% !important;
     }
-    .table-condensed tfoot{
+
+    .table-condensed tfoot {
         display: none !important;
     }
-    .datepicker table tr td.highlighted{
+
+    .datepicker table tr td.highlighted {
         background: transparent !important;
         color: black !important;
     }
-    .datepicker table tr td.today{
+
+    .datepicker table tr td.today {
         background: transparent !important;
         color: black !important;
     }
-    .datepicker table tr td.active.active,.datepicker table tr td:hover{
+
+    .datepicker table tr td.active.active,
+    .datepicker table tr td:hover {
         background: #F89822 !important;
         color: white !important;
         border-radius: 5px !important;
     }
-   
+
     .pie-chart-main {
         position: relative !important;
     }
@@ -57,7 +73,7 @@
     @media screen and (min-width:1199px) {
         .chart-inner {
             position: absolute !important;
-            top:45% !important;
+            top: 45% !important;
             left: 50% !important;
             transform: translateX(-50%) translateY(-50%) !important;
             font-size: 12px;
@@ -69,8 +85,8 @@
 
         .chart-inner {
             position: absolute !important;
-            top:45% !important;
-            left:50% !important;
+            top: 45% !important;
+            left: 50% !important;
             transform: translateX(-50%) translateY(-50%) !important;
             font-size: 14px;
             font-weight: bold;
@@ -122,7 +138,7 @@
 
 
                                         </div>
-                                        <div class="chart-inner">5,000.01<br>AFN</div>
+                                        {{-- <div class="chart-inner">5,000.01<br>AFN</div> --}}
                                         <ul class="pl-3 pl-xl-1 chart-list">
                                             <li>
                                                 <div class="color-box" style="background: #775DD0"></div>
@@ -144,6 +160,12 @@
                                                 <div class="color-box" style="background: #FEB019"></div>
                                                 <span>Afghan Telecom</span>
                                             </li>
+                                            <li>
+                                                <div class="color-box" style="background: #FEB019"></div>
+                                                <span>Dummy</span>
+                                            </li>
+                                         
+
                                         </ul>
                                     </div>
                                 </div>
@@ -167,261 +189,261 @@
                                 </div>
                             </div>
                             <!-- <div class="home-demo">
-                                <h3>August, 2022</h3> -->
-                                <!-- <div class="owl-carousel owl-theme"> -->
-                                    <!-- Item 1 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
+                                    <h3>August, 2022</h3> -->
+                            <!-- <div class="owl-carousel owl-theme"> -->
+                            <!-- Item 1 -->
+                            <!-- <div class="item">
+                                            <div class="calender-dates">
+                                                <div class="date-box">
+                                                    <h1>Mon</h1>
+                                                    <p>15</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Tue</h1>
+                                                    <p>16</p>
+                                                </div>
+                                                <div class="date-box active">
+                                                    <h1>Wed</h1>
+                                                    <p>17</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Thu</h1>
+                                                    <p>18</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Fri</h1>
+                                                    <p>19</p>
+                                                </div>
                                             </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
+                                        </div> -->
+                            <!-- Item 2 -->
+                            <!-- <div class="item">
+                                            <div class="calender-dates">
+                                                <div class="date-box">
+                                                    <h1>Mon</h1>
+                                                    <p>15</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Tue</h1>
+                                                    <p>16</p>
+                                                </div>
+                                                <div class="date-box active">
+                                                    <h1>Wed</h1>
+                                                    <p>17</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Thu</h1>
+                                                    <p>18</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Fri</h1>
+                                                    <p>19</p>
+                                                </div>
                                             </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
+                                        </div> -->
+                            <!-- Item 3 -->
+                            <!-- <div class="item">
+                                            <div class="calender-dates">
+                                                <div class="date-box">
+                                                    <h1>Mon</h1>
+                                                    <p>15</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Tue</h1>
+                                                    <p>16</p>
+                                                </div>
+                                                <div class="date-box active">
+                                                    <h1>Wed</h1>
+                                                    <p>17</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Thu</h1>
+                                                    <p>18</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Fri</h1>
+                                                    <p>19</p>
+                                                </div>
                                             </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
+                                        </div> -->
+                            <!-- Item 4 -->
+                            <!-- <div class="item">
+                                            <div class="calender-dates">
+                                                <div class="date-box">
+                                                    <h1>Mon</h1>
+                                                    <p>15</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Tue</h1>
+                                                    <p>16</p>
+                                                </div>
+                                                <div class="date-box active">
+                                                    <h1>Wed</h1>
+                                                    <p>17</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Thu</h1>
+                                                    <p>18</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Fri</h1>
+                                                    <p>19</p>
+                                                </div>
                                             </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
+                                        </div> -->
+                            <!-- Item 5 -->
+                            <!-- <div class="item">
+                                            <div class="calender-dates">
+                                                <div class="date-box">
+                                                    <h1>Mon</h1>
+                                                    <p>15</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Tue</h1>
+                                                    <p>16</p>
+                                                </div>
+                                                <div class="date-box active">
+                                                    <h1>Wed</h1>
+                                                    <p>17</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Thu</h1>
+                                                    <p>18</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Fri</h1>
+                                                    <p>19</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- Item 2 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
+                                        </div> -->
+                            <!-- Item 6 -->
+                            <!-- <div class="item">
+                                            <div class="calender-dates">
+                                                <div class="date-box">
+                                                    <h1>Mon</h1>
+                                                    <p>15</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Tue</h1>
+                                                    <p>16</p>
+                                                </div>
+                                                <div class="date-box active">
+                                                    <h1>Wed</h1>
+                                                    <p>17</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Thu</h1>
+                                                    <p>18</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Fri</h1>
+                                                    <p>19</p>
+                                                </div>
                                             </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
+                                        </div> -->
+                            <!-- Item 7 -->
+                            <!-- <div class="item">
+                                            <div class="calender-dates">
+                                                <div class="date-box">
+                                                    <h1>Mon</h1>
+                                                    <p>15</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Tue</h1>
+                                                    <p>16</p>
+                                                </div>
+                                                <div class="date-box active">
+                                                    <h1>Wed</h1>
+                                                    <p>17</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Thu</h1>
+                                                    <p>18</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Fri</h1>
+                                                    <p>19</p>
+                                                </div>
                                             </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
+                                        </div> -->
+                            <!-- Item 8 -->
+                            <!-- <div class="item">
+                                            <div class="calender-dates">
+                                                <div class="date-box">
+                                                    <h1>Mon</h1>
+                                                    <p>15</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Tue</h1>
+                                                    <p>16</p>
+                                                </div>
+                                                <div class="date-box active">
+                                                    <h1>Wed</h1>
+                                                    <p>17</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Thu</h1>
+                                                    <p>18</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Fri</h1>
+                                                    <p>19</p>
+                                                </div>
                                             </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
+                                        </div> -->
+                            <!-- Item 9 -->
+                            <!-- <div class="item">
+                                            <div class="calender-dates">
+                                                <div class="date-box">
+                                                    <h1>Mon</h1>
+                                                    <p>15</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Tue</h1>
+                                                    <p>16</p>
+                                                </div>
+                                                <div class="date-box active">
+                                                    <h1>Wed</h1>
+                                                    <p>17</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Thu</h1>
+                                                    <p>18</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Fri</h1>
+                                                    <p>19</p>
+                                                </div>
                                             </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- Item 3 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
-                                            </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- Item 4 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
-                                            </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- Item 5 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
-                                            </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- Item 6 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
-                                            </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- Item 7 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
-                                            </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- Item 8 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
-                                            </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- Item 9 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
-                                            </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <!-- Item 10 -->
-                                    <!-- <div class="item">
-                                        <div class="calender-dates">
-                                            <div class="date-box">
-                                                <h1>Mon</h1>
-                                                <p>15</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Tue</h1>
-                                                <p>16</p>
-                                            </div>
-                                            <div class="date-box active">
-                                                <h1>Wed</h1>
-                                                <p>17</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Thu</h1>
-                                                <p>18</p>
-                                            </div>
-                                            <div class="date-box">
-                                                <h1>Fri</h1>
-                                                <p>19</p>
-                                            </div>
+                                        </div> -->
+                            <!-- Item 10 -->
+                            <!-- <div class="item">
+                                            <div class="calender-dates">
+                                                <div class="date-box">
+                                                    <h1>Mon</h1>
+                                                    <p>15</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Tue</h1>
+                                                    <p>16</p>
+                                                </div>
+                                                <div class="date-box active">
+                                                    <h1>Wed</h1>
+                                                    <p>17</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Thu</h1>
+                                                    <p>18</p>
+                                                </div>
+                                                <div class="date-box">
+                                                    <h1>Fri</h1>
+                                                    <p>19</p>
+                                                </div>
 
-                                        </div>
-                                    </div> -->
+                                            </div>
+                                        </div> -->
 
-                                <!-- </div> -->
+                            <!-- </div> -->
                             <!-- </div> -->
                         </div>
                         <!-- ============== Refund Box ============== -->
@@ -800,12 +822,16 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 
-<!-- ================ Owl Carousel Cdn =================== -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- ================ Owl Carousel Cdn =================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
 
     <script>
         var options = {
+            tooltip: {
+                
+            },
+
             grid: {
                 show: false,
                 padding: {
@@ -815,6 +841,7 @@
             },
             dataLabels: {
                 enabled: true,
+                
                 style: {
                     fontSize: "8px",
                 }
@@ -823,16 +850,51 @@
             chart: {
                 type: 'donut',
                 width: '100%',
-                height: 180,
+                height: 260,
 
             },
-
+            plotOptions: {
+    pie: {
+      donut: {
+        labels: {
+          show:true,
+           name: {
+          show: true,
+          fontSize: '22px',
+          fontFamily: 'Rubik',
+          color: '#F89822',
+          offsetY: 20
+        },
+        total: {
+          show: true,
+          label: 'AFN',
+          color: '#F89822',
+          formatter: function (w) {
+            return w=9000.01;
+          }
+        },
+        value: {
+          show: true,
+          fontSize: '16px',
+          label: 'AFN',
+          fontFamily: 'Helvetica, Arial, sans-serif',
+          color: '#F89822',
+          offsetY: -20,
+          formatter: function (val) {
+            return val
+          }
+        },
+       
+        }
+      }
+    }
+  },
             responsive: [{
                 breakpoint: 1199,
                 options: {
                     chart: {
-                        width: 300,
-                        height: 180,
+                        width: '100%',
+                        height: 220,
                     },
                     // legend: {
                     // position: 'bottom'
@@ -893,10 +955,10 @@
                             $('.pagination #prev')
                                 .before(
                                     '<li data-page="' + i + '">\
-                                            <span>' +
+                                                <span>' +
                                     i++ +
                                     '<span class="sr-only">(current)</span></span>\
-                                            </li>'
+                                                </li>'
                                 )
                                 .show();
                         } // end for i
@@ -927,7 +989,7 @@
                         var trIndex = 0; // reset tr counter
                         $('.pagination li').removeClass('active'); // remove active class from all li
                         $('.pagination [data-page="' + lastPage + '"]').addClass(
-                        'active'); // add active class to the clicked
+                            'active'); // add active class to the clicked
                         // $(this).addClass('active');					// add active class to the clicked
                         limitPagging();
                         $(table + ' tr:gt(0)').each(function() {
@@ -1015,26 +1077,25 @@
 
     <script>
         $('.sidebar-menu ul li:nth-of-type(1)').addClass('active');
-        
     </script>
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.de.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.de.min.js">
+    </script>
     <script>
-$('#pickyDate').datepicker({
-  format: "dd.mm.yyyy",
-  todayBtn: "linked",
-  language: "en",
-  daysOfWeekHighlighted: "4",
-  todayHighlight: true,
-}).on('changeDate', showTestDate);
+        $('#pickyDate').datepicker({
+            format: "dd.mm.yyyy",
+            todayBtn: "linked",
+            language: "en",
+            daysOfWeekHighlighted: "4",
+            todayHighlight: true,
+        }).on('changeDate', showTestDate);
 
-function showTestDate(){
-  var value = $('#pickyDate').datepicker('getFormattedDate');
-  alert(value);
-}
+        function showTestDate() {
+            var value = $('#pickyDate').datepicker('getFormattedDate');
+            alert(value);
+        }
     </script>
-
 @endsection

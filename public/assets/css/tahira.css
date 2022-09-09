@@ -171,7 +171,11 @@ body {
 } */
 
 /* =================== Navbar =================== */
-
+.nav-right-button button:active,.nav-right-button button:focus{
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
 .admin-navbar {
     padding: 30px;
     position: absolute;
@@ -340,6 +344,8 @@ body {
 }
 .chart-list{
     margin-bottom: 0px;
+    padding-top: 60px;
+    margin-left: 10px;
 }
 .overview-col p {
     color: #3590f3;
@@ -468,14 +474,15 @@ body {
 
 .pie-chart-main {
     display: flex;
-    flex-direction:column;
-   
+    flex-direction:row-reverse;
+    justify-content: space-between;
+    margin-top: -55px;
 }
-.chart-list{
+/* .chart-list{
     display: flex;
     flex-wrap:wrap;
     justify-content:center;
-}
+} */
 .pie-chart-main ul li {
     font-weight: 600;
     padding-right: 8px !important;
@@ -487,19 +494,19 @@ body {
     position: relative;
 }
 .color-box {
-    width:12px;
+    width:13px;
     top: 2px;
-    height:12px;
+    height:13px;
     border-radius: 2px;
     margin-right: 7px;
     position: absolute;
     left: 0;
 }
 .pie-chart-main ul li span {
-    padding-left: 14px;
+    padding-left: 16px;
     top: -4px;
     position: relative;
-    font-size: 12px;
+    font-size: 13px;
 }
 .latest-transection-sec {
     background: linear-gradient(
@@ -755,9 +762,9 @@ body {
 
 @media only screen and (max-width: 1199px) {
     .color-box{
-        top: 6px;
-        width: 10px;
-        height: 10px;
+        top: 3px;
+        width: 13px;
+        height: 13px;
     }
     /* .pie-chart-main{
         flex-direction:row-reverse;
