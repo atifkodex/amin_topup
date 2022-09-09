@@ -171,11 +171,7 @@ body {
 } */
 
 /* =================== Navbar =================== */
-.nav-right-button button:active,.nav-right-button button:focus{
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
-}
+
 .admin-navbar {
     padding: 30px;
     position: absolute;
@@ -309,9 +305,6 @@ body {
 }
 
 /* ************************ Dashboard Css ************************ */
-.chart-area{
-    margin-top: 20px;
-}
 .dashboard-first-sec {
     display: flex;
 }
@@ -347,8 +340,6 @@ body {
 }
 .chart-list{
     margin-bottom: 0px;
-    padding-top: 60px;
-    margin-left: 10px;
 }
 .overview-col p {
     color: #3590f3;
@@ -477,15 +468,14 @@ body {
 
 .pie-chart-main {
     display: flex;
-    flex-direction:row-reverse;
-    justify-content: space-between;
-    margin-top: -55px;
+    flex-direction:column;
+   
 }
-/* .chart-list{
+.chart-list{
     display: flex;
     flex-wrap:wrap;
     justify-content:center;
-} */
+}
 .pie-chart-main ul li {
     font-weight: 600;
     padding-right: 8px !important;
@@ -497,19 +487,19 @@ body {
     position: relative;
 }
 .color-box {
-    width:13px;
+    width:12px;
     top: 2px;
-    height:13px;
+    height:12px;
     border-radius: 2px;
     margin-right: 7px;
     position: absolute;
     left: 0;
 }
 .pie-chart-main ul li span {
-    padding-left: 16px;
+    padding-left: 14px;
     top: -4px;
     position: relative;
-    font-size: 13px;
+    font-size: 12px;
 }
 .latest-transection-sec {
     background: linear-gradient(
@@ -765,9 +755,9 @@ body {
 
 @media only screen and (max-width: 1199px) {
     .color-box{
-        top: 3px;
-        width: 13px;
-        height: 13px;
+        top: 6px;
+        width: 10px;
+        height: 10px;
     }
     /* .pie-chart-main{
         flex-direction:row-reverse;

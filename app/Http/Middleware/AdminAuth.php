@@ -4,6 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
+
+
 
 class AdminAuth
 {
@@ -14,13 +18,11 @@ class AdminAuth
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
-        if (Auth::guard('api')->check() && $request->user()->type >= 1) {
+       if (Session()->has('loginData')) {
             return $next($request);
-        } else {
-            $message = ["message" => "Permission Denied"];
-            return response($message, 401);
         }
+        return redirect()->to('login');
     }
 }

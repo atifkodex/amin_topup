@@ -8,8 +8,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Traits\ResponseTrait;
 // use Validator;
+use App\Contacts;
+use App\Message;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+
 
 // use Session;
 
@@ -34,47 +37,131 @@ class AdminUIController extends Controller
         $responseBody = $response->body();
         $test = json_decode($responseBody, true);
         if ($test['success'] == false) {
+
             session::flash('message', $test['message']);
             return redirect()->back();
         } elseif ($test['success'] == true) {
             session::put('loginData', $test['data']);
+            return redirect()->route('dashboard-details');
         }
-        return redirect()->route('dashboard-details');
     }
-
+    ///////........show user contact list.....///
     public function support(Request $request)
     {
+
         $value = Session::get('loginData');
-        $token = $value['token'];
+
+        $token = $value['user']['token'];
         $data = $request->all();
 
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/public/api/admin/support', $data);
+        ])->post('http://kodextech.net/amin-topup/public/api/support', $data);
         $convertor = $response->body();
         $response = json_decode($convertor, true);
-        dd($response);
 
-        $data = $response['data'];
-
-        return view(('pages.support'), compact('data'));
+        $data = $response['data']['users'];
+        // dd($data);
+        return view('pages.support', ['data' => $data]);
     }
 
     public function dashboardDetails(Request $request)
     {
+
         $value = Session::get('loginData');
         $token = $value['user']['token'];
         $data = $request->all();
-        
+
+
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/public/api/admin/dashboard', $data);
+        ])->post('http://kodextech.net/amin-topup/public/api/dashboard', $data);
         $convertor = $response->body();
         $response = json_decode($convertor, true);
         $data = $response['data'];
-        // dd($data);
+
         return view(('pages.dashboard'), compact('data'));
     }
+
+    public function settingDetails()
+    {
+        $value = Session::get('loginData');
+        $token = $value['user']['token'];
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post('http://kodextech.net/amin-topup/public/api/settings',);
+        $convertor = $response->body();
+        $response = json_decode($convertor, true);
+        $data = $response['data'];
+        return view(('pages.setting'), compact('data'));
+    }
+
+    public function reply(Request $request)
+    {
+
+        $value = Session::get('loginData');
+        $token = $value['user']['token'];
+        $data = $request->all();
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post('http://kodextech.net/amin-topup/public/api/reply_send', $data);
+        $convertor = $response->body();
+        $response = json_decode($convertor, true);
+        // dd($response);
+        // $data = $response['data'];
+
+
+        return redirect()->back();
+    }
+    public function user_list(Request $request)
+    {
+
+        $value = Session::get('loginData');
+
+        $token = $value['user']['token'];
+        $data = $request->all();
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post('http://kodextech.net/amin-topup/public/api/users', $data);
+        $convertor = $response->body();
+        $response = json_decode($convertor, true);
+
+        $data = $response['data']['users'];
+        return view('pages.user', ['data' => $data]);
+    }
+
+    public function transactionList(){
+        $value = Session::get('loginData');
+        $token = $value['user']['token'];
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post('http://kodextech.net/amin-topup/public/api/transactions');
+        $convertor = $response->body();
+        $response = json_decode($convertor, true);
+        $data = $response['data'];
+        return view('pages.transaction', ['data' => $data, 'token' => $token]);
+    }
+
+    // public function transactionsList(Request $request){
+    //     dd('alert');
+    //     $value = Session::get('loginData');
+    //     $token = $value['user']['token'];
+    //     $response = Http::withHeaders([
+    //         'Authorization' => 'Bearer ' . $token,
+    //         'Content-Type' => 'application/json'
+    //     ])->post('http://kodextech.net/amin-topup/public/api/transactions', $request->all());
+    //     $convertor = $response->body();
+    //     $response = json_decode($convertor, true);
+    //     $data = $response['data'];
+    //     return view('pages.transaction', ['data' => $data]);
+    // }
 }

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminUIController;
+use App\Http\Middleware\AdminAuth;
+use App\Http\Middleware\IsAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +17,21 @@ use App\Http\Controllers\AdminUIController;
 |
 */
 
-Route::post('/admin_login', [AdminUIController::class, 'adminLogin'])->name('adminLogin');
-Route::post('/support', [AdminUIController::class, 'support'])->name('/support');
-Route::get('/dashboard', [AdminUIController::class, 'dashboardDetails'])->name('dashboard-details');
+    Route::post('/admin_login', [AdminUIController::class, 'adminLogin'])->name('adminLogin');
 
+    Route::middleware([AdminAuth::class])->group(function(){
+        Route::middleware([IsAdmin::class])->group(function(){
+            Route::post('/support', [AdminUIController::class, 'support'])->name('/support');
+            Route::get('/dashboard', [AdminUIController::class, 'dashboardDetails'])->name('dashboard-details');
+            Route::get('/setting', [AdminUIController::class, 'settingDetails'])->name('setting-details');
+            Route::get('/support_page', [AdminUIController::class, 'support'])->name('support-page');
+            Route::post('/admin_reply', [AdminUIController::class, 'reply'])->name('admin.reply');
+            // Route::post('/user_list', [AdminUIController::class, 'user_list'])->name('admin.user_list');
+            Route::get('/transactions', [AdminUIController::class, 'transactionList'])->name('transactionList');
+            // Route::post('/transaction_list', [AdminUIController::class, 'transactionsList'])->name('transactionsList');
+            Route::get('/user', [AdminUIController::class, 'user_list'])->name('user');
+        });
+    });
 
 Route::get('/', function () {
     return view('pages.auth.login');
@@ -26,11 +39,6 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('pages.auth.login');
 });
-
-Route::get('/changepassword', function () {
-    return view('pages.auth.change-password');
-});
-
 
 Route::get('/sign-up', function () {
     return view('pages.auth.sign-up');
@@ -40,17 +48,20 @@ Route::get('/sign-up', function () {
 //     return view('pages.dashboard');
 // })->name("dashboard");
 
-Route::get('/setting', function () {
-    return view('pages.setting');
-});
+// Route::get('/setting', function () {
+//     return view('pages.setting');
+// });
 
+// Route::get('/support', function () {
+//     return view('pages.support');
+// });
 
-Route::get('/user', function () {
-    return view('pages.user');
-});
-Route::get('/transaction', function () {
-    return view('pages.transaction');
-});
+// Route::get('/user', function () {
+//     return view('pages.user');
+// });
+// Route::get('/transaction', function () {
+//     return view('pages.transaction');
+// });
 
 Route::get('/sucess', function () {
     return view('pages.sucess');

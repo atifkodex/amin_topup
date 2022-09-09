@@ -11,6 +11,8 @@ use App\Transaction;
 use Illuminate\Support\Str;
 use App\Contacts;
 use App\NotificationLog;
+use App\OperatorNetwork;
+use App\TopupDetails;
 use Illuminate\Support\Facades\Auth;
 
 class SettingController extends Controller
@@ -58,8 +60,74 @@ class SettingController extends Controller
 
             $name = time() . '.' . $image->getClientOriginalExtension();
             $image->move($destinationPath, $name);
-            $image = "kodextech.net" . $uploadPath . $name;
+            $image = "http://kodextech.net" . $uploadPath . $name;
             return $this->sendResponse($image,"image path generated successfully");
         }
+    }
+
+    public function settingsData(Request $request)
+    {
+        $network = OperatorNetwork::get();
+        if(count($network) > 0){
+            foreach($network as $topupData){
+                $opeartorId = $topupData['id'];
+                $opeartorName = $topupData['operator_name'];
+                $topup = TopupDetails::where('operator_id', $opeartorId)->get();
+                if (count($topup) > 0) {
+                    foreach ($topup as $data) {
+                        $calc = ($data['denomination'] * 10) /100;
+                        $data['afterTax'] = $data['denomination'] - $calc;
+
+                        $aminPercent = ($data['topup_usd'] * $data['fee_percentage']) / 100;
+                        $withAminFees = $aminPercent + $data['topup_usd'];
+                        $data['TotalPayable'] = $withAminFees + $data['stripe_fee'];
+                    }
+                }
+                $topupData['operator_data'] = $topup;
+            }
+            return $this->sendResponse($network,"All topup Details");
+        }
+        return $this->sendError("No Data available");
+
+    }
+
+    public function updateOperator(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|exists:topup_details,id'
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError(implode(",", $validator->errors()->all()), []);
+        }
+
+        $operator = TopupDetails::find($request->id);
+        // In exchange case 
+        if(isset($request->exchange_rate) && !empty($request->exchange_rate)) {
+            $operator->exchange_rate = $request->exchange_rate;
+            $operator->topup_usd = $request->topup_usd;
+            $operator->denomination = $request->denomination;
+        }
+        // In Amin fees Case 
+        if(isset($request->fee_percentage) && !empty($request->fee_percentage)) {
+            $operator->fee_percentage = $request->fee_percentage;
+        }
+        if(isset($request->stripe_fee) && !empty($request->stripe_fee)) {
+            $operator->stripe_fee = $request->stripe_fee;
+        }
+        // $operator->operator_id = $request->operator_id;
+        
+        if(isset($request->product_code_topup) && !empty($request->product_code_topup)) {
+            $operator->product_code_topup = $request->product_code_topup;
+        }
+        if(isset($request->product_code_stripe) && !empty($request->product_code_stripe)) {
+            $operator->product_code_stripe = $request->product_code_stripe;
+        }
+        $success = $operator -> save();
+        if ($success){
+            return $this->sendResponse($success,"Data saved successfully");
+        }else{
+            return $this->sendError("Something went wrong");
+        }
+
     }
 }

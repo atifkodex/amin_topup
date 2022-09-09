@@ -7,10 +7,18 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Traits\ResponseTrait;
+// use App\Message;
+use App\Message;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\User;
+use App\Contacts;
 use App\Transaction;
+use App\OperatorNetwork;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
+
+
 
 
 
@@ -45,7 +53,8 @@ class AdminController extends Controller
     public function usersList(Request $request)
     {
 
-        $user = (new User())->newQuery()->where('type', 'user');
+        $user = (User::with('transaction:user_id,created_at,total_amount_usd'))->newQuery();
+        // $user=User::with('transactions');
         // Check either search by day or month
         if ($request->has('name')) {
             $user->where('name', $request->name);
@@ -63,34 +72,45 @@ class AdminController extends Controller
 
             $user->whereDate('created_at', $request->date);
         }
-        if ($request->has('time')) {
-            $user->whereTime('created_at', $request->time);
-        }
+
 
         $user = $user->get();
-        if (count($user) == 0) {
+        if (count($user) > 0) {
+            foreach ($user as $nuser) {
+                $date = Transaction::where('user_id', $nuser['id'])->orderBy('created_at', 'desc')->pluck('created_at')->first();
+                if (!empty($date)) {
+                    $nuser['last_transaction'] = $date->format('y-m-d');
+                }
+            }
+        }
+
+        if ($user) {
+
+            return $this->sendResponse(['users' => $user, 'status' => 200], 'Getting Users Successfully');
+        } else {
             $response = 'Field is not match to data';
             return $this->sendError($response, []);
-        } else {
-            return $this->sendResponse(['users' => $user, 'status' => 200], 'Getting Users Successfully');
         }
     }
 
     // Admin Dashboard API 
     public function adminDashboard(Request $request)
     {
-        if(isset($request->date) && !empty($request->date)){
-            $date = $request->date;
-        }else{
+        if (isset($request->date) && !empty($request->date)) {
+            // $requestDate = $request->date;
+            $date = date("Y-m-d", strtotime($request->date));
+
+            // dd(is_string($requestDate));
+        } else {
             $date = Carbon::now();
         }
-        $formatedDate = 
         $allUsers = User::all()->count();
         $usersOnDate = User::whereDate('created_at', $date)->count();
         $sales = Transaction::whereDate('created_at', $date)->sum('topup_amount_usd');
         $salesAfn = Transaction::whereDate('created_at', $date)->sum('topup_amount');
 
         // For Graph Data 
+          
         $allTransactionCount = Transaction::whereDate('created_at', $date)->count();
         $awcc = Transaction::whereDate('created_at', $date)->where('receiver_network', 'AWCC')->count();
         $roshan = Transaction::whereDate('created_at', $date)->where('receiver_network', 'Roshan')->count();
@@ -99,53 +119,159 @@ class AdminController extends Controller
         $afghanTelecom = Transaction::whereDate('created_at', $date)->where('receiver_network', 'Afghan Telecom')->count();
         $mtn = Transaction::whereDate('created_at', $date)->where('receiver_network', 'MTN')->count();
 
-        if($awcc == 0){
+        if ($awcc == 0) {
             $awccPercentage = 0;
-        }else{
+        } else {
             $awccPercentage = ($allTransactionCount * 100) / $awcc;
         }
-        if($roshan == 0){
+        if ($roshan == 0) {
             $roshanPercentage = 0;
-        }else{
-            $roshanPercentage = ($allTransactionCount * 100) / $awcc;
+        } else {
+            $roshanPercentage = ($allTransactionCount * 100) / $roshan;
         }
-        if($etisalat == 0){
+        if ($etisalat == 0) {
             $etisalatPercentage = 0;
-        }else{
-            $etisalatPercentage = ($allTransactionCount * 100) / $awcc;
+        } else {
+            $etisalatPercentage = ($allTransactionCount * 100) / $etisalat;
         }
-        if($salaam == 0){
+        if ($salaam == 0) {
             $salaamPercentage = 0;
-        }else{
-            $salaamPercentage = ($allTransactionCount * 100) / $awcc;
+        } else {
+            $salaamPercentage = ($allTransactionCount * 100) / $salaam;
         }
-        if($afghanTelecom == 0){
+        if ($afghanTelecom == 0) {
             $afghanTelecomPercentage = 0;
-        }else{
-            $afghanTelecomPercentage = ($allTransactionCount * 100) / $awcc;
+        } else {
+            $afghanTelecomPercentage = ($allTransactionCount * 100) / $afghanTelecom;
         }
-        if($mtn == 0){
+        if ($mtn == 0) {
             $mtnPercentage = 0;
-        }else{
-            $mtnPercentage = ($allTransactionCount * 100) / $awcc;
+        } else {
+            $mtnPercentage = ($allTransactionCount * 100) / $mtn;
         }
 
         $latestTransaction = Transaction::orderBy('created_at', 'DESC')->take(15)->get();
+        if (count($latestTransaction) > 0) {
+            foreach ($latestTransaction as $transaction) {
+                $transaction->user = User::where('id', $transaction['user_id'])->first();
+                $transaction->networkImage = OperatorNetwork::where('operator_name', $transaction['receiver_network'])->pluck('operator_image')->first();
+            }
+        }
 
         // Generate Response 
-        $success['date'] = $date->format('d M Y'); 
-        $success['allUsers'] = $allUsers; 
-        $success['usersOnDate'] = $usersOnDate; 
-        $success['sales'] = $sales; 
-        $success['salesAfn'] = $salesAfn; 
-        $success['awccPercentage'] = $awccPercentage; 
-        $success['roshanPercentage'] = $roshanPercentage; 
-        $success['etisalatPercentage'] = $etisalatPercentage; 
-        $success['salaamPercentage'] = $salaamPercentage; 
-        $success['afghanTelecomPercentage'] = $afghanTelecomPercentage; 
-        $success['mtnPercentage'] = $mtnPercentage; 
-        $success['latestTransaction'] = $latestTransaction; 
+        if (isset($request->date) && !empty($request->date)) {
+            $success['date'] = $date;
+        } else {
+            $success['date'] = $date->format('d M Y');
+        }
+        $success['allUsers'] = $allUsers;
+        $success['usersOnDate'] = $usersOnDate;
+        $success['sales'] = $sales;
+        $success['salesAfn'] = $salesAfn;
+        $success['awccPercentage'] = $awccPercentage;
+        $success['roshanPercentage'] = $roshanPercentage;
+        $success['etisalatPercentage'] = $etisalatPercentage;
+        $success['salaamPercentage'] = $salaamPercentage;
+        $success['afghanTelecomPercentage'] = $afghanTelecomPercentage;
+        $success['mtnPercentage'] = $mtnPercentage;
+        $success['latestTransaction'] = $latestTransaction;
         return $this->sendResponse($success, 'Dashboard Details');
+    }
+
+    ////////....send reply api Admin....///////
+    public function replySend(Request $request)
+    {
+
+        $request->validate([
+
+            'email' => 'required|email',
+            'message' => 'required',
+
+        ]);
+        $input = new Message;
+
+        $input->sender_id = auth()->user()->id;
+
+        $input->contacts_id = $request->contacts_id;
+        $input->massege = $request->message;
+        $input->email = $request->email;
+        $input->save();
+        if ($input->save()) {
+            //     // Message::create($input);
+
+            //     //  Send mail to admin 
+            //     Mail::send('contactMail', array(
+
+            //         'email' => $input['email'],
+            //         'subject' => 'Admin',
+            //         'messege' => $input['massege'],
+
+            //     ), function ($message) use ($request) {
+
+            //         $message->to($request->email);
+
+            //         $message->from('admin@admin.com', 'Admin')->subject($request->get('subject'));
+            //     });
+
+            Contacts::where('id', $request->contacts_id)->update(['status' => 1]);
+            echo "send mail success";
+        } else {
+            echo "send mail Fail";
+        }
+
+
+        // return redirect()->back()->with(['success' => 'Contact Form Submit Successfully']);
+    }
+
+    public function TransactionList(Request $request)
+    {   
+        if(isset($request->network) && !empty($request->network)){
+            $transactions = Transaction::where('receiver_network' ,$request->network)->get(); 
+        }
+        if(isset($request->country) && !empty($request->country)){
+            $transactions = Transaction::where('country' ,$request->country)->get(); 
+        }
+        if(isset($request->amountTopup) && !empty($request->amountTopup)){
+            $transactions = Transaction::where('topup_amount' ,$request->amountTopup)->get(); 
+        }
+        if(isset($request->date) && !empty($request->date)){
+            $transactions = Transaction::whereDate('created_at' ,$request->date)->get(); 
+        }
+        if(count($request->all()) == 0){
+            $transactions = Transaction::get(); 
+        }
+        if(isset($request->name) && !empty($request->name)){
+            $user = User::where('name', $request->name)->pluck('id')->first();
+            $transactions = Transaction::where('user_id', $user)->get();
+            if(count($transactions) > 0) {
+                foreach($transactions as $transaction) {
+                    $transaction['senderName'] = $request->name;
+                    $transaction['dateTime'] = $transaction['created_at']->format('y-m-d H:i:s');
+                }
+            }else{
+                return $this->sendError("No Transaction found for user");
+            }
+        }
+        if(count($transactions) > 0) {
+            foreach($transactions as $transaction) {
+                $transaction['senderName'] = User::where('id', $transaction['user_id'])->pluck('name')->first();
+                $transaction['dateTime'] = $transaction['created_at']->format('y-m-d H:i:s');
+
+            }
+            return $this->sendResponse($transactions, 'All transactions');
+        }else{
+                return $this->sendError("No Transaction found for user");
+            }
+    }
+
+    public function adminNotifications()
+    {
+        $notifications = NotificationLog::where('notification_type', 'contact')->orwhere('notification_type', 'transaction')->get();
+        if(count($notifications) > 0){
+            foreach($notifications as $notification){
+
+            }
+        }
 
     }
 }
