@@ -34,15 +34,15 @@
     }
 </style>
 @section('content')
-    @include('includes.admin-navbar')
-    <div class="right-sidebar">
-        <div class="container-fluid">
-            <div class="setting-heading pl-4">
-                <h1>All User</h1>
-            </div>
-            <div class="row">
-                <div class="  col-xl-9">
-                  <div class="transection-tble-main">
+@include('includes.admin-navbar')
+<div class="right-sidebar">
+    <div class="container-fluid">
+        <div class="setting-heading pl-4">
+            <h1>All User</h1>
+        </div>
+        <div class="row">
+            <div class="  col-xl-9">
+                <div class="transection-tble-main">
                     <!-- Latest Transactions -->
                     <div class="latest-transection-sec mt-0">
                         <div class="row">
@@ -109,6 +109,8 @@
                                                     <td class="data"><span class="user-table-time">No Trasaction</span></td>
                                                     @endif
 
+
+
                                                     <td class="data">
                                                         <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                                     </td>
@@ -150,36 +152,36 @@
                         <div class="user-filter-form">
                             <form>
                                 <div class="form-group">
-                                  <label for="username">User Name</label>
-                                  <input type="text" class="form-control" id="username"  placeholder="Type Here..">
-                                  
+                                    <label for="username">User Name</label>
+                                    <input type="text" class="form-control" id="username" placeholder="Type Here..">
+
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email"  placeholder="Type Here..">
-                                    
-                                  </div>
-                                  <div class="form-group">
+                                    <input type="email" class="form-control" id="email" placeholder="Type Here..">
+
+                                </div>
+                                <div class="form-group">
                                     <label for="country">Country</label>
                                     <input type="text" class="form-control" id="country" placeholder="Type Here..">
-                                    
-                                  </div>
-                                  <div class="form-group">
+
+                                </div>
+                                <div class="form-group">
                                     <label for="userphonenumber">User Phone Number</label>
-                                    <input type="text" class="form-control" id="userphonenumber"  placeholder="Type Here..">
-                                    
-                                  </div>
-                                  <div class="form-group">
+                                    <input type="text" class="form-control" id="userphonenumber" placeholder="Type Here..">
+
+                                </div>
+                                <div class="form-group">
                                     <label for="lpurchase">Last Purchase</label>
-                                    <input type="text" class="form-control" id="lpurchase"  placeholder="Type Here..">
-                                    
-                                  </div>
-                               
-                                  <div class="text-center py-3">
+                                    <input type="text" class="form-control" id="lpurchase" placeholder="Type Here..">
+
+                                </div>
+
+                                <div class="text-center py-3">
                                     <button>Search</button>
-                                  </div>
-                              
-                              </form>
+                                </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>
