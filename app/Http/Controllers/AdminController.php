@@ -54,7 +54,7 @@ class AdminController extends Controller
     public function usersList(Request $request)
     {
 
-        $user = (User::with('transaction:user_id,created_at,total_amount_usd'))->newQuery();
+        $user = (User::with('transaction'))->newQuery();
         // $user=User::with('transactions');
         // Check either search by day or month
         if ($request->has('name')) {
@@ -111,7 +111,7 @@ class AdminController extends Controller
         $salesAfn = Transaction::whereDate('created_at', $date)->sum('topup_amount');
 
         // For Graph Data 
-          
+
         $allTransactionCount = Transaction::whereDate('created_at', $date)->count();
         $awcc = Transaction::whereDate('created_at', $date)->where('receiver_network', 'AWCC')->count();
         $roshan = Transaction::whereDate('created_at', $date)->where('receiver_network', 'Roshan')->count();
@@ -225,44 +225,43 @@ class AdminController extends Controller
     }
 
     public function TransactionList(Request $request)
-    {   
-        if(isset($request->network) && !empty($request->network)){
-            $transactions = Transaction::where('receiver_network' ,$request->network)->get(); 
+    {
+        if (isset($request->network) && !empty($request->network)) {
+            $transactions = Transaction::where('receiver_network', $request->network)->get();
         }
-        if(isset($request->country) && !empty($request->country)){
-            $transactions = Transaction::where('country' ,$request->country)->get(); 
+        if (isset($request->country) && !empty($request->country)) {
+            $transactions = Transaction::where('country', $request->country)->get();
         }
-        if(isset($request->amountTopup) && !empty($request->amountTopup)){
-            $transactions = Transaction::where('topup_amount' ,$request->amountTopup)->get(); 
+        if (isset($request->amountTopup) && !empty($request->amountTopup)) {
+            $transactions = Transaction::where('topup_amount', $request->amountTopup)->get();
         }
-        if(isset($request->date) && !empty($request->date)){
-            $transactions = Transaction::whereDate('created_at' ,$request->date)->get(); 
+        if (isset($request->date) && !empty($request->date)) {
+            $transactions = Transaction::whereDate('created_at', $request->date)->get();
         }
-        if(count($request->all()) == 0){
-            $transactions = Transaction::get(); 
+        if (count($request->all()) == 0) {
+            $transactions = Transaction::get();
         }
-        if(isset($request->name) && !empty($request->name)){
+        if (isset($request->name) && !empty($request->name)) {
             $user = User::where('name', $request->name)->pluck('id')->first();
             $transactions = Transaction::where('user_id', $user)->get();
-            if(count($transactions) > 0) {
-                foreach($transactions as $transaction) {
+            if (count($transactions) > 0) {
+                foreach ($transactions as $transaction) {
                     $transaction['senderName'] = $request->name;
                     $transaction['dateTime'] = $transaction['created_at']->format('y-m-d H:i:s');
                 }
-            }else{
+            } else {
                 return $this->sendError("No Transaction found for user");
             }
         }
-        if(count($transactions) > 0) {
-            foreach($transactions as $transaction) {
+        if (count($transactions) > 0) {
+            foreach ($transactions as $transaction) {
                 $transaction['senderName'] = User::where('id', $transaction['user_id'])->pluck('name')->first();
                 $transaction['dateTime'] = $transaction['created_at']->format('y-m-d H:i:s');
-
             }
             return $this->sendResponse($transactions, 'All transactions');
-        }else{
-                return $this->sendError("No Transaction found for user");
-            }
+        } else {
+            return $this->sendError("No Transaction found for user");
+        }
     }
 
     public function adminNotifications()
@@ -284,6 +283,5 @@ class AdminController extends Controller
         }else{
             return $this->sendError("No notifications found for user");
         }
-
     }
 }

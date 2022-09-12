@@ -46,6 +46,7 @@ class User extends Authenticatable
     }
     public function transaction()
     {
-        return $this->hasMany(Transaction::class, 'user_id');
+        // return $this->hasMany(Transaction::class, 'user_id');
+        return $this->hasOne(Transaction::class)->latestOfMany();
     }
 }
