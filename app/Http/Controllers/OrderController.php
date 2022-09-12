@@ -139,7 +139,7 @@ class OrderController extends Controller
         if ($validator->fails()) {
             return $this->sendError(implode(",", $validator->errors()->all()), []);
         }
-        $TopupResponse = $this->Topup();
+        // $TopupResponse = $this->Topup();
         if($topupResponse == true){
             Transaction::where('id', $request->transaction_id)->update(['status' => 1]);
 
