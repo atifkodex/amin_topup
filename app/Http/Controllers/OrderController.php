@@ -86,7 +86,7 @@ class OrderController extends Controller
             'payment_id' => $link->id,
             'currency' => $link->currency,
         ];
-        return $this->sendResponse($success, 'Payment Intent');
+        // return $this->sendResponse($success, 'Payment Intent');
     }
 
     public function createTransaction(Request $request)
