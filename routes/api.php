@@ -54,6 +54,8 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/articles', [ArticleController::class, 'index'])->middleware('api.admin')->name('articles');
     Route::post('/logout', [ApiAuthController::class, 'logout'])->name('logout.api');
     Route::post('payment_url', [OrderController::class, 'stripePaymentUrl']);
+    Route::post('payment_intent', [OrderController::class, 'paymentIntent']);
+    Route::post('topup', [OrderController::class, 'Topup']);
     Route::post('/update', [ApiAuthController::class, 'update_user'])->name('update.api');
     Route::post('/contact_us', [ContactsController::class, 'contacts'])->name('contact_us.api');
     Route::post('/create_transaction', [OrderController::class, 'createTransaction']);

@@ -240,15 +240,15 @@
     $("#transactionFilterForm").submit(function (e) {
         e.preventDefault();
         var form = $(this);
-        $(document).ready(function(e) {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    'Authorization': 'Bearer ' + token,
-                }
-            });
-        });
+        // $(document).ready(function(e) {
+        //     $.ajaxSetup({
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        //             "Content-Type": "application/x-www-form-urlencoded",
+        //             'Authorization': 'Bearer ' + token,
+        //         }
+        //     });
+        // });
         // Ajax call 
         $.ajax({
             url: 'http://kodextech.net/amin-topup/public/api/transactions',

@@ -13,6 +13,8 @@ use Slim\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\NotificationLog;
+use Illuminate\Support\Facades\Http;
+
 
 
 class OrderController extends Controller
@@ -26,17 +28,19 @@ class OrderController extends Controller
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $customer = $stripe->customers->create([
-            'description' => 'My First Test Customer',
+            'description' => 'Test Customer',
         ]);
 
         $ephemeralKey = \Stripe\EphemeralKey::create(
             ['customer' => $customer->id],
             ['stripe_version' => '2020-08-27']
         );
+
         $paymentIntent = $stripe->paymentIntents->create([
             'amount' => $request->amount * 100,
             'currency' => 'usd',
             'customer' => $customer->id,
+            'capture_method' => 'manual',
         ]);
 
         $pay_int_res = [
@@ -63,7 +67,7 @@ class OrderController extends Controller
             return $this->sendError(implode(",", $validator->errors()->all()), []);
         }
         // Set your secret key. Remember to switch to your live secret key in production.
-        // See your keys here:  https://dashboard.stripe.com/apikeys 
+        // See your keys here:  https://dashboard.stripe.com/apikeys t
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
         $link = $stripe->paymentLinks->create(
             [
@@ -135,20 +139,91 @@ class OrderController extends Controller
         if ($validator->fails()) {
             return $this->sendError(implode(",", $validator->errors()->all()), []);
         }
-        $status = Transaction::where('id', $request->transaction_id)->update(['status' => 1]);
+        $TopupResponse = $this->Topup();
+        if($topupResponse == true){
+            Transaction::where('id', $request->transaction_id)->update(['status' => 1]);
 
-        // Save data for notification 
-        $notification = new NotificationLog;
-        $notification->user_id = auth()->user()->id;
-        $notification->notification_type = "transaction";
-        $notification->transaction_id = $request->transaction_id;
-        $notification->notification_status = 0;
-        $notification->save();
+            // Save data for notification 
+            $notification = new NotificationLog;
+            $notification->user_id = auth()->user()->id;
+            $notification->notification_type = "transaction";
+            $notification->transaction_id = $request->transaction_id;
+            $notification->notification_status = 0;
+            $notification->save();
 
-        if($status){
             return $this->sendResponse([], 'Transaction status updated successfully.');
         }else{
             return $this->sendError("Something went wrong. Please try again.");
+        }
+    }
+
+    public function Topup(Request $request){
+        // Validation for params 
+        // $validator = Validator::make($request->all(), [
+        //     'intent_id' => 'required',
+        //     'receiver_number' => 'required',
+        //     'amount' => 'required',
+        //     'product_code' => 'required',
+        // ]);
+        // if ($validator->fails()) {
+        //     return $this->sendError(implode(",", $validator->errors()->all()), []);
+        // }
+        $number = substr($request->receiver_number,0, 3);
+        if($number == 930){
+            $completeNum = substr($request->receiver_number, 2);
+        }elseif($number == 937 || $number == 932){
+            $num = substr($request->receiver_number, 2);
+            $completeNum = 0 . $num;
+        }
+
+        // All required parameters 
+        $serviceID = 'TOPUP';
+
+        // $productID = $request->product_code;    //This line will be replaced with test productID for final deployment
+        $productID = 'SALAAM_ERECHARGE';
+        
+        // $targetMSISDN = $completeNum;      //This line will be replaced with test number for final deployment
+        $targetMSISDN = '0745557555';
+        $unitType = 'EMONEY';
+        $currency = 'AFN';
+        $exponent = '0';
+
+        // $amount = $request->amount;    //This line will be replaced with test amount for final deployment
+        $amount = '01';
+        $userIdentifierRaw = 'ATITest01';
+
+        $payment['unitType']= $unitType;
+        $payment['currency']= $currency;
+        $payment['exponent']= $exponent;
+        $payment['amount']= $amount;
+        $payments = [
+            $payment
+        ];
+        
+        $datas['fromUser']['userIdentifier'] = $userIdentifierRaw;
+        $datas['payment'] = $payments;
+        $datas['serviceID'] = $serviceID;
+        $datas['productID'] = $productID;
+        $datas['targetMSISDN'] = $targetMSISDN;
+        $final['data'] = (object) $datas;
+        
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json'
+        ])->post('https://adp.280.af/topup', $final);
+        $responseBody = $response->body();
+        $responseData = json_decode($responseBody, true);
+        if($responseData['data']['responseMessage'] == "Success"){
+            $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+            $stripe->intent->capture(
+                $request->intent_id,
+                []
+            );
+
+            if($stripe->status == "succeeded"){
+                return $this->sendResponse([], 'Transaction Successfull, Topup sent to receiver.');
+            }
+        }else{
+            return $this->sendError("Something went wrong with your transaction. Please try again.");
         }
     }
 

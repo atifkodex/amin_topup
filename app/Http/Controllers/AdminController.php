@@ -15,6 +15,7 @@ use App\User;
 use App\Contacts;
 use App\Transaction;
 use App\OperatorNetwork;
+use App\NotificationLog;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 
@@ -269,8 +270,19 @@ class AdminController extends Controller
         $notifications = NotificationLog::where('notification_type', 'contact')->orwhere('notification_type', 'transaction')->get();
         if(count($notifications) > 0){
             foreach($notifications as $notification){
-
+                if($notification['notification_type'] == 'contact'){
+                    $userName = User::where('id', $notification['user_id'])->pluck('name')->first();
+                    $notification['message'] = $userName . " sent a contact request.";
+                }
+                elseif($notification['notification_type'] == 'transaction'){
+                    $userName = User::where('id', $notification['user_id'])->pluck('name')->first();
+                    $transaction = Transaction::where('id', $notification['transaction_id'])->first();
+                    $notification['message'] = $userName . ' made a transaction of ' . $transaction->topup_amount;
+                }
             }
+            return $this->sendResponse($notifications, "list of notifications for admin");
+        }else{
+            return $this->sendError("No notifications found for user");
         }
 
     }
