@@ -68,7 +68,7 @@ class AdminUIController extends Controller
 
     public function dashboardDetails(Request $request)
     {
-
+        return "coming";
         $value = Session::get('loginData');
         $token = $value['user']['token'];
         $data = $request->all();

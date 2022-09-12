@@ -19,7 +19,7 @@ use App\Http\Middleware\IsAdmin;
 
 Route::post('/admin_login', [AdminUIController::class, 'adminLogin'])->name('adminLogin');
 Route::middleware('auth:api')->group(function () {
-    Route::middleware([IsAdmin::class])->group(function () {
+    // Route::middleware([IsAdmin::class])->group(function () {
 
         // Route::middleware([AdminAuth::class])->group(function(){
         // Route::middleware([IsAdmin::class])->group(function(){
@@ -32,7 +32,7 @@ Route::middleware('auth:api')->group(function () {
         Route::get('/transactions', [AdminUIController::class, 'transactionList'])->name('transactionList');
         // Route::post('/transaction_list', [AdminUIController::class, 'transactionsList'])->name('transactionsList');
         Route::get('/user', [AdminUIController::class, 'user_list'])->name('user');
-    });
+    // });
 });
 
 Route::get('/', function () {
