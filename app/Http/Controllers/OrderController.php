@@ -209,7 +209,7 @@ class OrderController extends Controller
         
         $response = Http::withHeaders([
             'Content-Type' => 'application/json'
-        ])->post('https://adp.280.af/topup', $final);
+        ])->get('https://adp.280.af/topup', $final);
         $responseBody = $response->body();
         $responseData = json_decode($responseBody, true);
         if($responseData['data']['responseMessage'] == "Success"){
