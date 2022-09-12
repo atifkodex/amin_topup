@@ -9,9 +9,9 @@ use Abdrzakoxa\EloquentFilter\Traits\Filterable;
 
 class Transaction extends Model
 {
-    use Filterable;
+    // use Filterable;
 
-    protected $filters = [
-        TransactionFilter::class,
-    ];
+    // protected $filters = [
+    //     TransactionFilter::class,
+    // ];
 }
