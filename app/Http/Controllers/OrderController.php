@@ -218,12 +218,37 @@ class OrderController extends Controller
             'Password' => ';<G/2hnC}"HE:Z?A'
         ];
         // dd ($loginData);
-        $loginResponse = Http::withoutVerifying()->withHeaders([
-            'Content-Type' => 'application/json'
-        ])->post('https://adp.280.af/login', $loginData);
-        $loginResponseBody = $loginResponse->body();
-        $loginResponseData = json_decode($loginResponseBody, true);
-        dd($loginResponseData);
+
+        $curl = curl_init();
+
+        $public_key = "DISTRIBUTOR_API";
+        $private_key = ';<G/2hnC}"HE:Z?A';
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://adp.280.af/login",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_HTTPHEADER => array(
+        "Content-Type: application/json",
+        "Authorization: Basic ".base64_encode($public_key.":".$private_key)
+        ),
+        ));
+        $response = curl_exec($curl);
+        curl_close($curl);
+        echo $response;
+        die;
+
+        // $loginResponse = Http::withoutVerifying()->withHeaders([
+        //     'Content-Type' => 'application/json'
+        // ])->post('https://adp.280.af/login', $loginData);
+        // $loginResponseBody = $loginResponse->body();
+        // $loginResponseData = json_decode($loginResponseBody, true);
+        // dd($loginResponseData);
 
         // Topup API Request
         $response = Http::withoutVerifying()->withHeaders([
