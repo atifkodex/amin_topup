@@ -41,6 +41,7 @@ class OrderController extends Controller
             'amount' => $request->amount * 100,
             'currency' => 'usd',
             'customer' => $customer->id,
+            'confirm' => true,
             'automatic_payment_methods' => [
                 'enabled' => 'true',
             ],
