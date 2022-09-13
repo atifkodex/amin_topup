@@ -213,7 +213,7 @@ class OrderController extends Controller
         $data['username'] = "ATITest01";
         $data['password'] = "eD2#Rv3P";
         $loginData['data'] = (object) $data;
-        dd($loginData);
+        // dd($loginData);
         $loginResponse = Http::withoutVerifying()->withHeaders([
             'Content-Type' => 'application/json'
         ])->post('https://adp.280.af/login', (object)$loginData);
