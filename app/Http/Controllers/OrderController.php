@@ -216,7 +216,9 @@ class OrderController extends Controller
         // dd($loginData);
         $loginResponse = Http::withoutVerifying()->withHeaders([
             'Content-Type' => 'application/json'
-        ])->post('https://adp.280.af/login', $loginData);
+        ])->post('https://adp.280.af/login', [
+            'data' => $loginData['data'],
+        ]);
         $loginResponseBody = $loginResponse->body();
         $loginResponseData = json_decode($loginResponseBody, true);
         dd($loginResponseData);
