@@ -46,7 +46,6 @@ class OrderController extends Controller
                     'capture_method' => 'manual',
                 ],
             ],
-            'confirm' => true,
         ]);
 
         $pay_int_res = [
