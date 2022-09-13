@@ -213,12 +213,15 @@ class OrderController extends Controller
         $data['username'] = "ATITest01";
         $data['password'] = "eD2#Rv3P";
         $loginData['data'] = $data;
+        dd($loginData);
         $loginResponse = Http::withoutVerifying()->withHeaders([
             'Content-Type' => 'application/json'
         ])->post('https://adp.280.af/login', $loginData);
         $loginResponseBody = $loginResponse->body();
         $loginResponseData = json_decode($loginResponseBody, true);
         dd($loginResponseData);
+
+        // Topup API Request
         $response = Http::withoutVerifying()->withHeaders([
             'Content-Type' => 'application/json'
         ])->post('https://adp.280.af/topup', $final);
