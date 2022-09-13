@@ -208,6 +208,12 @@ class OrderController extends Controller
         $datas['targetMSISDN'] = $targetMSISDN;
         $final['data'] = (object) $datas;
 
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+            $stripe->intent->capture(
+                $request->intent_id,
+                []
+            );
+            dd($stripe->status);
         // Topup API Request
         $accessToken = TopupToken::where('id', 1)->pluck('access_token')->first();
         $response = Http::withoutVerifying()->withHeaders([
@@ -217,11 +223,11 @@ class OrderController extends Controller
         $responseBody = $response->body();
         $responseData = json_decode($responseBody, true);
         if($responseData['data']['transactionStatus'] == 1){
-            $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-            $stripe->intent->capture(
-                $request->intent_id,
-                []
-            );
+            // $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+            // $stripe->intent->capture(
+            //     $request->intent_id,
+            //     []
+            // );
 
             if($stripe->status == "succeeded"){
                 return $this->sendResponse([], 'Transaction Successfull, Topup sent to receiver.');
