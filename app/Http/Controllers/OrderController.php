@@ -239,10 +239,10 @@ class OrderController extends Controller
         // $return = curl_exec($ch);
         // curl_close($ch);
         // $client = new Client();
-        $client = new Client(['base_url' => 'https://adp.280.af/login']);
+        $client = new Client(['base_url' => "https://adp.280.af/login"]);
 
         // Send a request to http://myservices.io/status with basic authentication
-        $response = $client->get('/status', ['auth' => ['DISTRIBUTOR_API', ';<G/2hnC}"HE:Z?A']]);
+        $response = $client->post(['auth' => ['DISTRIBUTOR_API', ';<G/2hnC}"HE:Z?A']]);
         // $loginResponse = Http::withoutVerifying()->withHeaders([
         //     'Content-Type' => 'application/json'
         // ])->post('https://adp.280.af/login', $loginData);
