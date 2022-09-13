@@ -222,7 +222,7 @@ class OrderController extends Controller
         $username = 'DISTRIBUTOR_API';
         $password = ';<G/2hnC}"HE:Z?A';
 
-        $ch = curl_init($host);
+        $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "https://adp.280.af/login");  
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/xml'));
         curl_setopt($ch, CURLOPT_HEADER, 1);
