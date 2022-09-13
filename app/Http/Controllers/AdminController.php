@@ -283,4 +283,13 @@ class AdminController extends Controller
             return $this->sendError("No notifications found for user");
         }
     }
+    public function resolve(Request $request)
+    {
+        $resolve = Contacts::where('id', $request->contacts_id)->update(['status' => 1]);
+        if (isset($resolve)) {
+            echo 'Status Update Successfully';
+        } else {
+            echo 'Status Update Fail';
+        }
+    }
 }
