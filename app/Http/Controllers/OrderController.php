@@ -207,7 +207,7 @@ class OrderController extends Controller
         $datas['targetMSISDN'] = $targetMSISDN;
         $final['data'] = (object) $datas;
         
-        $response = Http::withHeaders([
+        $response = Http::withoutVerifying()->withHeaders([
             'Content-Type' => 'application/json'
         ])->post('https://adp.280.af/topup', $final);
         $responseBody = $response->body();
