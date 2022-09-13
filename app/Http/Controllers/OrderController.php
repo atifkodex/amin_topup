@@ -221,36 +221,14 @@ class OrderController extends Controller
         $username = 'DISTRIBUTOR_API';
         $password = ';<G/2hnC}"HE:Z?A';
 
-        // $ch = curl_init();
-        // curl_setopt($ch, CURLOPT_URL, "https://adp.280.af/login");
-        // curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST"); 
-        // curl_setopt($ch, CURLOPT_POST, true);   
-        // curl_setopt($ch, CURLOPT_HEADER, 1);
-        // curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $password);
-        // curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-        // curl_setopt($ch, CURLOPT_POST, 1);
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        // curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); 
-        // curl_setopt($ch, CURLOPT_HTTPHEADER, array(   
-        //     'Accept: application/json',
-        //     'Content-Type: application/json')                                                           
-        // );      
-        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        // $return = curl_exec($ch);
-        // curl_close($ch);
-        // $client = new Client();
-        $client = new Client(['base_url' => "https://adp.280.af/login"]);
-
-        // Send a request to http://myservices.io/status with basic authentication
-        $response = $client->send(['auth' => ['DISTRIBUTOR_API', ';<G/2hnC}"HE:Z?A']]);
-        // $loginResponse = Http::withoutVerifying()->withHeaders([
-        //     'Content-Type' => 'application/json'
-        // ])->post('https://adp.280.af/login', $loginData);
-        // $response = $loginResponse->get('/status', ['auth' => ['DISTRIBUTOR_API', ';<G/2hnC}"HE:Z?A']]);
-        // $loginResponseBody = $loginResponse->body();
-        // $loginResponseData = json_decode($loginResponseBody, true);
-        // dd($loginResponseData);
-        dd($response);
+        $loginResponse = Http::withoutVerifying()->withHeaders([
+            'Username' => 'DISTRIBUTOR_API',
+            'Password' => ';<G/2hnC}"HE:Z?A',
+            'Content-Type' => 'application/json'
+        ])->post('https://adp.280.af/login', $loginData);
+        $loginResponseBody = $loginResponse->body();
+        $loginResponseData = json_decode($loginResponseBody, true);
+        dd($loginResponseData);
 
         // Topup API Request
         $response = Http::withoutVerifying()->withHeaders([
