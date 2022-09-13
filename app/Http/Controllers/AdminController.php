@@ -285,7 +285,13 @@ class AdminController extends Controller
     }
     public function resolve(Request $request)
     {
-        $resolve = Contacts::where('id', $request->contacts_id)->update(['status' => 1]);
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError(implode(",", $validator->errors()->all()), []);
+        }
+        $resolve = Contacts::where('id', $request->id)->update(['status' => 1]);
         if (isset($resolve)) {
             echo 'Status Update Successfully';
         } else {
