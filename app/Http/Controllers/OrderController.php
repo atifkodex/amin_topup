@@ -212,6 +212,18 @@ class OrderController extends Controller
         $datas['targetMSISDN'] = $targetMSISDN;
         $final['data'] = (object) $datas;
 
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        $confirm = $stripe->paymentIntents->confirm(
+            $request->intent_id,
+            ['payment_method' => 'pm_card_visa']
+        );
+        $intent = $stripe->paymentIntents->capture(
+            $request->intent_id,
+            []
+        );
+        if($intent->status == 'succeeded'){
+            dd('done');
+        }
         
         // print_r($intent);die;
 
@@ -224,15 +236,15 @@ class OrderController extends Controller
         $responseBody = $response->body();
         $responseData = json_decode($responseBody, true);
         if($responseData['data']['transactionStatus'] == 1){
-        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-        $confirm = $stripe->paymentIntents->confirm(
-            $request->intent_id,
-            ['payment_method' => 'pm_card_visa']
-        );
-        $intent = $stripe->paymentIntents->capture(
-            $request->intent_id,
-            []
-        );
+        // $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        // $confirm = $stripe->paymentIntents->confirm(
+        //     $request->intent_id,
+        //     ['payment_method' => 'pm_card_visa']
+        // );
+        // $intent = $stripe->paymentIntents->capture(
+        //     $request->intent_id,
+        //     []
+        // );
 
             if($intent->status == 'succeeded'){
                 return $this->sendResponse([], 'Transaction Successfull, Topup sent to receiver.');
