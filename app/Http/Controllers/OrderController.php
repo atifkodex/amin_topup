@@ -41,7 +41,6 @@ class OrderController extends Controller
             'amount' => $request->amount * 100,
             'currency' => 'usd',
             'customer' => $customer->id,
-            'payment_method_types' => ['card'],
             'capture_method' => 'manual',
         ]);
 
@@ -211,8 +210,7 @@ class OrderController extends Controller
 
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
         $stripe->paymentIntents->confirm(
-            $request->intent_id,
-            ['payment_method' => 'payment_method']    
+            $request->intent_id
         );
         $stripe->paymentIntents->capture(
             $request->intent_id,
