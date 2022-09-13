@@ -15,6 +15,8 @@ use Carbon\Carbon;
 use App\NotificationLog;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
+use App\TopupToken;
+
 
 class OrderController extends Controller
 {
@@ -206,32 +208,8 @@ class OrderController extends Controller
         $datas['targetMSISDN'] = $targetMSISDN;
         $final['data'] = (object) $datas;
 
-        //For Login API of Topup
-
-        $data['grantType'] = "password";
-        $data['username'] = "ATITest01";
-        $data['password'] = "eD2#Rv3P";
-        $loginData['data'] = (object) $data;
-        $headerData = [
-            'Username' => 'DISTRIBUTOR_API',
-            'Password' => ';<G/2hnC}"HE:Z?A'
-        ];
-        // dd ($loginData);
-
-        $username = 'DISTRIBUTOR_API';
-        $password = ';<G/2hnC}"HE:Z?A';
-
-        $loginResponse = Http::withoutVerifying()->withBasicAuth($username, $password)->post('https://adp.280.af/login', $loginData);
-        $loginResponseBody = $loginResponse->body();
-        $loginResponseData = json_decode($loginResponseBody, true);
-        $accessToken = $loginResponseData['data']['access_token'];
-        $expiryDate = $loginResponseData['data']['accessTokenExpiry'];
-        $expiryDateTime = date('Y-m-d H:i:s', $expiryDate); 
-        $today = Carbon::now()->format('Y-m-d H:i:s');
-        dd($expiryDateTime);
-
-
         // Topup API Request
+        $accessToken = TopupToken::where('id', 1)->pluck('access_token')->first();
         $response = Http::withoutVerifying()->withHeaders([
             'Authorization' => 'Bearer ' . $accessToken,
             'Content-Type' => 'application/json'
