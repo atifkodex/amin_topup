@@ -42,6 +42,7 @@ class OrderController extends Controller
             'currency' => 'usd',
             'customer' => $customer->id,
             'capture_method' => 'manual',
+            'payment_method' => ['card'],
             'confirm' => true,
         ]);
 
