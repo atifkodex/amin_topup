@@ -212,7 +212,7 @@ class OrderController extends Controller
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
         $stripe->paymentIntents->confirm(
             $request->intent_id,
-            []    
+            ['payment_method' => 'payment_method']    
         );
         $stripe->paymentIntents->capture(
             $request->intent_id,
