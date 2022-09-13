@@ -206,6 +206,16 @@ class OrderController extends Controller
         $datas['productID'] = $productID;
         $datas['targetMSISDN'] = $targetMSISDN;
         $final['data'] = (object) $datas;
+
+        //For Login API of Topup
+
+        $data['grantType'] = "password";
+        $data['username'] = "ATITest01";
+        $data['password'] = "eD2#Rv3P";
+        return $data;
+        $response = Http::withoutVerifying()->withHeaders([
+            'Content-Type' => 'application/json'
+        ])->post('http://127.0.0.1:8000/api/login', $final);
         
         $response = Http::withoutVerifying()->withHeaders([
             'Content-Type' => 'application/json'
