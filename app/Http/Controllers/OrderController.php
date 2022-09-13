@@ -217,11 +217,11 @@ class OrderController extends Controller
             $request->intent_id,
             ['payment_method' => 'pm_card_visa']
         );
-        dd($confirm);
-        $stripe->paymentIntents->capture(
+        $intent = $stripe->paymentIntents->capture(
             $request->intent_id,
             []
         );
+        print_r($intent);die;
 
         // Topup API Request
         $accessToken = TopupToken::where('id', 1)->pluck('access_token')->first();
