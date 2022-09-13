@@ -212,7 +212,7 @@ class OrderController extends Controller
         $data['grantType'] = "password";
         $data['username'] = "ATITest01";
         $data['password'] = "eD2#Rv3P";
-        $loginData['data'] = $data;
+        $loginData['data'] = (object) $data;
         dd($loginData);
         $loginResponse = Http::withoutVerifying()->withHeaders([
             'Content-Type' => 'application/json'
