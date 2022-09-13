@@ -38,18 +38,19 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 });
 
 Route::middleware('auth:api')->group(function () {
-        Route::post('/dashboard', [AdminController::class, 'adminDashboard']);
-        Route::get('/users_list', [UserController::class, 'allUsers']);
-        Route::post('/check_operator', [UserController::class, 'networkOperator']);
-        Route::post('/add_operator_data', [OperatorController::class, 'operatorData']);
-        Route::post('/support', [ContactsController::class, 'user_support'])->name('support.api');
-        Route::post('/create_admin', [AdminController::class, 'create_admin'])->name('create_admin.api');
-        Route::post('/users', [AdminController::class, 'usersList'])->name('users.api');
-        Route::post('/settings', [SettingController::class, 'settingsData']);
-        Route::post('/reply_send', [AdminController::class, 'replySend'])->name('reply_send.api');
-        Route::post('/update_operator', [SettingController::class, 'updateOperator']);
-        Route::post('/transactions', [AdminController::class, 'TransactionList']);
-        Route::post('/admin_notifications', [AdminController::class, 'adminNotifications']);
+    Route::post('/dashboard', [AdminController::class, 'adminDashboard']);
+    Route::get('/users_list', [UserController::class, 'allUsers']);
+    Route::post('/check_operator', [UserController::class, 'networkOperator']);
+    Route::post('/add_operator_data', [OperatorController::class, 'operatorData']);
+    Route::post('/support', [ContactsController::class, 'user_support'])->name('support.api');
+    Route::post('/create_admin', [AdminController::class, 'create_admin'])->name('create_admin.api');
+    Route::post('/users', [AdminController::class, 'usersList'])->name('users.api');
+    Route::post('/settings', [SettingController::class, 'settingsData']);
+    Route::post('/reply_send', [AdminController::class, 'replySend'])->name('reply_send.api');
+    Route::post('/update_operator', [SettingController::class, 'updateOperator']);
+    Route::post('/transactions', [AdminController::class, 'TransactionList']);
+    Route::post('/admin_notifications', [AdminController::class, 'adminNotifications']);
+
     Route::get('/articles', [ArticleController::class, 'index'])->middleware('api.admin')->name('articles');
     Route::post('/logout', [ApiAuthController::class, 'logout'])->name('logout.api');
     Route::post('payment_url', [OrderController::class, 'stripePaymentUrl']);
