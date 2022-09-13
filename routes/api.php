@@ -47,6 +47,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/users', [AdminController::class, 'usersList'])->name('users.api');
     Route::post('/settings', [SettingController::class, 'settingsData']);
     Route::post('/reply_send', [AdminController::class, 'replySend'])->name('reply_send.api');
+    Route::post('/resolve', [AdminController::class, 'resolve'])->name('resolve.api');
     Route::post('/update_operator', [SettingController::class, 'updateOperator']);
     Route::post('/transactions', [AdminController::class, 'TransactionList']);
     Route::post('/admin_notifications', [AdminController::class, 'adminNotifications']);
