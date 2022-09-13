@@ -137,7 +137,8 @@ class AdminUIController extends Controller
         return view('pages.user', ['data' => $data]);
     }
 
-    public function transactionList(){
+    public function transactionList()
+    {
         $value = Session::get('loginData');
         $token = $value['user']['token'];
         $response = Http::withHeaders([
@@ -163,4 +164,20 @@ class AdminUIController extends Controller
     //     $data = $response['data'];
     //     return view('pages.transaction', ['data' => $data]);
     // }
+
+    public function resolve(Request $request)
+    {
+        $value = Session::get('loginData');
+        $token = $value['user']['token'];
+        $data = $request->all();
+        // dd($data);
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post('http://kodextech.net/amin-topup/public/api/resolve', $data);
+        $convertor = $response->body();
+        $response = json_decode($convertor, true);
+
+        return redirect()->back();
+    }
 }
