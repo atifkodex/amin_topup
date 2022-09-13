@@ -210,11 +210,15 @@ class OrderController extends Controller
         $final['data'] = (object) $datas;
 
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-            $stripe->paymentIntents->capture(
-                $request->intent_id,
-                []
-            );
-            dd($stripe->status);
+        $stripe->paymentIntents->confirm(
+            $request->intent_id,
+            []    
+        );
+        $stripe->paymentIntents->capture(
+            $request->intent_id,
+            []
+        );
+        dd($stripe->status);
         // Topup API Request
         $accessToken = TopupToken::where('id', 1)->pluck('access_token')->first();
         $response = Http::withoutVerifying()->withHeaders([
