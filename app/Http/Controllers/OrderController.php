@@ -221,11 +221,7 @@ class OrderController extends Controller
         $username = 'DISTRIBUTOR_API';
         $password = ';<G/2hnC}"HE:Z?A';
 
-        $loginResponse = Http::withoutVerifying()->withHeaders([
-            'Username' => 'DISTRIBUTOR_API',
-            'Password' => ';<G/2hnC}"HE:Z?A',
-            'Content-Type' => 'application/json'
-        ])->post('https://adp.280.af/login', $loginData);
+        $loginResponse = Http::withoutVerifying()->withBasicAuth($username, $password)->post('https://adp.280.af/login', $loginData);
         $loginResponseBody = $loginResponse->body();
         $loginResponseData = json_decode($loginResponseBody, true);
         dd($loginResponseData);
