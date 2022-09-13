@@ -42,9 +42,6 @@ class OrderController extends Controller
             'currency' => 'usd',
             'customer' => $customer->id,
             'confirm' => true,
-            'automatic_payment_methods' => [
-                'enabled' => 'true',
-            ],
             'payment_method_options' => [
                 'card' => [
                 'capture_method' => 'manual',
@@ -217,7 +214,10 @@ class OrderController extends Controller
         $final['data'] = (object) $datas;
 
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-        
+        $stripe->paymentIntents->confirm(
+            $request->intent_id,
+            ['payment_method' => 'pm_card_visa']
+        );
         $stripe->paymentIntents->capture(
             $request->intent_id,
             []
