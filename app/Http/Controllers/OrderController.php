@@ -221,7 +221,7 @@ class OrderController extends Controller
             $request->intent_id,
             []
         );
-        dd($stripe->status);
+        dd($stripe);
         // \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         // $intent = \Stripe\PaymentIntent::retrieve($request->intent_id);
         // $intent->capture();
