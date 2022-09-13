@@ -240,7 +240,7 @@ class OrderController extends Controller
         // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         // $return = curl_exec($ch);
         // curl_close($ch);
-        // $client = new Client();
+        $client = new Client();
         $client = new GuzzleHttp\Client(['base_url' => 'https://adp.280.af/login']);
 
         // Send a request to http://myservices.io/status with basic authentication
