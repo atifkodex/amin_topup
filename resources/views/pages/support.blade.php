@@ -91,7 +91,12 @@
 
                     <div class="support-description-button py-5 px-4 text-right">
                         <button data-toggle="modal" data-target="#basicsubsModal">Reply</button>
-                        <button>Resolved</button>
+                        <form style="display: inline;" action="{{route('resolve_contact')}}" method="POST">
+                            @csrf
+                            <input id="contact_resolve_id" type="hidden" value="" name="id">
+
+                            <button style="background-color: rgba(248, 152, 34, 1);" type="submit" name="submit">Resolved</button>
+                        </form>
                     </div>
 
                 </div>
@@ -136,29 +141,30 @@
 </div>
 
 @endsection
-@section('inserfooter')
-<script>
-    $('.sidebar-menu ul li:nth-of-type(5)').addClass('active');
-</script>
-<!-- show data click to card -->
-<script>
-    $('.getuserdata').click(function() {
-        var name = $(this).find('.name').text();
-        var subject = $(this).find('.subject').text();
-        var category = $(this).find('.category').text();
-        var description = $(this).find('.description').text();
-        var email = $(this).find('.email').text();
-        var user_id = $(this).find('.contacts').text();
+@section('inserfooter') <script>
+                            $('.sidebar-menu ul li:nth-of-type(5)').addClass('active');
+                            </script>
+                            <!-- show data click to card -->
+                            <script>
+                                $('.getuserdata').click(function() {
+                                    var name = $(this).find('.name').text();
+                                    var subject = $(this).find('.subject').text();
+                                    var category = $(this).find('.category').text();
+                                    var description = $(this).find('.description').text();
+                                    var email = $(this).find('.email').text();
+                                    var contact_id = $(this).find('.contacts').text();
 
-        $("#name_id").html(name);
-        $("#category_id").html(category);
-        $("#subject_id").html(subject);
-        $("#description_id").html(description);
-        $("#email").val(email);
-        $("#email_div").html(email);
-        $("#contacts_id").val(user_id);
+                                    $("#name_id").html(name);
+                                    $("#category_id").html(category);
+                                    $("#subject_id").html(subject);
+                                    $("#description_id").html(description);
+                                    $("#email").val(email);
+                                    $("#email_div").html(email);
+                                    $("#contacts_id").val(contact_id);
+                                    $("#contact_resolve_id").val(contact_id);
 
 
-    });
-</script>
-@endsection
+
+                                });
+                            </script>
+                            @endsection
