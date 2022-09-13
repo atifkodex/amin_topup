@@ -33,7 +33,7 @@
                                     <img src="{{asset('assets/images/profile-image.jpg')}}" alt="image">
                                     @endif
                                 </div>
-                                <h1 class="pl-3 pt-2"> {{$post['user']['name']}}</h1>
+                                <h1 class="pl-3 pt-2 name"> {{$post['user']['name']}}</h1>
                             </div>
                             <div class="support-card-body pt-2">
                                 <p>Subject</p>
@@ -80,7 +80,7 @@
                         <p>User Name:</p>
 
                         <div>
-                            <p id="subject_id">Name</p>
+                            <p id="name_id">Name</p>
                         </div>
 
                     </div>
@@ -143,12 +143,14 @@
 <!-- show data click to card -->
 <script>
     $('.getuserdata').click(function() {
+        var name = $(this).find('.name').text();
         var subject = $(this).find('.subject').text();
         var category = $(this).find('.category').text();
         var description = $(this).find('.description').text();
         var email = $(this).find('.email').text();
         var user_id = $(this).find('.contacts').text();
 
+        $("#name_id").html(name);
         $("#category_id").html(category);
         $("#subject_id").html(subject);
         $("#description_id").html(description);

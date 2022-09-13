@@ -214,7 +214,7 @@ class AdminController extends Controller
             //         $message->from('admin@admin.com', 'Admin')->subject($request->get('subject'));
             //     });
 
-            Contacts::where('id', $request->contacts_id)->update(['status' => 1]);
+            // Contacts::where('id', $request->contacts_id)->update(['status' => 1]);
             echo "send mail success";
         } else {
             echo "send mail Fail";
@@ -267,20 +267,19 @@ class AdminController extends Controller
     public function adminNotifications()
     {
         $notifications = NotificationLog::where('notification_type', 'contact')->orwhere('notification_type', 'transaction')->get();
-        if(count($notifications) > 0){
-            foreach($notifications as $notification){
-                if($notification['notification_type'] == 'contact'){
+        if (count($notifications) > 0) {
+            foreach ($notifications as $notification) {
+                if ($notification['notification_type'] == 'contact') {
                     $userName = User::where('id', $notification['user_id'])->pluck('name')->first();
                     $notification['message'] = $userName . " sent a contact request.";
-                }
-                elseif($notification['notification_type'] == 'transaction'){
+                } elseif ($notification['notification_type'] == 'transaction') {
                     $userName = User::where('id', $notification['user_id'])->pluck('name')->first();
                     $transaction = Transaction::where('id', $notification['transaction_id'])->first();
                     $notification['message'] = $userName . ' made a transaction of ' . $transaction->topup_amount;
                 }
             }
             return $this->sendResponse($notifications, "list of notifications for admin");
-        }else{
+        } else {
             return $this->sendError("No notifications found for user");
         }
     }
