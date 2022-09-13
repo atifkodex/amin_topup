@@ -42,6 +42,7 @@ class OrderController extends Controller
             'currency' => 'usd',
             'customer' => $customer->id,
             'capture_method' => 'manual',
+            'confirm' => true,
         ]);
 
         $pay_int_res = [
@@ -208,19 +209,17 @@ class OrderController extends Controller
         $datas['targetMSISDN'] = $targetMSISDN;
         $final['data'] = (object) $datas;
 
-        // $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-        // $stripe->paymentIntents->confirm(
-        //     $request->intent_id,
-        //     ['payment_method' => 'pm_card_visa']
-        // );
-        // $stripe->paymentIntents->capture(
-        //     $request->intent_id,
-        //     []
-        // );
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        $intent = \Stripe\PaymentIntent::retrieve($request->intent_id);
-        $intent->capture();
-        dd($intent);
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        
+        $stripe->paymentIntents->capture(
+            $request->intent_id,
+            []
+        );
+        dd($stripe->status);
+        // \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        // $intent = \Stripe\PaymentIntent::retrieve($request->intent_id);
+        // $intent->capture();
+
         // Topup API Request
         $accessToken = TopupToken::where('id', 1)->pluck('access_token')->first();
         $response = Http::withoutVerifying()->withHeaders([
