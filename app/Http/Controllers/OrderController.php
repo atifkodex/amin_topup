@@ -223,14 +223,20 @@ class OrderController extends Controller
         $password = ';<G/2hnC}"HE:Z?A';
 
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "https://adp.280.af/login");  
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/xml'));
+        curl_setopt($ch, CURLOPT_URL, "https://adp.280.af/login");
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST"); 
+        curl_setopt($ch, CURLOPT_POST, true);   
         curl_setopt($ch, CURLOPT_HEADER, 1);
         curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $password);
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
         curl_setopt($ch, CURLOPT_POST, 1);
-        // curl_setopt($ch, CURLOPT_POSTFIELDS, $payloadName);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); 
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(   
+            'Accept: application/json',
+            'Content-Type: application/json')                                                           
+        );      
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         $return = curl_exec($ch);
         curl_close($ch);
 
