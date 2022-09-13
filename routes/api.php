@@ -38,7 +38,6 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 });
 
 Route::middleware('auth:api')->group(function () {
-    Route::middleware([IsAdmin::class])->group(function () {
         Route::post('/dashboard', [AdminController::class, 'adminDashboard']);
         Route::get('/users_list', [UserController::class, 'allUsers']);
         Route::post('/check_operator', [UserController::class, 'networkOperator']);
@@ -51,7 +50,6 @@ Route::middleware('auth:api')->group(function () {
         Route::post('/update_operator', [SettingController::class, 'updateOperator']);
         Route::post('/transactions', [AdminController::class, 'TransactionList']);
         Route::post('/admin_notifications', [AdminController::class, 'adminNotifications']);
-    });
     Route::get('/articles', [ArticleController::class, 'index'])->middleware('api.admin')->name('articles');
     Route::post('/logout', [ApiAuthController::class, 'logout'])->name('logout.api');
     Route::post('payment_url', [OrderController::class, 'stripePaymentUrl']);
