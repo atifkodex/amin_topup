@@ -226,7 +226,7 @@ class OrderController extends Controller
         $loginResponseData = json_decode($loginResponseBody, true);
         $accessToken = $loginResponseData['data']['access_token'];
         $expiryDate = $loginResponseData['data']['accessTokenExpiry'];
-        $expiryDateTime = date('Y-m-d H:i:s',strtotime( $expiryDate)); 
+        $expiryDateTime = date('Y-m-d H:i:s', $expiryDate); 
         dd($expiryDateTime);
 
 
