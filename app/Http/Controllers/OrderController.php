@@ -239,11 +239,15 @@ class OrderController extends Controller
         // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         // $return = curl_exec($ch);
         // curl_close($ch);
+        
+        $client = new GuzzleHttp\Client(['base_url' => 'https://adp.280.af/login']);
 
-        $loginResponse = Http::withoutVerifying()->withHeaders([
-            'Content-Type' => 'application/json'
-        ])->post('https://adp.280.af/login', $loginData);
-        $response = $loginResponse->get('/status', ['auth' => ['DISTRIBUTOR_API', ';<G/2hnC}"HE:Z?A']]);
+        // Send a request to http://myservices.io/status with basic authentication
+        $response = $client->get('/status', ['auth' => ['DISTRIBUTOR_API', ';<G/2hnC}"HE:Z?A']]);
+        // $loginResponse = Http::withoutVerifying()->withHeaders([
+        //     'Content-Type' => 'application/json'
+        // ])->post('https://adp.280.af/login', $loginData);
+        // $response = $loginResponse->get('/status', ['auth' => ['DISTRIBUTOR_API', ';<G/2hnC}"HE:Z?A']]);
         // $loginResponseBody = $loginResponse->body();
         // $loginResponseData = json_decode($loginResponseBody, true);
         // dd($loginResponseData);
