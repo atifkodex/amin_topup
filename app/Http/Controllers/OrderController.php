@@ -225,7 +225,10 @@ class OrderController extends Controller
         $loginResponseBody = $loginResponse->body();
         $loginResponseData = json_decode($loginResponseBody, true);
         $accessToken = $loginResponseData['data']['access_token'];
-        dd($loginResponseData['data']['accessTokenExpiry']);
+        $expiryDate = $loginResponseData['data']['accessTokenExpiry'];
+        $expiryDateTime = date('Y-m-d H:i:s',strtotime()); 
+        dd($expiryDateTime);
+
 
         // Topup API Request
         $response = Http::withoutVerifying()->withHeaders([
