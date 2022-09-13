@@ -213,11 +213,11 @@ class OrderController extends Controller
         $final['data'] = (object) $datas;
 
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-        $stripe->paymentIntents->confirm(
+        $confirm = $stripe->paymentIntents->confirm(
             $request->intent_id,
             ['payment_method' => 'pm_card_visa']
         );
-        dd($stripe);
+        dd($confirm);
         $stripe->paymentIntents->capture(
             $request->intent_id,
             []
