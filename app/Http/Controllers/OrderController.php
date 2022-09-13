@@ -209,15 +209,17 @@ class OrderController extends Controller
         $final['data'] = (object) $datas;
 
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-        $stripe->paymentIntents->confirm(
-            $request->intent_id,
-            ['payment_method' => 'pm_card_visa']
-        );
-        $stripe->paymentIntents->capture(
-            $request->intent_id,
-            []
-        );
-        dd($stripe->status);
+        // $stripe->paymentIntents->confirm(
+        //     $request->intent_id,
+        //     ['payment_method' => 'pm_card_visa']
+        // );
+        // $stripe->paymentIntents->capture(
+        //     $request->intent_id,
+        //     []
+        // );
+        $intent = \Stripe\PaymentIntent::retrieve($request->intent_id);
+        $intent->capture();
+        dd($intent);
         // Topup API Request
         $accessToken = TopupToken::where('id', 1)->pluck('access_token')->first();
         $response = Http::withoutVerifying()->withHeaders([
