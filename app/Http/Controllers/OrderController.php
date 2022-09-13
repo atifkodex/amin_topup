@@ -228,7 +228,6 @@ class OrderController extends Controller
         $expiryDate = $loginResponseData['data']['accessTokenExpiry'];
         $expiryDateTime = date('Y-m-d H:i:s', $expiryDate); 
         $today = Carbon::now()->format('Y-m-d H:i:s');
-        echo $today."================================================";
         dd($expiryDateTime);
 
 
