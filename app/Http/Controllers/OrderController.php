@@ -229,7 +229,7 @@ class OrderController extends Controller
         curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $password);
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $payloadName);
+        // curl_setopt($ch, CURLOPT_POSTFIELDS, $payloadName);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         $return = curl_exec($ch);
         curl_close($ch);
