@@ -78,41 +78,51 @@
                                         <tbody>
                                             @foreach($data as $post)
                                             <div class="newData">
-                                                <tr>
+                                                <tr class="getuserdata">
                                                     @if(!empty($post['name']))
-                                                    <td class="data">{{$post['name']}}</td>
+                                                    <td class="data name">{{$post['name']}}</td>
                                                     @else
-                                                    <td class="data">Not Set</td>
+                                                    <td class="data name">Not Set</td>
                                                     @endif
 
                                                     @if(!empty($post['email']))
-                                                    <td class="data">{{$post['email']}}</td>
+                                                    <td class="data email">{{$post['email']}}</td>
                                                     @else
-                                                    <td class="data">Not Set</td>
+                                                    <td class="data email">Not Set</td>
                                                     @endif
 
                                                     @if(!empty($post['country']))
-                                                    <td class="data">{{$post['country']}}</td>
+                                                    <td class="data country">{{$post['country']}}</td>
                                                     @else
-                                                    <td class="data">Not Set</td>
+                                                    <td class="data country">Not Set</td>
                                                     @endif
 
                                                     @if(!empty($post['phone_number']))
-                                                    <td class="data">{{$post['phone_number']}}</td>
+                                                    <td class="data phone_number">{{$post['phone_number']}}</td>
                                                     @else
-                                                    <td class="data">Not Set</td>
+                                                    <td class="data phone_number">Not Set</td>
                                                     @endif
 
                                                     @if(isset($post['last_transaction']))
-                                                    <td class="data"><span class="user-table-time">{{ $post['last_transaction'] }}</span></td>
+                                                    <td class="data last_transaction"><span class="user-table-time">{{ $post['last_transaction'] }}</span></td>
                                                     @else
-                                                    <td class="data"><span class="user-table-time">No Trasaction</span></td>
+                                                    <td class="data last_transaction"><span class="user-table-time">No Trasaction</span></td>
                                                     @endif
 
+                                                    @if(!empty($post['transaction']['total_amount_usd']))
+                                                    <input class="total_amount_usd" type="hidden" value="{{ $post['transaction']['total_amount_usd'] }}">
+                                                    @else
+                                                    <input class="total_amount_usd" type="hidden" value="No Trasaction">
+                                                    @endif
 
+                                                    @if(!empty($post['transaction']['date_of_birth']))
+                                                    <input class="date_of_birth" type="hidden" value="{{ $post['transaction']['date_of_birth'] }}">
+                                                    @else
+                                                    <input class="date_of_birth" type="hidden" value="Not Set">
+                                                    @endif
 
                                                     <td class="data">
-                                                        <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
+                                                        <img class="" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                                     </td>
 
                                                 </tr>
@@ -144,45 +154,46 @@
                     </div>
                     <!-- End Pagination -->
                 </div>
-                <div class=" col-xl-3 pb-5">
-                    <div class="user-filter px-3 py-2">
-                        <div class="user-filter-header py-3">
-                            <h1>Filter</h1>
-                        </div>
-                        <div class="user-filter-form">
-                            <form>
-                                <div class="form-group">
-                                    <label for="username">User Name</label>
-                                    <input type="text" class="form-control" id="username" placeholder="Type Here..">
 
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Type Here..">
+            </div>
+            <div class=" col-xl-3 pb-5">
+                <div class="user-filter px-3 py-2">
+                    <div class="user-filter-header py-3">
+                        <h1>Filter</h1>
+                    </div>
+                    <div class="user-filter-form">
+                        <form action="{{url('user')}}" method="GET">
+                            <div class="form-group">
+                                <label for="username">User Name</label>
+                                <input type="text" class="form-control" id="username" placeholder="Type Here..">
 
-                                </div>
-                                <div class="form-group">
-                                    <label for="country">Country</label>
-                                    <input type="text" class="form-control" id="country" placeholder="Type Here..">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Type Here..">
 
-                                </div>
-                                <div class="form-group">
-                                    <label for="userphonenumber">User Phone Number</label>
-                                    <input type="text" class="form-control" id="userphonenumber" placeholder="Type Here..">
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <input type="text" class="form-control" id="country" placeholder="Type Here..">
 
-                                </div>
-                                <div class="form-group">
-                                    <label for="lpurchase">Last Purchase</label>
-                                    <input type="text" class="form-control" id="lpurchase" placeholder="Type Here..">
+                            </div>
+                            <div class="form-group">
+                                <label for="userphonenumber">User Phone Number</label>
+                                <input type="text" class="form-control" id="userphonenumber" placeholder="Type Here..">
 
-                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lpurchase">Last Purchase</label>
+                                <input type="text" class="form-control" id="lpurchase" placeholder="Type Here..">
 
-                                <div class="text-center py-3">
-                                    <button>Search</button>
-                                </div>
+                            </div>
 
-                            </form>
-                        </div>
+                            <div class="text-center py-3">
+                                <button>Search</button>
+                            </div>
+
+                        </form>
                     </div>
                 </div>
             </div>
@@ -198,31 +209,31 @@
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>User</p>
-                    <p id="name">Muhammad Ali</p>
+                    <p id="name_id">Muhammad Ali</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>Email</p>
-                    <p id="email">aliahmed666@gmail.com</p>
+                    <p id="email_id">aliahmed666@gmail.com</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>Date of Birth</p>
-                    <p>12/16/1994</p>
+                    <p id="date_of_birth_id">12/16/1994</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>Country</p>
-                    <p>Afghanistan</p>
+                    <p id="country_id">Afghanistan</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>Phone Number</p>
-                    <p>+93 700 00 00 000</p>
+                    <p id="phone_number_id">+93 700 00 00 000</p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>Last Purchase</p>
-                    <p>08/22/2022 <span class="user-modal-time">10:00 pm</span></p>
+                    <p id="last_transaction_id">08/22/2022 <span class="user-modal-time">10:00 pm</span></p>
                 </div>
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>Total Purchase</p>
-                    <p>500 USD</p>
+                    <p id="total_amount_usd_id">500 USD</p>
                 </div>
 
                 <div class="user-modal-button d-flex justify-content-center">
@@ -417,10 +428,7 @@
                                     <td class="data">${e.email}</td>
                                     <td class="data">${e.country}</td>
                                     <td class="data">${e.phone_number}</td>
-                                    <td class="data">${e.topup_amount_usd}</td>
-                                    <td class="data">${e.processing_fee}</td>
-                                    <td class="data">${e.total_amount_usd}</td>
-                                    <td class="data">${e.status}</td>
+                                    <td class="data">${e.last_transaction}</td>
                                     <td class="data">
                                         <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
                                             data-toggle="modal" data-target="#basicsubsModal"
@@ -431,6 +439,28 @@
                 });
             }
         });
+    });
+    ///////......show user data in modal....//////
+    $('.getuserdata').click(function() {
+        var name = $(this).find('.name').text();
+        var email = $(this).find('.email').text();
+        var country = $(this).find('.country').text();
+        var phone_number = $(this).find('.phone_number').text();
+        var last_transaction = $(this).find('.last_transaction').text();
+        var total_amount_usd = $(this).find('.total_amount_usd').val();
+        var date_of_birth = $(this).find('.date_of_birth').val();
+
+
+        $("#name_id").html(name);
+        $("#email_id").html(email);
+        $("#country_id").html(country);
+        $("#phone_number_id").html(phone_number);
+        $("#last_transaction_id").html(last_transaction);
+        $("#total_amount_usd_id").html(total_amount_usd);
+        $("#date_of_birth_id").html(date_of_birth);
+
+
+
     });
 </script>
 @endsection
