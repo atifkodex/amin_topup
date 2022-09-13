@@ -219,29 +219,20 @@ class OrderController extends Controller
         ];
         // dd ($loginData);
 
-        $curl = curl_init();
+        $username = 'DISTRIBUTOR_API';
+        $password = ';<G/2hnC}"HE:Z?A';
 
-        $public_key = "DISTRIBUTOR_API";
-        $private_key = ';<G/2hnC}"HE:Z?A';
-
-        curl_setopt_array($curl, array(
-        CURLOPT_URL => "https://adp.280.af/login",
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => "",
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 0,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => "POST",
-        CURLOPT_HTTPHEADER => array(
-        "Content-Type: application/json",
-        "Authorization: Basic ".base64_encode($public_key.":".$private_key)
-        ),
-        ));
-        $response = curl_exec($curl);
-        curl_close($curl);
-        echo $response;
-        die;
+        $ch = curl_init($host);
+        curl_setopt($ch, CURLOPT_URL, "https://adp.280.af/login");  
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/xml'));
+        curl_setopt($ch, CURLOPT_HEADER, 1);
+        curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $password);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $payloadName);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        $return = curl_exec($ch);
+        curl_close($ch);
 
         // $loginResponse = Http::withoutVerifying()->withHeaders([
         //     'Content-Type' => 'application/json'
