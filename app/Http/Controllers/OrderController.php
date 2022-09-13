@@ -41,12 +41,12 @@ class OrderController extends Controller
             'amount' => $request->amount * 100,
             'currency' => 'usd',
             'customer' => $customer->id,
-            'confirm' => true,
             'payment_method_options' => [
                 'card' => [
-                'capture_method' => 'manual',
+                    'capture_method' => 'manual',
+                ],
             ],
-        ],
+            'confirm' => true,
         ]);
 
         $pay_int_res = [
