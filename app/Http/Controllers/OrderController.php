@@ -225,7 +225,7 @@ class OrderController extends Controller
         $loginResponseBody = $loginResponse->body();
         $loginResponseData = json_decode($loginResponseBody, true);
         $accessToken = $loginResponseData['data']['access_token'];
-        dd($loginResponseData['data']);
+        dd($loginResponseData['data']['accessTokenExpiry']);
 
         // Topup API Request
         $response = Http::withoutVerifying()->withHeaders([
