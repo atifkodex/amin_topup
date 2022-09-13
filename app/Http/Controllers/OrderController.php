@@ -224,10 +224,12 @@ class OrderController extends Controller
         $loginResponse = Http::withoutVerifying()->withBasicAuth($username, $password)->post('https://adp.280.af/login', $loginData);
         $loginResponseBody = $loginResponse->body();
         $loginResponseData = json_decode($loginResponseBody, true);
-        dd($loginResponseData['data']['access_token']);
+        $accessToken = $loginResponseData['data']['access_token'];
+        dd($loginResponseData['data']);
 
         // Topup API Request
         $response = Http::withoutVerifying()->withHeaders([
+            'Authorization' => 'Bearer ' . $accessToken,
             'Content-Type' => 'application/json'
         ])->post('https://adp.280.af/topup', $final);
         $responseBody = $response->body();
