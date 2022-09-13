@@ -209,7 +209,7 @@ class OrderController extends Controller
         $final['data'] = (object) $datas;
 
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-            $stripe->intent->capture(
+            $stripe->paymentIntents->capture(
                 $request->intent_id,
                 []
             );
