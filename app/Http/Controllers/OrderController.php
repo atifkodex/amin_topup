@@ -212,16 +212,8 @@ class OrderController extends Controller
         $datas['targetMSISDN'] = $targetMSISDN;
         $final['data'] = (object) $datas;
 
-        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-        $confirm = $stripe->paymentIntents->confirm(
-            $request->intent_id,
-            ['payment_method' => 'pm_card_visa']
-        );
-        $intent = $stripe->paymentIntents->capture(
-            $request->intent_id,
-            []
-        );
-        print_r($intent);die;
+        
+        // print_r($intent);die;
 
         // Topup API Request
         $accessToken = TopupToken::where('id', 1)->pluck('access_token')->first();
@@ -232,18 +224,17 @@ class OrderController extends Controller
         $responseBody = $response->body();
         $responseData = json_decode($responseBody, true);
         if($responseData['data']['transactionStatus'] == 1){
-        //     $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-        // $stripe->paymentIntents->confirm(
-        //     $request->intent_id,
-        //     ['payment_method' => 'pm_card_visa']
-        // );
-        // dd($stripe);
-        // $stripe->paymentIntents->capture(
-        //     $request->intent_id,
-        //     []
-        // );
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        $confirm = $stripe->paymentIntents->confirm(
+            $request->intent_id,
+            ['payment_method' => 'pm_card_visa']
+        );
+        $intent = $stripe->paymentIntents->capture(
+            $request->intent_id,
+            []
+        );
 
-            if($stripe == 1){
+            if($intent->status == 'succeeded'){
                 return $this->sendResponse([], 'Transaction Successfull, Topup sent to receiver.');
             }
         }else{
