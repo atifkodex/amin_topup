@@ -41,8 +41,14 @@ class OrderController extends Controller
             'amount' => $request->amount * 100,
             'currency' => 'usd',
             'customer' => $customer->id,
-            'capture_method' => 'manual',
-            'confirm' => true,
+            'automatic_payment_methods' => [
+                'enabled' => 'true',
+            ],
+            'payment_method_options' => [
+                'card' => [
+                'capture_method' => 'manual',
+            ],
+        ],
         ]);
 
         $pay_int_res = [
