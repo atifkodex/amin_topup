@@ -512,6 +512,9 @@
         var value = $('#pickyDate').datepicker('getFormattedDate');
         
         // Ajax call 
+        var parameter = {
+            date: value
+        };
         $.ajax({
             url: liveUrl + 'api/dashboard',
             type: 'POST',
@@ -520,7 +523,7 @@
                 'Authorization': 'Bearer ' + token,
                 'Content-Type' : 'application/json'
             },
-            data: jQuery.param({ date : value}),
+            data: JSON.stringify(parameter),
             success: function(response) {
                 $(".selectedDate").text(response.data.date);
                 $(".usersOnDate").text(response.data.usersOnDate);
