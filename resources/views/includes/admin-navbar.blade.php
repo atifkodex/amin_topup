@@ -1,10 +1,9 @@
 <style>
-  .pagination {
+  .pagination{
     cursor: pointer;
   }
-
-  /* notification */
-  .notification-dropdown {
+      / notification /
+  .notification-dropdown{
     left: -250px !important;
     top: 0px;
     border-radius: 10px;
@@ -14,77 +13,68 @@
     box-shadow: 0 0 20px 0 rgba(213, 213, 213, 0.5) !important;
     border: none !important
   }
-
-  .notification-dropdown::-webkit-scrollbar {
+  .notification-dropdown::-webkit-scrollbar{
     width: 0px;
   }
-
   @media screen and (max-width: 1199px) and (min-width:1110px) {
-    .notification-dropdown {
-      left: -305px !important;
-      top: 0px;
-      border-radius: 10px;
-      width: 400px;
-    }
+    .notification-dropdown{
+    left: -305px !important;
+    top: 0px;
+    border-radius: 10px;
+    width: 400px;
   }
-
+  }
   @media screen and (max-width: 1109px) and (min-width:1029px) {
-    .notification-dropdown {
-      left: -266px !important;
-      top: 0px;
-      border-radius: 10px;
-      width: 400px;
-    }
+    .notification-dropdown{
+    left: -266px !important;
+    top: 0px;
+    border-radius: 10px;
+    width: 400px;
   }
-
+  }
   @media screen and (max-width: 1028px) and (min-width:993px) {
-    .notification-dropdown {
-      left: -240px !important;
-      top: 0px;
-      border-radius: 10px;
-      width: 400px;
-    }
+    .notification-dropdown{
+    left: -240px !important;
+    top: 0px;
+    border-radius: 10px;
+    width: 400px;
   }
-
+  }
   @media screen and (max-width: 1028px) and (min-width:768px) {
-    .notification-dropdown {
-      left: -246px !important;
+    .notification-dropdown{
+      left:-246px !important;
       border-radius: 10px;
       width: 400px;
     }
   }
-
-  @media screen and (max-width:767px) {
-    .notification-dropdown {
-      left: -212px !important;
+  @media screen and (max-width:767px){
+    .notification-dropdown{
+      left:-212px !important;
       border-radius: 10px;
       width: 400px;
     }
   }
-
-  .error-notification p span {
+  
+  .error-notification p span{
     color: red;
     font-size: 16px;
     font-weight: bold;
     padding-right: 5px;
   }
-
-  .error-notification {
+  .error-notification{
     background: #F1F8FF;
     border-radius: 10px;
   }
-
-  .notification-profile:hover {
-    background: #001933 !important;
+  .notification-profile:hover{
+    background: #001933!important;
     border-radius: 10px;
-
+   
   }
-
-  .notification-profile:hover p {
+  .notification-profile:hover p{
     color: white !important;
   }
-
-  .success-notification p span {
+ 
+  .success-notification p span{
     color: rgba(61, 171, 37, 1);
     font-size: 14px;
     font-weight: bold;
@@ -95,63 +85,64 @@
    margin-bottom: 0px;
    font-size: 14px;
   }
-
-  .notification-profile p:hover {
+  .notification-profile p:hover{
     text-decoration: none !important;
     border-bottom: none !important;
 
   }
-
-  .notification-area:hover {
+  .notification-area:hover{
     text-decoration: none !important;
     border-bottom: none !important;
-
+   
   }
 
-  .notification-profile {
-    /* border-bottom: 1px solid gainsboro !important; */
+  .notification-profile{
+    / border-bottom: 1px solid gainsboro !important; /
     padding-left: 20px;
   }
-
-  .notification-area:last-of-type .notification-profile {
+  .notification-area:last-of-type .notification-profile{
     border-bottom: none !important;
   }
 
-  .dropdown-menu {
+  .dropdown-menu{
     left: -195px;
   }
-
   .icon-button {
     position: relative;
     cursor: pointer;
   }
-
   .icon-button__badge {
     position: absolute;
     top: 3px;
-    right: 2px;
+    right:2px;
     width: 8px;
     height: 8px;
-    background: #00FFB8;
+    background:#00FFB8;
     color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
   }
-
   .icon-button {
     padding-top: 15px !important;
   }
-
-  .bell-icon .noti-dot {
+  .bell-icon .noti-dot{
     right: 0px !important;
   }
-
-  .log-out {
+  .log-out{
     border: none;
     border-radius: 10px;
   }
+  .log-out a{
+    font-size: 12px;
+    border-bottom: 1px solid rgba(134, 133, 133, 0.26);
+  }
+
+  .log-out a:last-of-type{
+    border-bottom: none;
+  }
+ 
 </style>
 <div class="left-outer">
   <div class="sidebar-left">
@@ -300,6 +291,7 @@
             </button>
             <div class="dropdown-menu log-out">
               <a class="dropdown-item" href="#"> <img src="{{asset('assets/images/logout.svg')}}" alt=""> Logout</a>
+              <a class="dropdown-item" href="{{url('change_password')}}"> <img src="{{asset('assets/images/padlock.png')}}" alt=""> Change Password</a>
             </div>
           </div>
         </div>

@@ -1,31 +1,32 @@
 @extends('layouts.admin-default')
 <style>
-.user-select-row select {
-    width: 80px;
-    border: 1px solid #012245;
-    font-size: 12px;
-    color: #012245
-}
-
-.user-select-row select:active,
-.user-select-row select:focus {
-    outline: none;
-    box-shadow: none;
-    border: 1px solid #012245;
-}
-
-/* #table-id thead tr th:first-of-type,#table-id tbody tr td:first-of-type{
+    .user-select-row select{
+        width: 80px;
+        border: 1px solid #012245;
+        font-size: 12px;
+        color: #012245
+    }
+    .user-select-row select:active,.user-select-row select:focus{
+        outline: none;
+        box-shadow: none;
+        border: 1px solid #012245;
+    }
+    /* #table-id thead tr th:first-of-type,#table-id tbody tr td:first-of-type{
         display: none
     } */
-.setting-card-body-inner {
-    overflow-x: auto;
-    height: 680px !important;
-    overflow-y: hidden !important;
-}
-
-#table-id tbody tr td {
+    .setting-card-body-inner{
+        overflow-x:auto;
+        height:680px !important;
+        overflow-y: hidden !important;
+    }
+    #table-id tbody tr td{
     background: #f1efef;
  
+    }
+    @media screen and (min-width:2100px) {
+     #table-id{
+        width: 100% !important;
+     }
     }
 
 </style>

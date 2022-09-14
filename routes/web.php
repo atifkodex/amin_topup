@@ -43,6 +43,10 @@ Route::get('/login', function () {
     return view('pages.auth.login');
 });
 
+Route::get('/change_password', function () {
+    return view('pages.auth.change-password');
+});
+
 Route::get('/sign-up', function () {
     return view('pages.auth.sign-up');
 });

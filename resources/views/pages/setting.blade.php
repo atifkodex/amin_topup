@@ -440,11 +440,11 @@
               <div class="card setting-card">
                 <div class="card-header stripe-key-header setting-card-header" id="faqhead8">
                     <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq8"
-                    aria-expanded="true" aria-controls="faq8"><img src="{{('assets/images/profile-icon.svg')}}" alt="">Admins</a>
+                    aria-expanded="true" aria-controls="faq8"><img src="{{('assets/images/profile-icon.svg')}}" alt="">Admin</a>
                 </div>
 
                 <div id="faq8" class="collapse" aria-labelledby="faqhead8" data-parent="#faq">
-                  <div class="card-body setting-card-body latest-transection-sec">
+                  <div class="card-body setting-card-body latest-transection-sec mt-0">
                     <div class="text-right add-admin">
                       <button class="open-admin-form mb-2">+</button>
                       <button class="close-admin-form mb-2">-</button>
@@ -573,7 +573,7 @@
                  
                 
                 </div>
-              </div>          
+              </div>           
             </div>
          </div>
        </div>
