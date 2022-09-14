@@ -520,9 +520,7 @@
                 'Authorization': 'Bearer ' + token,
                 'Content-Type' : 'application/json'
             },
-            data: {
-                'date': value
-            },
+            data: jQuery.param({ 'date': value}),
             success: function(response) {
                 $(".selectedDate").text(response.data.date);
                 $(".usersOnDate").text(response.data.usersOnDate);
