@@ -520,7 +520,7 @@
         // });
         // Ajax call 
         $.ajax({
-            url: localUrl + 'api/dashboard',
+            url: liveUrl + 'api/dashboard',
             type: 'POST',
             data: {
                 date: value

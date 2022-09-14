@@ -33,7 +33,7 @@ class AdminUIController extends Controller
         }
         $response = Http::withHeaders([
             'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/public/api/login', $request->all());
+        ])->post('http://kodextech.net/amin-topup/api/login', $request->all());
         $responseBody = $response->body();
         $test = json_decode($responseBody, true);
         if ($test['success'] == false) {
@@ -76,9 +76,9 @@ class AdminUIController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/public/api/dashboard', $data);
+        ])->post('http://kodextech.net/amin-topup/api/dashboard', $data);
         $convertor = $response->body();
-        $response = json_decode($convertor, true);
+        $response = json_decode($convertor, true);  
         $data = $response['data'];
 
         return view('pages.dashboard', ['data' => $data, 'token' => $token]);
@@ -93,7 +93,7 @@ class AdminUIController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/public/api/settings',);
+        ])->post('http://kodextech.net/amin-topup/api/settings',);
         $convertor = $response->body();
         $response = json_decode($convertor, true);
         $data = $response['data'];
@@ -110,7 +110,7 @@ class AdminUIController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/public/api/reply_send', $data);
+        ])->post('http://kodextech.net/amin-topup/api/reply_send', $data);
         $convertor = $response->body();
         $response = json_decode($convertor, true);
         // dd($response);
@@ -130,7 +130,7 @@ class AdminUIController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/public/api/users', $data);
+        ])->post('http://kodextech.net/amin-topup/api/users', $data);
         $convertor = $response->body();
         $response = json_decode($convertor, true);
 
@@ -145,7 +145,7 @@ class AdminUIController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/public/api/transactions');
+        ])->post('http://kodextech.net/amin-topup/api/transactions');
         $convertor = $response->body();
         $response = json_decode($convertor, true);
         $data = $response['data'];
@@ -175,7 +175,7 @@ class AdminUIController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/public/api/resolve', $data);
+        ])->post('http://kodextech.net/amin-topup/api/resolve', $data);
         $convertor = $response->body();
         $response = json_decode($convertor, true);
 
