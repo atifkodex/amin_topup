@@ -624,6 +624,7 @@ body {
     border-radius: 11px;
     padding: 15px;
     margin-bottom: 15px;
+    min-height: 219px;
 }
 .home-demo h3 {
     font-weight: 400;
