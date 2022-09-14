@@ -222,10 +222,10 @@ class OrderController extends Controller
         $responseData = json_decode($responseBody, true);
         if($responseData['data']['transactionStatus'] == 1){
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-        $confirm = $stripe->paymentIntents->confirm(
-            $request->intent_id,
-            ['payment_method' => 'pm_card_visa']
-        );
+        // $confirm = $stripe->paymentIntents->confirm(
+        //     $request->intent_id,
+        //     ['payment_method' => 'pm_card_visa']
+        // );
         $intent = $stripe->paymentIntents->capture(
             $request->intent_id,
             []
