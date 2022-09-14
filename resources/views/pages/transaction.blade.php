@@ -62,52 +62,57 @@
                                             <option value="100">100</option>
                                         </select>
                                     </div>
-                                    <table id="table-id" class="mr-3 mb-3" style="width: 1370px">
+                                    <table id="table-id" class="mr-3 mb-3" style="width: 1300px">
                                         <thead>
                                             <tr>
                                                 <th>Transaction ID</th>
-                                                <th>Date & Time</th>
-                                                <th>User Name</th>
+                                                <th>Sender Name</th>
                                                 <th>Receiver Phone Number</th>
                                                 <th>Network</th>
                                                 <th>Topup Amount</th>
                                                 <th>Topup Amount in USD</th>
-                                                <th>Pocessing Fee</th>
+                                                <th>Stripe Fee</th>
                                                 <th>Total Payment in USD</th>
                                                 <th>Status</th>
                                                 <th>Actions</th>
 
                                             </tr>
                                         </thead>
-                                        <tbody class="newData">
-                                            @foreach($data as $transaction)
+                                        <tbody>
                                             <tr>
-                                                <td class="data transactionId">{{$transaction['id']}}</td>
-                                                <td class="data transactionId">22-10-10 02:08PM</td>
-                                                <td class="data senderName">{{$transaction['senderName']}}</td>
-                                                <td class="data receiverNumber">{{$transaction['receiver_number']}}</td>
-                                                <td class="data network">{{$transaction['receiver_network']}}</td>
-                                                <td class="data topupAmount">{{$transaction['topup_amount']}}</td>
-                                                <td class="data amountUsd">{{$transaction['topup_amount_usd']}}</td>
-                                                <td class="data processingFee">${{$transaction['processing_fee']}}</td>
-                                                <td class="data totalAmountUsd">$ {{$transaction['total_amount_usd']}}
-                                                </td>
-                                                @if($transaction['status'] == 0)
-                                                <td class="data text-danger statusTransaction">
-                                                    False
-                                                </td>
-                                                @else
-                                                <td class="data success">
-                                                    Success
-                                                </td>
-                                                @endif
+                                                <td class="data">#213652</td>
+                                                <td class="data">Muhammad Ali</td>
+                                                <td class="data">+93 700 00 00 0000</td>
+                                                <td class="data">AWCC</td>
+                                                <td class="data">6000.76</td>
+                                                <td class="data">1.30</td>
+                                                <td class="data">$ 3.0</td>
+                                                <td class="data">$ 50</td>
+                                                <td class="data success">Sucess</td>
+
                                                 <td class="data">
                                                     <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
                                                         data-toggle="modal" data-target="#basicsubsModal"
-                                                        style="cursor: pointer" class="actionBtnTransaction">
+                                                        style="cursor: pointer">
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="data">#213652</td>
+                                                <td class="data">Muhammad Ali</td>
+                                                <td class="data">+93 700 00 00 0000</td>
+                                                <td class="data">AWCC</td>
+                                                <td class="data">6000.76</td>
+                                                <td class="data">1.30</td>
+                                                <td class="data">$ 3.0</td>
+                                                <td class="data">$ 50</td>
+                                                <td class="data success">Sucess</td>
+                                                <td class="data">
+                                                    <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
+                                                        data-toggle="modal" data-target="#basicsubsModal"
+                                                        style="cursor: pointer">
                                                 </td>
                                             </tr>
-                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
