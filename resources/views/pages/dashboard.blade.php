@@ -419,6 +419,7 @@
 </script>
 <script>
     var token = @json($token);
+    var sales = @json($data['salesAfn']);
         var options = {
             tooltip: {
                 
@@ -463,7 +464,7 @@
           fontSize: '20px',
           color: '#F89822',
           formatter: function (w) {
-            return w=9000.01;
+            return w=sales;
           }
         },
         value: {
