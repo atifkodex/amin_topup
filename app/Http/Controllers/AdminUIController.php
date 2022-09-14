@@ -68,6 +68,7 @@ class AdminUIController extends Controller
 
     public function dashboardDetails(Request $request)
     {
+        dd('coming');
         $value = Session::get('loginData');
         $token = $value['user']['token'];
         $data = $request->all();
@@ -147,8 +148,9 @@ class AdminUIController extends Controller
         ])->post('http://kodextech.net/amin-topup/public/api/transactions');
         $convertor = $response->body();
         $response = json_decode($convertor, true);
+        dd($response);
         $data = $response['data'];
-        return view('pages.transaction', ['data' => $data, 'token' => $token]);
+        return view(('pages.transaction'), compact('data'));
     }
 
     // public function transactionsList(Request $request){

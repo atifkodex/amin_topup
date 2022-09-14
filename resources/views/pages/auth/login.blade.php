@@ -31,7 +31,7 @@
                         
                       </form>
                       <div class="d-flex justify-content-center login-button-outer">
-                        <a href="{{route('dashboard')}}">
+                        <a href="javascript:void(0)">
                           <button class="btn  login-btn">Sign in</button>
                         </a>
                           
