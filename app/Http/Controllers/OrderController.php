@@ -232,6 +232,14 @@ class OrderController extends Controller
             if($intent->status == 'succeeded'){
                 $transactionStatus = Transaction::where('id', $request->transaction_id)->update(['status' => 1]);
                 if($transactionStatus == 1){
+
+                    // Create Notification 
+                    $notification = new NotificationLog;
+                    $notification->user_id = auth()->user()->id;
+                    $notification->notification_type = "transaction";
+                    $notification->transaction_id = $request->transaction_id;
+                    $notification->notification_status = 0;
+                    $notification->save();
                     return $this->sendResponse([], 'Transaction Successfull, Topup sent to receiver.');
                 }else{
                     return $this->sendError("payment sent to user, stripe transaction succeeded but the transaction status was not updated due to some error.");
