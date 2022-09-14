@@ -213,6 +213,7 @@ class OrderController extends Controller
         $datas['targetMSISDN'] = $targetMSISDN;
         $final['data'] = (object) $datas;
 
+        $dd($final);
         // Topup API Request
         $accessToken = TopupToken::where('id', 1)->pluck('access_token')->first();
         $response = Http::withoutVerifying()->withHeaders([
