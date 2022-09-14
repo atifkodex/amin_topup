@@ -510,14 +510,7 @@
     function showTestDate(){
         chart.destroy();
         var value = $('#pickyDate').datepicker('getFormattedDate');
-        // $(document).ready(function(e) {
-        //     $.ajaxSetup({
-        //         headers: {
-        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-        //             "Authorization":'Bearer ' + token
-        //         }
-        //     });
-        // });
+        
         // Ajax call 
         $.ajax({
             url: liveUrl + 'api/dashboard',

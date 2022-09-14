@@ -98,9 +98,8 @@ class AdminController extends Controller
     public function adminDashboard(Request $request)
     {
         if (isset($request->date) && !empty($request->date)) {
-            // $requestDate = $request->date;
             $date = date("Y-m-d", strtotime($request->date));
-
+            dd($date);
             // dd(is_string($requestDate));
         } else {
             $date = Carbon::now();
