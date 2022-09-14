@@ -510,29 +510,24 @@
     function showTestDate(){
         chart.destroy();
         var value = $('#pickyDate').datepicker('getFormattedDate');
-        $(document).ready(function(e) {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                }
-            });
-        });
+        // $(document).ready(function(e) {
+        //     $.ajaxSetup({
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        //             "Authorization":'Bearer ' + token
+        //         }
+        //     });
+        // });
         // Ajax call 
-        // var route = "{{route('dashboard-details')}}"
         $.ajax({
-            url: 'http://kodextech.net/amin-topup/public/api/dashboard',
+            url: localUrl + 'api/dashboard',
             type: 'POST',
             data: {
                 date: value
             },
             dataType: 'json', // added data type
-            headers: {"Authorization":'Bearer ' + token,
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                'Access-Control-Allow-Origin':'*',
-                'Access-Control-Allow-Headers':'Origin,X-Requested-With',
-                'Accept':'application/json',
-                'Access-Control-Allow-Methods':'POST',
-                'Access-Control-Allow-Credentials':'true'
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("Authorization", "Basic " + btoa("token"));
             },
             success: function(response) {
                 $(".selectedDate").text(response.data.date);

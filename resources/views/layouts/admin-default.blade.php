@@ -19,5 +19,9 @@
 @yield('javascriptwork')
 @yield('inserfooter')
 </body>
+<script>
+    var localUrl = 'http://localhost/amin-topup/';
+    var liveUrl = 'http://kodextech.net/amin-topup/';
+</script>
 
 </html>
