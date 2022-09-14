@@ -189,7 +189,7 @@ class OrderController extends Controller
         $productID = 'ETISALAT_ERECHARGE';
         
         // $targetMSISDN = $completeNum;      //This line will be replaced with test number for final deployment
-        $targetMSISDN = '0782220000 ';
+        $targetMSISDN = '0782220000';
         $unitType = 'EMONEY';
         $currency = 'AFN';
         $exponent = '0';
@@ -221,7 +221,6 @@ class OrderController extends Controller
         ])->post('https://adp.280.af/topup', $final);
         $responseBody = $response->body();
         $responseData = json_decode($responseBody, true);
-        dd($responseData);
         if($responseData['data']['transactionStatus'] == 1){
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
         
