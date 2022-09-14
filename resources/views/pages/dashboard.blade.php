@@ -516,7 +516,7 @@
             url: liveUrl + 'api/dashboard',
             type: 'POST',
             data: {
-                date: value
+                'date': value
             },
             dataType: 'json', // added data type
             headers: {
