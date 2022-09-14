@@ -163,16 +163,19 @@ class OrderController extends Controller
     }
 
     public function Topup(Request $request){
+        $transactionStatus = Transaction::where('id', $request->transaction_id)->update(['status' => 1]);
+        dd($transactionStatus);
         // Validation for params 
-        // $validator = Validator::make($request->all(), [
-        //     'intent_id' => 'required',
-        //     'receiver_number' => 'required',
-        //     'amount' => 'required',
-        //     'product_code' => 'required',
-        // ]);
-        // if ($validator->fails()) {
-        //     return $this->sendError(implode(",", $validator->errors()->all()), []);
-        // }
+        $validator = Validator::make($request->all(), [
+            'intent_id' => 'required',
+            'receiver_number' => 'required',
+            'amount' => 'required',
+            'product_code' => 'required',
+            'transaction_id' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError(implode(",", $validator->errors()->all()), []);
+        }
         $number = substr($request->receiver_number,0, 3);
         if($number == 930){
             $completeNum = substr($request->receiver_number, 2);
@@ -222,16 +225,14 @@ class OrderController extends Controller
         $responseData = json_decode($responseBody, true);
         if($responseData['data']['transactionStatus'] == 1){
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-        // $confirm = $stripe->paymentIntents->confirm(
-        //     $request->intent_id,
-        //     ['payment_method' => 'pm_card_visa']
-        // );
+        
         $intent = $stripe->paymentIntents->capture(
             $request->intent_id,
             []
         );
 
             if($intent->status == 'succeeded'){
+                
                 return $this->sendResponse([], 'Transaction Successfull, Topup sent to receiver.');
             }
         }else{
