@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use \Illuminate\Http\Request;
-
 class ArticleController extends Controller
 {
     /**
@@ -15,6 +14,7 @@ class ArticleController extends Controller
     {
         $response = ['message' => 'article index'];
         return response($response, 200);
+
     }
 
     /**
@@ -71,6 +71,7 @@ class ArticleController extends Controller
     {
         $response = ['message' => 'update function'];
         return response($response, 200);
+
     }
 
     /**

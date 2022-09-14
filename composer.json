@@ -9,8 +9,6 @@
     "license": "MIT",
     "require": {
         "php": "^7.4.0",
-        "abdrzakoxa/laravel-eloquent-filter": "^1.1",
-        "doctrine/dbal": "^3.4",
         "fideloper/proxy": ">=4.2",
         "fruitcake/laravel-cors": ">=1.0",
         "guzzlehttp/guzzle": "^7.5",
@@ -18,9 +16,7 @@
         "laravel/helpers": ">=1.2",
         "laravel/passport": ">=8.4",
         "laravel/tinker": ">=2.0",
-        "laravel/ui": ">=3.0",
-        "slim/slim": "3.*",
-        "stripe/stripe-php": "^9.3"
+        "laravel/ui": ">=3.0"
     },
     "require-dev": {
         "facade/ignition": ">=2.0",
