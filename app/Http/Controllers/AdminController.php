@@ -99,10 +99,10 @@ class AdminController extends Controller
     {
         if (isset($request->date) && !empty($request->date)) {
             $date = date("Y-m-d", strtotime($request->date));
-            dd($date);
             // dd(is_string($requestDate));
         } else {
             $date = Carbon::now();
+            dd($date);
         }
         $allUsers = User::all()->count();
         $usersOnDate = User::whereDate('created_at', $date)->count();
