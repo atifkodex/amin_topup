@@ -515,13 +515,13 @@
         $.ajax({
             url: liveUrl + 'api/dashboard',
             type: 'POST',
-            data: {
-                'date': value
-            },
             dataType: 'json', // added data type
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type' : 'application/json'
+            },
+            data: {
+                'date': value
             },
             success: function(response) {
                 $(".selectedDate").text(response.data.date);
