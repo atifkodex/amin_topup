@@ -186,10 +186,10 @@ class OrderController extends Controller
         $serviceID = 'TOPUP';
 
         // $productID = $request->product_code;    //This line will be replaced with test productID for final deployment
-        $productID = 'SALAAM_ERECHARGE';
+        $productID = 'ETISALAT_ERECHARGE';
         
         // $targetMSISDN = $completeNum;      //This line will be replaced with test number for final deployment
-        $targetMSISDN = '0745557555';
+        $targetMSISDN = '0782220000 ';
         $unitType = 'EMONEY';
         $currency = 'AFN';
         $exponent = '0';

@@ -418,7 +418,7 @@
     ];
 </script>
 <script>
-    $token = @json($token);
+    var token = @json($token);
         var options = {
             tooltip: {
                 
@@ -513,7 +513,7 @@
         $(document).ready(function(e) {
             $.ajaxSetup({
                 headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                 }
             });
         });
@@ -522,10 +522,17 @@
         $.ajax({
             url: 'http://kodextech.net/amin-topup/public/api/dashboard',
             type: 'POST',
-            headers: {"Authorization": $token},
-            dataType: 'json', // added data type
             data: {
                 date: value
+            },
+            dataType: 'json', // added data type
+            headers: {"Authorization":'Bearer ' + token,
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                'Access-Control-Allow-Origin':'*',
+                'Access-Control-Allow-Headers':'Origin,X-Requested-With',
+                'Accept':'application/json',
+                'Access-Control-Allow-Methods':'POST',
+                'Access-Control-Allow-Credentials':'true'
             },
             success: function(response) {
                 $(".selectedDate").text(response.data.date);
