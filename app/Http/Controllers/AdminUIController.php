@@ -81,7 +81,8 @@ class AdminUIController extends Controller
         $response = json_decode($convertor, true);
         $data = $response['data'];
 
-        return view(('pages.dashboard'), compact('data'));
+        return view('pages.dashboard', ['data' => $data, 'token' => $token]);
+
     }
 
     public function settingDetails()

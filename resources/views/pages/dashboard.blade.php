@@ -417,8 +417,13 @@
         parseInt(mtnPercentage),
     ];
 </script>
-<!-- <script>
+<script>
+    $token = @json($token);
         var options = {
+            tooltip: {
+                
+            },
+
             grid: {
                 show: false,
                 padding: {
@@ -428,32 +433,61 @@
             },
             dataLabels: {
                 enabled: true,
+                
                 style: {
                     fontSize: "8px",
                 }
             },
-            tooltip: {
-                enabled: false,
-            },
-            series: dataGraph,
-            labels: ["Roshan", "Etisalat", "Salaam", "AWCC", "Afghan Telecom", "MTN" ],
+            series: [44, 55, 41, 17, 15],
             chart: {
                 type: 'donut',
                 width: '100%',
-                height: 180,
+                height: 250,
 
             },
-            fill: {
-                colors: ['#775DD0', '#008FFB', '#00E396', '#DA3B52',  '#FEB019','#FEB099',]
-            },
-            
-
+            plotOptions: {
+    pie: {
+      donut: {
+        labels: {
+          show:true,
+           name: {
+          show: true,
+          fontSize: '22px',
+          fontFamily: 'Rubik',
+          color: '#F89822',
+          offsetY: 20
+        },
+        total: {
+          show: true,
+          label: 'AFN',
+          fontSize: '20px',
+          color: '#F89822',
+          formatter: function (w) {
+            return w=9000.01;
+          }
+        },
+        value: {
+          show: true,
+          fontSize: '20px',
+          label: 'AFN',
+          fontFamily: 'Helvetica, Arial, sans-serif',
+          color: '#F89822',
+          offsetY: -20,
+          formatter: function (val) {
+            return val
+          }
+        },
+       
+        }
+      }
+    }
+  },
             responsive: [{
                 breakpoint: 1199,
                 options: {
                     chart: {
-                        width: 300,
-                        height: 180,
+                        width: '100%',
+                        height: 220,
                     },
                     // legend: {
                     // position: 'bottom'
@@ -476,12 +510,19 @@
     function showTestDate(){
         chart.destroy();
         var value = $('#pickyDate').datepicker('getFormattedDate');
-        
+        $(document).ready(function(e) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        });
         // Ajax call 
         // var route = "{{route('dashboard-details')}}"
         $.ajax({
-            url: 'http://kodextech.net/amin-topup/public/api/admin/dashboard',
+            url: 'http://kodextech.net/amin-topup/public/api/dashboard',
             type: 'POST',
+            headers: {"Authorization": $token},
             dataType: 'json', // added data type
             data: {
                 date: value
@@ -514,6 +555,10 @@
                 ];
 
                  var options = {
+            tooltip: {
+                
+            },
+
             grid: {
                 show: false,
                 padding: {
@@ -523,32 +568,61 @@
             },
             dataLabels: {
                 enabled: true,
+                
                 style: {
                     fontSize: "8px",
                 }
             },
-            tooltip: {
-                enabled: false,
-            },
             series: dataGraph,
-            labels: ["Roshan", "Etisalat", "Salaam", "AWCC", "Afghan Telecom", "MTN" ],
             chart: {
                 type: 'donut',
                 width: '100%',
-                height: 120,
+                height: 250,
 
             },
-            fill: {
-                colors: ['#775DD0', '#008FFB', '#00E396', '#DA3B52',  '#FEB019','#FEB099',]
-            },
-            
-
+            plotOptions: {
+    pie: {
+      donut: {
+        labels: {
+          show:true,
+           name: {
+          show: true,
+          fontSize: '22px',
+          fontFamily: 'Rubik',
+          color: '#F89822',
+          offsetY: 20
+        },
+        total: {
+          show: true,
+          label: 'AFN',
+          fontSize: '20px',
+          color: '#F89822',
+          formatter: function (w) {
+            return w=9000.01;
+          }
+        },
+        value: {
+          show: true,
+          fontSize: '20px',
+          label: 'AFN',
+          fontFamily: 'Helvetica, Arial, sans-serif',
+          color: '#F89822',
+          offsetY: -20,
+          formatter: function (val) {
+            return val
+          }
+        },
+       
+        }
+      }
+    }
+  },
             responsive: [{
                 breakpoint: 1199,
                 options: {
                     chart: {
-                        width: 300,
-                        height: 180,
+                        width: '100%',
+                        height: 220,
                     },
                     // legend: {
                     // position: 'bottom'
@@ -556,14 +630,15 @@
                 }
             }]
         };
+
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
             }
         });
     }
         
-</script> -->
-  <script>
+</script>
+<!-- <script>
         var options = {
             tooltip: {
                 
@@ -644,7 +719,7 @@
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
     </script>
-<script>
+<script> -->
     
 </script>
 
