@@ -140,7 +140,7 @@
                              <div class="col-xl-12 chart-area">
 
                                 <div class="overview-col px-0">
-                                    <p class="pl-3"><span>{{$data['date']}}</span></p>
+                                    <p class="pl-3"><span class="selectedDate">{{$data['date']}}</span></p>
                                     <h2 class="pl-3">Total Topup</h2>
                                     <div class="pie-chart-main ">
 
@@ -438,7 +438,7 @@
                     fontSize: "8px",
                 }
             },
-            series: [44, 55, 41, 17, 15],
+            series: dataGraph,
             chart: {
                 type: 'donut',
                 width: '100%',
