@@ -84,7 +84,7 @@
                             </div>
                             <div class="support-card-body pt-2">
                                 <p>Subject</p>
-                                <h1>Any Problem</h1>
+                            <h1>Any Problem</h1>
                                 <p>Category</p>
                                 <h1>General</h1>
                                 <p class="pb-1">Description</p>
