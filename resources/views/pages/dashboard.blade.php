@@ -440,6 +440,7 @@
                 }
             },
             series: dataGraph,
+            colors: ['#775DD0', '#008FFB', '#00E396', '#DA3B52', '#FEB019', '#FEB399' ],
             chart: {
                 type: 'donut',
                 width: '100%',
@@ -572,6 +573,7 @@
                 }
             },
             series: dataGraph,
+            colors: ['#775DD0', '#008FFB', '#00E396', '#DA3B52', '#FEB019', '#FEB399' ],
             chart: {
                 type: 'donut',
                 width: '100%',
@@ -596,7 +598,7 @@
           fontSize: '20px',
           color: '#F89822',
           formatter: function (w) {
-            return w=9000.01;
+            return w=response.data.salesAfn;
           }
         },
         value: {
