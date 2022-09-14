@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminUIController;
+use App\Http\Middleware\AdminAuth;
+use App\Http\Middleware\IsAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,39 +39,35 @@ Route::middleware([AdminAuth::class])->group(function () {
 Route::get('/', function () {
     return view('pages.auth.login');
 });
-
-Route::get('/changepassword', function () {
-    return view('pages.auth.change-password');
+Route::get('/login', function () {
+    return view('pages.auth.login');
 });
-
 
 Route::get('/sign-up', function () {
     return view('pages.auth.sign-up');
 });
 
-Route::get('/dashboard', function () {
-    return view('pages.dashboard');
-})->name("dashboard");
+// Route::get('/dashboard', function () {
+//     return view('pages.dashboard');
+// })->name("dashboard");
 
-Route::get('/setting', function () {
-    return view('pages.setting');
-});
+// Route::get('/setting', function () {
+//     return view('pages.setting');
+// });
 
-Route::get('/support', function () {
-    return view('pages.support');
-});
+// Route::get('/support', function () {
+//     return view('pages.support');
+// });
 
-Route::get('/user', function () {
-    return view('pages.user');
-});
-Route::get('/transaction', function () {
-    return view('pages.transaction');
-});
+// Route::get('/user', function () {
+//     return view('pages.user');
+// });
+// Route::get('/transaction', function () {
+//     return view('pages.transaction');
+// });
 
 Route::get('/sucess', function () {
     return view('pages.sucess');
 });
 
 Auth::routes();
-
-

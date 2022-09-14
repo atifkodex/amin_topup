@@ -1,9 +1,21 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\ApiAuthController;
+use App\Http\Controllers\Auth\ContactsController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\OperatorController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OtpController;
+use App\Http\Controllers\SettingController;
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\IsAdmin;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,16 +28,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['cors', 'json.response', 'auth:api'])->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::group(['middleware' => ['cors', 'json.response']], function () {
     // public routes
-    // Route::post('/login', 'Auth\ApiAuthController@login')->name('login.api');
     Route::post('/login', [ApiAuthController::class, 'login'])->name('login.api');
     Route::post('/register', [ApiAuthController::class, 'register'])->name('register.api');
-    Route::post('/logout', [ApiAuthController::class, 'logout'])->name('logout.api');
+    Route::post('/send_otp', [OtpController::class, 'sendOTP']);
+    Route::post('/verify_otp', [OtpController::class, 'verifyOtp']);
+    Route::post('password/email', [ResetPasswordController::class, 'sendResetResponse'])->name('password/email');
 });
 
 Route::middleware('auth:api')->group(function () {
