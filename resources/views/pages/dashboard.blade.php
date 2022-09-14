@@ -500,7 +500,7 @@
         chart.render();
 
         $('#pickyDate').datepicker({
-    format: "yyyy/mm/dd",
+    format: "yyyy-mm-dd",
     todayBtn: "linked",
     language: "en",
     daysOfWeekHighlighted: "4",
@@ -510,7 +510,6 @@
     function showTestDate(){
         chart.destroy();
         var value = $('#pickyDate').datepicker('getFormattedDate');
-        alert(value)
         // $(document).ready(function(e) {
         //     $.ajaxSetup({
         //         headers: {
