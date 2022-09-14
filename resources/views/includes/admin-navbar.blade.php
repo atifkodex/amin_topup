@@ -2,7 +2,7 @@
   .pagination{
     cursor: pointer;
   }
-      / notification /
+      /* / notification / */
   .notification-dropdown{
     left: -250px !important;
     top: 0px;
