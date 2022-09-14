@@ -163,8 +163,6 @@ class OrderController extends Controller
     }
 
     public function Topup(Request $request){
-        $transactionStatus = Transaction::where('id', $request->transaction_id)->update(['status' => 1]);
-        dd($transactionStatus);
         // Validation for params 
         $validator = Validator::make($request->all(), [
             'intent_id' => 'required',
@@ -232,8 +230,12 @@ class OrderController extends Controller
         );
 
             if($intent->status == 'succeeded'){
-                
-                return $this->sendResponse([], 'Transaction Successfull, Topup sent to receiver.');
+                $transactionStatus = Transaction::where('id', $request->transaction_id)->update(['status' => 1]);
+                if($transactionStatus == 1){
+                    return $this->sendResponse([], 'Transaction Successfull, Topup sent to receiver.');
+                }else{
+                    return $this->sendError("payment sent to user, stripe transaction succeeded but the transaction status was not updated due to some error.");
+                }
             }
         }else{
             return $this->sendError("Something went wrong with your transaction. Please try again.");
