@@ -526,8 +526,9 @@
                 date: value
             },
             dataType: 'json', // added data type
-            beforeSend: function(xhr) {
-                xhr.setRequestHeader("Authorization", "Basic " + btoa("token"));
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type' : 'application/json'
             },
             success: function(response) {
                 $(".selectedDate").text(response.data.date);
