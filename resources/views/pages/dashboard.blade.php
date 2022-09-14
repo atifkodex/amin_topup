@@ -510,6 +510,7 @@
     function showTestDate(){
         chart.destroy();
         var value = $('#pickyDate').datepicker('getFormattedDate');
+        alert(value)
         // $(document).ready(function(e) {
         //     $.ajaxSetup({
         //         headers: {
