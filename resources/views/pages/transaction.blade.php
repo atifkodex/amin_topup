@@ -160,7 +160,7 @@
 
                             </div>
                             <div class="text-center py-3">
-                                <button type="submit">Search</button>
+                                <button id="transactionForm">Search</button>
                             </div>
 
                         </form>
@@ -238,7 +238,7 @@
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script>
     var token = @json($token);
-    $("#transactionFilterForm").submit(function (e) {
+    $("#transactionForm").click(function (e) {
         e.preventDefault();
         // var form = $("#transactionFilterForm");
         var formData = new FormData($("#transactionFilterForm"));
