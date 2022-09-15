@@ -229,6 +229,7 @@ class OrderController extends Controller
         $responseBody = $response->body();
         $responseData = json_decode($responseBody, true);
         if($responseData['data']['transactionStatus'] == 1){
+
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
         
         $intent = $stripe->paymentIntents->capture(
@@ -237,7 +238,7 @@ class OrderController extends Controller
         );
 
             if($intent->status == 'succeeded'){
-                $transactionStatus = Transaction::where('id', $request->transaction_id)->update(['status' => 1]);
+                $transactionStatus = Transaction::where('id', $request->transaction_id)->update(['status' => 1, 'transaction_id' => $responseData['data']['transactionId']]);
                 if($transactionStatus == 1){
 
                     // Create Notification 
