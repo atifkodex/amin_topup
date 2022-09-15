@@ -241,13 +241,14 @@
     $("#transactionFilterForm").submit(function (e) {
         e.preventDefault();
         var form = $(this);
+        var formData = new FormData(form );
         
         // Ajax call 
         $.ajax({
             url: 'http://kodextech.net/amin-topup/api/transactions',
             dataType: 'json', 
             type: 'POST',
-            data: JSON.stringify(form.serialize()),
+            data: formData,
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type' : 'application/json'
