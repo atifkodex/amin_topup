@@ -29,9 +29,12 @@ class AdminController extends Controller
     ////////.......create admin.........//////
     public function create_admin(Request $request)
     {
+        // $id = $request->id;
+        // $id = User::find($request->id);
+
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+        
+            'email' => 'string|email|max:255',
 
         ]);
         if ($validator->fails()) {
