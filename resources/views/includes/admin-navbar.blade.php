@@ -228,7 +228,7 @@
             <div class="dropdown" id="notificationIcon">
               <img src="{{ asset('assets/images/bell-notify-icon.svg') }}" class="dropdown-toggle icon-button" id="dropdownMenuButton" data-toggle="dropdown">
               <span class="noti-dot">3</span>
-              <div class="dropdown-menu notification-dropdown px-2" aria-labelledby="dropdownMenuButton">
+              <div class="dropdown-menu notification-dropdown px-2" id="appendNotification" aria-labelledby="dropdownMenuButton">
                 <!-- Error Notification  -->
                 <a class="notification-area " href="#">
                   <div class="notification-profile d-flex py-3 error-notification">
@@ -293,7 +293,19 @@
                 'Content-Type' : 'application/json'
             },
             success: function(response) {
-              console.log(response);
+              let notificationsArray = [];
+                response.data.forEach(notification => {
+                    notificationsArray.push(notification);
+                });
+                $("#appendNotification").empty(); 
+                $(notificationsArray).each(function (i, e) {
+                  let div = `<a class="notification-area " href="#">
+                    <div class="notification-profile d-flex py-3 success-notification">
+                      <p class="pl-3">${e.message}</p>
+                    </div>
+                  </a>`;
+                  $("#appendNotification").append(div);
+                });
             }
         });
   });
