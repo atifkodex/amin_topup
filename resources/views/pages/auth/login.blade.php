@@ -29,7 +29,7 @@
                           </div> --}}
                         </div>
                         @if (Session::has('message'))
-                            <div class=" text-danger">{{ Session::get('message') }}</div>
+                            <div style="width: 80%; margin: 0 auto;" class=" text-danger">{{ Session::get('message') }}</div>
                         @endif
                         
                         <div class="d-flex justify-content-center login-button-outer">

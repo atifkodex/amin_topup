@@ -140,7 +140,7 @@
                              <div class="col-xl-12 chart-area">
 
                                 <div class="overview-col px-0">
-                                    <p class="pl-3"><span>{{$data['date']}}</span></p>
+                                    <p class="pl-3"><span class="selectedDate">{{$data['date']}}</span></p>
                                     <h2 class="pl-3">Total Topup</h2>
                                     <div class="pie-chart-main ">
 
@@ -417,8 +417,14 @@
         parseInt(mtnPercentage),
     ];
 </script>
-<!-- <script>
+<script>
+    var token = @json($token);
+    var sales = @json($data['salesAfn']);
         var options = {
+            tooltip: {
+                
+            },
+
             grid: {
                 show: false,
                 padding: {
@@ -428,32 +434,62 @@
             },
             dataLabels: {
                 enabled: true,
+                
                 style: {
                     fontSize: "8px",
                 }
             },
-            tooltip: {
-                enabled: false,
-            },
             series: dataGraph,
-            labels: ["Roshan", "Etisalat", "Salaam", "AWCC", "Afghan Telecom", "MTN" ],
+            colors: ['#775DD0', '#008FFB', '#00E396', '#DA3B52', '#FEB019', '#FEB399' ],
             chart: {
                 type: 'donut',
                 width: '100%',
-                height: 180,
+                height: 250,
 
             },
-            fill: {
-                colors: ['#775DD0', '#008FFB', '#00E396', '#DA3B52',  '#FEB019','#FEB099',]
-            },
-            
-
+            plotOptions: {
+    pie: {
+      donut: {
+        labels: {
+          show:true,
+           name: {
+          show: true,
+          fontSize: '22px',
+          fontFamily: 'Rubik',
+          color: '#F89822',
+          offsetY: 20
+        },
+        total: {
+          show: true,
+          label: 'AFN',
+          fontSize: '20px',
+          color: '#F89822',
+          formatter: function (w) {
+            return w=sales;
+          }
+        },
+        value: {
+          show: true,
+          fontSize: '20px',
+          label: 'AFN',
+          fontFamily: 'Helvetica, Arial, sans-serif',
+          color: '#F89822',
+          offsetY: -20,
+          formatter: function (val) {
+            return val
+          }
+        },
+       
+        }
+      }
+    }
+  },
             responsive: [{
                 breakpoint: 1199,
                 options: {
                     chart: {
-                        width: 300,
-                        height: 180,
+                        width: '100%',
+                        height: 220,
                     },
                     // legend: {
                     // position: 'bottom'
@@ -466,7 +502,7 @@
         chart.render();
 
         $('#pickyDate').datepicker({
-    format: "yyyy/mm/dd",
+    format: "yyyy-mm-dd",
     todayBtn: "linked",
     language: "en",
     daysOfWeekHighlighted: "4",
@@ -478,14 +514,18 @@
         var value = $('#pickyDate').datepicker('getFormattedDate');
         
         // Ajax call 
-        // var route = "{{route('dashboard-details')}}"
+        var parameter = {
+            date: value
+        };
         $.ajax({
-            url: 'http://kodextech.net/amin-topup/public/api/admin/dashboard',
+            url: liveUrl + 'api/dashboard',
             type: 'POST',
             dataType: 'json', // added data type
-            data: {
-                date: value
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type' : 'application/json'
             },
+            data: JSON.stringify(parameter),
             success: function(response) {
                 $(".selectedDate").text(response.data.date);
                 $(".usersOnDate").text(response.data.usersOnDate);
@@ -505,15 +545,19 @@
                 var mtnPercentage = $(".mtnPercentage").val();
                 
                 var dataGraph = [
+                    parseInt(roshanPercentage),
                     parseInt(etisalatPercentage),
                     parseInt(salaamPercentage),
                     parseInt(awccPercentage),
                     parseInt(afghanTelecomPercentage),
                     parseInt(mtnPercentage),
-                    parseInt(roshanPercentage),
                 ];
 
                  var options = {
+            tooltip: {
+                
+            },
+
             grid: {
                 show: false,
                 padding: {
@@ -523,32 +567,62 @@
             },
             dataLabels: {
                 enabled: true,
+                
                 style: {
                     fontSize: "8px",
                 }
             },
-            tooltip: {
-                enabled: false,
-            },
             series: dataGraph,
-            labels: ["Roshan", "Etisalat", "Salaam", "AWCC", "Afghan Telecom", "MTN" ],
+            colors: ['#775DD0', '#008FFB', '#00E396', '#DA3B52', '#FEB019', '#FEB399' ],
             chart: {
                 type: 'donut',
                 width: '100%',
-                height: 120,
+                height: 250,
 
             },
-            fill: {
-                colors: ['#775DD0', '#008FFB', '#00E396', '#DA3B52',  '#FEB019','#FEB099',]
-            },
-            
-
+            plotOptions: {
+    pie: {
+      donut: {
+        labels: {
+          show:true,
+           name: {
+          show: true,
+          fontSize: '22px',
+          fontFamily: 'Rubik',
+          color: '#F89822',
+          offsetY: 20
+        },
+        total: {
+          show: true,
+          label: 'AFN',
+          fontSize: '20px',
+          color: '#F89822',
+          formatter: function (w) {
+            return w=response.data.salesAfn;
+          }
+        },
+        value: {
+          show: true,
+          fontSize: '20px',
+          label: 'AFN',
+          fontFamily: 'Helvetica, Arial, sans-serif',
+          color: '#F89822',
+          offsetY: -20,
+          formatter: function (val) {
+            return val
+          }
+        },
+       
+        }
+      }
+    }
+  },
             responsive: [{
                 breakpoint: 1199,
                 options: {
                     chart: {
-                        width: 300,
-                        height: 180,
+                        width: '100%',
+                        height: 220,
                     },
                     // legend: {
                     // position: 'bottom'
@@ -556,14 +630,15 @@
                 }
             }]
         };
+
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
             }
         });
     }
         
-</script> -->
-  <script>
+</script>
+<!-- <script>
         var options = {
             tooltip: {
                 
@@ -644,7 +719,7 @@
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
     </script>
-<script>
+<script> -->
     
 </script>
 

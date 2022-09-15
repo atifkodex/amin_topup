@@ -164,15 +164,16 @@ class OrderController extends Controller
 
     public function Topup(Request $request){
         // Validation for params 
-        // $validator = Validator::make($request->all(), [
-        //     'intent_id' => 'required',
-        //     'receiver_number' => 'required',
-        //     'amount' => 'required',
-        //     'product_code' => 'required',
-        // ]);
-        // if ($validator->fails()) {
-        //     return $this->sendError(implode(",", $validator->errors()->all()), []);
-        // }
+        $validator = Validator::make($request->all(), [
+            'intent_id' => 'required',
+            'receiver_number' => 'required',
+            'amount' => 'required',
+            'product_code' => 'required',
+            'transaction_id' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError(implode(",", $validator->errors()->all()), []);
+        }
         $number = substr($request->receiver_number,0, 3);
         if($number == 930){
             $completeNum = substr($request->receiver_number, 2);
@@ -185,10 +186,10 @@ class OrderController extends Controller
         $serviceID = 'TOPUP';
 
         // $productID = $request->product_code;    //This line will be replaced with test productID for final deployment
-        $productID = 'SALAAM_ERECHARGE';
+        $productID = 'ETISALAT_ERECHARGE';
         
         // $targetMSISDN = $completeNum;      //This line will be replaced with test number for final deployment
-        $targetMSISDN = '0745557555';
+        $targetMSISDN = '0782220000';
         $unitType = 'EMONEY';
         $currency = 'AFN';
         $exponent = '0';
@@ -222,17 +223,27 @@ class OrderController extends Controller
         $responseData = json_decode($responseBody, true);
         if($responseData['data']['transactionStatus'] == 1){
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-        // $confirm = $stripe->paymentIntents->confirm(
-        //     $request->intent_id,
-        //     ['payment_method' => 'pm_card_visa']
-        // );
+        
         $intent = $stripe->paymentIntents->capture(
             $request->intent_id,
             []
         );
 
             if($intent->status == 'succeeded'){
-                return $this->sendResponse([], 'Transaction Successfull, Topup sent to receiver.');
+                $transactionStatus = Transaction::where('id', $request->transaction_id)->update(['status' => 1]);
+                if($transactionStatus == 1){
+
+                    // Create Notification 
+                    $notification = new NotificationLog;
+                    $notification->user_id = auth()->user()->id;
+                    $notification->notification_type = "transaction";
+                    $notification->transaction_id = $request->transaction_id;
+                    $notification->notification_status = 0;
+                    $notification->save();
+                    return $this->sendResponse([], 'Transaction Successfull, Topup sent to receiver.');
+                }else{
+                    return $this->sendError("payment sent to user, stripe transaction succeeded but the transaction status was not updated due to some error.");
+                }
             }
         }else{
             return $this->sendError("Something went wrong with your transaction. Please try again.");

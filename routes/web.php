@@ -18,8 +18,6 @@ use App\Http\Middleware\IsAdmin;
 */
 
 Route::post('/admin_login', [AdminUIController::class, 'adminLogin'])->name('adminLogin');
-// Route::middleware('auth:api')->group(function () {
-// Route::middleware([IsAdmin::class])->group(function () {
 
 Route::middleware([AdminAuth::class])->group(function () {
     Route::middleware([IsAdmin::class])->group(function () {
