@@ -26,15 +26,15 @@ use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
     use ResponseTrait;
-    ////////.......create admin.........//////
+    ////////.......create admin and update.........//////
     public function create_admin(Request $request)
     {
         // $id = $request->id;
         // $id = User::find($request->id);
 
         $validator = Validator::make($request->all(), [
-        
-            'email' => 'string|email|max:255',
+
+            'email' => 'string|email|max:255'
 
         ]);
         if ($validator->fails()) {
