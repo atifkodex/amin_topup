@@ -299,6 +299,9 @@
                 });
                 $("#appendNotification").empty(); 
                 $(notificationsArray).each(function (i, e) {
+                  if(i/2 == 0) {
+                    $(".notification-area").css('background', '#ddd');
+                  }
                   let div = `<a class="notification-area " href="#">
                     <div class="notification-profile d-flex py-3 success-notification">
                       <p class="pl-3">${e.message}</p>
