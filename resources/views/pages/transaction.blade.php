@@ -242,7 +242,7 @@
         e.preventDefault();
         // var form = $("#transactionFilterForm");
         var formData = new FormData($(this)[0]);
-        
+        console.log(formData);
         // Ajax call 
         $.ajax({
             url: 'http://kodextech.net/amin-topup/api/transactions',
