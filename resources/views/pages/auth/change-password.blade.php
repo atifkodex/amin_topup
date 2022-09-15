@@ -34,11 +34,11 @@
                             <input type="password" class="form-control" id="confirmpassword" placeholder="Type here...">
                            
                           </div>
-                      </form>
-                      <div class="d-flex justify-content-center login-button-outer update-psd-outer pb-0">
-                        <a href="javascript:void(0)" >
-                          <button type="submit" class="btn  login-btn ">Update Password</button>
-                        </a>
+                          <div class="d-flex justify-content-center login-button-outer update-psd-outer pb-0">
+                            <a href="javascript:void(0)" >
+                              <button type="submit" class="btn  login-btn ">Update Password</button>
+                            </a>
+                          </form>
                           
                           
                       </div>
