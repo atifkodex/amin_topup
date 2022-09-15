@@ -19,6 +19,7 @@
                 </div>
                 <div class="login-form">
                       <form method="post" action="{{route('changePassword')}}" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group login-email-field change-password">
                             <label for="currentpassword">Current Password</label>
                             <input type="password" name="old_pass" class="form-control" id="currentpassword" placeholder="Type here...">
