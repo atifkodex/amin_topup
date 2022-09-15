@@ -3,7 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-
+use Illuminate\Support\Facades\Http;
+use App\TopupToken;
 class TopupLogin extends Command
 {
     /**
@@ -37,7 +38,8 @@ class TopupLogin extends Command
      */
     public function handle()
     {
-        // $schedule->call(function () {
+\Log::info("Cron is working fine!");
+
             //For Login API of Topup
         $data['grantType'] = "password";
         $data['username'] = "ATITest01";
