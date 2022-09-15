@@ -248,7 +248,7 @@
             url: 'http://kodextech.net/amin-topup/api/transactions',
             dataType: 'json', 
             type: 'POST',
-            data: formData,
+            data: JSON.stringify(formData),
             processData: false,
             contentType: false,
             headers: {
