@@ -24,13 +24,13 @@ class OrderController extends Controller
 
     public function paymentIntent(Request $request)
     {   
+        dd($amount);
         $validator = Validator::make($request->all(), [
             'amount' => 'required',
         ]);
         if ($validator->fails()) {
             return $this->sendError(implode(",", $validator->errors()->all()), []);
         $amount = round($request->amount, 2);
-        dd($amount);
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
 
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
