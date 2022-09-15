@@ -247,7 +247,7 @@
             url: 'http://kodextech.net/amin-topup/api/transactions',
             dataType: 'json', 
             type: 'POST',
-            data: form.serialize(),
+            data: JSON.stringify(form.serialize()),
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type' : 'application/json'
