@@ -62,6 +62,7 @@
                                     <table id="table-id" class="mr-3 mb-3" style="width: 1450px">
                                         <thead>
                                             <tr>
+                                                <th>ID</th>
                                                 <th>Transaction ID</th>
                                                 <th >Date & Time</th>
                                                 <th>User Name</th>
@@ -80,6 +81,7 @@
                                             @foreach($data as $transaction)
                                             <tr>
                                                 <td class="data">{{$transaction['id']}}</td>
+                                                <td class="data">{{$transaction['transaction_id']}}</td>
                                                 <td class="data transactionId">{{$transaction['dateTime']}}</td>
                                                 <td class="data senderName">{{$transaction['senderName']}}</td>
                                                 <td class="data receiverNumber">{{$transaction['receiver_number']}}</td>
@@ -272,6 +274,7 @@
                     console.log(i,e)
                     let div = `<tr>
                                     <td class="data">${e.id}</td>
+                                    <td class="data">${e.transaction_id}</td>
                                     <td class="data transactionId">${e.dateTime}</td>
                                     <td class="data senderName">${e.senderName}</td>
                                     <td class="data receiverNumber">${e.receiver_number}</td>
