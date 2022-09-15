@@ -285,40 +285,42 @@
 
 <!-- Backend Script  -->
 <script>
-  $("#notificationIcon").click(function() {
-    $.ajax({
-            url: 'http://kodextech.net/amin-topup/api/admin_notifications',
-            type: 'POST',
-            dataType: 'json', // added data type
-            headers: {
-                'Authorization': 'Bearer ' + token,
-                'Content-Type' : 'application/json'
-            },
-            success: function(response) {
-              let notificationsArray = [];
-                response.data.forEach(notification => {
-                    notificationsArray.push(notification);
-                });
-                $("#appendNotification").empty(); 
-                $(notificationsArray).each(function (i, e) {
-                  if(i % 2 === 0) {
-                    let div = `<a class="notification-area " href="#">
-                    <div class="notification-profile error-notification d-flex py-3">
-                      <p class="pl-3">${e.message}</p>
-                    </div>
-                  </a>`;
-                  $("#appendNotification").append(div);
-                  }else if(i % 2 != 0){
-                    let div = `<a class="notification-area " href="#">
-                      <div class="notification-profile success-notification d-flex py-3">
+  $(document).ready(function() {
+    $("#notificationIcon").click(function() {
+      $.ajax({
+              url: 'http://kodextech.net/amin-topup/api/admin_notifications',
+              type: 'POST',
+              dataType: 'json', // added data type
+              headers: {
+                  'Authorization': 'Bearer ' + token,
+                  'Content-Type' : 'application/json'
+              },
+              success: function(response) {
+                let notificationsArray = [];
+                  response.data.forEach(notification => {
+                      notificationsArray.push(notification);
+                  });
+                  $("#appendNotification").empty(); 
+                  $(notificationsArray).each(function (i, e) {
+                    if(i % 2 === 0) {
+                      let div = `<a class="notification-area " href="#">
+                      <div class="notification-profile error-notification d-flex py-3">
                         <p class="pl-3">${e.message}</p>
                       </div>
                     </a>`;
                     $("#appendNotification").append(div);
-                  }
-                });
-            }
-        });
+                    }else if(i % 2 != 0){
+                      let div = `<a class="notification-area " href="#">
+                        <div class="notification-profile success-notification d-flex py-3">
+                          <p class="pl-3">${e.message}</p>
+                        </div>
+                      </a>`;
+                      $("#appendNotification").append(div);
+                    }
+                  });
+              }
+          });
+    });
   });
 </script>
 @endsection
