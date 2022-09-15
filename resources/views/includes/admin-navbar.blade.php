@@ -307,7 +307,7 @@
                       <p class="pl-3">${e.message}</p>
                     </div>
                   </a>`;
-                  $("#appendNotification").append(div);
+                  // $("#appendNotification").append(div);
                 });
             }
         });
