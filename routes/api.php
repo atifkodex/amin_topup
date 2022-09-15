@@ -45,6 +45,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/support', [ContactsController::class, 'user_support'])->name('support.api');
     Route::post('/create_admin', [AdminController::class, 'create_admin'])->name('create_admin.api');
     Route::post('/users', [AdminController::class, 'usersList'])->name('users.api');
+    Route::post('/admins', [AdminController::class, 'admin_list'])->name('admins.api');
     Route::post('/settings', [SettingController::class, 'settingsData']);
     Route::post('/reply_send', [AdminController::class, 'replySend'])->name('reply_send.api');
     Route::post('/resolve', [AdminController::class, 'resolve'])->name('resolve.api');
