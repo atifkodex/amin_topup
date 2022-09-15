@@ -241,7 +241,7 @@
     $("#transactionFilterForm").submit(function (e) {
         e.preventDefault();
         // var form = $("#transactionFilterForm");
-        var formData = new FormData($(this)[0]);
+        var formData = new FormData($(this));
         console.log(formData);
         // Ajax call 
         $.ajax({
