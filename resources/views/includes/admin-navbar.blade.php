@@ -141,6 +141,8 @@
   .log-out a:last-of-type{
     border-bottom: none;
   }
+  #appendNotification:nth-child(even) {background: #CCC}
+  #appendNotification:nth-child(odd) {background: #FFF}
  
 </style>
 <div class="left-outer">
@@ -299,15 +301,12 @@
                 });
                 $("#appendNotification").empty(); 
                 $(notificationsArray).each(function (i, e) {
-                  if(i/2 == 0) {
-                    $(".notification-area").css('background-color', '#F1F8F');
-                  }
                   let div = `<a class="notification-area " href="#">
                     <div class="notification-profile d-flex py-3 success-notification">
                       <p class="pl-3">${e.message}</p>
                     </div>
                   </a>`;
-                  // $("#appendNotification").append(div);
+                  $("#appendNotification").append(div);
                 });
             }
         });
