@@ -67,6 +67,7 @@ class OrderController extends Controller
         ];
         return $this->sendResponse($pay_int_res, 'Payment Intent');
     }
+}
 
 
     public function stripePaymentUrl(Request $request)
