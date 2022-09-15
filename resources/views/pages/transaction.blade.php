@@ -240,9 +240,13 @@
     var token = @json($token);
     $("#transactionFilterForm").submit(function (e) {
         e.preventDefault();
-        // var form = $("#transactionFilterForm");
-        var formData = new FormData($(this)[0]);
-        console.log(formData);
+        var username = $("#username").val();
+        var network = $("#network").val();
+        var userphonenumber = $("#userphonenumber").val();
+        var amountTotal = $("#amountTotal").val();
+        var date = $("#date").val();
+
+        console.log(username, network, amountTotal, date, userphonenumber);
         // Ajax call 
         $.ajax({
             url: 'http://kodextech.net/amin-topup/api/transactions',
