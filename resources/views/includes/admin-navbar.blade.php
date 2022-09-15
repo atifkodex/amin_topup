@@ -293,7 +293,7 @@
                 'Content-Type' : 'application/json'
             },
             success: function(response) {
-              alert('working');
+              console.log(response);
             }
         });
   });
