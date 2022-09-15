@@ -18,16 +18,16 @@
                     <h1>Change Password</h1>
                 </div>
                 <div class="login-form">
-                    <form>
+                      <form method="post" action="{{route('changePassword')}}" enctype="multipart/form-data">
                         <div class="form-group login-email-field change-password">
                             <label for="currentpassword">Current Password</label>
-                            <input type="password" class="form-control" id="currentpassword" placeholder="Type here...">
+                            <input type="password" name="old_pass" class="form-control" id="currentpassword" placeholder="Type here...">
                            
                           </div>
                         <div class="form-group login-email-field change-password">
                           <label for="newpassword">New Password</label>
-                          <input type="password" class="form-control" id="newpassword" placeholder="Type here...">
-                         
+                          <input type="password" name="new_pass" class="form-control" id="newpassword" placeholder="Type here...">
+                        
                         </div>
                         <div class="form-group login-email-field change-password">
                             <label for="confirmpassword">Confirm Password</label>
@@ -37,7 +37,7 @@
                       </form>
                       <div class="d-flex justify-content-center login-button-outer update-psd-outer pb-0">
                         <a href="javascript:void(0)" >
-                          <button class="btn  login-btn ">Update Password</button>
+                          <button type="submit" class="btn  login-btn ">Update Password</button>
                         </a>
                           
                           

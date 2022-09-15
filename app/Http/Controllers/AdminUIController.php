@@ -180,4 +180,19 @@ class AdminUIController extends Controller
 
         return redirect()->back();
     }
+
+    public function changePassword(Request $request)
+    {
+        $value = Session::get('loginData');
+        $token = $value['user']['token'];
+        $data = $request->all();
+        // dd($data);
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post('http://kodextech.net/amin-topup/api/change_password', $data);
+        $convertor = $response->body();
+        $changeResponse = json_decode($convertor, true);
+        dd($changeResponse);
+    }
 }

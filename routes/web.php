@@ -31,6 +31,7 @@ Route::middleware([AdminAuth::class])->group(function () {
         // Route::post('/transaction_list', [AdminUIController::class, 'transactionsList'])->name('transactionsList');
         Route::get('/user', [AdminUIController::class, 'user_list'])->name('user');
         Route::post('/resolve_contact', [AdminUIController::class, 'resolve'])->name('resolve_contact');
+        Route::post('/change_password', [AdminUIController::class, 'changePassword'])->name('changePassword');
     });
 });
 
