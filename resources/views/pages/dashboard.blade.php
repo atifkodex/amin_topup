@@ -545,12 +545,12 @@
                 var mtnPercentage = $(".mtnPercentage").val();
                 
                 var dataGraph = [
+                    parseInt(roshanPercentage),
                     parseInt(etisalatPercentage),
                     parseInt(salaamPercentage),
                     parseInt(awccPercentage),
                     parseInt(afghanTelecomPercentage),
                     parseInt(mtnPercentage),
-                    parseInt(roshanPercentage),
                 ];
 
                  var options = {

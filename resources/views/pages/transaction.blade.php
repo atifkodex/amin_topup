@@ -241,21 +241,17 @@
     $("#transactionFilterForm").submit(function (e) {
         e.preventDefault();
         var form = $(this);
-        // $(document).ready(function(e) {
-        //     $.ajaxSetup({
-        //         headers: {
-        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-        //             "Content-Type": "application/x-www-form-urlencoded",
-        //             'Authorization': 'Bearer ' + token,
-        //         }
-        //     });
-        // });
+        
         // Ajax call 
         $.ajax({
-            url: 'http://kodextech.net/amin-topup/public/api/transactions',
+            url: 'http://kodextech.net/amin-topup/api/transactions',
             dataType: 'json', 
             type: 'POST',
-            data: form.serialize(),
+            data: JSON.stringify(form.serialize()),
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type' : 'application/json'
+            },
             success: function(response) {
                 let arr = [];
                 response.data.forEach(element => {

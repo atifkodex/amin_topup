@@ -190,7 +190,7 @@ class AdminController extends Controller
         }
         $success['allUsers'] = $allUsers;
         $success['usersOnDate'] = $usersOnDate;
-        $success['sales'] = $sales;
+        $success['sales'] = round($sales, 2);
         $success['salesAfn'] = $salesAfn;
         $success['awccPercentage'] = $awccPercentage;
         $success['roshanPercentage'] = $roshanPercentage;
