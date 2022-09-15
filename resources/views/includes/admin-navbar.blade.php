@@ -224,24 +224,25 @@
           {{-- <img src="{{ asset('assets/images/bell-notify-icon.svg') }}" alt="bell-notify">
           <span class="noti-dot">3</span> --}}
           <div class="form-group has-search">
-            <div class="dropdown">
+
+            <div class="dropdown" id="notificationIcon">
               <img src="{{ asset('assets/images/bell-notify-icon.svg') }}" class="dropdown-toggle icon-button" id="dropdownMenuButton" data-toggle="dropdown">
               <span class="noti-dot">3</span>
               <div class="dropdown-menu notification-dropdown px-2" aria-labelledby="dropdownMenuButton">
+                <!-- Error Notification  -->
                 <a class="notification-area " href="#">
                   <div class="notification-profile d-flex py-3 error-notification">
 
                     <p class="pl-3">Unfortunately, Your Topup transaction was not successful due to <span>[Error Description]</span>.</p>
                   </div>
                 </a>
+                <!-- Success Notification  -->
                 <a class="notification-area " href="#">
                   <div class="notification-profile d-flex py-3 success-notification">
 
                     <p class="pl-3">Topup <span>successfully</span> sent to Ali <br>Thank you for using Amin Topup!</p>
                   </div>
                 </a>
-                
-
               </div>
             </div>
           </div>
@@ -277,6 +278,24 @@
         "left": "-250px"
       });
     });
+  });
+</script>
+
+<!-- Backend Script  -->
+<script>
+  $("#notificationIcon").click(function() {
+    $.ajax({
+            url: 'http://kodextech.net/amin-topup/api/admin_notifications',
+            type: 'POST',
+            dataType: 'json', // added data type
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type' : 'application/json'
+            },
+            success: function(response) {
+              alert('working');
+            }
+        });
   });
 </script>
 @endsection
