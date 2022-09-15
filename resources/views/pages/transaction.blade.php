@@ -245,16 +245,19 @@
         var userphonenumber = $("#userphonenumber").val();
         var amountTotal = $("#amountTotal").val();
         var date = $("#date").val();
-
-        console.log(username, network, amountTotal, date, userphonenumber);
+        var parameter = {
+            username: username,
+            network: network,
+            userphonenumber: userphonenumber,
+            amountTotal: amountTotal,
+            date: date
+        };
         // Ajax call 
         $.ajax({
             url: 'http://kodextech.net/amin-topup/api/transactions',
             dataType: 'json', 
             type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
+            data: JSON.stringify(parameter),
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type' : 'application/json'
