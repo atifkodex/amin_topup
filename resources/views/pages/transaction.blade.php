@@ -160,7 +160,7 @@
 
                             </div>
                             <div class="text-center py-3">
-                                <button id="transactionForm">Search</button>
+                                <button type="submit">Search</button>
                             </div>
 
                         </form>
@@ -238,17 +238,17 @@
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script>
     var token = @json($token);
-    $("#transactionForm").click(function (e) {
+    $("#transactionFilterForm").submit(function (e) {
         e.preventDefault();
-        var form = $("#transactionFilterForm");
-        var formData = new FormData(form);
+        // var form = $("#transactionFilterForm");
+        var formData = new FormData($(this)[0]);
         console.log(formData);
         // Ajax call 
         $.ajax({
             url: 'http://kodextech.net/amin-topup/api/transactions',
             dataType: 'json', 
             type: 'POST',
-            data: JSON.stringify(formData),
+            data: formData,
             processData: false,
             contentType: false,
             headers: {
