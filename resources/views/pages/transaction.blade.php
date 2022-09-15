@@ -240,8 +240,8 @@
     var token = @json($token);
     $("#transactionFilterForm").submit(function (e) {
         e.preventDefault();
-        var form = $("#transactionFilterForm");
-        var formData = new FormData(form );
+        // var form = $("#transactionFilterForm");
+        var formData = new FormData($(this)[0]);
         
         // Ajax call 
         $.ajax({
