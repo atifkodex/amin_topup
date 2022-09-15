@@ -32,29 +32,54 @@ class AdminController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|confirmed|min:6'
-        ]);
 
+        ]);
         if ($validator->fails()) {
             return $this->sendError(implode(",", $validator->errors()->all()), []);
         }
-        $request['password'] = Hash::make($request['password']);
-        $request['remember_token'] = Str::random(10);
-        $request['type'] = $request['type'] ? $request['type'] : ('admin');
-        $user = User::create($request->except('password_confirmation'));
-        if ($user) {
-            $response = 'Create Admin Successfully';
-            return $this->sendResponse([], $response);
+
+        if ($request->id) {
+            $user = User::find($request->id);
+
+            if (isset($request->name) && !empty($request->name)) {
+                $user->name = $request->name;
+            }
+            if (isset($request->email) && !empty($request->email)) {
+                $user->email = $request->email;
+            }
+            if (isset($request->phone_number) && !empty($request->phone_number)) {
+                $user->phone_number = $request->phone_number;
+            }
+            if (isset($request->country) && !empty($request->country)) {
+                $user->country = $request->country;
+            }
+            $userResult = $user->save();
+            if ($userResult) {
+                $success = User::where('id', $request->id)->first();
+                return $this->sendResponse($success, 'updated Successfully');
+            } else {
+                return $this->sendError("Updation failed. Please Contact Support");
+            }
         } else {
-            $response = "some thing went Wrong";
-            return $this->sendError(($response), []);
+
+            $request['password'] = Hash::make($request['password']);
+            $request['remember_token'] = Str::random(10);
+            $request['type'] = $request['type'] ? $request['type'] : ('admin');
+            $user = User::create($request->except('password_confirmation'));
+            if ($user) {
+                $response = 'Create Admin Successfully';
+                return $this->sendResponse([], $response);
+            } else {
+                $response = "some thing went Wrong";
+                return $this->sendError(($response), []);
+            }
         }
     }
     ////////.......get user list.........//////
     public function usersList(Request $request)
     {
 
-        $user = (User::with('transaction'))->newQuery();
+        $user = (User::where('type', 'user')->with('transaction'))->newQuery();
         // $user=User::with('transactions');
         // Check either search by day or month
         if ($request->has('name')) {
@@ -294,6 +319,17 @@ class AdminController extends Controller
             echo 'Status Update Successfully';
         } else {
             echo 'Status Update Fail';
+        }
+    }
+    public function admin_list()
+    {
+        $admin = User::where('type', 'admin')->get();
+        if ($admin) {
+
+            return $this->sendResponse(['users' => $admin, 'status' => 200], 'Getting Admin data Successfully');
+        } else {
+            $response = 'Gettig admin data Failed';
+            return $this->sendResponse([], $response);
         }
     }
 }
