@@ -51,13 +51,15 @@ class TopupLogin extends Command
         $loginResponseBody = $loginResponse->body();
         $loginResponseData = json_decode($loginResponseBody, true);
         $accessToken = $loginResponseData['data']['access_token'];
-        $checkRecord = TopupToken::where('id', 1)->first();
+        $checkRecord = TopupToken::find(1);
         if(empty($checkRecord)) {
             $topupToken = new TopupToken;
             $topupToken->access_token = $accessToken;
             $topupToken->save();
         }else{
-            TopupToken::where('id', 1)->update(['access_token' => $accessToken]);
+$checkRecord->access_token=$accessToken;
+$checkRecord->save();
+
         }
         // })->everyThirtyMinutes();
     }
