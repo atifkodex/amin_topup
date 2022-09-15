@@ -12,6 +12,8 @@ use App\Contacts;
 use App\Message;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+use Brian2694\Toastr\Facades\Toastr;
+
 
 
 // use Session;
@@ -193,6 +195,12 @@ class AdminUIController extends Controller
         ])->post('http://kodextech.net/amin-topup/api/change_password', $data);
         $convertor = $response->body();
         $changeResponse = json_decode($convertor, true);
-        dd($changeResponse);
+        if($changeResponse['success'] == true) {
+            Toastr::success('User Registered Successfully :)','Success');
+            return redirect()->back();
+        }else{
+            Toastr::error('Something went wrong','Error');
+            return redirect()->back();
+        }
     }
 }
