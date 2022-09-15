@@ -301,8 +301,11 @@
                 });
                 $("#appendNotification").empty(); 
                 $(notificationsArray).each(function (i, e) {
+                  if(i % 2 === 0) {
+                    $(".notification-profile").addClass('error-notification');
+                  }
                   let div = `<a class="notification-area " href="#">
-                    <div class="notification-profile d-flex py-3 success-notification">
+                    <div class="notification-profile d-flex py-3">
                       <p class="pl-3">${e.message}</p>
                     </div>
                   </a>`;
