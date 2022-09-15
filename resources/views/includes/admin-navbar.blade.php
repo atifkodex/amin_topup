@@ -307,14 +307,15 @@
                       <p class="pl-3">${e.message}</p>
                     </div>
                   </a>`;
+                  $("#appendNotification").append(div);
                   }else if(i % 2 != 0){
                     let div = `<a class="notification-area success-notification" href="#">
                       <div class="notification-profile d-flex py-3">
                         <p class="pl-3">${e.message}</p>
                       </div>
                     </a>`;
+                    $("#appendNotification").append(div);
                   }
-                  $("#appendNotification").append(div);
                 });
             }
         });
