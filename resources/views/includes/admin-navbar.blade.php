@@ -258,7 +258,7 @@
             </button>
             <div class="dropdown-menu log-out">
               <a class="dropdown-item" href="#"> <img src="{{asset('assets/images/logout.svg')}}" alt=""> Logout</a>
-              <a class="dropdown-item" href="{{route('changePassword')}}"> <img src="{{asset('assets/images/padlock.png')}}" alt=""> Change Password</a>
+              <a class="dropdown-item" href="{{url('change_password')}}"> <img src="{{asset('assets/images/padlock.png')}}" alt=""> Change Password</a>
             </div>
           </div>
         </div>
