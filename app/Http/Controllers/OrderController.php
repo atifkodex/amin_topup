@@ -31,7 +31,6 @@ class OrderController extends Controller
             return $this->sendError(implode(",", $validator->errors()->all()), []);
         }
         $amount = round($request->amount, 2);
-        dd($amount);
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
 
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
