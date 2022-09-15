@@ -92,11 +92,22 @@ class AdminUIController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/api/settings',);
+        ])->post('http://kodextech.net/amin-topup/api/settings');
         $convertor = $response->body();
+
+        $admin_response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post('http://kodextech.net/amin-topup/api/admins');
+        $admin_convertor = $admin_response->body();
+        $admin_response = json_decode($admin_convertor, true);
+        // dd($admin_response);
         $response = json_decode($convertor, true);
+
         $data = $response['data'];
-        return view(('pages.setting'), compact('data'));
+        $admin = $admin_response['data']['users'];
+
+        return view('pages.setting', ['data' => $data, 'admin' => $admin]);
     }
 
     public function reply(Request $request)
@@ -170,11 +181,26 @@ class AdminUIController extends Controller
         $value = Session::get('loginData');
         $token = $value['user']['token'];
         $data = $request->all();
-        // dd($data);
+
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
         ])->post('http://kodextech.net/amin-topup/api/resolve', $data);
+        $convertor = $response->body();
+        $response = json_decode($convertor, true);
+
+        return redirect()->back();
+    }
+    public function create_and_update_admin(Request $request)
+    {
+        $value = Session::get('loginData');
+        $token = $value['user']['token'];
+        $data = $request->all();
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post('http://kodextech.net/amin-topup/api/create_admin', $data);
         $convertor = $response->body();
         $response = json_decode($convertor, true);
 
