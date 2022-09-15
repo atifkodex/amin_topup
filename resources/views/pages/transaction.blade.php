@@ -81,7 +81,13 @@
                                             @foreach($data as $transaction)
                                             <tr>
                                                 <td class="data">{{$transaction['id']}}</td>
-                                                <td class="data">{{$transaction['transaction_id']}}</td>
+                                                <td class="data">
+                                                    @if($transaction['transaction_id'] == null)
+                                                    Not Set
+                                                    @else
+                                                    {{$transaction['transaction_id']}}
+                                                    @endif
+                                                </td>
                                                 <td class="data transactionId">{{$transaction['dateTime']}}</td>
                                                 <td class="data senderName">{{$transaction['senderName']}}</td>
                                                 <td class="data receiverNumber">{{$transaction['receiver_number']}}</td>
@@ -271,10 +277,15 @@
                 });
                 $(".newData").empty(); 
                 $(arr).each(function (i, e) {
-                    console.log(i,e)
+                    var transactionId;
+                    if(e.transaction_id == null){
+                        transactionId = 'Not Set';
+                    }else{
+                        transactionId = e.transaction_id ;
+                    }
                     let div = `<tr>
                                     <td class="data">${e.id}</td>
-                                    <td class="data">${e.transaction_id}</td>
+                                    <td class="data">${transactionId}</td>
                                     <td class="data transactionId">${e.dateTime}</td>
                                     <td class="data senderName">${e.senderName}</td>
                                     <td class="data receiverNumber">${e.receiver_number}</td>
