@@ -196,7 +196,7 @@ class OrderController extends Controller
         // $productID = 'ETISALAT_ERECHARGE';
         
         $targetMSISDN = $completeNum;      //This line will be replaced with test number for final deployment
-        $targetMSISDN = '0782220000';
+        // $targetMSISDN = '0782220000';
         $unitType = 'EMONEY';
         $currency = 'AFN';
         $exponent = '0';
