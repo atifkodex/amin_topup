@@ -248,13 +248,13 @@ class OrderController extends Controller
 
         // Topup API Request
         // $accessToken = TopupToken::where('id', 1)->pluck('access_token')->first();
+        dd($accessToken);
         $response = Http::withoutVerifying()->withHeaders([
             'Authorization' => 'Bearer ' . $accessToken,
             'Content-Type' => 'application/json'
         ])->post('https://adp.280.af/topup', $final);
         $responseBody = $response->body();
         $responseData = json_decode($responseBody, true);
-        dd($responseData);
         if(isset($responseData['data']['transactionStatus']) && $responseData['data']['transactionStatus'] == 1){
 
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
