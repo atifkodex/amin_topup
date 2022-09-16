@@ -327,6 +327,7 @@ class OrderController extends Controller
         if(!empty($topupAmount)){
             $transactionId = $topupAmount->transaction_id;
             $topupAmount->id = '';
+            $topupAmount->id = $transactionId;
             dd($topupAmount->id);
             return $this->sendResponse($topupAmount, 'Topup detail');
         }else{
