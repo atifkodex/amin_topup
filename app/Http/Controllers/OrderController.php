@@ -228,7 +228,6 @@ class OrderController extends Controller
         ])->post('https://adp.280.af/topup', $final);
         $responseBody = $response->body();
         $responseData = json_decode($responseBody, true);
-        dd($responseData);
         if(isset($responseData['data']['transactionStatus']) && $responseData['data']['transactionStatus'] == 1){
 
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
