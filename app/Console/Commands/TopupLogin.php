@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use App\TopupToken;
+
 class TopupLogin extends Command
 {
     /**
@@ -38,12 +39,12 @@ class TopupLogin extends Command
      */
     public function handle()
     {
-\Log::info("Cron is working fine!");
+        \Log::info("Cron is working fine!");
 
-            //For Login API of Topup
+        //For Login API of Topup
         $data['grantType'] = "password";
-        $data['username'] = "ATITest01";
-        $data['password'] = "eD2#Rv3P";
+        $data['username'] = "amintopup";
+        $data['password'] = "J7FAiSSSCWeLUM4";
         $loginData['data'] = (object) $data;
 
         $username = 'DISTRIBUTOR_API';
@@ -54,14 +55,13 @@ class TopupLogin extends Command
         $loginResponseData = json_decode($loginResponseBody, true);
         $accessToken = $loginResponseData['data']['access_token'];
         $checkRecord = TopupToken::find(1);
-        if(empty($checkRecord)) {
+        if (empty($checkRecord)) {
             $topupToken = new TopupToken;
             $topupToken->access_token = $accessToken;
             $topupToken->save();
-        }else{
-$checkRecord->access_token=$accessToken;
-$checkRecord->save();
-
+        } else {
+            $checkRecord->access_token = $accessToken;
+            $checkRecord->save();
         }
         // })->everyThirtyMinutes();
     }

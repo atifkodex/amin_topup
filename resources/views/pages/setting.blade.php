@@ -396,7 +396,7 @@
 
               <div id="faq7" class="collapse" aria-labelledby="faqhead7" data-parent="#faq">
                 <div class="card-body setting-card-body">
-                  <form>
+                  <form action="{{route('update_env')}}" method="POST">
                     <div class="row">
                       <div class="col-6">
                         <div class="form-group stripe-key">
