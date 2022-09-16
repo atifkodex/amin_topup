@@ -325,8 +325,7 @@ class OrderController extends Controller
         }
         $topupAmount = Transaction::where('id', $request->transaction_id)->first();
         if(!empty($topupAmount)){
-            $transactionId = json_decode($topupAmount->transaction_id);
-            $topupAmount->id = $transactionId;
+            $topupAmount->id = intval($topupAmount->transaction_id);
             dd($topupAmount->id);
             return $this->sendResponse($topupAmount, 'Topup detail');
         }else{
