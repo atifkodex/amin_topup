@@ -196,7 +196,6 @@ class OrderController extends Controller
 
         $productID = $request->product_code;    //This line will be replaced with test productID for final deployment
         // $productID = 'SALAAM_ERECHARGE';
-        dd($completeNum);
         $targetMSISDN = $completeNum;      //This line will be replaced with test number for final deployment
         // $targetMSISDN = '0745557555';
         $unitType = 'EMONEY';
