@@ -192,17 +192,17 @@ class OrderController extends Controller
         // All required parameters 
         $serviceID = 'TOPUP';
 
-        $productID = $request->product_code;    //This line will be replaced with test productID for final deployment
-        // $productID = 'ETISALAT_ERECHARGE';
+        // $productID = $request->product_code;    //This line will be replaced with test productID for final deployment
+        $productID = 'ETISALAT_ERECHARGE';
         
-        $targetMSISDN = $completeNum;      //This line will be replaced with test number for final deployment
-        // $targetMSISDN = '0782220000';
+        // $targetMSISDN = $completeNum;      //This line will be replaced with test number for final deployment
+        $targetMSISDN = '0782220000';
         $unitType = 'EMONEY';
         $currency = 'AFN';
         $exponent = '0';
 
-        $amount = $request->amount;    //This line will be replaced with test amount for final deployment
-        // $amount = '01';
+        // $amount = $request->amount;    //This line will be replaced with test amount for final deployment
+        $amount = '01';
         $userIdentifierRaw = 'ATITest01';
 
         $payment['unitType']= $unitType;
