@@ -232,35 +232,35 @@ class AdminUIController extends Controller
 
     ///////update env stripe key ////////
 
-    public function updateEnv($data = array())
-    {
-        if (!count($data)) {
-            return;
-        }
+    // public function updateEnv($data = array())
+    // {
+    //     if (!count($data)) {
+    //         return;
+    //     }
 
-        $pattern = '/([^\=]*)\=[^\n]*/';
+    //     $pattern = '/([^\=]*)\=[^\n]*/';
 
-        $envFile = base_path() . '/.env';
-        $lines = file($envFile);
-        $newLines = [];
-        foreach ($lines as $line) {
-            preg_match($pattern, $line, $matches);
+    //     $envFile = base_path() . '/.env';
+    //     $lines = file($envFile);
+    //     $newLines = [];
+    //     foreach ($lines as $line) {
+    //         preg_match($pattern, $line, $matches);
 
-            if (!count($matches)) {
-                $newLines[] = $line;
-                continue;
-            }
+    //         if (!count($matches)) {
+    //             $newLines[] = $line;
+    //             continue;
+    //         }
 
-            if (!key_exists(trim($matches[1]), $data)) {
-                $newLines[] = $line;
-                continue;
-            }
+    //         if (!key_exists(trim($matches[1]), $data)) {
+    //             $newLines[] = $line;
+    //             continue;
+    //         }
 
-            $line = trim($matches[1]) . "={$data[trim($matches[1])]}\n";
-            $newLines[] = $line;
-        }
+    //         $line = trim($matches[1]) . "={$data[trim($matches[1])]}\n";
+    //         $newLines[] = $line;
+    //     }
 
-        $newContent = implode('', $newLines);
-        file_put_contents($envFile, $newContent);
-    }
+    //     $newContent = implode('', $newLines);
+    //     file_put_contents($envFile, $newContent);
+    // }
 }
