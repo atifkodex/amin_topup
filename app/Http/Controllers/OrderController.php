@@ -223,8 +223,31 @@ class OrderController extends Controller
         $datas['targetMSISDN'] = $targetMSISDN;
         $final['data'] = (object) $datas;
 
+        // Login API Request 
+        $data['grantType'] = "password";
+        $data['username'] = "amintopup";
+        $data['password'] = "J7FAiSSSCWeLUM4";
+        $loginData['data'] = (object) $data;
+
+        $username = 'DISTRIBUTOR_API';
+        $password = ';<G/2hnC}"HE:Z?A';
+
+        $loginResponse = Http::withoutVerifying()->withBasicAuth($username, $password)->post('https://adp.280.af/login', $loginData);
+        $loginResponseBody = $loginResponse->body();
+        $loginResponseData = json_decode($loginResponseBody, true);
+        $accessToken = $loginResponseData['data']['access_token'];
+        // $checkRecord = TopupToken::find(1);
+        // if (empty($checkRecord)) {
+        //     $topupToken = new TopupToken;
+        //     $topupToken->access_token = $accessToken;
+        //     $topupToken->save();
+        // } else {
+        //     $checkRecord->access_token = $accessToken;
+        //     $checkRecord->save();
+        // }
+
         // Topup API Request
-        $accessToken = TopupToken::where('id', 1)->pluck('access_token')->first();
+        // $accessToken = TopupToken::where('id', 1)->pluck('access_token')->first();
         $response = Http::withoutVerifying()->withHeaders([
             'Authorization' => 'Bearer ' . $accessToken,
             'Content-Type' => 'application/json'
