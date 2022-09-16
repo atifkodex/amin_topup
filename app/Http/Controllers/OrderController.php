@@ -324,6 +324,7 @@ class OrderController extends Controller
             return $this->sendError(implode(",", $validator->errors()->all()), []);
         }
         $topupAmount = Transaction::where('id', $request->transaction_id)->first();
+        dd($topupAmount->transaction_id);
         if(!empty($topupAmount)){
             return $this->sendResponse($topupAmount, 'Topup detail');
         }else{
