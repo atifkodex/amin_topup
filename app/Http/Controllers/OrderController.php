@@ -190,13 +190,15 @@ class OrderController extends Controller
         }else{
             $completeNum = $request->receiver_number;
         }
+        // Remove white spaces from Number 
+        $completeNumber = str_replace(' ', '', $completeNum);
 
         // All required parameters 
         $serviceID = 'TOPUP';
 
         $productID = $request->product_code;    //This line will be replaced with test productID for final deployment
         // $productID = 'SALAAM_ERECHARGE';
-        $targetMSISDN = $completeNum;      //This line will be replaced with test number for final deployment
+        $targetMSISDN = $completeNumber;      //This line will be replaced with test number for final deployment
         // $targetMSISDN = '0745557555';
         $unitType = 'EMONEY';
         $currency = 'AFN';
