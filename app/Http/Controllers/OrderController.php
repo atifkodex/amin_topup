@@ -281,6 +281,9 @@ class OrderController extends Controller
                 }
             }
         }else{
+            // Cancel Payment intent 
+            $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+            $stripe->paymentIntents->cancel($request->intent_id, []);
             return $this->sendError("Something went wrong with your transaction. Please try again.");
         }
     }
