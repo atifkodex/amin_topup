@@ -59,9 +59,10 @@
                                         </select>
                                     </div>
 
-                                    <table id="table-id" class="mr-3 mb-3" style="width: 1370px">
+                                    <table id="table-id" class="mr-3 mb-3" style="width: 1450px">
                                         <thead>
                                             <tr>
+                                                <th>ID</th>
                                                 <th>Transaction ID</th>
                                                 <th >Date & Time</th>
                                                 <th>User Name</th>
@@ -80,6 +81,13 @@
                                             @foreach($data as $transaction)
                                             <tr>
                                                 <td class="data">{{$transaction['id']}}</td>
+                                                <td class="data">
+                                                    @if($transaction['transaction_id'] == null)
+                                                    Not Set
+                                                    @else
+                                                    {{$transaction['transaction_id']}}
+                                                    @endif
+                                                </td>
                                                 <td class="data transactionId">{{$transaction['dateTime']}}</td>
                                                 <td class="data senderName">{{$transaction['senderName']}}</td>
                                                 <td class="data receiverNumber">{{$transaction['receiver_number']}}</td>
@@ -240,14 +248,24 @@
     var token = @json($token);
     $("#transactionFilterForm").submit(function (e) {
         e.preventDefault();
-        var form = $(this);
-        
+        var username = $("#username").val();
+        var network = $("#network").val();
+        var userphonenumber = $("#userphonenumber").val();
+        var amountTotal = $("#amountTotal").val();
+        var date = $("#date").val();
+        var parameter = {
+            username: username,
+            network: network,
+            userphonenumber: userphonenumber,
+            amountTotal: amountTotal,
+            date: date
+        };
         // Ajax call 
         $.ajax({
             url: 'http://kodextech.net/amin-topup/api/transactions',
             dataType: 'json', 
             type: 'POST',
-            data: JSON.stringify(form.serialize()),
+            data: JSON.stringify(parameter),
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type' : 'application/json'
@@ -259,9 +277,15 @@
                 });
                 $(".newData").empty(); 
                 $(arr).each(function (i, e) {
-                    console.log(i,e)
+                    var transactionId;
+                    if(e.transaction_id == null){
+                        transactionId = 'Not Set';
+                    }else{
+                        transactionId = e.transaction_id ;
+                    }
                     let div = `<tr>
                                     <td class="data">${e.id}</td>
+                                    <td class="data">${transactionId}</td>
                                     <td class="data transactionId">${e.dateTime}</td>
                                     <td class="data senderName">${e.senderName}</td>
                                     <td class="data receiverNumber">${e.receiver_number}</td>

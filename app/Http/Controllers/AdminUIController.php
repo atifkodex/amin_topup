@@ -12,6 +12,8 @@ use App\Contacts;
 use App\Message;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+use Brian2694\Toastr\Facades\Toastr;
+
 
 
 // use Session;
@@ -191,7 +193,8 @@ class AdminUIController extends Controller
 
         return redirect()->back();
     }
-    public function create_and_update_admin(Request $request)
+
+    public function changePassword(Request $request)
     {
         $value = Session::get('loginData');
         $token = $value['user']['token'];
@@ -205,5 +208,22 @@ class AdminUIController extends Controller
         $response = json_decode($convertor, true);
 
         return redirect()->back();
+    }
+    public function create_and_update_admin(Request $request)
+    {
+        // dd($data);
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post('http://kodextech.net/amin-topup/api/change_password', $data);
+        $convertor = $response->body();
+        $changeResponse = json_decode($convertor, true);
+        if ($changeResponse['success'] == true) {
+            Toastr::success('User Registered Successfully :)', 'Success');
+            return redirect()->back();
+        } else {
+            Toastr::error('Something went wrong', 'Error');
+            return redirect()->back();
+        }
     }
 }

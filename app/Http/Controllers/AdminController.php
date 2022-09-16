@@ -255,8 +255,8 @@ class AdminController extends Controller
         if (isset($request->network) && !empty($request->network)) {
             $transactions = Transaction::where('receiver_network', $request->network)->get();
         }
-        if (isset($request->country) && !empty($request->country)) {
-            $transactions = Transaction::where('country', $request->country)->get();
+        if (isset($request->userphonenumber) && !empty($request->userphonenumber)) {
+            $transactions = Transaction::where('receiver_number', $request->userphonenumber)->get();
         }
         if (isset($request->amountTopup) && !empty($request->amountTopup)) {
             $transactions = Transaction::where('topup_amount', $request->amountTopup)->get();

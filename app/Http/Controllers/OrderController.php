@@ -23,7 +23,14 @@ class OrderController extends Controller
     use ResponseTrait;
 
     public function paymentIntent(Request $request)
-    {
+    {   
+        $validator = Validator::make($request->all(), [
+            'amount' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError(implode(",", $validator->errors()->all()), []);
+        }
+        $amount = round($request->amount, 2);
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
 
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
@@ -38,7 +45,7 @@ class OrderController extends Controller
         );
 
         $paymentIntent = $stripe->paymentIntents->create([
-            'amount' => $request->amount * 100,
+            'amount' => $amount * 100,
             'currency' => 'usd',
             'customer' => $customer->id,
             'payment_method_options' => [
@@ -222,6 +229,7 @@ class OrderController extends Controller
         $responseBody = $response->body();
         $responseData = json_decode($responseBody, true);
         if($responseData['data']['transactionStatus'] == 1){
+
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
         
         $intent = $stripe->paymentIntents->capture(
@@ -230,7 +238,7 @@ class OrderController extends Controller
         );
 
             if($intent->status == 'succeeded'){
-                $transactionStatus = Transaction::where('id', $request->transaction_id)->update(['status' => 1]);
+                $transactionStatus = Transaction::where('id', $request->transaction_id)->update(['status' => 1, 'transaction_id' => $responseData['data']['transactionId']]);
                 if($transactionStatus == 1){
 
                     // Create Notification 
