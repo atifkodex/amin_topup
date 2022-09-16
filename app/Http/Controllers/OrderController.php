@@ -325,9 +325,6 @@ class OrderController extends Controller
         }
         $topupAmount = Transaction::where('id', $request->transaction_id)->first();
         if(!empty($topupAmount)){
-            $transactionId = intval($topupAmount->transaction_id);
-            dd(is_numeric($transactionId));
-            $topupAmount->id = $transactionId;
             return $this->sendResponse($topupAmount, 'Topup detail');
         }else{
             return $this->sendError("No topup data found for user.");
