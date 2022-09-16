@@ -383,7 +383,12 @@
               </div>
             </div>
 
-            <!-- Publishable Key Section  -->
+            <!-- // Publishable Key Section // -->
+
+
+            <?php $type = $value['user']['type']; ?>
+
+            @if ($type == "super_admin")
             <div class="card setting-card mt-5">
               <div class="card-header stripe-key-header setting-card-header" id="faqhead7">
                 <a href="#" class="btn btn-header-link collapsed" data-toggle="collapse" data-target="#faq7" aria-expanded="true" aria-controls="faq7"> Stripe key</a>
@@ -559,6 +564,7 @@
     </div>
   </div>
 </div>
+@endif
 @endsection
 @section('inserfooter')
 

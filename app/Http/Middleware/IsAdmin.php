@@ -21,8 +21,8 @@ class IsAdmin
     {
         $value = Session::get('loginData');
         $type = $value['user']['type'];
-        if ($type == "admin") {
-        return $next($request);
+        if ($type == "admin" || $type == "super_admin") {
+            return $next($request);
         }
         $message = session::flash('message', "Only admins can access");
         return redirect('/')->with('error', $message);

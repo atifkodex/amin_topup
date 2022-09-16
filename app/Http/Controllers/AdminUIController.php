@@ -103,13 +103,13 @@ class AdminUIController extends Controller
         ])->post('http://kodextech.net/amin-topup/api/admins');
         $admin_convertor = $admin_response->body();
         $admin_response = json_decode($admin_convertor, true);
-        // dd($admin_response);
+
         $response = json_decode($convertor, true);
 
         $data = $response['data'];
         $admin = $admin_response['data']['users'];
 
-        return view('pages.setting', ['data' => $data, 'admin' => $admin]);
+        return view('pages.setting', ['data' => $data, 'admin' => $admin, 'value' => $value]);
     }
 
     public function reply(Request $request)
@@ -194,7 +194,7 @@ class AdminUIController extends Controller
         return redirect()->back();
     }
 
-    public function changePassword(Request $request)
+    public function create_and_update_admin(Request $request)
     {
         $value = Session::get('loginData');
         $token = $value['user']['token'];
@@ -209,9 +209,12 @@ class AdminUIController extends Controller
 
         return redirect()->back();
     }
-    public function create_and_update_admin(Request $request)
+    public function changePassword(Request $request)
     {
-        // dd($data);
+        $value = Session::get('loginData');
+        $token = $value['user']['token'];
+        $data = $request->all();
+
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
