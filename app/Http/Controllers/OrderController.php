@@ -326,7 +326,7 @@ class OrderController extends Controller
         $topupAmount = Transaction::where('id', $request->transaction_id)->first();
         if(!empty($topupAmount)){
             $transactionId = $topupAmount->transaction_id;
-            $topupAmount->id = $transactionId;
+            $topupAmount->id = '';
             dd($topupAmount->id);
             return $this->sendResponse($topupAmount, 'Topup detail');
         }else{
