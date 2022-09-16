@@ -204,8 +204,8 @@ class OrderController extends Controller
         $currency = 'AFN';
         $exponent = '0';
 
-        // $amount = $request->amount;    //This line will be replaced with test amount for final deployment
-        $amount = '01';
+        $amount = $request->amount;    //This line will be replaced with test amount for final deployment
+        // $amount = '01';
         $userIdentifierRaw = 'ATITest01';
 
         $payment['unitType']= $unitType;
