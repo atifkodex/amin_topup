@@ -206,7 +206,7 @@ class OrderController extends Controller
 
         $amount = $request->amount;    //This line will be replaced with test amount for final deployment
         // $amount = '01';
-        $userIdentifierRaw = 'ATITest01';
+        $userIdentifierRaw = 'amintopup';
 
         $payment['unitType']= $unitType;
         $payment['currency']= $currency;
@@ -248,7 +248,6 @@ class OrderController extends Controller
 
         // Topup API Request
         // $accessToken = TopupToken::where('id', 1)->pluck('access_token')->first();
-        dd($accessToken);
         $response = Http::withoutVerifying()->withHeaders([
             'Authorization' => 'Bearer ' . $accessToken,
             'Content-Type' => 'application/json'
