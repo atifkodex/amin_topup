@@ -192,11 +192,11 @@ class OrderController extends Controller
         // All required parameters 
         $serviceID = 'TOPUP';
 
-        // $productID = $request->product_code;    //This line will be replaced with test productID for final deployment
-        $productID = 'SALAAM_ERECHARGE';
+        $productID = $request->product_code;    //This line will be replaced with test productID for final deployment
+        // $productID = 'SALAAM_ERECHARGE';
         
-        // $targetMSISDN = $completeNum;      //This line will be replaced with test number for final deployment
-        $targetMSISDN = '0745557555';
+        $targetMSISDN = $completeNum;      //This line will be replaced with test number for final deployment
+        // $targetMSISDN = '0745557555';
         $unitType = 'EMONEY';
         $currency = 'AFN';
         $exponent = '0';
