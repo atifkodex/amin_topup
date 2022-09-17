@@ -279,12 +279,14 @@ class OrderController extends Controller
                 }else{
                     return $this->sendError("payment sent to user, stripe transaction succeeded but the transaction status was not updated due to some error.");
                 }
+            }else{
+                return $this->sendError("Unfortunately, Your Topup transaction was not successful. We did not charge your credit card for this transaction, You can try again later!");
             }
         }else{
             // Cancel Payment intent 
             $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
             $stripe->paymentIntents->cancel($request->intent_id, []);
-            return $this->sendError("Something went wrong with your transaction. Please try again.");
+            return $this->sendError("Unfortunately, Your Topup transaction was not successful. We did not charge your credit card for this transaction, You can try again later!");
         }
     }
 
@@ -308,7 +310,7 @@ class OrderController extends Controller
     {
         $loginUserId = Auth::user()->id;
         $where = ['user_id'=> $loginUserId, 'status' => 1];
-        $topupAmount = Transaction::where($where)->sum('topup_amount_usd');
+        $topupAmount = Transaction::where($where)->sum('topup_amount');
         $topups = Transaction::where('user_id', $loginUserId)->orderBy('created_at', 'desc')->get();
         if(count($topups) > 0){
             $success['totalTopupAmount'] = $topupAmount;
