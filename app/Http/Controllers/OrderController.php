@@ -248,7 +248,6 @@ class OrderController extends Controller
         // }
 
         // Topup API Request
-        // $accessToken = TopupToken::where('id', 1)->pluck('access_token')->first();
         $response = Http::withoutVerifying()->withHeaders([
             'Authorization' => 'Bearer ' . $accessToken,
             'Content-Type' => 'application/json'
@@ -256,9 +255,9 @@ class OrderController extends Controller
         $responseBody = $response->body();
         $responseData = json_decode($responseBody, true);
         if(isset($responseData['data']['transactionStatus']) && $responseData['data']['transactionStatus'] == 1){
-
-        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
         
+        // Capture Amount 
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
         $intent = $stripe->paymentIntents->capture(
             $request->intent_id,
             []
@@ -283,9 +282,11 @@ class OrderController extends Controller
                 return $this->sendError("Unfortunately, Your Topup transaction was not successful. We did not charge your credit card for this transaction, You can try again later!");
             }
         }else{
-            // Cancel Payment intent 
+            // Refund Payment intent
             $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-            $stripe->paymentIntents->cancel($request->intent_id, []);
+            $refund = $stripe->refunds->create([
+                'payment_intent' => $request->intent_id,
+            ]);
             return $this->sendError("Unfortunately, Your Topup transaction was not successful. We did not charge your credit card for this transaction, You can try again later!");
         }
     }
