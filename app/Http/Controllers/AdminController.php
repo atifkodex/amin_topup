@@ -105,9 +105,7 @@ class AdminController extends Controller
             $user->whereDate('created_at', $request->date);
         }
          $user = $user->get();
-  
-         dd($user);
-        if (count($user) > 0) {
+  if (count($user) > 0) {
             foreach ($user as $nuser) {
                 $date = Transaction::where('user_id', $nuser['id'])->orderBy('created_at', 'desc')->pluck('created_at')->first();
                 if (!empty($date)) {
