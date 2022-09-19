@@ -177,7 +177,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="userphonenumber">User Phone Number</label>
-                                <input type="text" class="form-control" id="userphonenumber" placeholder="Type Here..">
+                                <input type="text" class="form-control" name="phone_number" id="userphonenumber" placeholder="Type Here..">
 
                             </div>
                             <div class="form-group">
@@ -409,6 +409,7 @@
         var country = $("#country").val();
         var userphonenumber = $("#userphonenumber").val();
         var lpurchase = $("#lpurchase").val();
+      let form=  $(this).serialize()
         var parameter = {
             name: username,
             email: email,
@@ -416,13 +417,13 @@
             date: lpurchase,
             phone_number: userphonenumber
         };
-        alert(userphonenumber);
+        // alert(userphonenumber);
         // Ajax call 
         $.ajax({
             url: 'http://kodextech.net/amin-topup/api/users',
-            dataType: 'json', 
+            // dataType: 'json', 
             type: 'POST',
-            data: parameter,
+            data: form,
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type' : 'application/json'
