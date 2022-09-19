@@ -309,6 +309,7 @@
 
     $(".actionBtnTransaction").click(function(){
         let transactionId = $(this).parent().parent().find(".transactionId").text();
+        alert(transactionId);
         let senderName = $(this).parent().parent().find(".senderName").text();
         let receiverNumber = $(this).parent().parent().find(".receiverNumber").text();
         let network = $(this).parent().parent().find(".network").text();
