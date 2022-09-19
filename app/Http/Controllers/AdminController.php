@@ -108,7 +108,7 @@ class AdminController extends Controller
         }
          $user = $user->get();
          $queries = DB::getQueryLog();
-         dd($queries);
+        //  dd($queries);
          dd($user);
         if (count($user) > 0) {
             foreach ($user as $nuser) {
