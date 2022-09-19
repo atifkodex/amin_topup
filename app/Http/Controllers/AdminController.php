@@ -85,7 +85,7 @@ class AdminController extends Controller
     {
         DB::connection()->enableQueryLog();
         $user = User::where('type', 'user')->with('transaction')->newQuery();
-       dd($request->phone_number);
+    //    dd($request->phone_number);
         // $user=User::with('transactions');
         // Check either search by day or month
         if ($request->has('name')) {
@@ -106,7 +106,7 @@ class AdminController extends Controller
         }
          $user = $user->get();
          $queries = DB::getQueryLog();
-        //  dd($queries);
+         dd($queries);
          dd($user);
         if (count($user) > 0) {
             foreach ($user as $nuser) {
