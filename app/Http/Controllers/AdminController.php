@@ -83,7 +83,7 @@ class AdminController extends Controller
     ////////.......get user list.........//////
     public function usersList(Request $request)
     {
-        dd($request->all());
+        json_decode($request->phone_number);
         DB::connection()->enableQueryLog();
         $user = User::where('type', 'user')->with('transaction')->newQuery();
 
