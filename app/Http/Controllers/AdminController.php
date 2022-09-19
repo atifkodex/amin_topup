@@ -85,7 +85,7 @@ class AdminController extends Controller
     {
         DB::connection()->enableQueryLog();
         $user = User::where('type', 'user')->with('transaction')->newQuery();
-       dd($request->has('phone_number'));
+       dd($request->phone_number);
         // $user=User::with('transactions');
         // Check either search by day or month
         if ($request->has('name')) {
