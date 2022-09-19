@@ -82,8 +82,9 @@ class AdminController extends Controller
     ////////.......get user list.........//////
     public function usersList(Request $request)
     {
+        DB::connection()->enableQueryLog();
         $user = User::where('type', 'user')->with('transaction')->newQuery();
-        dd($user);
+       
         // $user=User::with('transactions');
         // Check either search by day or month
         if ($request->has('name')) {
@@ -102,9 +103,10 @@ class AdminController extends Controller
 
             $user->whereDate('created_at', $request->date);
         }
-
-
-        $user = $user->get();
+         $user = $user->get();
+         $queries = DB::getQueryLog();
+         dd($queries);
+         dd($user);
         if (count($user) > 0) {
             foreach ($user as $nuser) {
                 $date = Transaction::where('user_id', $nuser['id'])->orderBy('created_at', 'desc')->pluck('created_at')->first();
