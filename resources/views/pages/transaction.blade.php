@@ -302,6 +302,29 @@
                                     </td>
                                 </tr>`;
                         $(".newData").append(div);
+                        $(".actionBtnTransaction").click(function(){
+                            let transactionId = $(this).parent().parent().find(".transactionId").text();
+                            alert(transactionId);
+                            let senderName = $(this).parent().parent().find(".senderName").text();
+                            let receiverNumber = $(this).parent().parent().find(".receiverNumber").text();
+                            let network = $(this).parent().parent().find(".network").text();
+                            let topupAmount = $(this).parent().parent().find(".topupAmount").text();
+                            let amountUsd = $(this).parent().parent().find(".amountUsd").text();
+                            let processingFee = $(this).parent().parent().find(".processingFee").text();
+                            let totalAmountUsd = $(this).parent().parent().find(".totalAmountUsd").text();
+                            let statusTransaction = $(this).parent().parent().find(".statusTransaction").text();
+
+                            $("#transactionIdModal").text(transactionId);
+                            $("#senderNameModal").text(senderName);
+                            $("#receiverNumberModal").text(receiverNumber);
+                            $("#networkModal").text(network);
+                            $("#topupAmountModal").text(topupAmount);
+                            $("#amountUsdModal").text(amountUsd);
+                            $("#processingFeeModal").text(processingFee);
+                            $("#totalAmountUsdModal").text(totalAmountUsd);
+                            $("#statusTransactionModal").text(statusTransaction);
+
+                        });
                 });
             }
         });
