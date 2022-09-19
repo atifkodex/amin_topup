@@ -83,7 +83,7 @@ class AdminController extends Controller
     ////////.......get user list.........//////
     public function usersList(Request $request)
     {
-        json_decode($request->phone_number);
+       $nber = json_decode($request->phone_number);
         DB::connection()->enableQueryLog();
         $user = User::where('type', 'user')->with('transaction')->newQuery();
 
@@ -100,7 +100,7 @@ class AdminController extends Controller
             $user->where('country', $request->country);
         }
         if ($request->has('phone_number')) {
-            $user->where('phone_number', $request->phone_number);
+            $user->where('phone_number',$nber);
         }
         if ($request->has('date')) {
 
