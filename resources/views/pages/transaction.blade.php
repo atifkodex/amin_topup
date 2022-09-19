@@ -225,7 +225,7 @@
                     </div>
                 </div>
                 <div class="user-modal-button d-flex justify-content-center">
-                    <button class="mr-1" id="printBtn">Refund</button>
+                    <button class="mr-1" id="printBtn">Print</button>
                     <button class="ml-1" id="downloadBtn" onclick="takeSnapShot()">Download</button>
                 </div>
             </div>
