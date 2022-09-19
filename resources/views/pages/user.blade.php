@@ -421,7 +421,7 @@
             url: 'http://kodextech.net/amin-topup/api/users',
             dataType: 'json', 
             type: 'POST',
-            data: JSON.stringify(parameter),
+            data: JSON.parse(parameter),
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type' : 'application/json'
