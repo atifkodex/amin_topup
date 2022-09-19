@@ -255,7 +255,8 @@ class OrderController extends Controller
         $responseData = json_decode($responseBody, true);
         $responseMessage = $responseData['responseMessage'];
         $match = explode(':', $responseMessage);
-        dd($match);
+        $key = count($match) - 1;
+        dd($key);
         if(isset($responseData['data']['transactionStatus']) && $responseData['data']['transactionStatus'] == 1){
         
         // Capture Amount 
