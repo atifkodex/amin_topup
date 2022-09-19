@@ -253,8 +253,9 @@ class OrderController extends Controller
         ])->post('https://adp.280.af/topup', $final);
         $responseBody = $response->body();
         $responseData = json_decode($responseBody, true);
-        dd($responseData);
-        // $responseMessage = $responseData['responseMessage']['Message'];
+        $responseMessage = $responseData['responseMessage'];
+        $match = preg_match_all('/\S+:.+?(?=\S+:|$)/', $responseMessage);
+        dd(end($match));
         if(isset($responseData['data']['transactionStatus']) && $responseData['data']['transactionStatus'] == 1){
         
         // Capture Amount 
