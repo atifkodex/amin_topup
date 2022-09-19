@@ -85,7 +85,7 @@ class AdminController extends Controller
     {
        $nber = json_decode($request->phone_number);
         DB::connection()->enableQueryLog();
-        $user = User::where('type', 'user')->with('transaction')->newQuery();
+        $user = User::where('type', 'user');
 
     //    dd($request->phone_number);
         // $user=User::with('transactions');
