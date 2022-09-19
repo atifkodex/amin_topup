@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Traits\ResponseTrait;
 // use App\Message;
 use App\Message;
+use DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\User;
@@ -82,9 +83,11 @@ class AdminController extends Controller
     ////////.......get user list.........//////
     public function usersList(Request $request)
     {
+       
+        $user = User::where(['type'=> 'user','phone_number'=>$request->phone_number])->get();
+        dd($user);
 
-        $user = (User::where('type', 'user')->with('transaction'))->newQuery();
-        // $user=User::with('transactions');
+   
         // Check either search by day or month
         if ($request->has('name')) {
             $user->where('name', $request->name);
@@ -96,16 +99,14 @@ class AdminController extends Controller
             $user->where('country', $request->country);
         }
         if ($request->has('phone_number')) {
-            $user->where('phone_number', $request->phone_number);
+            $user->where('phone_number',$request->phone_number);
         }
         if ($request->has('date')) {
 
             $user->whereDate('created_at', $request->date);
         }
-
-
-        $user = $user->get();
-        if (count($user) > 0) {
+         $user = $user->with('transaction')->get();
+  if (count($user) > 0) {
             foreach ($user as $nuser) {
                 $date = Transaction::where('user_id', $nuser['id'])->orderBy('created_at', 'desc')->pluck('created_at')->first();
                 if (!empty($date)) {

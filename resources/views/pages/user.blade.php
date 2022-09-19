@@ -82,10 +82,9 @@
 
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="getuserdata">
                                             @foreach($data as $post)
-                                            <div class="newData">
-                                                <tr class="getuserdata">
+                                                <tr>
                                                     @if(!empty($post['name']))
                                                     <td class="data name">{{$post['name']}}</td>
                                                     @else
@@ -137,10 +136,7 @@
                                                     <td class="data">
                                                         <img class="" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                                     </td>
-
                                                 </tr>
-                                            </div>
-
                                             @endforeach
 
 
@@ -175,7 +171,7 @@
                         <h1>Filter</h1>
                     </div>
                     <div class="user-filter-form">
-                        <form action="{{url('user')}}" method="GET">
+                        <form action="{{url('user')}}" method="POST" enctype="multipart/form-data" id="userFilterForm">
                             <div class="form-group">
                                 <label for="username">User Name</label>
                                 <input type="text" class="form-control" id="username" placeholder="Type Here..">
@@ -193,7 +189,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="userphonenumber">User Phone Number</label>
-                                <input type="text" class="form-control" id="userphonenumber" placeholder="Type Here..">
+                                <input type="text" class="form-control" name="phone_number" id="userphonenumber" placeholder="Type Here..">
 
                             </div>
                             <div class="form-group">
@@ -260,6 +256,9 @@
 </div>
 @endsection
 @section('inserfooter')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
     var token = @json($token);
     getPagination('#table-id');
@@ -418,42 +417,58 @@
 </script>
 
 <script>
-    $("#userFilterForm").submit(function(e) {
+    $("#userFilterForm").submit(function (e) {
         e.preventDefault();
-        var form = $(this);
-        // let route = '{{url("transaction_list")}}';
+        var username = $("#username").val();
+        var email = $("#email").val();
+        var country = $("#country").val();
+        var userphonenumber = $("#userphonenumber").val();
+        var lpurchase = $("#lpurchase").val();
+        var parameter = {
+            name: username,
+            email: email,
+            country: country,
+            date: lpurchase,
+            phone_number: userphonenumber
+        };
+       let formData = JSON.stringify(parameter);
         // Ajax call 
         $.ajax({
-            url: 'http://kodextech.net/amin-topup/public/api/admin/users',
-            type: 'GET',
-            dataType: 'json',
-            data: form.serialize(),
+            url: 'http://kodextech.net/amin-topup/api/users',
+            dataType: 'json', 
+            type: 'POST',
+            data: formData,
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type' : 'application/json'
+            },
             success: function(response) {
                 let arr = [];
-                response.data.forEach(element => {
+                response.data.users.forEach(element => {
                     arr.push(element);
                 });
-                $(".newData").empty();
-                $(arr).each(function(i, e) {
-                    console.log(i, e)
+                $(".getuserdata").empty(); 
+                $(arr).each(function (i, e) {
+                    
                     let div = `<tr>
-                                    <td class="data">${e.id}</td>
-                                    <td class="data">${e.name}</td>
-                                    <td class="data">${e.email}</td>
-                                    <td class="data">${e.country}</td>
-                                    <td class="data">${e.phone_number}</td>
-                                    <td class="data">${e.last_transaction}</td>
-                                    <td class="data">
-                                        <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
-                                            data-toggle="modal" data-target="#basicsubsModal"
-                                            style="cursor: pointer">
-                                    </td>
-                                </tr>`;
-                    $(".newData").append(div);
+                                <td class="data name">${e.name}</td>
+                                <td class="data email">${e.email}</td>
+                                <td class="data email">${e.email}</td>
+                                <td class="data email">${e.country}</td>
+                                <td class="data country">${e.phone_number}</td>
+                                <td class="data phone_number">${e.last_transaction}</td>
+                                <td class="data last_transaction"><span class="user-table-time">${e.transaction['total_amount_usd']}</span></td>
+                                <input class="total_amount_usd" type="hidden" value="${e.transaction['date_of_birth']}">
+                                <td class="data">
+                                    <img class="" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
+                                </td>
+                            </tr>`;
+                        $(".getuserdata").append(div);
                 });
             }
         });
     });
+
     ///////......show user data in modal....//////
     $('.getuserdata').click(function() {
         var name = $(this).find('.name').text();
