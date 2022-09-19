@@ -284,7 +284,7 @@ class OrderController extends Controller
             // Cancel Intent 
             $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
             $stripe->paymentIntents->cancel($request->intent_id, []);
-            
+
             // Refund Payment intent
             $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
             $refund = $stripe->refunds->create([
@@ -297,7 +297,7 @@ class OrderController extends Controller
     public function topupHistory(Request $request)
     {
         $loginUserId = Auth::user()->id;
-        $weeklyTopups = Transaction::select("*")->where('user_id', $loginUserId)->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('topup_amount_usd');
+        $weeklyTopups = Transaction::select("*")->where(['user_id'=> $loginUserId, 'status' => 1])->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('topup_amount_usd');
         $graphData = ($weeklyTopups * 1000) / 100;
         $recentTopups = Transaction::where('user_id', $loginUserId)->orderBy('created_at', 'DESC')->take(5)->get();
         if(count($recentTopups) > 0){
