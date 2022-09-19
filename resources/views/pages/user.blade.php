@@ -419,12 +419,13 @@
             date: lpurchase,
             phone_number: userphonenumber
         };
+       let formData = JSON.stringify(parameter);
         // Ajax call 
         $.ajax({
             url: 'http://kodextech.net/amin-topup/api/users',
             dataType: 'json', 
             type: 'POST',
-            data: JSON.stringify(parameter),
+            data: formData,
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type' : 'application/json'
