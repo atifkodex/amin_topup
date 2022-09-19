@@ -83,11 +83,11 @@ class AdminController extends Controller
     ////////.......get user list.........//////
     public function usersList(Request $request)
     {
-       
-        $user = User::where(['type'=> 'user','phone_number'=>$request->phone_number])->get();
-        dd($user);
 
-   
+        $user = User::where(['type' => 'user', 'phone_number' => $request->phone_number])->get();
+        // dd($user);
+
+
         // Check either search by day or month
         if ($request->has('name')) {
             $user->where('name', $request->name);
@@ -99,14 +99,14 @@ class AdminController extends Controller
             $user->where('country', $request->country);
         }
         if ($request->has('phone_number')) {
-            $user->where('phone_number',$request->phone_number);
+            $user->where('phone_number', $request->phone_number);
         }
         if ($request->has('date')) {
 
             $user->whereDate('created_at', $request->date);
         }
-         $user = $user->with('transaction')->get();
-  if (count($user) > 0) {
+        $user = $user->with('transaction')->get();
+        if (count($user) > 0) {
             foreach ($user as $nuser) {
                 $date = Transaction::where('user_id', $nuser['id'])->orderBy('created_at', 'desc')->pluck('created_at')->first();
                 if (!empty($date)) {
@@ -350,7 +350,7 @@ class AdminController extends Controller
         }
 
         $setting = Setting::where('id', 1)->first();
-        if(empty($setting)) {
+        if (empty($setting)) {
             $setting = new Setting;
         }
         $setting->publishable_key = $request->publish_key;
@@ -358,25 +358,27 @@ class AdminController extends Controller
         $setting->client_id = $request->client_id;
         $setting->url = $request->url;
         $status = $setting->save();
-        if($status){
+        if ($status) {
             $data = [
                 'STRIPE_SECRET' => $setting->secret_key,
                 'STRIPE_KEY' => $setting->publishable_key
             ];
             $respone = $this->update_env($data);
-            if($respone){
+            if ($respone) {
                 return $this->sendResponse($setting, "Data Updated Successfully");
             }
         }
     }
 
-    public function update_env( $data = [] )
-    {  
+    public function update_env($data = [])
+    {
         $path = base_path('.env');
         if (file_exists($path)) {
             foreach ($data as $key => $value) {
                 file_put_contents($path, str_replace(
-                    $key . '=' . env($key), $key . '=' . $value, file_get_contents($path)
+                    $key . '=' . env($key),
+                    $key . '=' . $value,
+                    file_get_contents($path)
                 ));
             }
             return true;

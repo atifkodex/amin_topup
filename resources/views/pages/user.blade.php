@@ -84,59 +84,59 @@
                                         </thead>
                                         <tbody class="getuserdata">
                                             @foreach($data as $post)
-                                                <tr>
-                                                    @if(!empty($post['name']))
-                                                    <td class="data name">{{$post['name']}}</td>
-                                                    @else
-                                                    <td class="data name">Not Set</td>
-                                                    @endif
+                                            <tr>
+                                                @if(!empty($post['name']))
+                                                <td class="data name">{{$post['name']}}</td>
+                                                @else
+                                                <td class="data name">Not Set</td>
+                                                @endif
 
-                                                    @if(!empty($post['email']))
-                                                    <td class="data email">{{$post['email']}}</td>
-                                                    @else
-                                                    <td class="data email">Not Set</td>
-                                                    @endif
+                                                @if(!empty($post['email']))
+                                                <td class="data email">{{$post['email']}}</td>
+                                                @else
+                                                <td class="data email">Not Set</td>
+                                                @endif
 
-                                                    @if(!empty($post['users_device']))
-                                                    <td class="data email">{{$post['users_device']}}</td>
-                                                    @else
-                                                    <td class="data email">Not Set</td>
-                                                    @endif
+                                                @if(!empty($post['users_device']))
+                                                <td class="data email">{{$post['users_device']}}</td>
+                                                @else
+                                                <td class="data email">Not Set</td>
+                                                @endif
 
-                                                    @if(!empty($post['country']))
-                                                    <td class="data country">{{$post['country']}}</td>
-                                                    @else
-                                                    <td class="data country">Not Set</td>
-                                                    @endif
+                                                @if(!empty($post['country']))
+                                                <td class="data country">{{$post['country']}}</td>
+                                                @else
+                                                <td class="data country">Not Set</td>
+                                                @endif
 
-                                                    @if(!empty($post['phone_number']))
-                                                    <td class="data phone_number">{{$post['phone_number']}}</td>
-                                                    @else
-                                                    <td class="data phone_number">Not Set</td>
-                                                    @endif
+                                                @if(!empty($post['phone_number']))
+                                                <td class="data phone_number">{{$post['phone_number']}}</td>
+                                                @else
+                                                <td class="data phone_number">Not Set</td>
+                                                @endif
 
-                                                    @if(isset($post['last_transaction']))
-                                                    <td class="data last_transaction"><span class="user-table-time">{{ $post['last_transaction'] }}</span></td>
-                                                    @else
-                                                    <td class="data last_transaction"><span class="user-table-time">No Trasaction</span></td>
-                                                    @endif
+                                                @if(isset($post['last_transaction']))
+                                                <td class="data last_transaction"><span class="user-table-time">{{ $post['last_transaction'] }}</span></td>
+                                                @else
+                                                <td class="data last_transaction"><span class="user-table-time">No Trasaction</span></td>
+                                                @endif
 
-                                                    @if(!empty($post['transaction']['total_amount_usd']))
-                                                    <input class="total_amount_usd" type="hidden" value="{{ $post['transaction']['total_amount_usd'] }}">
-                                                    @else
-                                                    <input class="total_amount_usd" type="hidden" value="No Trasaction">
-                                                    @endif
+                                                @if(!empty($post['transaction']['total_amount_usd']))
+                                                <input class="total_amount_usd" type="hidden" value="{{ $post['transaction']['total_amount_usd'] }}">
+                                                @else
+                                                <input class="total_amount_usd" type="hidden" value="No Trasaction">
+                                                @endif
 
-                                                    @if(!empty($post['transaction']['date_of_birth']))
-                                                    <input class="date_of_birth" type="hidden" value="{{ $post['transaction']['date_of_birth'] }}">
-                                                    @else
-                                                    <input class="date_of_birth" type="hidden" value="Not Set">
-                                                    @endif
+                                                @if(!empty($post['transaction']['date_of_birth']))
+                                                <input class="date_of_birth" type="hidden" value="{{ $post['transaction']['date_of_birth'] }}">
+                                                @else
+                                                <input class="date_of_birth" type="hidden" value="Not Set">
+                                                @endif
 
-                                                    <td class="data">
-                                                        <img class="" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                                    </td>
-                                                </tr>
+                                                <td class="data">
+                                                    <img class="" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
+                                                </td>
+                                            </tr>
                                             @endforeach
 
 
@@ -171,30 +171,30 @@
                         <h1>Filter</h1>
                     </div>
                     <div class="user-filter-form">
-                        <form action="{{url('user')}}" method="POST" enctype="multipart/form-data" id="userFilterForm">
+                        <form action="{{route('user')}}" method="POST" enctype="multipart/form-data" id="userFilterForm">
                             <div class="form-group">
                                 <label for="username">User Name</label>
-                                <input type="text" class="form-control" id="username" placeholder="Type Here..">
+                                <input type="text" class="form-control" id="username" placeholder="Type Here.." name="name">
 
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Type Here..">
+                                <input type="email" class="form-control" id="email" placeholder="Type Here.." name="email">
 
                             </div>
                             <div class="form-group">
                                 <label for="country">Country</label>
-                                <input type="text" class="form-control" id="country" placeholder="Type Here..">
+                                <input type="text" class="form-control" id="country" placeholder="Type Here.." name="country">
 
                             </div>
                             <div class="form-group">
                                 <label for="userphonenumber">User Phone Number</label>
-                                <input type="text" class="form-control" name="phone_number" id="userphonenumber" placeholder="Type Here..">
+                                <input type="text" class="form-control" name="phone_number" id="userphonenumber" placeholder="Type Here.." name="phone_number">
 
                             </div>
                             <div class="form-group">
                                 <label for="lpurchase">Last Purchase</label>
-                                <input type="text" class="form-control" id="lpurchase" placeholder="Type Here..">
+                                <input type="text" class="form-control" id="lpurchase" placeholder="Type Here.." name="">
 
                             </div>
 
@@ -256,9 +256,9 @@
 </div>
 @endsection
 @section('inserfooter')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
     var token = @json($token);
     getPagination('#table-id');
@@ -417,7 +417,7 @@
 </script>
 
 <script>
-    $("#userFilterForm").submit(function (e) {
+    $("#userFilterForm").submit(function(e) {
         e.preventDefault();
         var username = $("#username").val();
         var email = $("#email").val();
@@ -431,25 +431,25 @@
             date: lpurchase,
             phone_number: userphonenumber
         };
-       let formData = JSON.stringify(parameter);
+        let formData = JSON.stringify(parameter);
         // Ajax call 
         $.ajax({
             url: 'http://kodextech.net/amin-topup/api/users',
-            dataType: 'json', 
+            dataType: 'json',
             type: 'POST',
             data: formData,
             headers: {
                 'Authorization': 'Bearer ' + token,
-                'Content-Type' : 'application/json'
+                'Content-Type': 'application/json'
             },
             success: function(response) {
                 let arr = [];
                 response.data.users.forEach(element => {
                     arr.push(element);
                 });
-                $(".getuserdata").empty(); 
-                $(arr).each(function (i, e) {
-                    
+                $(".getuserdata").empty();
+                $(arr).each(function(i, e) {
+
                     let div = `<tr>
                                 <td class="data name">${e.name}</td>
                                 <td class="data email">${e.email}</td>
@@ -463,7 +463,7 @@
                                     <img class="" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                 </td>
                             </tr>`;
-                        $(".getuserdata").append(div);
+                    $(".getuserdata").append(div);
                 });
             }
         });
