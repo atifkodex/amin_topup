@@ -253,7 +253,6 @@ class OrderController extends Controller
         ])->post('https://adp.280.af/topup', $final);
         $responseBody = $response->body();
         $responseData = json_decode($responseBody, true);
-        dd($responseData);
         if(isset($responseData['data']['transactionStatus']) && $responseData['data']['transactionStatus'] == 1){
         
         // Capture Amount 
@@ -279,14 +278,14 @@ class OrderController extends Controller
                     return $this->sendError("payment sent to user, stripe transaction succeeded but the transaction status was not updated due to some error.");
                 }
             }else{
-                return $this->sendError("Unfortunately, Your Topup transaction was not successful. We did not charge your credit card for this transaction, You can try again later!");
+                return $this->sendError("Problem occured while transaction call.");
             }
         }else{
             // Cancel Intent 
             $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
             $stripe->paymentIntents->cancel($request->intent_id, []);
 
-            return $this->sendError("Unfortunately, Your Topup transaction was not successful. We did not charge your credit card for this transaction, You can try again later!");
+            return $this->sendError("Problem occured in third party call.");
         }
     }
 
