@@ -229,7 +229,7 @@
 
             <div class="dropdown" id="notificationIcon">
               <img src="{{ asset('assets/images/bell-notify-icon.svg') }}" class="dropdown-toggle icon-button" id="dropdownMenuButton" data-toggle="dropdown">
-              <span class="noti-dot">3</span>
+              <!-- <span class="noti-dot">3</span> -->
               <div class="dropdown-menu notification-dropdown px-2" id="appendNotification" aria-labelledby="dropdownMenuButton">
                 <!-- Error Notification  -->
                 <a class="notification-area " href="#">

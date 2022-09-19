@@ -85,9 +85,6 @@ class AdminController extends Controller
     {
        
         $user = User::where(['type'=> 'user','phone_number'=>$request->phone_number])->get();
-        dd($user);
-
-   
         // Check either search by day or month
         if ($request->has('name')) {
             $user->where('name', $request->name);
