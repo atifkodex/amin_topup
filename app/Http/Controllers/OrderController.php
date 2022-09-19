@@ -254,7 +254,6 @@ class OrderController extends Controller
         $responseBody = $response->body();
         $responseData = json_decode($responseBody, true);
         $responseMessage = $responseData['responseMessage'];
-        dd($responseMessage);
         if(isset($responseData['data']['transactionStatus']) && $responseData['data']['transactionStatus'] == 1){
         
         // Capture Amount 
@@ -287,7 +286,7 @@ class OrderController extends Controller
             $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
             $stripe->paymentIntents->cancel($request->intent_id, []);
 
-            return $this->sendError("Problem occured in third party call.");
+            return $this->sendError($responseMessage);
         }
     }
 
