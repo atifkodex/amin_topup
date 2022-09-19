@@ -281,6 +281,10 @@ class OrderController extends Controller
                 return $this->sendError("Unfortunately, Your Topup transaction was not successful. We did not charge your credit card for this transaction, You can try again later!");
             }
         }else{
+            // Cancel Intent 
+            $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+            $stripe->paymentIntents->cancel($request->intent_id, []);
+            
             // Refund Payment intent
             $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
             $refund = $stripe->refunds->create([
