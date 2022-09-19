@@ -244,6 +244,9 @@
 </div>
 @endsection
 @section('inserfooter')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
     var token = @json($token);
     getPagination('#table-id');
@@ -409,7 +412,6 @@
         var country = $("#country").val();
         var userphonenumber = $("#userphonenumber").val();
         var lpurchase = $("#lpurchase").val();
-      let form=  $(this).serialize()
         var parameter = {
             name: username,
             email: email,
@@ -417,13 +419,12 @@
             date: lpurchase,
             phone_number: userphonenumber
         };
-        // alert(userphonenumber);
         // Ajax call 
         $.ajax({
             url: 'http://kodextech.net/amin-topup/api/users',
-            // dataType: 'json', 
+            dataType: 'json', 
             type: 'POST',
-            data: form,
+            data: JSON.stringify(parameter),
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type' : 'application/json'
