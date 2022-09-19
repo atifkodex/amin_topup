@@ -414,20 +414,14 @@
             email: email,
             country: country,
             date: lpurchase,
-            phone_number: userphonenumber
+            phone_number: intVal(userphonenumber)
         };
         // Ajax call 
         $.ajax({
             url: 'http://kodextech.net/amin-topup/api/users',
             dataType: 'json', 
             type: 'POST',
-            data: {
-                name: username,
-                email: email,
-                country: country,
-                date: lpurchase,
-                phone_number: userphonenumber
-            },
+            data: JSON.stringify(parameter),
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type' : 'application/json'
