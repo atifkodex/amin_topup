@@ -106,7 +106,7 @@ class AdminController extends Controller
 
             $user->whereDate('created_at', $request->date);
         }
-         $user = $user->get();
+         $user = $user->get()->toArray();
          $queries = DB::getQueryLog();
         //  dd($queries);
          dd($user);
