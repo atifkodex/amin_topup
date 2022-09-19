@@ -76,10 +76,9 @@
 
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="getuserdata">
                                             @foreach($data as $post)
-                                            <div class="newData">
-                                                <tr class="getuserdata">
+                                                <tr>
                                                     @if(!empty($post['name']))
                                                     <td class="data name">{{$post['name']}}</td>
                                                     @else
@@ -125,10 +124,7 @@
                                                     <td class="data">
                                                         <img class="" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                                     </td>
-
                                                 </tr>
-                                            </div>
-
                                             @endforeach
 
 
@@ -430,39 +426,27 @@
                 'Content-Type' : 'application/json'
             },
             success: function(response) {
-
-                alert('success');
                 let arr = [];
-                response.data.forEach(element => {
+                response.data.users.forEach(element => {
                     arr.push(element);
                 });
-                $(".newData").empty(); 
+                $(".getuserdata").empty(); 
                 $(arr).each(function (i, e) {
-                    var transactionId;
-                    if(e.transaction_id == null){
-                        transactionId = 'Not Set';
-                    }else{
-                        transactionId = e.transaction_id ;
-                    }
+                    
                     let div = `<tr>
-                                    <td class="data">${e.id}</td>
-                                    <td class="data">${transactionId}</td>
-                                    <td class="data transactionId">${e.dateTime}</td>
-                                    <td class="data senderName">${e.senderName}</td>
-                                    <td class="data receiverNumber">${e.receiver_number}</td>
-                                    <td class="data network">${e.receiver_network}</td>
-                                    <td class="data topupAmount">${e.topup_amount}</td>
-                                    <td class="data amountUsd">${e.topup_amount_usd}</td>
-                                    <td class="data processingFee">${e.processing_fee}</td>
-                                    <td class="data totalAmountUsd">${e.total_amount_usd}</td>
-                                    <td class="data statusTransaction">${e.status}</td>
-                                    <td class="data">
-                                        <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
-                                            data-toggle="modal" data-target="#basicsubsModal"
-                                            style="cursor: pointer" class="actionBtnTransaction">
-                                    </td>
-                                </tr>`;
-                        $(".newData").append(div);
+                                <td class="data name">${e.name}</td>
+                                <td class="data email">${e.email}</td>
+                                <td class="data email">${e.email}</td>
+                                <td class="data email">${e.country}</td>
+                                <td class="data country">${e.phone_number}</td>
+                                <td class="data phone_number">${e.last_transaction}</td>
+                                <td class="data last_transaction"><span class="user-table-time">${e.transaction['total_amount_usd']}</span></td>
+                                <input class="total_amount_usd" type="hidden" value="${e.transaction['date_of_birth']}">
+                                <td class="data">
+                                    <img class="" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
+                                </td>
+                            </tr>`;
+                        $(".getuserdata").append(div);
                 });
             }
         });
