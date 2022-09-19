@@ -1,36 +1,42 @@
 @extends('layouts.admin-default')
 <style>
-    .user-select-row select{
+    .user-select-row select {
         width: 80px;
         border: 1px solid #012245;
         font-size: 12px;
         color: #012245
     }
-    .user-select-row select:active,.user-select-row select:focus{
+
+    .user-select-row select:active,
+    .user-select-row select:focus {
         outline: none;
         box-shadow: none;
         border: 1px solid #012245;
     }
+
     /* #table-id thead tr th:first-of-type,#table-id tbody tr td:first-of-type{
         display: none
     } */
-    .setting-card-body-inner{
-        overflow-x:auto;
-        height:680px !important;
+    .setting-card-body-inner {
+        overflow-x: auto;
+        height: 680px !important;
         overflow-y: hidden !important;
     }
-    .user-modal-time{
+
+    .user-modal-time {
         color: #666666;
         font-size: 12px;
     }
-    #table-id tbody tr td{
-    background: #f1efef;
- 
+
+    #table-id tbody tr td {
+        background: #f1efef;
+
     }
+
     @media screen and (min-width:1700px) {
-     #table-id{
-        width: 100% !important;
-     }
+        #table-id {
+            width: 100% !important;
+        }
     }
 </style>
 @section('content')
@@ -91,7 +97,13 @@
                                                     @else
                                                     <td class="data email">Not Set</td>
                                                     @endif
-                                                    <td class="data email">Android</td>
+
+                                                    @if(!empty($post['users_device']))
+                                                    <td class="data email">{{$post['users_device']}}</td>
+                                                    @else
+                                                    <td class="data email">Not Set</td>
+                                                    @endif
+
                                                     @if(!empty($post['country']))
                                                     <td class="data country">{{$post['country']}}</td>
                                                     @else
