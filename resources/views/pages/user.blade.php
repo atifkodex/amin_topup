@@ -414,7 +414,7 @@
             email: email,
             country: country,
             date: lpurchase,
-            phone_number: parseInt(userphonenumber)
+            phone_number: userphonenumber
         };
         // Ajax call 
         $.ajax({
