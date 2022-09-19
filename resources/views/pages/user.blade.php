@@ -413,7 +413,8 @@
             name: username,
             email: email,
             country: country,
-            date: lpurchase
+            date: lpurchase,
+            phone_number: userphonenumber
         };
         // Ajax call 
         $.ajax({
