@@ -254,7 +254,7 @@ class OrderController extends Controller
         $responseBody = $response->body();
         $responseData = json_decode($responseBody, true);
         $responseMessage = $responseData['responseMessage'];
-        $match = preg_match_all('/\S+:.+?(?=\S+:|$)/', $responseMessage);
+        preg_match_all('/\S+:.+?(?=\S+:|$)/', $responseMessage, $match);
         dd(end($match));
         if(isset($responseData['data']['transactionStatus']) && $responseData['data']['transactionStatus'] == 1){
         
