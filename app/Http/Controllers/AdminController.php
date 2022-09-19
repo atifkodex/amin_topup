@@ -16,6 +16,7 @@ use App\Contacts;
 use App\Transaction;
 use App\OperatorNetwork;
 use App\NotificationLog;
+use App\Setting;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 
@@ -333,6 +334,51 @@ class AdminController extends Controller
         } else {
             $response = 'Gettig admin data Failed';
             return $this->sendResponse([], $response);
+        }
+    }
+    public function publishKeys(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'publish_key' => 'string',
+            'secret_key' => 'string',
+            'client_id' => 'string',
+            'url' => 'string'
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError(implode(",", $validator->errors()->all()), []);
+        }
+
+        $setting = Setting::where('id', 1)->first();
+        if(empty($setting)) {
+            $setting = new Setting;
+        }
+        $setting->publishable_key = $request->publish_key;
+        $setting->secret_key = $request->secret_key;
+        $setting->client_id = $request->client_id;
+        $setting->url = $request->url;
+        $status = $setting->save();
+        if($status){
+            $data = [
+                'STRIPE_SECRET' => $setting->secret_key,
+                'STRIPE_KEY' => $setting->publishable_key
+            ];
+            $respone = $this->update_env($data);
+            if($respone){
+                return $this->sendResponse($setting, "Data Updated Successfully");
+            }
+        }
+    }
+
+    public function update_env( $data = [] )
+    {  
+        $path = base_path('.env');
+        if (file_exists($path)) {
+            foreach ($data as $key => $value) {
+                file_put_contents($path, str_replace(
+                    $key . '=' . env($key), $key . '=' . $value, file_get_contents($path)
+                ));
+            }
+            return true;
         }
     }
 }

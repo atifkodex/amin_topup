@@ -34,7 +34,7 @@ Route::middleware([AdminAuth::class])->group(function () {
         Route::post('/resolve_contact', [AdminUIController::class, 'resolve'])->name('resolve_contact');
         Route::post('/admin_create', [AdminUIController::class, 'create_and_update_admin'])->name('admin_create');
         Route::post('/change-password', [AdminUIController::class, 'changePassword'])->name('changePassword');
-        // Route::post('/update_env', [AdminUIController::class, 'updateEnv'])->name('update_env');
+        Route::post('/update_env', [AdminUIController::class, 'updateEnv'])->name('update_env');
     });
 });
 

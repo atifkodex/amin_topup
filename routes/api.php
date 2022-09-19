@@ -52,6 +52,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/update_operator', [SettingController::class, 'updateOperator']);
     Route::post('/transactions', [AdminController::class, 'TransactionList']);
     Route::post('/admin_notifications', [AdminController::class, 'adminNotifications']);
+    Route::post('/admin_keys', [AdminController::class, 'publishKeys']);
 
     Route::get('/articles', [ArticleController::class, 'index'])->middleware('api.admin')->name('articles');
     Route::post('/logout', [ApiAuthController::class, 'logout'])->name('logout.api');
