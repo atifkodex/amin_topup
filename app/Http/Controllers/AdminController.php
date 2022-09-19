@@ -84,7 +84,8 @@ class AdminController extends Controller
     public function usersList(Request $request)
     {
        
-        $user = User::where('type', 'user')->with('transaction')->newQuery();
+        $user = User::where(['type'=> 'user','phone_number'=>$request->phone_number])->get();
+        dd($user);
 
    
         // Check either search by day or month
@@ -104,7 +105,7 @@ class AdminController extends Controller
 
             $user->whereDate('created_at', $request->date);
         }
-         $user = $user->get();
+         $user = $user->with('transaction')->get();
   if (count($user) > 0) {
             foreach ($user as $nuser) {
                 $date = Transaction::where('user_id', $nuser['id'])->orderBy('created_at', 'desc')->pluck('created_at')->first();
