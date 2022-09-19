@@ -254,7 +254,7 @@
         var amountTotal = $("#amountTotal").val();
         var date = $("#date").val();
         var parameter = {
-            username: username,
+            name: username,
             network: network,
             userphonenumber: userphonenumber,
             amountTotal: amountTotal,
