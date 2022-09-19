@@ -257,7 +257,6 @@ class OrderController extends Controller
         $match = explode(':', $responseMessage);
         $key = count($match) - 1;
         $errorMessage = $match[$key];
-        dd($errorMessage);
         if(isset($responseData['data']['transactionStatus']) && $responseData['data']['transactionStatus'] == 1){
         
         // Capture Amount 
@@ -290,7 +289,7 @@ class OrderController extends Controller
             $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
             $stripe->paymentIntents->cancel($request->intent_id, []);
 
-            return $this->sendError($responseMessage);
+            return $this->sendError($errorMessage);
         }
     }
 
