@@ -20,6 +20,7 @@
         "laravel/passport": ">=8.4",
         "laravel/tinker": ">=2.0",
         "laravel/ui": ">=3.0",
+        "realrashid/sweet-alert": "^5.1",
         "slim/slim": "3.*",
         "stripe/stripe-php": "^9.3"
     },

@@ -14,6 +14,7 @@
 
 <body>
 @yield('content')
+@include('sweetalert::alert')
 
 @include('includes.admin-footer')
 @yield('javascriptwork')

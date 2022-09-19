@@ -13,6 +13,7 @@ use App\Message;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 
@@ -222,10 +223,10 @@ class AdminUIController extends Controller
         $convertor = $response->body();
         $changeResponse = json_decode($convertor, true);
         if ($changeResponse['success'] == true) {
-            Toastr::success('User Registered Successfully :)', 'Success');
+            Alert::success('Success', 'Password Changed successfully.');
             return redirect()->back();
         } else {
-            Toastr::error('Something went wrong', 'Error');
+            Alert::error('Error', $changeResponse['message']);
             return redirect()->back();
         }
     }
@@ -242,10 +243,10 @@ class AdminUIController extends Controller
         $convertor = $response->body();
         $changeResponse = json_decode($convertor, true);
         if($changeResponse['success'] == true) {
-            Toastr::success('Data Updated Successfully', 'Success');
+            Alert::success('Success', 'Data updated successfully.');
             return redirect()->back();
         }else{
-            Toastr::error('Something went wrong', 'Error');
+            Alert::error('Error', $changeResponse['message']);
             return redirect()->back();
         }
     }
