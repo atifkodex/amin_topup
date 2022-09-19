@@ -397,29 +397,30 @@
               <div id="faq7" class="collapse" aria-labelledby="faqhead7" data-parent="#faq">
                 <div class="card-body setting-card-body">
                   <form action="{{route('update_env')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="row">
                       <div class="col-6">
                         <div class="form-group stripe-key">
                           <label for="publishablekey">Publishable key</label>
-                          <input type="text" class="form-control" id="publishablekey" placeholder="Type here">
+                          <input type="text" name="publish_key" class="form-control" id="publishablekey" placeholder="Type here">
                         </div>
                       </div>
                       <div class="col-6">
                         <div class="form-group stripe-key">
                           <label for="secretkey">Secret key</label>
-                          <input type="text" class="form-control" id="secretkey" placeholder="Type here">
+                          <input type="text" name="secret_key" class="form-control" id="secretkey" placeholder="Type here">
                         </div>
                       </div>
                       <div class="col-6">
                         <div class="form-group stripe-key">
                           <label for="clientid">Client ID</label>
-                          <input type="text" class="form-control" id="clientid" placeholder="Type here">
+                          <input type="text" name="client_id" class="form-control" id="clientid" placeholder="Type here">
                         </div>
                       </div>
                       <div class="col-6">
                         <div class="form-group stripe-key">
                           <label for="redirectedurl">Redirected URL</label>
-                          <input type="text" class="form-control" id="redirectedurl" placeholder="Type here">
+                          <input type="text" name="url" class="form-control" id="redirectedurl" placeholder="Type here">
                         </div>
                       </div>
                       <div class="col-12 text-center stripe-key-btn py-4">
@@ -572,6 +573,7 @@
 
 <!-- Backend Script -- Start --  -->
 <script>
+  var token = @json($token);
   // For Denomination 
   $(".topupAfn").keyup(function() {
     let amount = $(this).find('input').val();

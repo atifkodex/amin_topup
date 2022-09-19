@@ -249,6 +249,7 @@
 @endsection
 @section('inserfooter')
 <script>
+    var token = @json($token);
     getPagination('#table-id');
 
     function getPagination(table) {

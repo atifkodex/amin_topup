@@ -142,6 +142,7 @@
 
 @endsection
 @section('inserfooter') <script>
+    var token = @json($token);
                             $('.sidebar-menu ul li:nth-of-type(5)').addClass('active');
                             </script>
                             <!-- show data click to card -->

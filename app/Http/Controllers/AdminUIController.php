@@ -65,7 +65,7 @@ class AdminUIController extends Controller
 
         $data = $response['data']['users'];
         // dd($data);
-        return view('pages.support', ['data' => $data]);
+        return view('pages.support', ['data' => $data, 'token' => $token]);
     }
 
     public function dashboardDetails(Request $request)
@@ -109,7 +109,7 @@ class AdminUIController extends Controller
         $data = $response['data'];
         $admin = $admin_response['data']['users'];
 
-        return view('pages.setting', ['data' => $data, 'admin' => $admin, 'value' => $value]);
+        return view('pages.setting', ['data' => $data, 'admin' => $admin, 'value' => $value, 'token' => $token]);
     }
 
     public function reply(Request $request)
@@ -147,7 +147,7 @@ class AdminUIController extends Controller
         $response = json_decode($convertor, true);
 
         $data = $response['data']['users'];
-        return view('pages.user', ['data' => $data]);
+        return view('pages.user', ['data' => $data, 'token' => $token]);
     }
 
     public function transactionList()
@@ -230,37 +230,23 @@ class AdminUIController extends Controller
         }
     }
 
-    ///////update env stripe key ////////
-
-    // public function updateEnv($data = array())
-    // {
-    //     if (!count($data)) {
-    //         return;
-    //     }
-
-    //     $pattern = '/([^\=]*)\=[^\n]*/';
-
-    //     $envFile = base_path() . '/.env';
-    //     $lines = file($envFile);
-    //     $newLines = [];
-    //     foreach ($lines as $line) {
-    //         preg_match($pattern, $line, $matches);
-
-    //         if (!count($matches)) {
-    //             $newLines[] = $line;
-    //             continue;
-    //         }
-
-    //         if (!key_exists(trim($matches[1]), $data)) {
-    //             $newLines[] = $line;
-    //             continue;
-    //         }
-
-    //         $line = trim($matches[1]) . "={$data[trim($matches[1])]}\n";
-    //         $newLines[] = $line;
-    //     }
-
-    //     $newContent = implode('', $newLines);
-    //     file_put_contents($envFile, $newContent);
-    // }
+    public function updateEnv(Request $request)
+    {
+        $value = Session::get('loginData');
+        $token = $value['user']['token'];
+        $data = $request->all();
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post('http://kodextech.net/amin-topup/api/admin_keys', $data);
+        $convertor = $response->body();
+        $changeResponse = json_decode($convertor, true);
+        if($changeResponse['success'] == true) {
+            Toastr::success('Data Updated Successfully', 'Success');
+            return redirect()->back();
+        }else{
+            Toastr::error('Something went wrong', 'Error');
+            return redirect()->back();
+        }
+    }
 }
