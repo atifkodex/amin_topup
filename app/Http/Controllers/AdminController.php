@@ -84,7 +84,7 @@ class AdminController extends Controller
     public function usersList(Request $request)
     {
        
-        $user = User::where('type', 'user')->with('transaction')->get();
+        $user = User::where('type', 'user')->with('transaction')->newQuery();
    
         // Check either search by day or month
         if ($request->has('name')) {
