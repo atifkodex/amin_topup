@@ -83,8 +83,10 @@ class AdminController extends Controller
     ////////.......get user list.........//////
     public function usersList(Request $request)
     {
+        json_decode($request->all());
         DB::connection()->enableQueryLog();
         $user = User::where('type', 'user')->with('transaction')->newQuery();
+
     //    dd($request->phone_number);
         // $user=User::with('transactions');
         // Check either search by day or month
