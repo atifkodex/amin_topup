@@ -416,6 +416,7 @@
             date: lpurchase,
             phone_number: userphonenumber
         };
+        console.log(parameter);
         // Ajax call 
         $.ajax({
             url: 'http://kodextech.net/amin-topup/api/users',
