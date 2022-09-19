@@ -163,7 +163,7 @@
                         <h1>Filter</h1>
                     </div>
                     <div class="user-filter-form">
-                        <form action="{{url('user')}}" method="GET">
+                        <form action="{{url('user')}}" method="POST" enctype="multipart/form-data" id="userFilterForm">
                             <div class="form-group">
                                 <label for="username">User Name</label>
                                 <input type="text" class="form-control" id="username" placeholder="Type Here..">
@@ -406,42 +406,68 @@
 </script>
 
 <script>
-    $("#userFilterForm").submit(function(e) {
+    $("#userFilterForm").submit(function (e) {
         e.preventDefault();
-        var form = $(this);
-        // let route = '{{url("transaction_list")}}';
+        var username = $("#username").val();
+        var email = $("#email").val();
+        var country = $("#country").val();
+        var userphonenumber = $("#userphonenumber").val();
+        var lpurchase = $("#lpurchase").val();
+        var parameter = {
+            name: username,
+            email: email,
+            country: country,
+            date: lpurchase
+        };
         // Ajax call 
         $.ajax({
-            url: 'http://kodextech.net/amin-topup/public/api/admin/users',
-            type: 'GET',
-            dataType: 'json',
-            data: form.serialize(),
+            url: 'http://kodextech.net/amin-topup/api/users',
+            dataType: 'json', 
+            type: 'POST',
+            data: JSON.stringify(parameter),
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type' : 'application/json'
+            },
             success: function(response) {
+
+                alert('success');
                 let arr = [];
                 response.data.forEach(element => {
                     arr.push(element);
                 });
-                $(".newData").empty();
-                $(arr).each(function(i, e) {
-                    console.log(i, e)
+                $(".newData").empty(); 
+                $(arr).each(function (i, e) {
+                    var transactionId;
+                    if(e.transaction_id == null){
+                        transactionId = 'Not Set';
+                    }else{
+                        transactionId = e.transaction_id ;
+                    }
                     let div = `<tr>
                                     <td class="data">${e.id}</td>
-                                    <td class="data">${e.name}</td>
-                                    <td class="data">${e.email}</td>
-                                    <td class="data">${e.country}</td>
-                                    <td class="data">${e.phone_number}</td>
-                                    <td class="data">${e.last_transaction}</td>
+                                    <td class="data">${transactionId}</td>
+                                    <td class="data transactionId">${e.dateTime}</td>
+                                    <td class="data senderName">${e.senderName}</td>
+                                    <td class="data receiverNumber">${e.receiver_number}</td>
+                                    <td class="data network">${e.receiver_network}</td>
+                                    <td class="data topupAmount">${e.topup_amount}</td>
+                                    <td class="data amountUsd">${e.topup_amount_usd}</td>
+                                    <td class="data processingFee">${e.processing_fee}</td>
+                                    <td class="data totalAmountUsd">${e.total_amount_usd}</td>
+                                    <td class="data statusTransaction">${e.status}</td>
                                     <td class="data">
                                         <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
                                             data-toggle="modal" data-target="#basicsubsModal"
-                                            style="cursor: pointer">
+                                            style="cursor: pointer" class="actionBtnTransaction">
                                     </td>
                                 </tr>`;
-                    $(".newData").append(div);
+                        $(".newData").append(div);
                 });
             }
         });
     });
+
     ///////......show user data in modal....//////
     $('.getuserdata').click(function() {
         var name = $(this).find('.name').text();

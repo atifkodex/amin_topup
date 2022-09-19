@@ -565,6 +565,38 @@
     </div>
   </div>
 </div>
+    <div class="modal fade income-edit-modal" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content delete-modal-content">
+                <div class="modal-header income-modal justify-content-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <img src="assets/images/modal-close.svg" alt="image">
+                    </button>
+                </div>
+                <div class="modal-body income-edit-modal-body text-center delete-modal-body">
+                  <img src="assets/images/question-mark.svg" alt="image"> 
+                  <p>Are you sure want to delete this record</p>
+                  <div class="delete-modal-btn d-flex justify-content-between">
+                      <a href="#">
+                          <button class="yes-btn">
+                              Yes
+                          </button>
+
+                      </a>
+                      <a href="#">
+                          <button class="yes-btn">
+                              No
+                          </button>
+
+                      </a>
+                  </div>
+                
+                </div>
+  
+            </div>
+        </div>
+    </div>
 @endif
 @endsection
 @section('inserfooter')

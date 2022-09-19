@@ -82,7 +82,6 @@ class AdminController extends Controller
     ////////.......get user list.........//////
     public function usersList(Request $request)
     {
-
         $user = (User::where('type', 'user')->with('transaction'))->newQuery();
         // $user=User::with('transactions');
         // Check either search by day or month

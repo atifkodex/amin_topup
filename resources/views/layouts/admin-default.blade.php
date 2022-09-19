@@ -14,11 +14,11 @@
 
 <body>
 @yield('content')
-@include('sweetalert::alert')
 
 @include('includes.admin-footer')
 @yield('javascriptwork')
 @yield('inserfooter')
+@include('sweetalert::alert')
 </body>
 <script>
     var localUrl = 'http://localhost/amin-topup/';
