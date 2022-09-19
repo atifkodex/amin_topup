@@ -201,7 +201,7 @@
                             
                         </div>
                         <!-- ============== Refund Box ============== -->
-                        <div class="refund-req-box">
+                        <!-- <div class="refund-req-box">
                             <h2>Refund Request</h2>
                             <div class="refund-slider">
                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -293,7 +293,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <!-- Box 2 End -->
