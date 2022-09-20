@@ -172,7 +172,7 @@
                         <h1>Filter</h1>
                     </div>
                     <div class="user-filter-form">
-                        <form action="{{route('filterData')}}" method="POST" enctype="multipart/form-data">
+                        <form id="userFilterForm" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="username">User Name</label>
@@ -413,6 +413,7 @@
 <script>
     $("#userFilterForm").submit(function(e) {
         e.preventDefault();
+        alert('coming');
         var username = $("#username").val();
         var email = $("#email").val();
         var country = $("#country").val();
