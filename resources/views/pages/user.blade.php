@@ -84,7 +84,7 @@
                                         </thead>
                                         <tbody>
                                             @foreach($data as $post)
-                                            <div class="getuserdata">
+                                            <div class="userTable">
                                                 <tr>
                                                     <input type="hidden" class="id" value="{{$post['id']}}">
                                                     @if(!empty($post['name']))
@@ -440,15 +440,15 @@
             },
             success: function(response) {
                 let arr = [];
-                let div = "";
+
                 response.data.users.forEach(element => {
                     arr.push(element);
                 });
-                $(".getuserdata").empty();
+                $(".userTable").empty();
                 console.log(arr);
                 $(response.data.users).each(function(i, e) {
 
-                    div = div + `<tr>
+                    let div = `<tr>
                                 <td class="data name">${e.name}</td>
                                 <td class="data email">${e.email}</td>
                                 <td class="data email">${e.email}</td>
@@ -463,7 +463,7 @@
                                     <img class="" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                 </td>
                             </tr>`;
-                    $(".getuserdata").replaceWith(div);
+                    $(".userTable").append(div);
                 });
             }
         });
