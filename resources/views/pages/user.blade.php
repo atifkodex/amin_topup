@@ -82,9 +82,10 @@
 
                                             </tr>
                                         </thead>
-                                        <tbody class="getuserdata">
+                                        <tbody>
                                             @foreach($data as $post)
-                                            <tr>
+                                            <tr class="getuserdata">
+                                                <input type="hidden" class="id" value="{{$post['id']}}">
                                                 @if(!empty($post['name']))
                                                 <td class="data name">{{$post['name']}}</td>
                                                 @else
@@ -98,9 +99,9 @@
                                                 @endif
 
                                                 @if(!empty($post['users_device']))
-                                                <td class="data email">{{$post['users_device']}}</td>
+                                                <td class="data">{{$post['users_device']}}</td>
                                                 @else
-                                                <td class="data email">Not Set</td>
+                                                <td class="data">Not Set</td>
                                                 @endif
 
                                                 @if(!empty($post['country']))
@@ -128,9 +129,9 @@
                                                 @endif
 
                                                 @if(!empty($post['transaction']['date_of_birth']))
-                                                <input class="date_of_birth" type="hidden" value="{{ $post['transaction']['date_of_birth'] }}">
+                                                <input class="date_of_birth " type="hidden" value="{{ $post['transaction']['date_of_birth'] }}">
                                                 @else
-                                                <input class="date_of_birth" type="hidden" value="Not Set">
+                                                <input class="date_of_birth " type="hidden" value="Not Set">
                                                 @endif
 
                                                 <td class="data">
@@ -171,7 +172,7 @@
                         <h1>Filter</h1>
                     </div>
                     <div class="user-filter-form">
-                        <form action="{{route('usersList')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('filterData')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="username">User Name</label>
@@ -213,10 +214,11 @@
 <div class="modal fade" id="basicsubsModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content user-modal">
-            <div class="modal-body px-4">
+            <div class="modal-body px-4" id="content">
                 <div class="user-modal-header py-3">
                     <h1>User Details</h1>
                 </div>
+                <input type="hidden" id="id">
                 <div class="user-modal-content d-flex justify-content-between">
                     <p>User</p>
                     <p id="name_id">Muhammad Ali</p>
@@ -248,7 +250,7 @@
 
                 <div class="user-modal-button d-flex justify-content-center">
                     <button class="mr-1">Print</button>
-                    <button class="ml-1">Download</button>
+                    <button class="ml-1" id="download">Download</button>
                 </div>
             </div>
 
@@ -260,7 +262,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+
 <script>
+    // import FileSaver from 'file-saver';
     var token = @json($token);
     getPagination('#table-id');
 
@@ -389,18 +394,6 @@
             }
         }
     }
-
-    // $(function() {
-    //     // Just to append id number for each row
-    //     $('table tr:eq(0)').prepend('<th> ID </th>');
-
-    //     var id = 0;
-
-    //     $('table tr:gt(0)').each(function() {
-    //         id++;
-    //         $(this).prepend('<td>' + id + '</td>');
-    //     });
-    // });
 </script>
 
 <script>
@@ -417,7 +410,7 @@
     $('.sidebar-menu ul li:nth-of-type(2)').addClass('active');
 </script>
 
-<!-- <script>
+<script>
     $("#userFilterForm").submit(function(e) {
         e.preventDefault();
         var username = $("#username").val();
@@ -472,6 +465,7 @@
 
     ///////......show user data in modal....//////
     $('.getuserdata').click(function() {
+        var id = $(this).find('.id').val();
         var name = $(this).find('.name').text();
         var email = $(this).find('.email').text();
         var country = $(this).find('.country').text();
@@ -481,6 +475,7 @@
         var date_of_birth = $(this).find('.date_of_birth').val();
 
 
+        $("#id").val(id);
         $("#name_id").html(name);
         $("#email_id").html(email);
         $("#country_id").html(country);
@@ -489,8 +484,60 @@
         $("#total_amount_usd_id").html(total_amount_usd);
         $("#date_of_birth_id").html(date_of_birth);
 
+    });
 
+    $("#download").click(function(e) {
+
+
+        var name = $("#name_id").html();
+        var email = $("#email_id").html();
+        var country = $("#country_id").html();
+        var phone_number = $("#phone_number_id").html();
+        var last_transaction = $("#last_transaction_id").html();
+        var total_amount_usd = $("#total_amount_usd_id").html();
+        var date_of_birth = $("#date_of_birth_id").html();
+        let data = {
+            name: name,
+            email: email,
+            country: country,
+            phone_number: phone_number,
+            last_transaction: last_transaction,
+            total_amount_usd: total_amount_usd,
+            date_of_birth: date_of_birth
+        }
+
+        console.log(name);
+        var doc = new jsPDF();
+        // doc.addPage();
+        doc.setFontSize(22);
+        doc.setTextColor(248, 152, 34);
+        doc.text(75, 20, 'User Details');
+        doc.setTextColor(33, 19, 13);
+
+        doc.setFontSize(16);
+        doc.text(20, 40, 'User ');
+        doc.text(150, 40, name);
+
+        doc.text(20, 50, 'Email ');
+        doc.text(150, 50, email);
+
+        doc.text(20, 60, 'Date of Birth ');
+        doc.text(150, 60, date_of_birth);
+
+        doc.text(20, 70, 'Country');
+        doc.text(150, 70, country);
+
+        doc.text(20, 80, 'Phone Number');
+        doc.text(150, 80, phone_number);
+
+        doc.text(20, 90, 'Last Purchase');
+        doc.text(150, 90, last_transaction);
+
+        doc.text(20, 100, 'Total Purchase');
+        doc.text(150, 100, total_amount_usd);
+
+        doc.save('user.pdf');
 
     });
-</script> -->
+</script>
 @endsection

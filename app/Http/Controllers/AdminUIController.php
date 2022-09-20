@@ -7,13 +7,20 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Traits\ResponseTrait;
+use App\Transaction;
+use App\User;
 // use Validator;
 use App\Contacts;
 use App\Message;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use Brian2694\Toastr\Facades\Toastr;
 use RealRashid\SweetAlert\Facades\Alert;
+use Codedge\Fpdf\Fpdf\Fpdf;
+
+
+
 
 
 
@@ -134,6 +141,7 @@ class AdminUIController extends Controller
     }
     public function user_list(Request $request)
     {
+
         $value = Session::get('loginData');
 
         $token = $value['user']['token'];
@@ -153,19 +161,45 @@ class AdminUIController extends Controller
     public function users_filter(Request $request)
     {
         $value = Session::get('loginData');
-
         $token = $value['user']['token'];
-        $data = $request->all();
+        DB::connection()->enableQueryLog();
+        // $user = User::where('type', 'user')->with('transaction')->newQuery();
+        $user = (new User())->newQuery();
 
-        $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $token,
-            'Content-Type' => 'application/json'
-        ])->post('http://kodextech.net/amin-topup/api/users', $data);
-        $convertor = $response->body();
-        $response = json_decode($convertor, true);
+        // Check either search by day or month
+        if ($request->has('name')  && !empty($request->name)) {
+            $user->where('name', $request->name);
+        }
+        if ($request->has('email') && !empty($request->email)) {
+            $user->where('email', $request->email);
+        }
+        if ($request->has('country') && !empty($request->country)) {
+            $user->where('country', $request->country);
+        }
+        if ($request->has('phone_number')  && !empty($request->phone_number)) {
+            $user->where('phone_number', $request->phone_number);
+        }
+        if ($request->has('date') && !empty($request->date)) {
 
-        $data = $response['data']['users'];
-        return view('pages.user', ['data' => $data, 'token' => $token]);
+            $user->whereDate('created_at', $request->date);
+        }
+        $user = $user->where('type', 'user')->with('transaction')->get();
+        if (count($user) > 0) {
+            foreach ($user as $nuser) {
+                $date = Transaction::where('user_id', $nuser['id'])->orderBy('created_at', 'desc')->pluck('created_at')->first();
+                if (!empty($date)) {
+                    $nuser['last_transaction'] = $date->format('y-m-d');
+                }
+            }
+        }
+        if ($user) {
+
+            // return $this->sendResponse(['users' => $user, 'status' => 200], 'Getting Users Successfully');
+            return view('pages.user', ['data' => $user, 'token' => $token]);
+        } else {
+            $response = 'Field is not match to data';
+            return $this->sendError($response, []);
+        }
     }
 
     public function transactionList()
@@ -266,5 +300,30 @@ class AdminUIController extends Controller
             Alert::error('Error', $changeResponse['message']);
             return redirect()->back();
         }
+    }
+    public function downloadPdf(Request $request)
+    {
+        // echo public_path();
+        // die;
+
+        $data = $request->all();
+        $pdf = new FPDF();
+        $pdf->AddPage();
+
+        $pdf->SetFont('arial', '', 12);
+        $pdf->Cell(0, 10, "Registration Details", 1, 1, 'C');
+        $pdf->Cell(20, 10, "Roll No", 1, 0);
+        $pdf->Cell(45, 10, "First Name", 1, 0);
+        $pdf->Cell(45, 10, "Last Name", 1, 0);
+        $pdf->Cell(0, 10, "Email", 1, 1);
+
+        $pdf->Cell(20, 10, 1, 1, 0);
+        $pdf->Cell(45, 10, 'zeeshan', 1, 0);
+        $pdf->Cell(45, 10, 'khan', 1, 0);
+        $pdf->Cell(0, 10, 'zeeshan@gmail.com', 1, 0);
+
+        $file = 'C:\xampp\htdocs\amin-topup\public' . '.pdf';
+        $pdf->output($file, 'D');
+        // $pdf->save();
     }
 }

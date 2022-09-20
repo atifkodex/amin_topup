@@ -86,19 +86,19 @@ class AdminController extends Controller
         $user = User::where('type', 'user')->with('transaction')->newQuery();
 
         // Check either search by day or month
-        if ($request->has('name')) {
+        if ($request->has('name')  && !empty($request->name)) {
             $user->where('name', $request->name);
         }
-        if ($request->has('email')) {
+        if ($request->has('email') && !empty($request->email)) {
             $user->where('email', $request->email);
         }
-        if ($request->has('country')) {
+        if ($request->has('country') && !empty($request->country)) {
             $user->where('country', $request->country);
         }
-        if ($request->has('phone_number')) {
+        if ($request->has('phone_number')  && !empty($request->phone_number)) {
             $user->where('phone_number', $request->phone_number);
         }
-        if ($request->has('date')) {
+        if ($request->has('date') && !empty($request->date)) {
 
             $user->whereDate('created_at', $request->date);
         }

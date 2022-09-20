@@ -1,34 +1,38 @@
 @extends('layouts.admin-default')
 <style>
-    .user-select-row select{
+    .user-select-row select {
         width: 80px;
         border: 1px solid #012245;
         font-size: 12px;
         color: #012245
     }
-    .user-select-row select:active,.user-select-row select:focus{
+
+    .user-select-row select:active,
+    .user-select-row select:focus {
         outline: none;
         box-shadow: none;
         border: 1px solid #012245;
     }
+
     /* #table-id thead tr th:first-of-type,#table-id tbody tr td:first-of-type{
         display: none
     } */
-    .setting-card-body-inner{
-        overflow-x:auto;
-        height:680px !important;
+    .setting-card-body-inner {
+        overflow-x: auto;
+        height: 680px !important;
         overflow-y: hidden !important;
     }
-    #table-id tbody tr td{
-    background: #f1efef;
- 
-    }
-    @media screen and (min-width:2100px) {
-     #table-id{
-        width: 100% !important;
-     }
+
+    #table-id tbody tr td {
+        background: #f1efef;
+
     }
 
+    @media screen and (min-width:2100px) {
+        #table-id {
+            width: 100% !important;
+        }
+    }
 </style>
 @section('content')
 @include('includes.admin-navbar')
@@ -64,7 +68,7 @@
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Transaction ID</th>
-                                                <th >Date & Time</th>
+                                                <th>Date & Time</th>
                                                 <th>User Name</th>
                                                 <th>Receiver Phone Number</th>
                                                 <th>Network</th>
@@ -97,18 +101,16 @@
                                                 <td class="data processingFee">${{$transaction['processing_fee']}}</td>
                                                 <td class="data totalAmountUsd">$ {{$transaction['total_amount_usd']}}</td>
                                                 @if($transaction['status'] == 0)
-                                                    <td class="data text-danger statusTransaction">
-                                                        False
-                                                    </td>
+                                                <td class="data text-danger statusTransaction">
+                                                    False
+                                                </td>
                                                 @else
-                                                    <td class="data success statusTransaction">
-                                                        Success
-                                                    </td>
+                                                <td class="data success statusTransaction">
+                                                    Success
+                                                </td>
                                                 @endif
                                                 <td class="data">
-                                                    <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
-                                                        data-toggle="modal" data-target="#basicsubsModal"
-                                                        style="cursor: pointer" class="actionBtnTransaction">
+                                                    <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer" class="actionBtnTransaction">
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -151,12 +153,12 @@
                             <div class="form-group">
                                 <label for="network">Network</label>
                                 <input type="text" name="network" class="form-control" id="network" placeholder="Type Here..">
-                                
+
                             </div>
                             <div class="form-group">
                                 <label for="userphonenumber">Receiver Phone Number</label>
                                 <input type="text" name="number" class="form-control" id="userphonenumber" placeholder="Type Here..">
-                                
+
                             </div>
                             <div class="form-group">
                                 <label for="amountTotal">Topup Amount</label>
@@ -226,7 +228,7 @@
                 </div>
                 <div class="user-modal-button d-flex justify-content-center">
                     <button class="mr-1" id="printBtn">Print</button>
-                    <button class="ml-1" id="downloadBtn" onclick="takeSnapShot()">Download</button>
+                    <button class="ml-1" id="download">Download</button>
                 </div>
             </div>
 
@@ -242,12 +244,12 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"></script>
 <!-- Html To Canvas Scripts  -->
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
 <script>
     var token = @json($token);
-    $("#transactionFilterForm").submit(function (e) {
+    $("#transactionFilterForm").submit(function(e) {
         e.preventDefault();
         var username = $("#username").val();
         var network = $("#network").val();
@@ -264,25 +266,25 @@
         // Ajax call 
         $.ajax({
             url: 'http://kodextech.net/amin-topup/api/transactions',
-            dataType: 'json', 
+            dataType: 'json',
             type: 'POST',
             data: JSON.stringify(parameter),
             headers: {
                 'Authorization': 'Bearer ' + token,
-                'Content-Type' : 'application/json'
+                'Content-Type': 'application/json'
             },
             success: function(response) {
                 let arr = [];
                 response.data.forEach(element => {
                     arr.push(element);
                 });
-                $(".newData").empty(); 
-                $(arr).each(function (i, e) {
+                $(".newData").empty();
+                $(arr).each(function(i, e) {
                     var transactionId;
-                    if(e.transaction_id == null){
+                    if (e.transaction_id == null) {
                         transactionId = 'Not Set';
-                    }else{
-                        transactionId = e.transaction_id ;
+                    } else {
+                        transactionId = e.transaction_id;
                     }
                     let div = `<tr>
                                     <td class="data">${e.id}</td>
@@ -302,35 +304,35 @@
                                             style="cursor: pointer" class="actionBtnTransaction">
                                     </td>
                                 </tr>`;
-                        $(".newData").append(div);
-                        $(".actionBtnTransaction").click(function(){
-                            let transactionId = $(this).parent().parent().find(".transactionId").text();
-                            let senderName = $(this).parent().parent().find(".senderName").text();
-                            let receiverNumber = $(this).parent().parent().find(".receiverNumber").text();
-                            let network = $(this).parent().parent().find(".network").text();
-                            let topupAmount = $(this).parent().parent().find(".topupAmount").text();
-                            let amountUsd = $(this).parent().parent().find(".amountUsd").text();
-                            let processingFee = $(this).parent().parent().find(".processingFee").text();
-                            let totalAmountUsd = $(this).parent().parent().find(".totalAmountUsd").text();
-                            let statusTransaction = $(this).parent().parent().find(".statusTransaction").text();
+                    $(".newData").append(div);
+                    $(".actionBtnTransaction").click(function() {
+                        let transactionId = $(this).parent().parent().find(".transactionId").text();
+                        let senderName = $(this).parent().parent().find(".senderName").text();
+                        let receiverNumber = $(this).parent().parent().find(".receiverNumber").text();
+                        let network = $(this).parent().parent().find(".network").text();
+                        let topupAmount = $(this).parent().parent().find(".topupAmount").text();
+                        let amountUsd = $(this).parent().parent().find(".amountUsd").text();
+                        let processingFee = $(this).parent().parent().find(".processingFee").text();
+                        let totalAmountUsd = $(this).parent().parent().find(".totalAmountUsd").text();
+                        let statusTransaction = $(this).parent().parent().find(".statusTransaction").text();
 
-                            $("#transactionIdModal").text(transactionId);
-                            $("#senderNameModal").text(senderName);
-                            $("#receiverNumberModal").text(receiverNumber);
-                            $("#networkModal").text(network);
-                            $("#topupAmountModal").text(topupAmount);
-                            $("#amountUsdModal").text(amountUsd);
-                            $("#processingFeeModal").text(processingFee);
-                            $("#totalAmountUsdModal").text(totalAmountUsd);
-                            $("#statusTransactionModal").text(statusTransaction);
+                        $("#transactionIdModal").text(transactionId);
+                        $("#senderNameModal").text(senderName);
+                        $("#receiverNumberModal").text(receiverNumber);
+                        $("#networkModal").text(network);
+                        $("#topupAmountModal").text(topupAmount);
+                        $("#amountUsdModal").text(amountUsd);
+                        $("#processingFeeModal").text(processingFee);
+                        $("#totalAmountUsdModal").text(totalAmountUsd);
+                        $("#statusTransactionModal").text(statusTransaction);
 
-                        });
+                    });
                 });
             }
         });
     });
 
-    $(".actionBtnTransaction").click(function(){
+    $(".actionBtnTransaction").click(function() {
         let transactionId = $(this).parent().parent().find(".transactionId").text();
         let senderName = $(this).parent().parent().find(".senderName").text();
         let receiverNumber = $(this).parent().parent().find(".receiverNumber").text();
@@ -353,203 +355,202 @@
 
     });
 
-    $("#printBtn").click(function(){
-        $("#printSection").printThis({
-            pageTitle: "Transaction Details",
-        });
+
+    $("#download").click(function(e) {
+        var status = $("#statusTransactionModal").text();
+
+        var doc = new jsPDF();
+        // doc.addPage();
+        doc.setFontSize(22);
+        doc.setTextColor(248, 152, 34);
+        doc.text(75, 20, 'Transaction Details');
+        doc.setTextColor(33, 19, 13);
+        doc.setFontSize(16);
+        doc.text(20, 40, 'Transaction Date ');
+        doc.text(150, 40, $("#transactionIdModal").text());
+
+        doc.text(20, 50, 'User ');
+        doc.text(150, 50, $("#senderNameModal").text());
+
+        doc.text(20, 60, 'Receiver Number ');
+        doc.text(150, 60, $("#receiverNumberModal").text());
+
+        doc.text(20, 70, 'Network');
+        doc.text(150, 70, $("#networkModal").text());
+
+        doc.text(20, 80, 'Topup Amount');
+        doc.text(150, 80, $("#topupAmountModal").text());
+
+        doc.text(20, 90, 'Topup Amount Usd');
+        doc.text(150, 90, $("#amountUsdModal").text());
+
+        doc.text(20, 100, 'Proccessing Fee');
+        doc.text(150, 100, $("#processingFeeModal").text());
+        doc.text(20, 110, 'Total Payment In Usd');
+        doc.text(150, 110, $("#totalAmountUsdModal").text());
+        doc.text(20, 120, 'Status');
+        doc.text(150, 120, status.trim());
+        doc.save('transaction.pdf');
+
     });
-
-    function takeSnapShot() {
-	    html2canvas(document.querySelector("#printSection")).then(function(canvas) {
-            var newCanvas = canvas;
-            // var anchor = document.createElement("a");
-            // anchor.href = newCanvas.toDataURL("image/png");
-            // anchor.download = "IMAGE.PNG";
-            // anchor.click();
-            // var context = newCanvas.getContext('2d');
-
-            // draw a blue cloud
-            // context.beginPath();
-            // context.moveTo(170, 80);
-            // context.bezierCurveTo(130, 100, 130, 150, 230, 150);
-            // context.bezierCurveTo(250, 180, 320, 180, 340, 150);
-            // context.bezierCurveTo(420, 150, 420, 120, 390, 100);
-            // context.bezierCurveTo(430, 40, 370, 30, 340, 50);
-            // context.bezierCurveTo(320, 5, 250, 20, 250, 50);
-            // context.bezierCurveTo(200, 5, 150, 20, 170, 80);
-            // context.closePath();
-            // context.lineWidth = 5;
-            // context.fillStyle = '#8ED6FF';
-            // context.fill();
-            // context.strokeStyle = '#0000ff';
-            // context.stroke();
-
-            var imgData = newCanvas.toDataURL("image/png");
-            var pdf = new jsPDF();
-
-            pdf.addImage(imgData, 'JPEG', 0, 0);
-            pdf.save("download.pdf");
-        });
-    }
-
 </script>
 <!-- Backend Script for Transaction Page - END  -->
 
 <script>
-getPagination('#table-id');
+    getPagination('#table-id');
 
-function getPagination(table) {
-    var lastPage = 1;
+    function getPagination(table) {
+        var lastPage = 1;
 
-    $('#maxRows')
-        .on('change', function(evt) {
-            //$('.paginationprev').html('');						// reset pagination
+        $('#maxRows')
+            .on('change', function(evt) {
+                //$('.paginationprev').html('');						// reset pagination
 
-            lastPage = 1;
-            $('.pagination')
-                .find('li')
-                .slice(1, -1)
-                .remove();
-            var trnum = 0; // reset tr counter
-            var maxRows = parseInt($(this).val()); // get Max Rows from select option
+                lastPage = 1;
+                $('.pagination')
+                    .find('li')
+                    .slice(1, -1)
+                    .remove();
+                var trnum = 0; // reset tr counter
+                var maxRows = parseInt($(this).val()); // get Max Rows from select option
 
-            if (maxRows == 5000) {
-                $('.pagination').hide();
-            } else {
-                $('.pagination').show();
-            }
-
-            var totalRows = $(table + ' tbody tr').length; // numbers of rows
-            $(table + ' tr:gt(0)').each(function() {
-                // each TR in  table and not the header
-                trnum++; // Start Counter
-                if (trnum > maxRows) {
-                    // if tr number gt maxRows
-
-                    $(this).hide(); // fade it out
-                }
-                if (trnum <= maxRows) {
-                    $(this).show();
-                } // else fade in Important in case if it ..
-            }); //  was fade out to fade it in
-            if (totalRows > maxRows) {
-                // if tr total rows gt max rows option
-                var pagenum = Math.ceil(totalRows / maxRows); // ceil total(rows/maxrows) to get ..
-                //	numbers of pages
-                for (var i = 1; i <= pagenum;) {
-                    // for each page append pagination li
-                    $('.pagination #prev')
-                        .before(
-                            '<li data-page="' +
-                            i +
-                            '">\
-                                        <span>' +
-                            i++ +
-                            '<span class="sr-only">(current)</span></span>\
-                                        </li>'
-                        )
-                        .show();
-                } // end for i
-            } // end if row count > max rows
-            $('.pagination [data-page="1"]').addClass('active'); // add active class to the first li
-            $('.pagination li').on('click', function(evt) {
-                // on click each page
-                evt.stopImmediatePropagation();
-                evt.preventDefault();
-                var pageNum = $(this).attr('data-page'); // get it's number
-
-                var maxRows = parseInt($('#maxRows').val()); // get Max Rows from select option
-
-                if (pageNum == 'prev') {
-                    if (lastPage == 1) {
-                        return;
-                    }
-                    pageNum = --lastPage;
-                }
-                if (pageNum == 'next') {
-                    if (lastPage == $('.pagination li').length - 2) {
-                        return;
-                    }
-                    pageNum = ++lastPage;
+                if (maxRows == 5000) {
+                    $('.pagination').hide();
+                } else {
+                    $('.pagination').show();
                 }
 
-                lastPage = pageNum;
-                var trIndex = 0; // reset tr counter
-                $('.pagination li').removeClass('active'); // remove active class from all li
-                $('.pagination [data-page="' + lastPage + '"]').addClass(
-                    'active'); // add active class to the clicked
-                // $(this).addClass('active');					// add active class to the clicked
-                limitPagging();
+                var totalRows = $(table + ' tbody tr').length; // numbers of rows
                 $(table + ' tr:gt(0)').each(function() {
-                    // each tr in table not the header
-                    trIndex++; // tr index counter
-                    // if tr index gt maxRows*pageNum or lt maxRows*pageNum-maxRows fade if out
-                    if (
-                        trIndex > maxRows * pageNum ||
-                        trIndex <= maxRows * pageNum - maxRows
-                    ) {
-                        $(this).hide();
-                    } else {
+                    // each TR in  table and not the header
+                    trnum++; // Start Counter
+                    if (trnum > maxRows) {
+                        // if tr number gt maxRows
+
+                        $(this).hide(); // fade it out
+                    }
+                    if (trnum <= maxRows) {
                         $(this).show();
-                    } //else fade in
-                }); // end of for each tr in table
-            }); // end of on click pagination list
-            limitPagging();
-        })
-        .val(10)
-        .change();
+                    } // else fade in Important in case if it ..
+                }); //  was fade out to fade it in
+                if (totalRows > maxRows) {
+                    // if tr total rows gt max rows option
+                    var pagenum = Math.ceil(totalRows / maxRows); // ceil total(rows/maxrows) to get ..
+                    //	numbers of pages
+                    for (var i = 1; i <= pagenum;) {
+                        // for each page append pagination li
+                        $('.pagination #prev')
+                            .before(
+                                '<li data-page="' +
+                                i +
+                                '">\
+                                        <span>' +
+                                i++ +
+                                '<span class="sr-only">(current)</span></span>\
+                                        </li>'
+                            )
+                            .show();
+                    } // end for i
+                } // end if row count > max rows
+                $('.pagination [data-page="1"]').addClass('active'); // add active class to the first li
+                $('.pagination li').on('click', function(evt) {
+                    // on click each page
+                    evt.stopImmediatePropagation();
+                    evt.preventDefault();
+                    var pageNum = $(this).attr('data-page'); // get it's number
 
-    // end of on select change
+                    var maxRows = parseInt($('#maxRows').val()); // get Max Rows from select option
 
-    // END OF PAGINATION
-}
+                    if (pageNum == 'prev') {
+                        if (lastPage == 1) {
+                            return;
+                        }
+                        pageNum = --lastPage;
+                    }
+                    if (pageNum == 'next') {
+                        if (lastPage == $('.pagination li').length - 2) {
+                            return;
+                        }
+                        pageNum = ++lastPage;
+                    }
 
-function limitPagging() {
-    // alert($('.pagination li').length)
+                    lastPage = pageNum;
+                    var trIndex = 0; // reset tr counter
+                    $('.pagination li').removeClass('active'); // remove active class from all li
+                    $('.pagination [data-page="' + lastPage + '"]').addClass(
+                        'active'); // add active class to the clicked
+                    // $(this).addClass('active');					// add active class to the clicked
+                    limitPagging();
+                    $(table + ' tr:gt(0)').each(function() {
+                        // each tr in table not the header
+                        trIndex++; // tr index counter
+                        // if tr index gt maxRows*pageNum or lt maxRows*pageNum-maxRows fade if out
+                        if (
+                            trIndex > maxRows * pageNum ||
+                            trIndex <= maxRows * pageNum - maxRows
+                        ) {
+                            $(this).hide();
+                        } else {
+                            $(this).show();
+                        } //else fade in
+                    }); // end of for each tr in table
+                }); // end of on click pagination list
+                limitPagging();
+            })
+            .val(10)
+            .change();
 
-    if ($('.pagination li').length > 7) {
-        if ($('.pagination li.active').attr('data-page') <= 3) {
-            $('.pagination li:gt(5)').hide();
-            $('.pagination li:lt(5)').show();
-            $('.pagination [data-page="next"]').show();
-        }
-        if ($('.pagination li.active').attr('data-page') > 3) {
-            $('.pagination li:gt(0)').hide();
-            $('.pagination [data-page="next"]').show();
-            for (let i = (parseInt($('.pagination li.active').attr('data-page')) - 2); i <= (parseInt($(
-                    '.pagination li.active').attr('data-page')) + 2); i++) {
-                $('.pagination [data-page="' + i + '"]').show();
+        // end of on select change
+
+        // END OF PAGINATION
+    }
+
+    function limitPagging() {
+        // alert($('.pagination li').length)
+
+        if ($('.pagination li').length > 7) {
+            if ($('.pagination li.active').attr('data-page') <= 3) {
+                $('.pagination li:gt(5)').hide();
+                $('.pagination li:lt(5)').show();
+                $('.pagination [data-page="next"]').show();
+            }
+            if ($('.pagination li.active').attr('data-page') > 3) {
+                $('.pagination li:gt(0)').hide();
+                $('.pagination [data-page="next"]').show();
+                for (let i = (parseInt($('.pagination li.active').attr('data-page')) - 2); i <= (parseInt($(
+                        '.pagination li.active').attr('data-page')) + 2); i++) {
+                    $('.pagination [data-page="' + i + '"]').show();
+
+                }
 
             }
-
         }
     }
-}
 
-// $(function() {
-//     // Just to append id number for each row
-//     $('table tr:eq(0)').prepend('<th> ID </th>');
+    // $(function() {
+    //     // Just to append id number for each row
+    //     $('table tr:eq(0)').prepend('<th> ID </th>');
 
-//     var id = 0;
+    //     var id = 0;
 
-//     $('table tr:gt(0)').each(function() {
-//         id++;
-//         $(this).prepend('<td>' + id + '</td>');
-//     });
-// });
+    //     $('table tr:gt(0)').each(function() {
+    //         id++;
+    //         $(this).prepend('<td>' + id + '</td>');
+    //     });
+    // });
 </script>
 
 <script>
-$(document).ready(function() {
-    $("#next span").click(function() {
-        $('#next').addClass('active');
+    $(document).ready(function() {
+        $("#next span").click(function() {
+            $('#next').addClass('active');
+        });
+        $("#prev span").click(function() {
+            $('#prev').addClass('active');
+        });
     });
-    $("#prev span").click(function() {
-        $('#prev').addClass('active');
-    });
-});
 </script>
 <script>
-$('.sidebar-menu ul li:nth-of-type(3)').addClass('active');
+    $('.sidebar-menu ul li:nth-of-type(3)').addClass('active');
 </script>
 @endsection
