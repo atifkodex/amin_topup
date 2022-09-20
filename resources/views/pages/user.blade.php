@@ -444,7 +444,7 @@
                 });
                 $(".getuserdata").empty();
                 console.log(arr);
-                $(arr).each(function(i, e) {
+                $(response.data.users).each(function(i, e) {
 
                     div = div + `<tr>
                                 <td class="data name">${e.name}</td>
