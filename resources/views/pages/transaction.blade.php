@@ -101,7 +101,7 @@
                                                         False
                                                     </td>
                                                 @else
-                                                    <td class="data success">
+                                                    <td class="data success statusTransaction">
                                                         Success
                                                     </td>
                                                 @endif
@@ -225,7 +225,7 @@
                     </div>
                 </div>
                 <div class="user-modal-button d-flex justify-content-center">
-                    <button class="mr-1" id="printBtn">Refund</button>
+                    <button class="mr-1" id="printBtn">Print</button>
                     <button class="ml-1" id="downloadBtn" onclick="takeSnapShot()">Download</button>
                 </div>
             </div>
@@ -244,6 +244,7 @@
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
 <script>
     var token = @json($token);
     $("#transactionFilterForm").submit(function (e) {
@@ -254,7 +255,7 @@
         var amountTotal = $("#amountTotal").val();
         var date = $("#date").val();
         var parameter = {
-            username: username,
+            name: username,
             network: network,
             userphonenumber: userphonenumber,
             amountTotal: amountTotal,
@@ -302,6 +303,28 @@
                                     </td>
                                 </tr>`;
                         $(".newData").append(div);
+                        $(".actionBtnTransaction").click(function(){
+                            let transactionId = $(this).parent().parent().find(".transactionId").text();
+                            let senderName = $(this).parent().parent().find(".senderName").text();
+                            let receiverNumber = $(this).parent().parent().find(".receiverNumber").text();
+                            let network = $(this).parent().parent().find(".network").text();
+                            let topupAmount = $(this).parent().parent().find(".topupAmount").text();
+                            let amountUsd = $(this).parent().parent().find(".amountUsd").text();
+                            let processingFee = $(this).parent().parent().find(".processingFee").text();
+                            let totalAmountUsd = $(this).parent().parent().find(".totalAmountUsd").text();
+                            let statusTransaction = $(this).parent().parent().find(".statusTransaction").text();
+
+                            $("#transactionIdModal").text(transactionId);
+                            $("#senderNameModal").text(senderName);
+                            $("#receiverNumberModal").text(receiverNumber);
+                            $("#networkModal").text(network);
+                            $("#topupAmountModal").text(topupAmount);
+                            $("#amountUsdModal").text(amountUsd);
+                            $("#processingFeeModal").text(processingFee);
+                            $("#totalAmountUsdModal").text(totalAmountUsd);
+                            $("#statusTransactionModal").text(statusTransaction);
+
+                        });
                 });
             }
         });
@@ -339,10 +362,33 @@
     function takeSnapShot() {
 	    html2canvas(document.querySelector("#printSection")).then(function(canvas) {
             var newCanvas = canvas;
-            var anchor = document.createElement("a");
-            anchor.href = newCanvas.toDataURL("image/png");
-            anchor.download = "IMAGE.PNG";
-            anchor.click();
+            // var anchor = document.createElement("a");
+            // anchor.href = newCanvas.toDataURL("image/png");
+            // anchor.download = "IMAGE.PNG";
+            // anchor.click();
+            // var context = newCanvas.getContext('2d');
+
+            // draw a blue cloud
+            // context.beginPath();
+            // context.moveTo(170, 80);
+            // context.bezierCurveTo(130, 100, 130, 150, 230, 150);
+            // context.bezierCurveTo(250, 180, 320, 180, 340, 150);
+            // context.bezierCurveTo(420, 150, 420, 120, 390, 100);
+            // context.bezierCurveTo(430, 40, 370, 30, 340, 50);
+            // context.bezierCurveTo(320, 5, 250, 20, 250, 50);
+            // context.bezierCurveTo(200, 5, 150, 20, 170, 80);
+            // context.closePath();
+            // context.lineWidth = 5;
+            // context.fillStyle = '#8ED6FF';
+            // context.fill();
+            // context.strokeStyle = '#0000ff';
+            // context.stroke();
+
+            var imgData = newCanvas.toDataURL("image/png");
+            var pdf = new jsPDF();
+
+            pdf.addImage(imgData, 'JPEG', 0, 0);
+            pdf.save("download.pdf");
         });
     }
 
