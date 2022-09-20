@@ -84,7 +84,7 @@
                                         </thead>
                                         <tbody>
                                             @foreach($data as $post)
-                                            <tr>
+                                            <tr class="userTable">
                                                 <input type="hidden" class="id" value="{{$post['id']}}">
                                                 @if(!empty($post['name']))
                                                 <td class="data name">{{$post['name']}}</td>
@@ -446,7 +446,7 @@
                 console.log(arr);
                 $(response.data.users).each(function(i, e) {
 
-                    let div = `<tr>
+                    let div = `
                                 <td class="data name">${e.name}</td>
                                 <td class="data email">${e.email}</td>
                                 <td class="data email">${e.email}</td>
@@ -460,7 +460,7 @@
                                 <td class="data">
                                     <img class="" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                 </td>
-                            </tr>`;
+                            `;
                     $(".userTable").append(div);
                 });
             }
