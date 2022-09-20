@@ -413,7 +413,6 @@
 <script>
     $("#userFilterForm").submit(function(e) {
         e.preventDefault();
-        alert('coming');
         var username = $("#username").val();
         var email = $("#email").val();
         var country = $("#country").val();
@@ -439,13 +438,15 @@
             },
             success: function(response) {
                 let arr = [];
+                let div = "";
                 response.data.users.forEach(element => {
                     arr.push(element);
                 });
                 $(".getuserdata").empty();
+                console.log(arr);
                 $(arr).each(function(i, e) {
 
-                    let div = `<tr>
+                    div = div + `<tr>
                                 <td class="data name">${e.name}</td>
                                 <td class="data email">${e.email}</td>
                                 <td class="data email">${e.email}</td>
@@ -458,7 +459,7 @@
                                     <img class="" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                 </td>
                             </tr>`;
-                    $(".getuserdata").append(div);
+                    $(".getuserdata").replaceWith(div);
                 });
             }
         });
