@@ -171,7 +171,8 @@
                         <h1>Filter</h1>
                     </div>
                     <div class="user-filter-form">
-                        <form action="{{route('user')}}" method="POST" enctype="multipart/form-data" id="userFilterForm">
+                        <form action="{{route('usersList')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="form-group">
                                 <label for="username">User Name</label>
                                 <input type="text" class="form-control" id="username" placeholder="Type Here.." name="name">
@@ -194,12 +195,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="lpurchase">Last Purchase</label>
-                                <input type="text" class="form-control" id="lpurchase" placeholder="Type Here.." name="">
+                                <input type="text" class="form-control" id="lpurchase" placeholder="Type Here.." name="date">
 
                             </div>
 
                             <div class="text-center py-3">
-                                <button>Search</button>
+                                <button type="submit" name="submit">Search</button>
                             </div>
 
                         </form>
@@ -416,7 +417,7 @@
     $('.sidebar-menu ul li:nth-of-type(2)').addClass('active');
 </script>
 
-<script>
+<!-- <script>
     $("#userFilterForm").submit(function(e) {
         e.preventDefault();
         var username = $("#username").val();
@@ -491,5 +492,5 @@
 
 
     });
-</script>
+</script> -->
 @endsection

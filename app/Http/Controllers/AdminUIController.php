@@ -134,7 +134,24 @@ class AdminUIController extends Controller
     }
     public function user_list(Request $request)
     {
+        $value = Session::get('loginData');
 
+        $token = $value['user']['token'];
+        $data = $request->all();
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post('http://kodextech.net/amin-topup/api/users', $data);
+        $convertor = $response->body();
+        $response = json_decode($convertor, true);
+
+        $data = $response['data']['users'];
+        return view('pages.user', ['data' => $data, 'token' => $token]);
+    }
+
+    public function users_filter(Request $request)
+    {
         $value = Session::get('loginData');
 
         $token = $value['user']['token'];
@@ -242,10 +259,10 @@ class AdminUIController extends Controller
         ])->post('http://kodextech.net/amin-topup/api/admin_keys', $data);
         $convertor = $response->body();
         $changeResponse = json_decode($convertor, true);
-        if($changeResponse['success'] == true) {
+        if ($changeResponse['success'] == true) {
             Alert::success('Success', 'Data updated successfully.');
             return redirect()->back();
-        }else{
+        } else {
             Alert::error('Error', $changeResponse['message']);
             return redirect()->back();
         }

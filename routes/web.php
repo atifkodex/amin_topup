@@ -30,6 +30,7 @@ Route::middleware([AdminAuth::class])->group(function () {
         Route::get('/transactions', [AdminUIController::class, 'transactionList'])->name('transactionList');
         // Route::post('/transaction_list', [AdminUIController::class, 'transactionsList'])->name('transactionsList');
         Route::get('/user', [AdminUIController::class, 'user_list'])->name('user');
+        Route::post('/user_filter', [AdminUIController::class, 'users_filter'])->name('usersList');
         Route::get('/admin_ist', [AdminUIController::class, 'admin_list'])->name('adminList');
         Route::post('/resolve_contact', [AdminUIController::class, 'resolve'])->name('resolve_contact');
         Route::post('/admin_create', [AdminUIController::class, 'create_and_update_admin'])->name('admin_create');
