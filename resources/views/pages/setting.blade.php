@@ -627,7 +627,7 @@
 
     // Ajax call 
     $.ajax({
-      url: 'http://kodextech.net/amin-topup/public/api/admin/update_operator',
+      url: 'http://kodextech.net/amin-topup/api/update_operator',
       type: 'POST',
       dataType: 'json', // added data type
       data: {
