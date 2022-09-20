@@ -452,9 +452,11 @@
                                 <td class="data email">${e.email}</td>
                                 <td class="data email">${e.country}</td>
                                 <td class="data country">${e.phone_number}</td>
-                                <td class="data phone_number">${e.last_transaction}</td>
-                                <td class="data last_transaction"><span class="user-table-time">${e.transaction['total_amount_usd']}</span></td>
-                                <input class="total_amount_usd" type="hidden" value="${e.transaction['date_of_birth']}">
+                                <td class="data phone_number">${e.last_transaction}</td>`;
+                    if (e.transaction['total_amount_usd'] != undefined && e.transaction['total_amount_usd'] != '')
+                        div = div + `<input class="total_amount_usd" type="hidden" value="${e.transaction['total_amount_usd']}">`;
+
+                    div = div + `    <input class="total_amount_usd" type="hidden" value="${e.date_of_birth}">
                                 <td class="data">
                                     <img class="" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                 </td>
