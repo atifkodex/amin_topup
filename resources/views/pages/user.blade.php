@@ -84,62 +84,60 @@
                                         </thead>
                                         <tbody>
                                             @foreach($data as $post)
-                                            <div class="userTable">
-                                                <tr>
-                                                    <input type="hidden" class="id" value="{{$post['id']}}">
-                                                    @if(!empty($post['name']))
-                                                    <td class="data name">{{$post['name']}}</td>
-                                                    @else
-                                                    <td class="data name">Not Set</td>
-                                                    @endif
+                                            <tr>
+                                                <input type="hidden" class="id" value="{{$post['id']}}">
+                                                @if(!empty($post['name']))
+                                                <td class="data name">{{$post['name']}}</td>
+                                                @else
+                                                <td class="data name">Not Set</td>
+                                                @endif
 
-                                                    @if(!empty($post['email']))
-                                                    <td class="data email">{{$post['email']}}</td>
-                                                    @else
-                                                    <td class="data email">Not Set</td>
-                                                    @endif
+                                                @if(!empty($post['email']))
+                                                <td class="data email">{{$post['email']}}</td>
+                                                @else
+                                                <td class="data email">Not Set</td>
+                                                @endif
 
-                                                    @if(!empty($post['users_device']))
-                                                    <td class="data">{{$post['users_device']}}</td>
-                                                    @else
-                                                    <td class="data">Not Set</td>
-                                                    @endif
+                                                @if(!empty($post['users_device']))
+                                                <td class="data">{{$post['users_device']}}</td>
+                                                @else
+                                                <td class="data">Not Set</td>
+                                                @endif
 
-                                                    @if(!empty($post['country']))
-                                                    <td class="data country">{{$post['country']}}</td>
-                                                    @else
-                                                    <td class="data country">Not Set</td>
-                                                    @endif
+                                                @if(!empty($post['country']))
+                                                <td class="data country">{{$post['country']}}</td>
+                                                @else
+                                                <td class="data country">Not Set</td>
+                                                @endif
 
-                                                    @if(!empty($post['phone_number']))
-                                                    <td class="data phone_number">{{$post['phone_number']}}</td>
-                                                    @else
-                                                    <td class="data phone_number">Not Set</td>
-                                                    @endif
+                                                @if(!empty($post['phone_number']))
+                                                <td class="data phone_number">{{$post['phone_number']}}</td>
+                                                @else
+                                                <td class="data phone_number">Not Set</td>
+                                                @endif
 
-                                                    @if(isset($post['last_transaction']))
-                                                    <td class="data last_transaction"><span class="user-table-time">{{ $post['last_transaction'] }}</span></td>
-                                                    @else
-                                                    <td class="data last_transaction"><span class="user-table-time">No Trasaction</span></td>
-                                                    @endif
+                                                @if(isset($post['last_transaction']))
+                                                <td class="data last_transaction"><span class="user-table-time">{{ $post['last_transaction'] }}</span></td>
+                                                @else
+                                                <td class="data last_transaction"><span class="user-table-time">No Trasaction</span></td>
+                                                @endif
 
-                                                    @if(!empty($post['transaction']['total_amount_usd']))
-                                                    <input class="total_amount_usd" type="hidden" value="{{ $post['transaction']['total_amount_usd'] }}">
-                                                    @else
-                                                    <input class="total_amount_usd" type="hidden" value="No Trasaction">
-                                                    @endif
+                                                @if(!empty($post['transaction']['total_amount_usd']))
+                                                <input class="total_amount_usd" type="hidden" value="{{ $post['transaction']['total_amount_usd'] }}">
+                                                @else
+                                                <input class="total_amount_usd" type="hidden" value="No Trasaction">
+                                                @endif
 
-                                                    @if(!empty($post['transaction']['date_of_birth']))
-                                                    <input class="date_of_birth " type="hidden" value="{{ $post['transaction']['date_of_birth'] }}">
-                                                    @else
-                                                    <input class="date_of_birth " type="hidden" value="Not Set">
-                                                    @endif
+                                                @if(!empty($post['transaction']['date_of_birth']))
+                                                <input class="date_of_birth " type="hidden" value="{{ $post['transaction']['date_of_birth'] }}">
+                                                @else
+                                                <input class="date_of_birth " type="hidden" value="Not Set">
+                                                @endif
 
-                                                    <td class="data">
-                                                        <img class="" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                                    </td>
-                                                </tr>
-                                            </div>
+                                                <td class="data">
+                                                    <img class="" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
+                                                </td>
+                                            </tr>
                                             @endforeach
 
 
