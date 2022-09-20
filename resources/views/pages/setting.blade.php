@@ -636,6 +636,9 @@
         topup_usd: usdAmount,
         exchange_rate: rate,
       },
+      headers: {
+          'Authorization': 'Bearer ' + token
+      },
       success: function(response) {
 
       }
