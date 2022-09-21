@@ -283,7 +283,6 @@
                   'Content-Type' : 'application/json'
               },
               success: function(response) {
-                debugger;
                 if(response.success == false){
                   $("#appendNotification").empty(); 
                   let div = `<div class="">No New Notifications</div>`;
@@ -311,7 +310,12 @@
                       $("#appendNotification").append(div);
                     }
                   });
-              }
+              },
+              error: function (jqXHR, exception) {
+                 $("#appendNotification").empty(); 
+                  let div = `<div class="">No New Notifications</div>`;
+                  $("#appendNotification").append(div);
+              };
           });
     });
   });
