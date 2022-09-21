@@ -474,13 +474,13 @@
 
 
                         $("#id").val(id);
-                        $("#name_id").html(name);
-                        $("#email_id").html(email);
-                        $("#country_id").html(country);
-                        $("#phone_number_id").html(phone_number);
-                        $("#last_transaction_id").html(last_transaction);
-                        $("#total_amount_usd_id").html(total_amount_usd);
-                        $("#date_of_birth_id").html(date_of_birth);
+                        $("#name_id").text(name);
+                        $("#email_id").text(email);
+                        $("#country_id").text(country);
+                        $("#phone_number_id").text(phone_number);
+                        $("#last_transaction_id").text(last_transaction);
+                        $("#total_amount_usd_id").text(total_amount_usd);
+                        $("#date_of_birth_id").text(date_of_birth);
 
                     });
                 });
