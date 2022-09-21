@@ -631,6 +631,7 @@
 
     let stripeFees = $(this).parent().find(".stripeFee").find('input').val();
     let totalPayable = usdAmountRounded + perToPrice + stripeFees;
+    alert(totalPayable);
     let totalPayableRounded = totalPayable.toFixed(2); 
     $(this).parent().find(".userTotal").text(totalPayableRounded);
     // Ajax call 
