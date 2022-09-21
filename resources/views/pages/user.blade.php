@@ -463,14 +463,14 @@
                             </tr>`;
                     $(".userTable").append(div);
                     $('.getuserdata').click(function() {
-                        var id = $(this).find('.id').val();
-                        var name = $(this).find('.name').text();
-                        var email = $(this).find('.email').text();
-                        var country = $(this).find('.country').text();
-                        var phone_number = $(this).find('.phone_number').text();
-                        var last_transaction = $(this).find('.last_transaction').text();
-                        var total_amount_usd = $(this).find('.total_amount_usd').val();
-                        var date_of_birth = $(this).find('.date_of_birth').val();
+                        var id = $(this).parent().parent().find('.id').val();
+                        var name = $(this).parent().parent().find('.name').text();
+                        var email = $(this).parent().parent().find('.email').text();
+                        var country = $(this).parent().parent().find('.country').text();
+                        var phone_number = $(this).parent().parent().find('.phone_number').text();
+                        var last_transaction = $(this).parent().parent().find('.last_transaction').text();
+                        var total_amount_usd = $(this).parent().parent().find('.total_amount_usd').val();
+                        var date_of_birth = $(this).parent().parent().find('.date_of_birth').val();
 
 
                         $("#id").val(id);
@@ -490,14 +490,14 @@
 
     ///////......show user data in modal....//////
     $('.getuserdata').click(function() {
-        var id = $(this).find('.id').val();
-        var name = $(this).find('.name').text();
-        var email = $(this).find('.email').text();
-        var country = $(this).find('.country').text();
-        var phone_number = $(this).find('.phone_number').text();
-        var last_transaction = $(this).find('.last_transaction').text();
-        var total_amount_usd = $(this).find('.total_amount_usd').val();
-        var date_of_birth = $(this).find('.date_of_birth').val();
+        var id = $(this).parent().parent().find('.id').val();
+        var name = $(this).parent().parent().find('.name').text();
+        var email = $(this).parent().parent().find('.email').text();
+        var country = $(this).parent().parent().find('.country').text();
+        var phone_number = $(this).parent().parent().find('.phone_number').text();
+        var last_transaction = $(this).parent().parent().find('.last_transaction').text();
+        var total_amount_usd = $(this).parent().parent().find('.total_amount_usd').val();
+        var date_of_birth = $(this).parent().parent().find('.date_of_birth').val();
 
 
         $("#id").val(id);
