@@ -355,6 +355,12 @@
 
     });
 
+    $("#printBtn").click(function(){
+        $("#printSection").printThis({
+            pageTitle: "Transaction Details",
+        });
+    });
+
 
     $("#download").click(function(e) {
         var status = $("#statusTransactionModal").text();
