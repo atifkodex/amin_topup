@@ -215,41 +215,43 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content user-modal">
             <div class="modal-body px-4" id="content">
-                <div class="user-modal-header py-3">
-                    <h1>User Details</h1>
-                </div>
-                <input type="hidden" id="id">
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>User</p>
-                    <p id="name_id">Muhammad Ali</p>
-                </div>
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>Email</p>
-                    <p id="email_id">aliahmed666@gmail.com</p>
-                </div>
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>Date of Birth</p>
-                    <p id="date_of_birth_id">12/16/1994</p>
-                </div>
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>Country</p>
-                    <p id="country_id">Afghanistan</p>
-                </div>
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>Phone Number</p>
-                    <p id="phone_number_id">+93 700 00 00 000</p>
-                </div>
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>Last Purchase</p>
-                    <p id="last_transaction_id">08/22/2022 <span class="user-modal-time">10:00 pm</span></p>
-                </div>
-                <div class="user-modal-content d-flex justify-content-between">
-                    <p>Total Purchase</p>
-                    <p id="total_amount_usd_id">500 USD</p>
+                <div id="printSection">
+                    <div class="user-modal-header py-3">
+                        <h1>User Details</h1>
+                    </div>
+                    <input type="hidden" id="id">
+                    <div class="user-modal-content d-flex justify-content-between">
+                        <p>User</p>
+                        <p id="name_id">Muhammad Ali</p>
+                    </div>
+                    <div class="user-modal-content d-flex justify-content-between">
+                        <p>Email</p>
+                        <p id="email_id">aliahmed666@gmail.com</p>
+                    </div>
+                    <div class="user-modal-content d-flex justify-content-between">
+                        <p>Date of Birth</p>
+                        <p id="date_of_birth_id">12/16/1994</p>
+                    </div>
+                    <div class="user-modal-content d-flex justify-content-between">
+                        <p>Country</p>
+                        <p id="country_id">Afghanistan</p>
+                    </div>
+                    <div class="user-modal-content d-flex justify-content-between">
+                        <p>Phone Number</p>
+                        <p id="phone_number_id">+93 700 00 00 000</p>
+                    </div>
+                    <div class="user-modal-content d-flex justify-content-between">
+                        <p>Last Purchase</p>
+                        <p id="last_transaction_id">08/22/2022 <span class="user-modal-time">10:00 pm</span></p>
+                    </div>
+                    <div class="user-modal-content d-flex justify-content-between">
+                        <p>Total Purchase</p>
+                        <p id="total_amount_usd_id">500 USD</p>
+                    </div>
                 </div>
 
                 <div class="user-modal-button d-flex justify-content-center">
-                    <button class="mr-1">Print</button>
+                    <button class="mr-1" id="printBtn">Print</button>
                     <button class="ml-1" id="download">Download</button>
                 </div>
             </div>
@@ -511,6 +513,12 @@
         $("#total_amount_usd_id").html(total_amount_usd);
         $("#date_of_birth_id").html(date_of_birth);
 
+    });
+
+    $("#printBtn").click(function(){
+        $("#printSection").printThis({
+            pageTitle: "Transaction Details",
+        });
     });
 
     $("#download").click(function(e) {
