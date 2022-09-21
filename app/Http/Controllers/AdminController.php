@@ -360,6 +360,7 @@ class AdminController extends Controller
                 'STRIPE_SECRET' => $setting->secret_key,
                 'STRIPE_KEY' => $setting->publishable_key
             ];
+            \Artisan::call('cache:clear');
             $respone = $this->update_env($data);
             if ($respone) {
                 return $this->sendResponse($setting, "Data Updated Successfully");
