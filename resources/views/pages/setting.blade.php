@@ -614,7 +614,6 @@
   	"progressBar" : true
   }
   	toastr.success("{{ session('message') }}");
-    (Session::forget('message'));
   @endif
 
   @if(Session::has('error'))
@@ -624,7 +623,6 @@
   	"progressBar" : true
   }
   		toastr.error("{{ session('error') }}");
-    (Session::forget('error'));
 
   @endif
 
