@@ -291,7 +291,7 @@ class AdminController extends Controller
 
     public function adminNotifications()
     {
-        $notifications = NotificationLog::where('notification_type', 'contact')->orwhere('notification_type', 'transaction')->where('notification_status', 0)->get();
+        $notifications = NotificationLog::where(['notification_type'=> 'contact', 'notification_status'=> 0])->orwhere(['notification_type'=> 'transaction', 'notification_status'=> 0])->get();
         if (count($notifications) > 0) {
             foreach ($notifications as $notification) {
                 if ($notification['notification_type'] == 'contact') {
