@@ -303,7 +303,7 @@ class AdminController extends Controller
                     $notification['message'] = $userName . ' made a transaction of ' . $transaction->topup_amount;
                 }
             }
-            NotificationLog::update(['notification_status' => 1]);
+            NotificationLog::where('notification_type', 'contact')->orwhere('notification_type', 'transaction')->update(['notification_status' => 1]);
             return $this->sendResponse($notifications, "list of notifications for admin");
         } else {
             return $this->sendError("No notifications found for user");
