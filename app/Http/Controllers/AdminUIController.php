@@ -298,7 +298,7 @@ class AdminUIController extends Controller
             return redirect()->back()->with('message','Data added Successfully');
         } else {
             // Alert::error('Error', $changeResponse['message']);
-            return redirect()->back()->with('message','There was an error.');
+            return redirect()->back()->with('error','There was an error.');
         }
     }
     public function downloadPdf(Request $request)
