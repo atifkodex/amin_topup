@@ -622,7 +622,8 @@
     let rate = $(this).find('input').val();
     let money = $(this).parent().find(".topupAfn").find('input').val();
     let usdAmount = money / rate;
-    $(this).parent().find(".aminPrice").text("$" + usdAmount);
+    let usdAmountRounded = round(usdAmount, 2);
+    $(this).parent().find(".aminPrice").text("$" + usdAmountRounded);
     let id = $(this).parent().find(".operator_id").val();
 
     // Ajax call 
