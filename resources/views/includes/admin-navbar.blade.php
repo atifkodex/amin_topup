@@ -313,7 +313,9 @@
               },
               error: function (jqXHR, exception) {
                 $("#appendNotification").empty(); 
-                  let div = `<div class="">No New Notifications</div>`;
+                  let div = `<div class="pt-5">
+                    <h3 class="text-center">No New Notifications</h3>
+                  </div>`;
                   $("#appendNotification").append(div);
               },
           });
