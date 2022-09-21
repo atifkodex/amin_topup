@@ -312,10 +312,10 @@
                   });
               },
               error: function (jqXHR, exception) {
-                 $("#appendNotification").empty(); 
+                $("#appendNotification").empty(); 
                   let div = `<div class="">No New Notifications</div>`;
                   $("#appendNotification").append(div);
-              };
+              },
           });
     });
   });
