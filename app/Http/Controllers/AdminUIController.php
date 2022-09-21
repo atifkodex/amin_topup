@@ -294,11 +294,11 @@ class AdminUIController extends Controller
         $convertor = $response->body();
         $changeResponse = json_decode($convertor, true);
         if ($changeResponse['success'] == true) {
-            Alert::success('Success', 'Data updated successfully.');
-            return redirect()->back();
+            // Alert::success('Success', 'Data updated successfully.');
+            return redirect()->back()->with('message','Data added Successfully');
         } else {
-            Alert::error('Error', $changeResponse['message']);
-            return redirect()->back();
+            // Alert::error('Error', $changeResponse['message']);
+            return redirect()->back()->with('message','There was an error.');
         }
     }
     public function downloadPdf(Request $request)
