@@ -458,7 +458,7 @@
 
                     div = div + `<input class="date_of_birth" type="hidden" value="${e.date_of_birth}">
                                 <td class="data">
-                                    <img class="" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
+                                    <img class="getuserdata" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                 </td>
                             </tr>`;
                     $(".userTable").append(div);
