@@ -283,6 +283,11 @@
                   'Content-Type' : 'application/json'
               },
               success: function(response) {
+                if(response.success == false){
+                  $("#appendNotification").empty(); 
+                  let div = `<div class="">No New Notifications</div>`;
+                  $("#appendNotification").append(div);
+                }
                 let notificationsArray = [];
                   response.data.forEach(notification => {
                       notificationsArray.push(notification);
