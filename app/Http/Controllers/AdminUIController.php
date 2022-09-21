@@ -274,11 +274,9 @@ class AdminUIController extends Controller
         $convertor = $response->body();
         $changeResponse = json_decode($convertor, true);
         if ($changeResponse['success'] == true) {
-            Alert::success('Success', 'Password Changed successfully.');
-            return redirect()->back();
+            return redirect()->back()->with('message','Password updated Successfully');
         } else {
-            Alert::error('Error', $changeResponse['message']);
-            return redirect()->back();
+            return redirect()->back()->with('error','Something went wrong, try again');
         }
     }
 
@@ -294,10 +292,8 @@ class AdminUIController extends Controller
         $convertor = $response->body();
         $changeResponse = json_decode($convertor, true);
         if ($changeResponse['success'] == true) {
-            // Alert::success('Success', 'Data updated successfully.');
             return redirect()->back()->with('message','Data added Successfully');
         } else {
-            // Alert::error('Error', $changeResponse['message']);
             return redirect()->back()->with('error','There was an error.');
         }
     }
