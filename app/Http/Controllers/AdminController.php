@@ -290,8 +290,15 @@ class AdminController extends Controller
     }
 
     public function adminNotifications()
-    {
-        $notifications = NotificationLog::where(['notification_type'=> 'contact', 'notification_status'=> 0])->orwhere(['notification_type'=> 'transaction', 'notification_status'=> 0])->orderBy('created_at', 'DESC')->get();
+{       $notification_type = ['contact' => 'contact', 'transaction' => "transaction"];
+        $notifications = NotificationLog::where(function ($q) use ($notification_type) {
+            $q->Where('notification_type', '=', $notification_type['contact'])
+                ->where('notification_status', "=", 0);
+        })->orwhere(function ($q) use ($notification_type) {
+            $q->Where('notification_type', '=', $notification_type['transaction'])
+                ->where('notification_status', "=", 0);
+        })->get();
+        // $notifications = NotificationLog::where(['notification_type'=> 'contact'])->orwhere(['notification_type'=> 'transaction'])->orderBy('created_at', 'DESC')->get();
         if (count($notifications) > 0) {
             foreach ($notifications as $notification) {
                 if ($notification['notification_type'] == 'contact') {
@@ -309,7 +316,7 @@ class AdminController extends Controller
             return $this->sendError("No notifications found for user");
         }
     }
-    
+
     public function resolve(Request $request)
     {
         $validator = Validator::make($request->all(), [
