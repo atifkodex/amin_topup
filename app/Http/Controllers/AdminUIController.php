@@ -274,9 +274,9 @@ class AdminUIController extends Controller
         $convertor = $response->body();
         $changeResponse = json_decode($convertor, true);
         if ($changeResponse['success'] == true) {
-            return redirect()->back()->with('message','Password updated Successfully');
+            return back()->with('message','Password updated Successfully');
         } else {
-            return redirect()->back()->with('error','Something went wrong, try again');
+            return back()->with('error','Something went wrong, try again');
         }
     }
 
@@ -292,9 +292,9 @@ class AdminUIController extends Controller
         $convertor = $response->body();
         $changeResponse = json_decode($convertor, true);
         if ($changeResponse['success'] == true) {
-            return redirect()->back()->with('message','Data added Successfully');
+            return back()->with('message','Data added Successfully');
         } else {
-            return redirect()->back()->with('error','There was an error.');
+            return back()->with('error','There was an error.');
         }
     }
     public function downloadPdf(Request $request)
