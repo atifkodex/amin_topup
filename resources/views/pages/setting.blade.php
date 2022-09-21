@@ -626,6 +626,13 @@
     $(this).parent().find(".aminPrice").text("$" + usdAmountRounded);
     let id = $(this).parent().find(".operator_id").val();
 
+    let aminPercentage = $(this).parent().find(".percentageDeduct").find('input').val();
+    let perToPrice = (aminPercentage * usdAmountRounded) / 100;
+
+    let stripeFees = $(this).parent().find(".stripeFee").find('input').val();
+    let totalPayable = usdAmountRounded + perToPrice + stripeFees;
+    let totalPayableRounded = totalPayable.toFixed(2); 
+    $(this).parent().find(".userTotal").text(totalPayableRounded);
     // Ajax call 
     $.ajax({
       url: 'http://kodextech.net/amin-topup/api/update_operator',
