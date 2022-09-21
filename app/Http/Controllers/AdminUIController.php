@@ -266,6 +266,9 @@ class AdminUIController extends Controller
     }
     public function changePassword(Request $request)
     {
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
         $value = Session::get('loginData');
         $token = $value['user']['token'];
         $data = $request->all();
@@ -327,5 +330,12 @@ class AdminUIController extends Controller
         $file = 'C:\xampp\htdocs\amin-topup\public' . '.pdf';
         $pdf->output($file, 'D');
         // $pdf->save();
+    }
+
+    public function changePasswordPage(){
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
+        return view('pages.auth.change-password');
     }
 }
