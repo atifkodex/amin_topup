@@ -101,7 +101,7 @@
                                                 @if(!empty($post['users_device']))
                                                 <td class="data">{{$post['users_device']}}</td>
                                                 @else
-                                                <td class="data">Not Set</td>
+                                                <td class="data">N/A</td>
                                                 @endif
 
                                                 @if(!empty($post['country']))
@@ -449,19 +449,40 @@
                     let div = `<tr>
                                 <td class="data name">${e.name}</td>
                                 <td class="data email">${e.email}</td>
-                                <td class="data email">${e.email}</td>
-                                <td class="data email">${e.country}</td>
-                                <td class="data country">${e.phone_number}</td>
-                                <td class="data phone_number">${e.last_transaction}</td>`;
+                                <td class="data">${e.users_device}</td>
+                                <td class="data country">${e.country}</td>
+                                <td class="data phone_number">${e.phone_number}</td>
+                                <td class="data last_transaction">${e.last_transaction}</td>`;
                     if (e.transaction != undefined && e.transaction != '')
                         div = div + `<input class="total_amount_usd" type="hidden" value="${e.transaction['total_amount_usd']}">`;
 
-                    div = div + `<input class="total_amount_usd" type="hidden" value="${e.date_of_birth}">
+                    div = div + `<input class="date_of_birth" type="hidden" value="${e.date_of_birth}">
                                 <td class="data">
                                     <img class="" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                 </td>
                             </tr>`;
                     $(".userTable").append(div);
+                    $('.getuserdata').click(function() {
+                        var id = $(this).find('.id').val();
+                        var name = $(this).find('.name').text();
+                        var email = $(this).find('.email').text();
+                        var country = $(this).find('.country').text();
+                        var phone_number = $(this).find('.phone_number').text();
+                        var last_transaction = $(this).find('.last_transaction').text();
+                        var total_amount_usd = $(this).find('.total_amount_usd').val();
+                        var date_of_birth = $(this).find('.date_of_birth').val();
+
+
+                        $("#id").val(id);
+                        $("#name_id").html(name);
+                        $("#email_id").html(email);
+                        $("#country_id").html(country);
+                        $("#phone_number_id").html(phone_number);
+                        $("#last_transaction_id").html(last_transaction);
+                        $("#total_amount_usd_id").html(total_amount_usd);
+                        $("#date_of_birth_id").html(date_of_birth);
+
+                    });
                 });
             }
         });
