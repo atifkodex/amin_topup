@@ -632,7 +632,7 @@
     let stripeFees = $(this).parent().find(".stripeFee").find('input').val();
     let totalPayable = parseFloat(usdAmountRounded) + parseFloat(perToPrice) + parseFloat(stripeFees);
     let totalPayableRounded = totalPayable.toFixed(2); 
-    $(this).parent().find(".userTotal").text(totalPayableRounded);
+    $(this).parent().find(".userTotal").text("$" + totalPayableRounded);
     // Ajax call 
     $.ajax({
       url: 'http://kodextech.net/amin-topup/api/update_operator',
