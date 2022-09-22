@@ -271,6 +271,8 @@
 <script>
     // import FileSaver from 'file-saver';
     var token = @json($token);
+    var LiveURL = '{{ env('BASE_URL_LIVE') }}';
+
     getPagination('#table-id');
 
     function getPagination(table) {
@@ -401,6 +403,7 @@
 </script>
 
 <script>
+
     $(document).ready(function() {
         $("#next span").click(function() {
             $('#next').addClass('active');
@@ -432,7 +435,7 @@
         let formData = JSON.stringify(parameter);
         // Ajax call 
         $.ajax({
-            url: 'http://kodextech.net/amin-topup/api/users',
+            url: LiveURL6+'/api/users',
             dataType: 'json',
             type: 'POST',
             data: formData,

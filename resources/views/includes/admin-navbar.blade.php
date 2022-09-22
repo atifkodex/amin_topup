@@ -272,10 +272,12 @@
 
 <!-- Backend Script  -->
 <script>
+    var LiveURL = '{{ env('BASE_URL_LIVE') }}';
+  
   $(document).ready(function() {
     $("#notificationIcon").click(function() {
       $.ajax({
-              url: 'http://kodextech.net/amin-topup/api/admin_notifications',
+              url: LiveURL+'/api/admin_notifications',
               type: 'POST',
               dataType: 'json', // added data type
               headers: {

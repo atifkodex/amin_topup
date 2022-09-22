@@ -401,6 +401,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.de.min.js"></script>
 <script>
+    var LiveURL = '{{ env('BASE_URL_LIVE') }}';
     var roshanPercentage = $(".roshanPercentage").val();
     var etisalatPercentage = $(".etisalatPercentage").val();
     var salaamPercentage = $(".salaamPercentage").val();
@@ -518,7 +519,7 @@
             date: value
         };
         $.ajax({
-            url: liveUrl + 'api/dashboard',
+            url: LiveURL + '/api/dashboard',
             type: 'POST',
             dataType: 'json', // added data type
             headers: {

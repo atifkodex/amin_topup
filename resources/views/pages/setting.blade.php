@@ -607,6 +607,8 @@
 
 <!-- Toaster Scripts Start-->
 <script>
+    var LiveURL = '{{ env('BASE_URL_LIVE') }}';
+
   @if(Session::has('message'))
   toastr.options =
   {
@@ -676,7 +678,7 @@
     $(this).parent().find(".userTotal").text("$" + totalPayableRounded);
     // Ajax call 
     $.ajax({
-      url: 'http://kodextech.net/amin-topup/api/update_operator',
+      url: LiveURL+'/api/update_operator',
       type: 'POST',
       dataType: 'json', // added data type
       data: {
@@ -719,7 +721,7 @@
 
     // Ajax call 
     $.ajax({
-      url: 'http://kodextech.net/amin-topup/api/update_operator',
+      url: LiveURL+'/api/update_operator',
       type: 'POST',
       dataType: 'json', // added data type
       data: {
@@ -759,7 +761,7 @@
 
     // Ajax call 
     $.ajax({
-      url: 'http://kodextech.net/amin-topup/public/api/admin/update_operator',
+      url: LiveURL+'/api/update_operator',
       type: 'POST',
       dataType: 'json', // added data type
       data: {

@@ -249,6 +249,8 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
 <script>
     var token = @json($token);
+    var LiveURL = '{{ env('BASE_URL_LIVE') }}';
+
     $("#transactionFilterForm").submit(function(e) {
         e.preventDefault();
         var username = $("#username").val();
@@ -265,7 +267,7 @@
         };
         // Ajax call 
         $.ajax({
-            url: 'http://kodextech.net/amin-topup/api/transactions',
+            url: LiveURL + '/api/transactions',
             dataType: 'json',
             type: 'POST',
             data: JSON.stringify(parameter),
