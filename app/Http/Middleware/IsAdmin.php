@@ -25,7 +25,7 @@ class IsAdmin
             return $next($request);
         }
         $message = session::flash('message', "Only admins can access");
-        return redirect('/')->with('error', $message);
+        return redirect('/admin')->with('error', $message);
         // if (auth()->user()->type == 'admin') {
         //     return $next($request);
         // }

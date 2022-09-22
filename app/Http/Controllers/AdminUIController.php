@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Session;
 use Brian2694\Toastr\Facades\Toastr;
 use RealRashid\SweetAlert\Facades\Alert;
 use Codedge\Fpdf\Fpdf\Fpdf;
+use Cache;
 
 
 
@@ -38,8 +39,10 @@ class AdminUIController extends Controller
             'password' => 'required',
         ]);
         if ($validator->fails()) {
-            session::flash('message', $validator);
-            return Redirect::back()->withErrors($validator);
+        //  $errors=   $validator->errors();
+        //  dd($errors->email);
+            // session::flash('validator', $validator->errors());
+            return back()->withErrors($validator->messages())->withInput();
         }
         $response = Http::withHeaders([
             'Content-Type' => 'application/json'
@@ -47,7 +50,6 @@ class AdminUIController extends Controller
         $responseBody = $response->body();
         $test = json_decode($responseBody, true);
         if ($test['success'] == false) {
-
             session::flash('message', $test['message']);
             return redirect()->back();
         } elseif ($test['success'] == true) {
@@ -337,5 +339,14 @@ class AdminUIController extends Controller
         header("Cache-Control: post-check=0, pre-check=0", false);
         header("Pragma: no-cache");
         return view('pages.auth.change-password');
+    }
+
+    public function logout() {
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
+        Session::flush();
+        Cache::flush();
+        return redirect('/admin');
     }
 }

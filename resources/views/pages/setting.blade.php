@@ -386,7 +386,9 @@
             <!-- // Publishable Key Section // -->
 
 
-            <?php $type = $value['user']['type']; ?>
+            <?php $type = $value['user']['type'];
+            $stripeKey = env('STRIPE_KEY'); 
+            $stripeSecret = env('STRIPE_SECRET'); ?>
 
             @if ($type == "super_admin")
             <div class="card setting-card mt-5">
@@ -402,13 +404,13 @@
                       <div class="col-6">
                         <div class="form-group stripe-key">
                           <label for="publishablekey">Publishable key</label>
-                          <input type="text" name="publish_key" class="form-control" id="publishablekey" placeholder="Type here">
+                          <input type="text" name="publish_key" value="{{$stripeKey}}" class="form-control" id="publishablekey" placeholder="Type here">
                         </div>
                       </div>
                       <div class="col-6">
                         <div class="form-group stripe-key">
                           <label for="secretkey">Secret key</label>
-                          <input type="text" name="secret_key" class="form-control" id="secretkey" placeholder="Type here">
+                          <input type="text" name="secret_key" value="{{$stripeSecret}}" class="form-control" id="secretkey" placeholder="Type here">
                         </div>
                       </div>
                       <div class="col-6">

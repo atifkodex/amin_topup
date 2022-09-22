@@ -23,6 +23,6 @@ class AdminAuth
        if (Session()->has('loginData')) {
             return $next($request);
         }
-        return redirect()->to('login');
+        return redirect('/admin');
     }
 }
