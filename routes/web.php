@@ -20,7 +20,8 @@ use App\Http\Middleware\IsAdmin;
 Route::post('/admin_login', [AdminUIController::class, 'adminLogin'])->name('adminLogin');
 
 Route::middleware([AdminAuth::class])->group(function () {
-    Route::middleware([IsAdmin::class])->group(function () {
+    Route::group(['prefix' => 'admin', 'middleware' => [IsAdmin::class]], function () {
+
         Route::post('/support', [AdminUIController::class, 'support'])->name('/support');
         Route::get('/dashboard', [AdminUIController::class, 'dashboardDetails'])->name('dashboard-details');
         Route::get('/setting', [AdminUIController::class, 'settingDetails'])->name('setting-details');
@@ -41,10 +42,10 @@ Route::middleware([AdminAuth::class])->group(function () {
     });
 });
 
-Route::get('/', function () {
+Route::get('/admin', function () {
     return view('pages.auth.login');
 });
-Route::get('/login', function () {
+Route::get('/admin/login', function () {
     return view('pages.auth.login');
 });
 

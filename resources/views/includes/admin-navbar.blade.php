@@ -162,7 +162,7 @@
       <div class="sidebar-menu">
         <ul>
           <li class="{{ Request::is('dashboard') ? 'active' : '' }}">
-            <a href="{{url('dashboard')}}">
+            <a href="{{route('dashboard-details')}}">
               <img class="active-icon" src="{{asset('assets/images/dots-icon.svg')}}" alt="dashboard-icon">
               <img class="normal-icon" src="{{asset('assets/images/dots-icon-gray.svg')}}" alt="dashboard-icon-gray">
               Dashboard
@@ -214,9 +214,9 @@
           <i class="fa fa-bars"></i>
         </div>
         <!-- Search Bar -->
-        <div class="search-bar">
+        <!-- <div class="search-bar">
           <input type="text" placeholder="Search anything here ...">
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="col-xl-4 col-sm-5 col-6">
