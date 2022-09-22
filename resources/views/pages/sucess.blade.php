@@ -31,14 +31,14 @@
                 <img src="{{asset('assets/images/check.png')}}" alt="">
             </div>
             <div class="success-body text-center pb-5">
-                <h1>Transaction Completed Sucessfully</h1>
-                <p class="py-3">Thank you for your billing</p>
+                <h1>Coming Soon</h1>
+                <p class="py-3">Thank you for your Interest</p>
             </div>
-            <div class="success-footer text-center">
-                <a href="#">
+            <!-- <div class="success-footer text-center">
+                <a href="https://amintopup.com/admin">
                     <button>Click to Proceed</button>
                 </a>
-            </div>
+            </div> -->
         </div>
      
     </div>

@@ -79,7 +79,7 @@ Route::get('/sign-up', function () {
 //     return view('pages.transaction');
 // });
 
-Route::get('/sucess', function () {
+Route::get('/', function () {
     return view('pages.sucess');
 });
 
