@@ -118,13 +118,14 @@
                                                 @endforeach
                                                 
                                             @endif
-                                            @if(empty($data))
+                                            
+                                        </tbody>
+                                    </table>
+                                    @if(empty($data))
                                                 <div class="text-center">
                                                     <h3>No Transaction available!</h3>
                                                 </div>
                                             @endif
-                                        </tbody>
-                                    </table>
                                     
                                 </div>
                             </div>
