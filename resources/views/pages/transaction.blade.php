@@ -83,7 +83,7 @@
                                         </thead>
                                         <tbody class="newData">
                                         
-                                            @if($data)
+                                            @if(!empty($data))
                                                 @foreach($data as $transaction)
                                                 <tr>
                                                     <td class="data">{{$transaction['id']}}</td>
