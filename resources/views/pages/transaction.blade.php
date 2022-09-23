@@ -82,9 +82,11 @@
                                             </tr>
                                         </thead>
                                         <tbody class="newData">
-                                            <div class="text-center">
-                                                <h3>No Transaction available!</h3>
-                                            </div>
+                                            <tr>
+                                                <div class="text-center">
+                                                    <h3>No Transaction available!</h3>
+                                                </div>
+                                            </tr>
                                             @if(isset($data) && !empty($data))
                                                 @foreach($data as $transaction)
                                                 <tr>
