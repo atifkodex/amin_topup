@@ -78,15 +78,11 @@
                                                 <th>Total Payment in USD</th>
                                                 <th>Status</th>
                                                 <th>Actions</th>
-
+ 
                                             </tr>
                                         </thead>
                                         <tbody class="newData">
-                                            <tr>
-                                                <div class="text-center">
-                                                    <h3>No Transaction available!</h3>
-                                                </div>
-                                            </tr>
+                                        
                                             @if(isset($data) && !empty($data))
                                                 @foreach($data as $transaction)
                                                 <tr>
@@ -120,9 +116,14 @@
                                                     </td>
                                                 </tr>
                                                 @endforeach
+                                                @else
+                                                <div class="text-center">
+                                                    <h3>No Transaction available!</h3>
+                                                </div>
                                             @endif
                                         </tbody>
                                     </table>
+                                    
                                 </div>
                             </div>
                         </div>
