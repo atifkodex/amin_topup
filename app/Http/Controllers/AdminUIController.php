@@ -217,8 +217,12 @@ class AdminUIController extends Controller
         ])->post(\config('url.url').'/api/transactions');
         $convertor = $response->body();
         $response = json_decode($convertor, true);
-        $data = $response['data'];
-        return view('pages.transaction', ['data' => $data, 'token' => $token]);
+        if($response['success'] == false){
+            return view('pages.transaction', ['token' => $token]);
+        }elseif($response['success'] == true){
+            $data = $response['data'];
+            return view('pages.transaction', ['data' => $data, 'token' => $token]);
+        }
     }
 
     // public function transactionsList(Request $request){

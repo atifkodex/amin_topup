@@ -82,38 +82,43 @@
                                             </tr>
                                         </thead>
                                         <tbody class="newData">
-                                            @foreach($data as $transaction)
-                                            <tr>
-                                                <td class="data">{{$transaction['id']}}</td>
-                                                <td class="data">
-                                                    @if($transaction['transaction_id'] == null)
-                                                    Not Set
+                                            <div class="text-center">
+                                                <h3>No Transaction available!</h3>
+                                            </div>
+                                            @if(isset($data && !empty($data)))
+                                                @foreach($data as $transaction)
+                                                <tr>
+                                                    <td class="data">{{$transaction['id']}}</td>
+                                                    <td class="data">
+                                                        @if($transaction['transaction_id'] == null)
+                                                        Not Set
+                                                        @else
+                                                        {{$transaction['transaction_id']}}
+                                                        @endif
+                                                    </td>
+                                                    <td class="data transactionId">{{$transaction['dateTime']}}</td>
+                                                    <td class="data senderName">{{$transaction['senderName']}}</td>
+                                                    <td class="data receiverNumber">{{$transaction['receiver_number']}}</td>
+                                                    <td class="data network">{{$transaction['receiver_network']}}</td>
+                                                    <td class="data topupAmount">{{$transaction['topup_amount']}}</td>
+                                                    <td class="data amountUsd">{{$transaction['topup_amount_usd']}}</td>
+                                                    <td class="data processingFee">${{$transaction['processing_fee']}}</td>
+                                                    <td class="data totalAmountUsd">$ {{$transaction['total_amount_usd']}}</td>
+                                                    @if($transaction['status'] == 0)
+                                                    <td class="data text-danger statusTransaction">
+                                                        False
+                                                    </td>
                                                     @else
-                                                    {{$transaction['transaction_id']}}
+                                                    <td class="data success statusTransaction">
+                                                        Success
+                                                    </td>
                                                     @endif
-                                                </td>
-                                                <td class="data transactionId">{{$transaction['dateTime']}}</td>
-                                                <td class="data senderName">{{$transaction['senderName']}}</td>
-                                                <td class="data receiverNumber">{{$transaction['receiver_number']}}</td>
-                                                <td class="data network">{{$transaction['receiver_network']}}</td>
-                                                <td class="data topupAmount">{{$transaction['topup_amount']}}</td>
-                                                <td class="data amountUsd">{{$transaction['topup_amount_usd']}}</td>
-                                                <td class="data processingFee">${{$transaction['processing_fee']}}</td>
-                                                <td class="data totalAmountUsd">$ {{$transaction['total_amount_usd']}}</td>
-                                                @if($transaction['status'] == 0)
-                                                <td class="data text-danger statusTransaction">
-                                                    False
-                                                </td>
-                                                @else
-                                                <td class="data success statusTransaction">
-                                                    Success
-                                                </td>
-                                                @endif
-                                                <td class="data">
-                                                    <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer" class="actionBtnTransaction">
-                                                </td>
-                                            </tr>
-                                            @endforeach
+                                                    <td class="data">
+                                                        <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer" class="actionBtnTransaction">
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            @endif
                                         </tbody>
                                     </table>
                                 </div>
