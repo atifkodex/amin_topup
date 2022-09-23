@@ -85,7 +85,7 @@
                                             <div class="text-center">
                                                 <h3>No Transaction available!</h3>
                                             </div>
-                                            @if(isset($data && !empty($data)))
+                                            @if(isset($data) && !empty($data))
                                                 @foreach($data as $transaction)
                                                 <tr>
                                                     <td class="data">{{$transaction['id']}}</td>
