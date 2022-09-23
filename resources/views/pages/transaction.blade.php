@@ -116,7 +116,9 @@
                                                     </td>
                                                 </tr>
                                                 @endforeach
-                                                @else
+                                                
+                                            @endif
+                                            @if(empty($data))
                                                 <div class="text-center">
                                                     <h3>No Transaction available!</h3>
                                                 </div>
