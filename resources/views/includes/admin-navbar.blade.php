@@ -150,7 +150,7 @@
     <div class="sidebar-inner">
       <div class="sidebar-logo">
 
-        <a href="{{url('dashboard')}}">
+        <a href="{{route('dashboard-details')}}">
 
 
           <img src="{{ asset('assets/images/logo.svg') }}" alt="logo">
