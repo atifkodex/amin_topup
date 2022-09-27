@@ -79,8 +79,14 @@ Route::get('/sign-up', function () {
 //     return view('pages.transaction');
 // });
 
-Route::get('/', function () {
-    return view('pages.sucess');
-});
+// Route::get('/', function () {
+//     return view('pages.sucess');
+// });
 
 Auth::routes();
+
+
+// website
+Route::get('/', function () {
+    return view('pages.website.home');
+});
