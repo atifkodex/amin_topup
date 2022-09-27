@@ -13,6 +13,7 @@ body {
 }
 // navbar
 .navbar-bg{
+  z-index: 9999;
     background-image: url('../website-images/navbar-bg.svg');
     background-position: center;
     background-size: cover;
@@ -51,7 +52,7 @@ body {
         display: flex;
         align-items: center;
         .nav-link{
-            background: #F89822;
+            background: $color-yellow;
             border-radius: 26px;
             padding: 4px 15px;
         }
@@ -100,16 +101,204 @@ body {
   }
   
 // home
+// hero section
 .hero-section{
+  position: relative;
   padding-left: 0px !important;
   padding-right: 0px !important;
-  img{
+  .hero-image{
     width: 100%;
     margin-top: -10%;
+  }
+  .hero-form-section{
+    background: rgba(0, 0, 0, 0.39);
+    border-radius: 16px;
+    width: 50%;
+    padding: 40px 20px;
+    form{
+      button{
+        background: $color-yellow;
+        color: black;
+        height: 50px;
+      }
+      .left-inner-addon {
+        position: relative;
+        img{
+          position: absolute;
+          padding: 12px 12px;
+          pointer-events: none;
+          width: 50px;
+          z-index: 999;
+          top: 0px;
+          left: -5px;
+        }
+        .phone-extension{
+          position: absolute;
+          padding: 4px 12px;
+          pointer-events: none;
+          width: 50px;
+          z-index: 999;
+          top: 11px;
+          left:24px;
+          color: #3F4765;
+          font-size: 13px;
+          border-right: 1px solid #3f476561;
+        }
+        input {
+          padding-left:80px !important; 
+          height:50px;
+        }
+      }
+    
+    }
+    &.centered {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    @media screen and (min-width:1600px){
+      width: 60%;
+      padding: 50px 20px;
+    }
+    @media screen and (max-width:768px) and (min-width:576px)  {
+      width: 60%;
+      
+      }
+      @media screen and (max-width:575px){
+        width: 70%;
+        padding: 10px 10px;
+        &.centered {
+          top:28%;
+        }
+        form{
+          .left-inner-addon{
+            img{
+              width:45px;
+              top:-5px;
+            }
+            input{
+              height: 35px;
+            }
+            .phone-extension{
+              top: 4px;
+            }
+          }
+          button{
+            height: 35px;
+          }
+        }
+       
+      }
+  }
+
+}
+// service section
+.service-section{
+  position: relative;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  .service-section-bg{
+    width: 100%;
+    margin-top: -20%;
+    @media screen and (max-width:991px){
+      display: none;
+    }
+  }
+  .service-heading{
+    position: absolute;
+    top: 0px;
+    left: 15%;
+    h1{
+      font-size: 3vw;
+      color: white;
+      font-weight: bold;
+       width: 70%;
+    }
+    @media screen and (max-width:991px){
+      background-color: $color-yellow;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      h1{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        margin-bottom: 0px;
+        justify-content: center;
+        padding: 20px 0px;
+      }
+     
+     }
+  }
+  .service-list{
+    position: absolute;
+    top: -31px;
+    left: 37%;
+    width: 50%;
+    @media screen and (max-width:991px) and (min-width:300px)  {
+      top:22%;
+      width: 100%;
+      left: 0;
+      background: #F0F7FF;
+      min-height: 300px;
+      .service-inner-list{
+        padding-top: 60px;
+      }
+    }
+      // transform: translate(-50%, -50%);
+    .service-inner-list{
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: space-around;
+      .service-card{
+        display: flex;
+        padding: 1rem;
+        justify-content: center;
+        align-items: center;
+        .service-icon{
+          width: 50px;
+          height: 50px;
+          margin-right: 10px;
+        }
+        .service-card-content{
+          p{
+            margin-bottom: 0px;
+            font-size: 24px;
+          }
+          p:first-of-type{
+            color: #433A2A;
+          }
+          p:last-of-type{
+            color: $color-yellow;
+            font-weight: bold;
+          }
+        }
+        @media screen and (max-width:1070px) and (min-width:992px)  {
+            .service-icon{
+              width: 40px;
+              height: 40px;
+              margin-right: 10px;
+            }
+            .service-card-content{
+              p{
+                font-size:18px;
+              }
+            }
+         
+          }
+          
+          
+     
+      }
+    }
+
+
   }
 }
   
 
   
   
-  
+
