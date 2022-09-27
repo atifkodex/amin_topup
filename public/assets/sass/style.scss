@@ -1,0 +1,115 @@
+$color-white:#ffffff;
+$color-yellow:#F89822;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  padding-bottom:250px;
+  min-height: 100vh;
+}
+// navbar
+.navbar-bg{
+    background-image: url('../website-images/navbar-bg.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @media only screen and (min-width:768px) {
+       padding-left: 70px;
+       padding-right: 70px;
+      }
+    button{
+      img{
+        width: 30px;
+      }
+    }
+}
+.navbar-nav{
+    .nav-item{
+        &.active{
+            color:$color-white !important;
+            .nav-link{
+                color:$color-white;
+                font-size: 16px;           
+            }
+        }
+        .nav-link{
+            color:$color-white;
+            font-size: 16px;  
+            @media only screen and (min-width:768px) {
+                padding: 8px 20px;
+               }
+          &:hover,&:focus,&:active{
+            color: $color-white;
+          }
+        }
+    }
+    li:last-child{
+        display: flex;
+        align-items: center;
+        .nav-link{
+            background: #F89822;
+            border-radius: 26px;
+            padding: 4px 15px;
+        }
+    }
+}
+// footer
+
+/*FOOTER*/
+
+.footers{
+  background-image: url('../website-images/footer-bg.svg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+    color:$color-white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    a {
+      color: #fff;
+      font-size: 16px;
+      transition-duration: 0.2s;
+      &:hover{
+        color: $color-white;
+        text-decoration: none;
+      }
+    }
+    .footer-pad{
+      h4{
+        color: $color-yellow;
+        font-size: 14px;
+      }
+    }
+    .copy {
+     
+      padding: 10px;
+      border-top: 1px solid #033366;
+      p{
+        font-size: 14px;
+      }
+    }
+    .footer-middle {
+      padding-top: 2em;
+      color: white;
+    }
+  }
+  
+// home
+.hero-section{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  img{
+    width: 100%;
+    margin-top: -10%;
+  }
+}
+  
+
+  
+  
+  
