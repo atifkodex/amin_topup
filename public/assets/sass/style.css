@@ -1,8 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
@@ -12,19 +11,18 @@ body {
 }
 
 .navbar-bg {
+  z-index: 9999;
   background-image: url("../website-images/navbar-bg.svg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
-
 @media only screen and (min-width: 768px) {
   .navbar-bg {
     padding-left: 70px;
     padding-right: 70px;
   }
 }
-
 .navbar-bg button img {
   width: 30px;
 }
@@ -32,36 +30,26 @@ body {
 .navbar-nav .nav-item.active {
   color: #ffffff !important;
 }
-
 .navbar-nav .nav-item.active .nav-link {
   color: #ffffff;
   font-size: 16px;
 }
-
 .navbar-nav .nav-item .nav-link {
   color: #ffffff;
   font-size: 16px;
 }
-
 @media only screen and (min-width: 768px) {
   .navbar-nav .nav-item .nav-link {
     padding: 8px 20px;
   }
 }
-
 .navbar-nav .nav-item .nav-link:hover, .navbar-nav .nav-item .nav-link:focus, .navbar-nav .nav-item .nav-link:active {
   color: #ffffff;
 }
-
 .navbar-nav li:last-child {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .navbar-nav li:last-child .nav-link {
   background: #F89822;
   border-radius: 26px;
@@ -79,33 +67,26 @@ body {
   bottom: 0;
   width: 100%;
 }
-
 .footers a {
   color: #fff;
   font-size: 16px;
-  -webkit-transition-duration: 0.2s;
-          transition-duration: 0.2s;
+  transition-duration: 0.2s;
 }
-
 .footers a:hover {
   color: #ffffff;
   text-decoration: none;
 }
-
 .footers .footer-pad h4 {
   color: #F89822;
   font-size: 14px;
 }
-
 .footers .copy {
   padding: 10px;
   border-top: 1px solid #033366;
 }
-
 .footers .copy p {
   font-size: 14px;
 }
-
 .footers .footer-middle {
   padding-top: 2em;
   color: white;
@@ -115,9 +96,7 @@ body {
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
-
 .hero-section img {
   width: 100%;
   margin-top: -10%;
-}
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

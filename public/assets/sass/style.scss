@@ -13,6 +13,7 @@ body {
 }
 // navbar
 .navbar-bg{
+    z-index: 9999;
     background-image: url('../website-images/navbar-bg.svg');
     background-position: center;
     background-size: cover;

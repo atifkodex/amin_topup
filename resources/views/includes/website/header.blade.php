@@ -10,4 +10,5 @@
 <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}">
 <!-- ============== Custom Css Link ============== -->
 <link rel="stylesheet" href="{{asset('assets/sass/style.css')}}">
+<link rel="stylesheet" href="{{asset('assets/sass/wahid.css')}}">
 

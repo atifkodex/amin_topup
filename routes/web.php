@@ -90,3 +90,6 @@ Auth::routes();
 Route::get('/', function () {
     return view('pages.website.home');
 });
+Route::get('/receiver_detail', function () {
+    return view('pages.website.receiver-detail');
+});
