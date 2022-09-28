@@ -8,7 +8,7 @@ $color-yellow:#F89822;
 
 body {
   position: relative;
-  padding-bottom:250px;
+  // padding-bottom:250px;
   min-height: 100vh;
 }
 // navbar
@@ -68,8 +68,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
     color:$color-white;
-    position: absolute;
-    bottom: 0;
+    // position: absolute;
+    // bottom: 0;
     width: 100%;
     a {
       color: #fff;
@@ -200,14 +200,14 @@ body {
   padding-right: 0px !important;
   .service-section-bg{
     width: 100%;
-    margin-top: -20%;
-    @media screen and (max-width:991px){
+    margin-top: -23%;
+    @media screen and (max-width:768px){
       display: none;
     }
   }
   .service-heading{
     position: absolute;
-    top: 0px;
+    top:-20px;
     left: 15%;
     h1{
       font-size: 3vw;
@@ -215,7 +215,7 @@ body {
       font-weight: bold;
        width: 70%;
     }
-    @media screen and (max-width:991px){
+    @media screen and (max-width:768px){
       background-color: $color-yellow;
       left: 0;
       width: 100%;
@@ -227,6 +227,7 @@ body {
         margin-bottom: 0px;
         justify-content: center;
         padding: 20px 0px;
+        font-size: 18px;
       }
      
      }
@@ -236,12 +237,17 @@ body {
     top: -31px;
     left: 37%;
     width: 50%;
-    @media screen and (max-width:991px) and (min-width:300px)  {
+    @media screen and (max-width:991px) and (min-width:768px) {
+      width: 60%;
+    }
+    @media screen and (max-width:767px){
       top:22%;
       width: 100%;
       left: 0;
       background: #F0F7FF;
-      min-height: 300px;
+      position: relative;
+      // min-height: 200px;
+  
       .service-inner-list{
         padding-top: 60px;
       }
@@ -252,11 +258,20 @@ body {
       flex-wrap: wrap;
       width: 100%;
       justify-content: space-around;
+      @media screen and (max-width:576px){
+        flex-direction: column;
+        .service-card{
+          .service-card-content{
+            padding-left: 10px;
+          }
+        }
+      }
       .service-card{
         display: flex;
         padding: 1rem;
         justify-content: center;
         align-items: center;
+       
         .service-icon{
           width: 50px;
           height: 50px;
@@ -265,7 +280,7 @@ body {
         .service-card-content{
           p{
             margin-bottom: 0px;
-            font-size: 24px;
+            font-size:24px;
           }
           p:first-of-type{
             color: #433A2A;
@@ -287,6 +302,27 @@ body {
               }
             }
          
+          }
+          @media screen and (max-width:991px) and (min-width:768px)  {
+          
+            .service-icon{
+              width: 40px;
+              height: 40px;
+              margin-right: 10px;
+            }
+            .service-card-content{
+              p{
+                font-size:18px;
+              }
+            }
+         
+          }
+          @media screen and (max-width:576px){
+            .service-card-content{
+              p{
+                font-size:18px;
+              }
+            }
           }
           
           

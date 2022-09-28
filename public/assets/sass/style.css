@@ -7,7 +7,6 @@
 
 body {
   position: relative;
-  padding-bottom: 250px;
   min-height: 100vh;
 }
 
@@ -76,8 +75,6 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   color: #ffffff;
-  position: absolute;
-  bottom: 0;
   width: 100%;
 }
 
@@ -220,10 +217,10 @@ body {
 
 .service-section .service-section-bg {
   width: 100%;
-  margin-top: -20%;
+  margin-top: -23%;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 768px) {
   .service-section .service-section-bg {
     display: none;
   }
@@ -231,7 +228,7 @@ body {
 
 .service-section .service-heading {
   position: absolute;
-  top: 0px;
+  top: -20px;
   left: 15%;
 }
 
@@ -242,7 +239,7 @@ body {
   width: 70%;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 768px) {
   .service-section .service-heading {
     background-color: #F89822;
     left: 0;
@@ -262,6 +259,7 @@ body {
         -ms-flex-pack: center;
             justify-content: center;
     padding: 20px 0px;
+    font-size: 18px;
   }
 }
 
@@ -272,13 +270,19 @@ body {
   width: 50%;
 }
 
-@media screen and (max-width: 991px) and (min-width: 300px) {
+@media screen and (max-width: 991px) and (min-width: 768px) {
+  .service-section .service-list {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .service-section .service-list {
     top: 22%;
     width: 100%;
     left: 0;
     background: #F0F7FF;
-    min-height: 300px;
+    position: relative;
   }
   .service-section .service-list .service-inner-list {
     padding-top: 60px;
@@ -294,6 +298,18 @@ body {
   width: 100%;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+}
+
+@media screen and (max-width: 576px) {
+  .service-section .service-list .service-inner-list {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .service-section .service-list .service-inner-list .service-card .service-card-content {
+    padding-left: 10px;
+  }
 }
 
 .service-section .service-list .service-inner-list .service-card {
@@ -335,6 +351,23 @@ body {
     height: 40px;
     margin-right: 10px;
   }
+  .service-section .service-list .service-inner-list .service-card .service-card-content p {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+  .service-section .service-list .service-inner-list .service-card .service-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  .service-section .service-list .service-inner-list .service-card .service-card-content p {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 576px) {
   .service-section .service-list .service-inner-list .service-card .service-card-content p {
     font-size: 18px;
   }
