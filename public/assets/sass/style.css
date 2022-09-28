@@ -6,7 +6,6 @@
 
 body {
   position: relative;
-  padding-bottom: 250px;
   min-height: 100vh;
 }
 
@@ -63,8 +62,6 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   color: #ffffff;
-  position: absolute;
-  bottom: 0;
   width: 100%;
 }
 .footers a {
@@ -93,10 +90,266 @@ body {
 }
 
 .hero-section {
+  position: relative;
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
-.hero-section img {
+
+.hero-section .hero-image {
   width: 100%;
   margin-top: -10%;
-}/*# sourceMappingURL=style.css.map */
+}
+
+.hero-section .hero-form-section {
+  background: rgba(0, 0, 0, 0.39);
+  border-radius: 16px;
+  width: 50%;
+  padding: 40px 20px;
+}
+
+.hero-section .hero-form-section form button {
+  background: #F89822;
+  color: black;
+  height: 50px;
+}
+
+.hero-section .hero-form-section form .left-inner-addon {
+  position: relative;
+}
+
+.hero-section .hero-form-section form .left-inner-addon img {
+  position: absolute;
+  padding: 12px 12px;
+  pointer-events: none;
+  width: 50px;
+  z-index: 999;
+  top: 0px;
+  left: -5px;
+}
+
+.hero-section .hero-form-section form .left-inner-addon .phone-extension {
+  position: absolute;
+  padding: 4px 12px;
+  pointer-events: none;
+  width: 50px;
+  z-index: 999;
+  top: 11px;
+  left: 24px;
+  color: #3F4765;
+  font-size: 13px;
+  border-right: 1px solid #3f476561;
+}
+
+.hero-section .hero-form-section form .left-inner-addon input {
+  padding-left: 80px !important;
+  height: 50px;
+}
+
+.hero-section .hero-form-section.centered {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+@media screen and (min-width: 1600px) {
+  .hero-section .hero-form-section {
+    width: 60%;
+    padding: 50px 20px;
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 576px) {
+  .hero-section .hero-form-section {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .hero-section .hero-form-section {
+    width: 70%;
+    padding: 10px 10px;
+  }
+  .hero-section .hero-form-section.centered {
+    top: 28%;
+  }
+  .hero-section .hero-form-section form .left-inner-addon img {
+    width: 45px;
+    top: -5px;
+  }
+  .hero-section .hero-form-section form .left-inner-addon input {
+    height: 35px;
+  }
+  .hero-section .hero-form-section form .left-inner-addon .phone-extension {
+    top: 4px;
+  }
+  .hero-section .hero-form-section form button {
+    height: 35px;
+  }
+}
+
+.service-section {
+  position: relative;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.service-section .service-section-bg {
+  width: 100%;
+  margin-top: -23%;
+}
+
+@media screen and (max-width: 768px) {
+  .service-section .service-section-bg {
+    display: none;
+  }
+}
+
+.service-section .service-heading {
+  position: absolute;
+  top: -20px;
+  left: 15%;
+}
+
+.service-section .service-heading h1 {
+  font-size: 3vw;
+  color: white;
+  font-weight: bold;
+  width: 70%;
+}
+
+@media screen and (max-width: 768px) {
+  .service-section .service-heading {
+    background-color: #F89822;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+  }
+  .service-section .service-heading h1 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 0px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 20px 0px;
+    font-size: 18px;
+  }
+}
+
+.service-section .service-list {
+  position: absolute;
+  top: -31px;
+  left: 37%;
+  width: 50%;
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+  .service-section .service-list {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .service-section .service-list {
+    top: 22%;
+    width: 100%;
+    left: 0;
+    background: #F0F7FF;
+    position: relative;
+  }
+  .service-section .service-list .service-inner-list {
+    padding-top: 60px;
+  }
+}
+
+.service-section .service-list .service-inner-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+@media screen and (max-width: 576px) {
+  .service-section .service-list .service-inner-list {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .service-section .service-list .service-inner-list .service-card .service-card-content {
+    padding-left: 10px;
+  }
+}
+
+.service-section .service-list .service-inner-list .service-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.service-section .service-list .service-inner-list .service-card .service-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.service-section .service-list .service-inner-list .service-card .service-card-content p {
+  margin-bottom: 0px;
+  font-size: 24px;
+}
+
+.service-section .service-list .service-inner-list .service-card .service-card-content p:first-of-type {
+  color: #433A2A;
+}
+
+.service-section .service-list .service-inner-list .service-card .service-card-content p:last-of-type {
+  color: #F89822;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1070px) and (min-width: 992px) {
+  .service-section .service-list .service-inner-list .service-card .service-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  .service-section .service-list .service-inner-list .service-card .service-card-content p {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+  .service-section .service-list .service-inner-list .service-card .service-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  .service-section .service-list .service-inner-list .service-card .service-card-content p {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .service-section .service-list .service-inner-list .service-card .service-card-content p {
+    font-size: 18px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
