@@ -17,7 +17,7 @@
                 </div>
             </button>
         </div>
-        <div class="d-flex align-items-center mt-3">
+        <div class="d-flex align-items-center mt-3 networkDiv_s">
             <div class="mr-5">
                 <img  width="90" class="img-fluid networkImg_s h-auto" src="{{asset('assets/images/awcc.png')}}" alt="">
             </div>
@@ -28,7 +28,7 @@
             <h4 class="text-white">Add Receiver Details</h4>
             <form action="">
                 @csrf 
-                <div class="receiverNameDiv_s px-3 py-4">
+                <div class="receiverNameDiv_s px-3">
                     <input type="text" class="receiverNameInput_s" placeholder="Enter Receiver Name">
                     <img src="{{asset('assets/images/profile_icon.svg')}}" alt="">
                 </div>
@@ -44,7 +44,7 @@
         </div>
     </div>
 </div>
-<section>
+<!-- <section>
     <div class="container-fluid">
         <div class="row moneySection_s">
             <div class="col-5 px-0">
@@ -95,7 +95,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 {{--@include('includes.website.footer-navbar') --}}
 @endsection
 @section('insertjavascript')
