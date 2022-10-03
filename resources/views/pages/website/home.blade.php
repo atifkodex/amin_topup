@@ -4,7 +4,7 @@
 @section('content')
     @include('includes.website.navbar')
     <div class="container-fluid hero-section pb-5">
-        <img class="hero-image" src="{{ asset('assets/website-images/heros.svg') }}" alt="image">
+        <img class="hero-image" src="{{ asset('assets/website-images/heross.svg') }}" alt="image">
         <div class="hero-form-section centered">
             <div class="hero-form-section-content">
                 <h1>The fastest way to send <span>Top-up</span> worldwide</h1>
@@ -264,17 +264,6 @@
                     }
                 }
             ]
-        });
-    </script>
-    <script>
-        $(window).resize(function() {
-
-            if ($(window).width() <= 767) {
-                // $(".hero-form-section").removeClass("centered");
-                // $(".gallery-section-wrapper").removeClass("gallery-wrapper");
-            } else {
-                // $(".hero-form-section").addClass("centered");
-            }
         });
     </script>
 @endsection
