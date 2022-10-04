@@ -1,6 +1,31 @@
 @extends('layouts.website.default')
 <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/slick-theme.css') }}">
+<style>
+    .info-section-two {
+        position: relative;
+    }
+
+    .right-polygon-two {
+        position: absolute;
+        top: 8px;
+        right: 16px;
+    }
+    .lefts-polygon-two {
+        display: none
+    }
+    @media screen and (min-width:768px){
+        .lefts-polygon-two {
+        position: absolute;
+        bottom: 0% !important;
+        left: 0% !important;
+        width: 13%;
+        z-index: -1;
+        display: block;
+    }
+    }
+  
+</style>
 @section('content')
     @include('includes.website.navbar')
     <div class="container-fluid hero-section main-section ">
@@ -17,17 +42,17 @@
                     </div>
                     <div class="network-text d-flex">
                         <h1>93 70 00 00 000</h1>
-                       
+
                     </div>
                     <div class="network-button pl-2 pl-lg-5">
-                        <button><img class="edit-icon" src="{{ asset('assets/website-images/edit-icon.svg') }}" alt="image"></button>
+                        <button><img class="edit-icon" src="{{ asset('assets/website-images/edit-icon.svg') }}"
+                                alt="image"></button>
                     </div>
-                 
+
                 </div>
                 <div class="network-list mb-1 d-flex align-items-center pb-3">
                     <div class="network-icon">
-                        <img class="network-icon-image" src="{{ asset('assets/website-images/awcc.svg') }}"
-                            alt="image">
+                        <img class="network-icon-image" src="{{ asset('assets/website-images/awcc.svg') }}" alt="image">
                     </div>
                     <div class="network-text d-flex">
                         <h1>AWCC</h1>
@@ -54,31 +79,10 @@
 
                     </div>
                 </div>
-           
-                 
+
+
             </div>
 
-
-
-
-
-
-
-
-            {{-- <form class="main-form ">
-                <div class="form-group form-heading">
-                   <h1 class="text-left">Add Recevier Detail</h1>
-                </div>
-                <div class="form-group right-inner-addon">
-                    <img src="{{ asset('assets/website-images/person-icon.svg') }}" alt="icon">
-                    <input type="text" class="form-control" placeholder="" value="">
-                </div>
-                <div class="form-group right-inner-addon">
-                    <img src="{{ asset('assets/website-images/message-icon.svg') }}" alt="icon">
-                    <input type="text" class="form-control" placeholder="" value="">
-                </div>
-                <button type="submit" class="btn form-control  mt-3">Continue</button>
-            </form> --}}
         </div>
         <img class="hero-image-left" src="{{ asset('assets/website-images/left-polygon.svg') }}" alt="image">
         <img class="hero-image-right" src="{{ asset('assets/website-images/right-polygon.svg') }}" alt="image">
@@ -138,16 +142,16 @@
                         <p>Free fee,total: $7.46USD</p>
                     </div>
                 </div>
-               
+
             </div>
         </div>
-        <img class="left-polygon-two" src="{{ asset('assets/website-images/left-polygon-three.svg') }}"
-        alt="image">
+        <img class="lefts-polygon-two" src="{{ asset('assets/website-images/left-polygon-three.svg') }}" alt="image">
+        <img class="right-polygon-two" src="{{ asset('assets/website-images/right-polygon-two.svg') }}" alt="image">
     </div>
     @include('includes.website.footer-navbar')
 @endsection
 @section('insertjavascript')
-<script>
-    $(".hero-section").css("margin-bottom", "10%");
-</script>
+    <script>
+        $(".hero-section").css("margin-bottom", "10%");
+    </script>
 @endsection

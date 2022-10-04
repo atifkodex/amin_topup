@@ -1008,16 +1008,7 @@ body {
       margin-bottom: 30px;
     }
   }
-  @media screen and (min-width:1396px){
-  &.rec-section{
-    margin-bottom:300px !important;
-  }
-   }
-  @media screen and (min-width:768px)and (max-width:1397px){
-    &.rec-section{
-      margin-bottom:35% !important;
-    }
-  }
+
   svg{
     position: absolute;
     bottom: 0px;
@@ -1345,10 +1336,16 @@ padding:10px 20px;
 }
 .amount-card p:last-of-type{
   margin-bottom: 0px;
+  border-top: 1px solid #D9D9D9;
+  padding-top: 5px;
+  margin-top: 5px;
 }
 .amount-card.active{
   background: $color-yellow;
   color: white;
+}
+.amount-card.active p:last-of-type{
+  border-top: 1px solid #DA7A04;
 }
 .amount-heading h1{
   font-size: 40px;
@@ -1400,4 +1397,84 @@ padding:10px 20px;
   overflow: hidden;
   text-overflow: ellipsis; 
 }
+}
+
+// Registraion screen
+.reg-box{
+  background: #F4F8FC;
+  border-radius: 14px;
+  padding: 20px;
+  margin: 0 auto;
+}
+.reg-box a{
+  text-decoration: none;
+  background-color: black;
+  color: white;
+  width: 100%;
+  padding: 14px 0px;
+  font-size: 28px;
+  font-weight: bold;
+}
+.reg-box a:active,.reg-box a:hover,.reg-box a:focus{
+color: white;
+box-shadow: none;
+border: none;
+outline: none;
+}
+.reg-box a:nth-of-type(1){
+  background: #001933;
+}
+.reg-box a:nth-of-type(2){
+  background:$color-yellow;
+}
+.reg-box p{
+  width: 80%;
+  margin: 0 auto;
+  font-size: 26px;
+  text-align: center;
+  color: #A9ACB1;
+  span{
+    color: $color-yellow;
+  }
+}
+@media screen and (max-width:991px){
+  .reg-box a {
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 10px 0px;
+    font-size: 26px;
+    font-weight: bold;
+}
+.reg-box p{
+  font-size: 22px;
+  a{
+    font-size: 22px;
+  }
+}
+}
+@media screen and (max-width:576px){
+  .reg-box a {
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 8px 0px;
+    font-size: 22px;
+    font-weight: bold;
+}
+.reg-box p{
+  font-size: 18px;
+  width: 100%;
+  a{
+    font-size: 18px;
+  }
+}
+}
+.form-field input:-webkit-autofill,
+.form-field input:-webkit-autofill:hover, 
+.form-field input:-webkit-autofill:focus, 
+.form-field input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
 }

@@ -10,4 +10,11 @@
 <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}">
 <!-- ============== Custom Css Link ============== -->
 <link rel="stylesheet" href="{{asset('assets/sass/style.css')}}">
+{{-- phone filed --}}
+<link rel="stylesheet" href="{{asset('assets/css/intlTelInput.css')}}">
+{{-- <link rel="stylesheet" href="{{asset('assets/css/jquery-countryselector.min.css')}}"> --}}
+<link rel="stylesheet" href="{{asset('assets/css/mobiscroll.jquery.min.css')}}">
+
+
+
 

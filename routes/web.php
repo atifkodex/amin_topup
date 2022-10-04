@@ -98,3 +98,21 @@ Route::get('receiver-detail', function () {
 Route::get('amount-detail', function () {
     return view('pages.website.amount');
 });
+
+// auth
+
+Route::get('reg', function () {
+    return view('pages.website.auth.registration');
+});
+
+Route::get('login', function () {
+    return view('pages.website.auth.login');
+});
+
+Route::get('signup', function () {
+    return view('pages.website.auth.sign-up');
+});
+
+Route::get('forgot', function () {
+    return view('pages.website.auth.forgot-password');
+});

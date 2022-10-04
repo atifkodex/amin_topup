@@ -85,6 +85,7 @@
 </div>
 
 @endsection
+
 @section('inserfooter')
 <script>
     function myFunction() {

@@ -1,6 +1,19 @@
 @extends('layouts.website.default')
 <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/slick-theme.css') }}">
+<style>
+      @media screen and (min-width:1396px){
+  .rec-section{
+    margin-bottom:300px !important;
+  }
+   }
+  @media screen and (min-width:768px)and (max-width:1397px){
+    .rec-section{
+      margin-bottom:35% !important;
+    }
+  }
+
+</style>
 @section('content')
     @include('includes.website.navbar')
     <div class="container-fluid hero-section main-section rec-section">
