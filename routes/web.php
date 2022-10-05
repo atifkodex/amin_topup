@@ -99,6 +99,32 @@ Route::get('amount-detail', function () {
     return view('pages.website.amount');
 });
 
+Route::get('order', function () {
+    return view('pages.website.order-summary');
+});
+
+Route::get('payment', function () {
+    return view('pages.website.payment-info');
+});
+
+Route::get('transaction', function () {
+    return view('pages.website.transaction');
+});
+
+Route::get('contact', function () {
+    return view('pages.website.contact-us');
+});
+
+Route::get('profile', function () {
+    return view('pages.website.profile');
+});
+
+Route::get('report', function () {
+    return view('pages.website.report');
+});
+
+
+
 // auth
 
 Route::get('reg', function () {

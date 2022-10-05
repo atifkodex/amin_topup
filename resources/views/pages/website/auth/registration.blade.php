@@ -24,21 +24,9 @@
         z-index: -1;
         display: block;
     }
-    .amount-section{
-        width: 70% !important;
-    }
 
     }
-    @media screen and (max-width:767px){
-        .amount-section{
-        width: 80% !important;
-    }
-    }
-    @media screen and (max-width:576px){
-        .amount-section{
-        width:100% !important;
-    }
-    }
+   
   
 </style>
 @section('content')

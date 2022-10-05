@@ -11,29 +11,7 @@
     .reg-box p a{
         background: transparent !important;
     }
-    .form-field input{
-        height: 60px;
-        background: white;
-        border: none
-    }
-    .form-field label{
-        color: white;
-        font-size: 18px;
-    }
-
- 
-    @media screen and (max-width:991px){
-        .form-field input{
-        height: 55px;
-        background: white
-    }
-    }
-    @media screen and (max-width:576px){
-        .form-field input{
-        height: 50px;
-        background: white
-    }
-    }
+    
     .right-inner {
         position: relative;
     
@@ -70,22 +48,13 @@
             display: block;
         }
 
-        .amount-section {
-            width: 70% !important;
-        }
+
 
     }
 
-    @media screen and (max-width:767px) {
-        .amount-section {
-            width: 80% !important;
-        }
-    }
+   
 
     @media screen and (max-width:576px) {
-        .amount-section {
-            width: 100% !important;
-        }
         .right-inner  img{
           position: absolute;
           right: 0px;

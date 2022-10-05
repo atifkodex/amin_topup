@@ -11,15 +11,8 @@
     .reg-box p a{
         background: transparent !important;
     }
-    .form-field input{
-        height: 60px;
-        background: white;
-        border: none
-    }
-    .form-field .mbsc-ios.mbsc-textfield-box{
+    .mbsc-ios.mbsc-textfield-box{
         border-radius:5px !important;
-        height: 60px;
-        border: none
     }
     @media screen and (min-width:991px){
         .mbsc-ios.mbsc-select-icon-stacked{
@@ -28,20 +21,12 @@
     }
  
     @media screen and (max-width:991px){
-        .form-field input{
-        height: 55px;
-        background: white
-    }
     .form-field .mbsc-ios.mbsc-textfield-box{
-        height:55px;
-       
+        height:55px;   
     }
     }
     @media screen and (max-width:576px){
-        .form-field input{
-        height: 50px;
-        background: white
-    }
+   
     .form-field .mbsc-ios.mbsc-textfield-box{
         height:50px;
        
@@ -83,17 +68,10 @@
             display: block;
         }
 
-        .amount-section {
-            width: 70% !important;
-        }
 
     }
 
-    @media screen and (max-width:767px) {
-        .amount-section {
-            width: 80% !important;
-        }
-    }
+ 
 
     @media screen and (max-width:576px) {
         .amount-section {
@@ -114,7 +92,7 @@
     width: 100%;
 }
 .iti__country-list{
- border-radius: 20px;
+ border-radius: 20px !important;
  border: none;
  overflow-y: hidden !important;
 }
