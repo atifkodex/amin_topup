@@ -174,7 +174,45 @@
         border-radius: 5px;
         padding: 5px 10px;
     }
-
+.privacy-content-item h1{
+    color: #F89822;
+    font-size: 30px;
+}
+.privacy-content-item p{
+    color:black;
+    font-size: 22px;
+}
+@media screen and (max-width:991px) {
+    .privacy-content-item h1{
+    color: #F89822;
+    font-size:25px;
+}
+.privacy-content-item p{
+    color:black;
+    font-size: 20px;
+}
+}
+@media screen and (max-width:767px) {
+    .privacy-content-item h1{
+    color: #F89822;
+    font-size:22px;
+}
+.privacy-content-item p{
+    color:black;
+    font-size: 18px;
+}
+}
+@media screen and (max-width:576px) {
+    .privacy-content-item h1{
+    color: #F89822;
+    font-size:20px;
+}
+.privacy-content-item p{
+    color:black;
+    font-size: 16px;
+}
+}
+   
    
 </style>
 @section('content')
@@ -182,9 +220,9 @@
     <div class="container-fluid outer-wrapper">
         <div class="inner-wrapper">
             <img class="star-icon" src="{{ asset('assets/website-images/star-icon.svg') }}" alt="image">
-            <div class="inner-wrapper-heading d-flex">
-                <h1>Profil</h1>
-                <h1 class="">e</h1>
+            <div class="inner-wrapper-heading">
+                <h1>Privacy</h1>
+                <h1 class="">Notice</h1>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                 <path fill="#ffffff" fill-opacity="1"
@@ -205,58 +243,21 @@
     <div class="info-section-two container-fluid px-0 my-3 my-md-2">
         <div class="amount-section container">
             <div class="row">
-                <div class="col-12">
-                    <div class="reg-box my-0 my-md-5">
-                        <form class="pt-2 pt-md-3">
-                            <div class="row">
-                                <div class="col-12 pb-4">
-                                    <div class="profile-image-section text-center py-4">
-                                        <img class="profile-img" src="{{ asset('assets/website-images/profile-image.jpg') }}" alt="image">
-                                        <h1 class="py-2">Amin Top-up</h1>
-                                        <div class="form-group form-field">
-                                            <input type="file" name="file" id="file-input" class="visuallyhidden">
-                                            <button class="file-upload">Change Picture</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 py-2">
-                                    <div class="form-group form-field right-inner">
-                                        <label for="name">Birthday</label>
-                                        <img src="{{ asset('assets/website-images/Edit.svg') }}" alt="icon">
-                                        <input type="text" class="form-control" value="05/10/2022" placeholder="Type here">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 py-2">
-                                    <div class="form-group form-field right-inner">
-                                        <label for="email">Email</label>
-                                        <img src="{{ asset('assets/website-images/Edit.svg') }}" alt="icon">
-                                        <input type="email" class="form-control" value="amintopup@gmail.com" placeholder="Type here">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 py-2">
-                                    <div class="form-group form-field right-inner">
-                                        <label for="number">Phone Number</label>
-                                        <img src="{{ asset('assets/website-images/phone.svg') }}" alt="icon">
-                                        <input type="text" class="form-control" value="93 70 00 00 000" placeholder="Type here">
-                                        <label class="number-bottom-label">set topup easily</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 py-2">
-                                    <div class="form-group form-field right-inner">
-                                        <label for="country">Country</label>
-                                        <img src="{{ asset('assets/website-images/Edit.svg') }}" alt="icon">
-                                        <input type="text" class="form-control" value="Afghanistan" placeholder="Type here">
-                                    </div>
-                                </div>
-                                <div class="col-12 py-2 pb-2 pb-md-5 text-center">
-                                    <a href="" type="submit"
-                                        class="btn my-3 my-lg-4 summary-btn contact-btn">Update</a>
-                                </div>
-                            </div>
-                        </form>
-
-
-                    </div>
+                <div class="col-12 privacy-content-item pb-md-4">
+                    <h1>Privacy Notice</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam natus quam dicta quibusdam vel, repudiandae praesentium deleniti quia aliquid cupiditate nostrum non esse labore molestias. Sint minus molestias ex veniam.</p>
+                </div>
+                <div class="col-12 privacy-content-item pb-md-4">
+                    <h1>About</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam natus quam dicta quibusdam vel, repudiandae praesentium deleniti quia aliquid cupiditate nostrum non esse labore molestias. Sint minus molestias ex veniam.</p>
+                </div>
+                <div class="col-12 privacy-content-item pb-md-4">
+                    <h1>How can you get in the Amin?</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam natus quam dicta quibusdam vel, repudiandae praesentium deleniti quia aliquid cupiditate nostrum non esse labore molestias. Sint minus molestias ex veniam.</p>
+                </div>
+                <div class="col-12 privacy-content-item pb-md-4">
+                    <h1>Scope of the Amin's Privacy notice?</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam natus quam dicta quibusdam vel, repudiandae praesentium deleniti quia aliquid cupiditate nostrum non esse labore molestias. Sint minus molestias ex veniam.</p>
                 </div>
             </div>
             <img class="left-polygon-blue" src="{{ asset('assets/website-images/left-polygon-blue.svg') }}" alt="image">
@@ -265,9 +266,9 @@
         </div>
     </div>
     <div class="info-section-two container-fluid px-0 ">
-        <div class="info-section-two-wrapper  container">
+        <div class="info-section-two-wrapper  container ">
             <div class="row py-3">
-                <div class="col-md-7 info-section-two-right justify-content-end order-2 order-md-12">
+                <div class="col-md-7 info-section-two-right  justify-content-end order-2 order-md-12">
                     <div class="info-section-two-right-content pl-md-5">
                         <h1>Send money to almost anywhere in the world from </h1>
                         <p>Get the Amin Top-Up App for the fastest, easiest way to top-up any phone.</p>

@@ -30,6 +30,8 @@ body {
 }
 .navbar-nav{
     .nav-item{
+      display: flex;
+      align-items: center;
         &.active{
             color:$color-white !important;
             .nav-link{
@@ -40,6 +42,7 @@ body {
         .nav-link{
             color:$color-white;
             font-size: 16px;  
+        
             @media only screen and (min-width:768px) {
                 padding: 8px 20px;
                }
@@ -48,7 +51,7 @@ body {
           }
         }
     }
-    li:last-child{
+    li.login{
         display: flex;
         align-items: center;
         .nav-link{
@@ -57,6 +60,19 @@ body {
             padding: 4px 15px;
         }
     }
+}
+.navbar-profile{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.profile-name{
+  margin-bottom: 0px;
+  padding-left: 2px;
+  white-space: nowrap; 
+  max-width:100px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
 }
 // footer
 
@@ -1336,11 +1352,15 @@ body {
 .amount-section {
   width: 80%;
   margin: 0 auto;
+  a{
+    text-decoration: none;
+  }
 }
 .amount-card{
   background: #F0F7FF;
 border-radius: 14px;
 padding:10px 20px;
+color: black;
 }
 .amount-card p{
   margin-bottom: 0px;
@@ -1511,7 +1531,7 @@ outline: none;
 //amount-section
 @media screen and (min-width:768px){
 .amount-section{
-  width: 70% !important;
+  // width: 70% !important;
 }
 
 }
@@ -1747,7 +1767,7 @@ height: 55px;
     background: white;
     border-radius: 20px;
     min-width:200px !important;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
   }
   .profile-image-section .profile-img{

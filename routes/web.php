@@ -123,7 +123,13 @@ Route::get('report', function () {
     return view('pages.website.report');
 });
 
+Route::get('privacy', function () {
+    return view('pages.website.privacy');
+});
 
+Route::get('terms', function () {
+    return view('pages.website.terms');
+});
 
 // auth
 

@@ -29,6 +29,15 @@ body {
   width: 30px;
 }
 
+.navbar-nav .nav-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .navbar-nav .nav-item.active {
   color: #ffffff !important;
 }
@@ -53,7 +62,7 @@ body {
   color: #ffffff;
 }
 
-.navbar-nav li:last-child {
+.navbar-nav li.login {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -62,10 +71,25 @@ body {
           align-items: center;
 }
 
-.navbar-nav li:last-child .nav-link {
+.navbar-nav li.login .nav-link {
   background: #F89822;
   border-radius: 26px;
   padding: 4px 15px;
+}
+
+.navbar-profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.profile-name {
+  margin-bottom: 0px;
+  padding-left: 2px;
+  white-space: nowrap;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /*FOOTER*/
@@ -1459,10 +1483,15 @@ body {
   margin: 0 auto;
 }
 
+.amount-section a {
+  text-decoration: none;
+}
+
 .amount-card {
   background: #F0F7FF;
   border-radius: 14px;
   padding: 10px 20px;
+  color: black;
 }
 
 .amount-card p {
@@ -1652,12 +1681,6 @@ body {
   -webkit-box-shadow: none;
           box-shadow: none;
   border: none;
-}
-
-@media screen and (min-width: 768px) {
-  .amount-section {
-    width: 70% !important;
-  }
 }
 
 @media screen and (max-width: 767px) {
@@ -1918,7 +1941,7 @@ body {
     background: white;
     border-radius: 20px;
     min-width: 200px !important;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
   }
   .profile-image-section .profile-img {

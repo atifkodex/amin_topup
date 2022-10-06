@@ -133,46 +133,64 @@
                     </div>
                 </div>
                 <div class="col-md-6 py-3">
-                    <div class="amount-card">
-                        <p>Recevier:befor AIT</p>
-                        <h1>100 AFN</h1>
-                        <p>Free fee,total: $7.46USD</p>
-                    </div>
+                    <a href="{{url('login')}}">
+                        <div class="amount-card">
+                            <p>Recevier:befor AIT</p>
+                            <h1>100 AFN</h1>
+                            <p>Free fee,total: $7.46USD</p>
+                        </div>
+                    </a>
+              
                 </div>
                 <div class="col-md-6 py-3">
-                    <div class="amount-card">
-                        <p>Recevier:befor AIT</p>
-                        <h1>100 <span>AFN</span></h1>
-                        <p>Free fee,total: $7.46USD</p>
-                    </div>
+                    <a href="{{url('login')}}">
+                        <div class="amount-card">
+                            <p>Recevier:befor AIT</p>
+                            <h1>100 AFN</h1>
+                            <p>Free fee,total: $7.46USD</p>
+                        </div>
+                    </a>
+              
                 </div>
                 <div class="col-md-6 py-3">
-                    <div class="amount-card">
-                        <p>Recevier:befor AIT</p>
-                        <h1>100 <span>AFN</span></h1>
-                        <p>Free fee,total: $7.46USD</p>
-                    </div>
+                    <a href="{{url('login')}}">
+                        <div class="amount-card">
+                            <p>Recevier:befor AIT</p>
+                            <h1>100 AFN</h1>
+                            <p>Free fee,total: $7.46USD</p>
+                        </div>
+                    </a>
+              
                 </div>
                 <div class="col-md-6 py-3">
-                    <div class="amount-card">
-                        <p>Recevier:befor AIT</p>
-                        <h1>100 <span>AFN</span></h1>
-                        <p>Free fee,total: $7.46USD</p>
-                    </div>
+                    <a href="{{url('login')}}">
+                        <div class="amount-card">
+                            <p>Recevier:befor AIT</p>
+                            <h1>100 AFN</h1>
+                            <p>Free fee,total: $7.46USD</p>
+                        </div>
+                    </a>
+              
                 </div>
                 <div class="col-md-6 py-3">
-                    <div class="amount-card active">
-                        <p>Recevier:befor AIT</p>
-                        <h1>100 <span>AFN</span></h1>
-                        <p>Free fee,total: $7.46USD</p>
-                    </div>
+                    <a href="{{url('login')}}">
+                        <div class="amount-card active">
+                            <p>Recevier:befor AIT</p>
+                            <h1>100 AFN</h1>
+                            <p>Free fee,total: $7.46USD</p>
+                        </div>
+                    </a>
+              
                 </div>
                 <div class="col-md-6 py-3">
-                    <div class="amount-card">
-                        <p>Recevier:befor AIT</p>
-                        <h1>100 <span>AFN</span></h1>
-                        <p>Free fee,total: $7.46USD</p>
-                    </div>
+                    <a href="{{url('login')}}">
+                        <div class="amount-card">
+                            <p>Recevier:befor AIT</p>
+                            <h1>100 AFN</h1>
+                            <p>Free fee,total: $7.46USD</p>
+                        </div>
+                    </a>
+              
                 </div>
 
             </div>
@@ -180,6 +198,7 @@
         <img class="lefts-polygon-two" src="{{ asset('assets/website-images/left-polygon-three.svg') }}" alt="image">
         <img class="right-polygon-two" src="{{ asset('assets/website-images/right-polygon-two.svg') }}" alt="image">
     </div>
+    
     @include('includes.website.footer-navbar')
 @endsection
 @section('insertjavascript')
