@@ -78,13 +78,13 @@
             <div class="report-top-heading container">
                 <div class="row justify-content-md-center pt-3">
                     <div class="col-2 col-md-3 col-lg-2 report-top">
-                        <p>All</p>
+                        <a href="">All</a>
                     </div>
                     <div class="col-5 col-md-3 col-lg-2 report-top">
-                        <p>Success Top-up</p>
+                        <a href="">Success Top-up</a>
                     </div>
                     <div class="col-5 col-md-3 col-lg-2 report-top">
-                        <p>Cancel Top-up</p>
+                        <a href="">Cancel Top-up</a>
                     </div>
                 </div>
             </div>
@@ -108,11 +108,19 @@
         </div>
 
     </div>
-    <div class="info-section-two container-fluid px-0 my-0 my-md-2">
+    <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+              <filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />    
+                  <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                  <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+              </filter>
+          </defs>
+      </svg>
+    <div class="info-section-two container-fluid px-0">
         <div class="amount-section container-fluid">
             <div class="row">
                 <div class="col-12 report-card-wrapper">
-                    <div class="reg-box my-0 my-lg-5 px-0">
+                    <div class="reg-box px-0">
                         <div class="order-summary-content ">
                             <div class="order-summary-list order-summary-list-box my-2 my-md-3 py-2 py-md-3 px-2 px-md-3">
                                 <div class="order-summary-list-left d-flex align-items-center">
@@ -183,7 +191,7 @@
                                 </div>
                                 <div class="order-summary-list-right text-center report-right">
                                     <p>200 ANF</p>
-                                    <img class="check-icon" src="{{ asset('assets/website-images/green-check.svg') }}" alt="image">
+                                    <img class="check-icon" src="{{ asset('assets/website-images/red-check.svg') }}" alt="image">
                                 </div>
                             </div>
                             <div class="order-summary-list order-summary-list-box my-2 my-md-3 py-2 py-md-3 px-2 px-md-3">

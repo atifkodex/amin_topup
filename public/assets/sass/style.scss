@@ -110,47 +110,15 @@ body {
   padding-right: 0px !important;
   @media screen and (max-width:767px){
     background: #E6F2FF;
-    height:390px;
+    // height:100%;
     // margin-bottom:25px;
   }
-  @media screen and (min-width:768px){
-   margin-bottom: 13%;
-  }
+
   svg{
     position: absolute;
     bottom: 0px;
   }
-  .hero-image{
-    width: 100%;
-    @media screen and (max-width:767px){
-      // margin-top: 0%;
-      // object-fit: cover;
-      // height: 380px;
-      display: none;
-    }
- 
-  }
-  .hero-image-left{
-    position: absolute;
-    left: 0;
-    top: 55%;
-    width: 9%;
-    @media screen and (max-width:767px){
-      display: none;
-    }
 
-  }
-  .hero-image-right{
-    position: absolute;
-    top: 47%;
-    right: 8%;
-    z-index: -1;
-    width: 17%;
-    @media screen and (max-width:767px){
-      display: none;
-    }
-    
-  }
   .hero-form-section{
     width:100%;
     margin: 0 auto;
@@ -172,18 +140,10 @@ body {
         width: 50%;
         margin: 0 auto;
         @media screen and (max-width:1396px) and (min-width:1199px){
-          width: 40%;
+          width: 60%;
         }
       }
-      // @media screen and (min-width:1396px){
-      //   h1{
-      //    font-size: 4vw;
-      //   }
-      //   p{
-      //    font-size: 2vw;
-      //    width: 80%;
-      //   }
-      // }
+   
       @media screen and (max-width:991px) and (min-width:767px){
         h1{
           font-size: 30px;
@@ -207,26 +167,26 @@ body {
       background: linear-gradient(259.06deg, #2763A3 0%, #05386E 100%);
       border-radius: 16px;
       padding: 40px 20px;
-      width: 40%;
+      width: 50%;
       margin: 0 auto;
       @media screen and (min-width:1396px){
         width: 50%;
       }
       @media screen and (max-width:1220px) and (min-width:992px){
-        padding: 10px 10px;
-        width: 40%;
+        padding: 40px 20px;
+        width: 50%;
       }
       @media screen and (max-width:991px) and (min-width:768px){
-        padding: 10px 10px;
-        width: 40%;
+        padding: 40px 20px;
+        width: 50%;
       }
       @media screen and (max-width:767px) and (min-width:576px){
-        width:70%;
-        padding: 10px 10px;
+        padding: 40px 20px;
+        width: 90%;
       }
       @media screen and (max-width:576px){
             width: 100%;
-            padding: 10px 10px;
+            padding: 20px 10px;
       }
       button{
         background: $color-yellow;
@@ -309,30 +269,51 @@ body {
 // service section
 .service-section{
   position: relative;
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-  .service-section-bg{
-    width: 100%;
-    margin-top: -23%;
-    @media screen and (max-width:767px){
-      display: none;
-    }
+  .service-left-img{
+   display: none;
   }
-  @media screen and (min-width:768px){
+  @media screen and (min-width:992px){
     .service-heading{
-      position: absolute;
-      top: -8%;
-      left: 13%;
+      // background: url('../website-images/left-yellow.svg');
+      // background-repeat: no-repeat;
+      // border-radius: 10px;
+      // background-position: center;
+      // height: 500px;
+      // position: absolute;
+      // top: -8%;
+      // left: 13%;
+      position: relative;
+  }
+  .service-left-img{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    display: block;
+    z-index: -1;
+    max-width: 550px;
+  }
+  .service-heading h1{
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    color: black;
+    z-index: 2;
   }
 }
   .service-heading{
     h1{
-      font-size: 3vw;
-      color: white;
+      font-size:40px;
+      // color:white;
       font-weight: bold;
        width: 70%;
     }
-    @media screen and (max-width:767px){
+    @media screen and (min-width:992px){
+      h1{
+        display: none;
+      }
+    }
+    @media screen and (max-width:991px){
       left: 0;
       width: 100%;
       z-index: 999;
@@ -349,6 +330,7 @@ body {
         padding:0px 0px 10px 0px;
         color: $color-yellow;
         font-size:30px;
+        // display: block;
         @media screen and (max-width:576px){
           font-size: 25px;
         }
@@ -357,17 +339,15 @@ body {
      }
   }
   .service-list{
-    position: absolute;
-    top: -31px;
-    left: 37%;
-    width: 50%;
+    // position: absolute;
+    // top:23%;
+    // left: 37%;
+    // width: 50%;
     @media screen and (max-width:991px) and (min-width:767px) {
       width: 60%;
     }
-    @media screen and (max-width:767px){
-      top:22%;
+    @media screen and (max-width:991px){
       width: 100%;
-      left: 0;
       position: relative;
       .service-inner-list{
         // padding-top: 60px;
@@ -475,12 +455,13 @@ body {
 // }
 
 .supported-section{
+  margin-top: 10%;
   @media screen and (max-width:400px){
      padding-left: 10px !important;
      padding-right: 10px !important;
   }
   @media screen and (min-width:768px){
-    margin-top: -42%;
+    // margin-top: -42%;
   }
  
   .network-slider-section{
@@ -538,6 +519,7 @@ body {
       margin-right: -15%;
         background: white;
         border: none;
+        box-shadow: 0 0 10px;
       
     }
 
@@ -675,7 +657,7 @@ body {
     width: 100%;
     .gallery-image-left{
       width:90%;
-    
+      max-width: 600px;
       height:auto;
       object-fit: cover;
       border-radius: 10px;
@@ -867,6 +849,7 @@ body {
     top: 35%;
     left: 0%;
     width: 13%;
+    max-width: 300px;
     z-index: -1;
     display: block;
   }
@@ -884,6 +867,7 @@ body {
       width: 100%;
       .mobile-image-left{
         width: 100%;
+        max-width: 500px;
         @media screen and (max-width:767px){
           width: 70%;
         }
@@ -907,7 +891,7 @@ body {
       }
       @media screen and (min-width:1396px){
         padding-top:15%;
-        width: 100%;
+        width: 80%;
         // h1{
         //   font-size: 3vw;
         // }
@@ -1051,43 +1035,13 @@ body {
     }
     
   }
+  
   .main-form-section{
     width:100%;
     margin: 0 auto;
     text-align: center;
 
-    .main-form-section-content{
-      padding-bottom: 15px;
-      @media screen and (max-width:767px){
-        padding-top: 30px;
-      }
-      h1{
-        font-size:40px;
-        font-weight: bold;
-        text-align: left;
-        span{
-          color: $color-yellow;
-        }
-      }
-
-      @media screen and (min-width:1396px){
-        h1{
-         font-size: 40px;
-        }
-      }
-      @media screen and (max-width:991px) and (min-width:767px){
-        h1{
-          font-size: 30px;
-        }
-  
-      }
-      @media screen and (max-width:767px) {
-        h1{
-          font-size: 25px;
-        }
-    
-      }
-    }
+   
     .main-form{
       background: linear-gradient(259.06deg, #2763A3 0%, #05386E 100%);
       border-radius: 16px;
@@ -1188,14 +1142,53 @@ body {
   }
 
 }
+.detail-box-bottom{
+  width: 50%;
+  margin: 0 auto;
+  padding-right:8%;
+
+}
+.detail-box-bottom h1{
+  font-size:50px;
+  font-weight: bold;
+  color: $color-yellow;
+  span{
+    font-size: 24px;
+    color: black;
+  }
+}
+.detail-box .main-form-section-content h1{
+  font-weight: bold;
+  font-size: 40px;
+  span{
+    color: $color-yellow;
+  }
+}
+@media screen and (max-width:767px){
+  .detail-box .main-form-section-content h1{
+    font-weight: bold;
+    font-size: 30px;
+    span{
+      color: $color-yellow;
+    }
+  }
+}
+@media screen and (max-width:576px){
+  .detail-box .main-form-section-content h1{
+    font-weight: bold;
+    font-size: 25px;
+    span{
+      color: $color-yellow;
+    }
+  }
+}
 .detail-box{
   background: white;
   padding:2% 3% 2% 4%;
   width: 50%;
   margin: 0 auto;
   border-radius: 20px;
-  margin-bottom: 30px;
- 
+
  
   .network-button{
     button{
@@ -1271,34 +1264,58 @@ body {
         }
       }
     }
+    @media screen and (max-width:576px){
+      .network-icon{
+        .network-icon-image{
+          width: 25px;
+          height: 30px;
+        }
+      }
+      .network-text{
+        padding-left: 10%;
+        h1{
+          font-size:18px;
+         
+        }
+      }
+    }
    
   }
 }
+@media screen and (min-width:768px){
+.detail-box-outer{
+  padding-bottom: 100px;
+}
+.detail-box-bottom{
+  padding-bottom: 100px;
+}
+}
 @media screen and (min-width:1396px){
-  .detail-box{
+  .detail-box,.detail-box-bottom{
     width: 60%;
+    max-width:800px;
   }
 
 }
 @media screen and (max-width:1220px) and (min-width:992px){
-  .detail-box{
+  .detail-box,.detail-box-bottom{
     width: 50%;
   }
 }
 @media screen and (max-width:991px) and (min-width:768px){
-  .detail-box{
+  .detail-box,.detail-box-bottom{
     width: 50%;
   }
  
 }
 @media screen and (max-width:767px) and (min-width:576px){
-  .detail-box{
+  .detail-box,.detail-box-bottom{
     width: 80%;
   }
  
 }
 @media screen and (max-width:576px){
-  .detail-box{
+  .detail-box,.detail-box-bottom{
     width: 100%;
   }
  
@@ -1539,7 +1556,7 @@ outline: none;
 
 
 
-@media(max-width:766px){
+@media(max-width:767px){
   .outer-wrapper{
   padding-left: 0px !important;
   padding-right: 0px !important;
@@ -1566,16 +1583,26 @@ outline: none;
   padding-bottom:30px;
  }
 @media(min-width:768px){
+  .outer-wrapper{
+  filter: url('#goo');
+  // overflow:hidden;
+  z-index: 1;
+  }
   .inner-wrapper{
     background: #E5F2FF;
     width: 90%;
     margin: 0 auto;
+    min-height: 500px;
     // height: 300px;
-   clip-path: polygon(0% 0%, 100% 0%, 90% 46%, 77% 100%, 7% 64%, 0% 50%);
+   clip-path: polygon(0% 0%, 100% 0%, 90% 46%, 81% 85%, 2% 64%, 0% 50%);
    position: relative;
    svg{
     display: none;
    }
+   }
+  .inner-wrapper-main{
+    width: 100% !important;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 47%, 81% 86%, 7% 62%, 0% 27%) !important;
   }
   .star-icon{
     position: absolute;
@@ -1757,11 +1784,12 @@ height: 55px;
 }
 
 // report
-.report-top p{
+.report-top a{
+  text-decoration: none;
   font-size: 16px;
   color: black;
 }
-.report-top:nth-of-type(1) p{
+.report-top:nth-of-type(1) a{
   color: $color-yellow;
 }
 .report-header-right h1:nth-of-type(1){
@@ -1779,6 +1807,7 @@ height: 55px;
   color:black;
   font-weight:normal;
   text-align: center;
+  font-weight: bold;
 }
 @media screen and (min-width:768px) {
   .report-header-right{
@@ -1814,7 +1843,7 @@ height: 55px;
   }
 }
 @media screen and (max-width:376px) {
-  .report-top p{
+  .report-top a{
     font-size: 14px;
   }
 }
@@ -1976,7 +2005,7 @@ font-weight: normal;
     height: 20px;
   }
   .report-card-wrapper{
-    padding-left: 0px !important;
-    padding-right: 0px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
   }
 }
