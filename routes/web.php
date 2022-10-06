@@ -79,8 +79,66 @@ Route::get('/sign-up', function () {
 //     return view('pages.transaction');
 // });
 
-Route::get('/', function () {
-    return view('pages.sucess');
-});
+// Route::get('/', function () {
+//     return view('pages.sucess');
+// });
 
 Auth::routes();
+
+
+// website
+Route::get('/', function () {
+    return view('pages.website.home');
+});
+
+Route::get('receiver-detail', function () {
+    return view('pages.website.recevier');
+});
+
+Route::get('amount-detail', function () {
+    return view('pages.website.amount');
+});
+
+Route::get('order', function () {
+    return view('pages.website.order-summary');
+});
+
+Route::get('payment', function () {
+    return view('pages.website.payment-info');
+});
+
+Route::get('transaction', function () {
+    return view('pages.website.transaction');
+});
+
+Route::get('contact', function () {
+    return view('pages.website.contact-us');
+});
+
+Route::get('profile', function () {
+    return view('pages.website.profile');
+});
+
+Route::get('report', function () {
+    return view('pages.website.report');
+});
+
+
+
+// auth
+
+Route::get('reg', function () {
+    return view('pages.website.auth.registration');
+});
+
+Route::get('login', function () {
+    return view('pages.website.auth.login');
+});
+
+Route::get('signup', function () {
+    return view('pages.website.auth.sign-up');
+});
+
+Route::get('forgot', function () {
+    return view('pages.website.auth.forgot-password');
+});
