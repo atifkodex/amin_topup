@@ -30,6 +30,46 @@
     }
 
     }
+    @media screen and (min-width:1950px){
+    .left-polygon-blue{
+        position: absolute;
+        top:40% !important;
+        left: -2% !important;
+        width:8%;
+        /* z-index: -1; */
+        display: block;
+    }
+    .right-polygon-orange{
+        position: absolute;
+        top:60%;
+        right: 0px;
+        width: 8%;
+        /* z-index: -1; */
+        display: block;
+    }
+
+
+    }
+    @media screen and (min-width:2450px){
+    .left-polygon-blue{
+        position: absolute;
+        top:40% !important;
+        left: -2% !important;
+        width:200px;
+        /* z-index: -1; */
+        display: block;
+    }
+    .right-polygon-orange{
+        position: absolute;
+        top:60%;
+        right: 0px;
+        width:200px;
+        /* z-index: -1; */
+        display: block;
+    }
+
+
+    }
     @media screen and (max-width:767px){
         .hero-form-section{
         padding-bottom: 150px !important;
@@ -138,42 +178,17 @@
               </filter>
           </defs>
       </svg>
-    {{-- <div class="container-fluid hero-section pb-5">
-        <img class="hero-image" src="{{ asset('assets/website-images/heross.svg') }}" alt="image">
-        <div class="hero-form-section centered">
-            <div class="hero-form-section-content">
-                <h1>The fastest way to send <span>Top-up</span> worldwide</h1>
-                <p>99% of mobile recharges sent online with Amin Top-Up arrive in under 30 seconds</p>
-            </div>
-            <form class="">
-                <div class="form-group left-inner-addon">
-                    <img src="{{ asset('assets/website-images/flag.svg') }}" alt="icon">
-                    <div class="phone-extension">+93</div>
-                    <input type="text" class="form-control" placeholder="" value="">
-                </div>
-                <button type="submit" class="btn form-control">Start Top-up</button>
-            </form>
-        </div>
-        <img class="hero-image-left" src="{{ asset('assets/website-images/left-polygon.svg') }}" alt="image">
-        <img class="hero-image-right" src="{{ asset('assets/website-images/right-polygon.svg') }}" alt="image">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#ffffff" fill-opacity="1"
-                d="M0,32L48,58.7C96,85,192,139,288,176C384,213,480,235,576,202.7C672,171,768,85,864,85.3C960,85,1056,171,1152,197.3C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-            </path>
-        </svg>
-    </div> --}}
 
  
 
-    <div class="container-fluid service-section pb-5  mb-5">
-        {{-- <img class="service-section-bg" src="{{ asset('assets/website-images/service-bg.svg') }}" alt="image"> --}}
+    <div class="container-fluid service-section pb-0  mb-0">
         <div class="row">
             <div class="service-heading  col-lg-3 col-xl-4">
                 <h1>Why Choose Us</h1>
                 <img class="service-left-img" src="{{ asset('assets/website-images/left-yellow.svg') }}" alt="image">
             </div>
             <div class="service-list col-lg-9 col-xl-8">
-                <div class="service-inner-list pt-5">
+                <div class="service-inner-list pt-0 pt-xl-5">
                     <div class="service-card">
                         <img class="service-icon" src="{{ asset('assets/website-images/clock-icon.svg') }}" alt="image">
                         <div class="service-card-content">
@@ -199,12 +214,12 @@
             </div>
         </div>
      
-        <div class="supported-section px-5 pt-5">
+        <div class="supported-section px-5 pt-0 pt-md-3 ">
             <div class="supported-section-inner">
                 <div class="network-slider-section container-fluid">
                     <h1>Supported payment</h1>
                     <h1>methods</h1>
-                    <div class="network-slider ">
+                    <div class="network-slider">
                         <div class="row">
                             <div class="col-md-6 network-slider-left">
                                 <div class="row slider slider-bg">

@@ -474,14 +474,16 @@ body {
   }
 }
 
-.supported-section {
-  margin-top: 10%;
-}
-
 @media screen and (max-width: 400px) {
   .supported-section {
     padding-left: 10px !important;
     padding-right: 10px !important;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .supported-section {
+    margin-top: 10%;
   }
 }
 
@@ -1736,7 +1738,7 @@ body {
     background: #E5F2FF;
     width: 90%;
     margin: 0 auto;
-    min-height: 500px;
+    min-height: 300px;
     -webkit-clip-path: polygon(0% 0%, 100% 0%, 90% 46%, 81% 85%, 2% 64%, 0% 50%);
             clip-path: polygon(0% 0%, 100% 0%, 90% 46%, 81% 85%, 2% 64%, 0% 50%);
     position: relative;
