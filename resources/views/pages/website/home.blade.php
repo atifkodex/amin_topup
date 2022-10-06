@@ -80,7 +80,47 @@
         padding-bottom: 100px !important;
     }
     }
-  
+ 
+      .banner-content-button a{
+        text-decoration: none;
+      }
+      .button-inner span:nth-of-type(2){
+        font-weight: bold;
+      }
+      .banner-content-button a button{
+        border: 1px solid white;
+        background-color: black;
+        color: white;
+        border-radius: 10px;
+        height: 70px;
+        width: 180px;
+        display: flex;
+        justify-content:space-around;
+        padding-top:5px;
+        padding-bottom: 5px;
+      }
+      @media screen and (max-width:576px) {
+        .banner-content-button{
+          /* padding-top: 20px;
+          padding-bottom: 20px; */
+        }
+        .banner-content-button a button {
+          border: 1px solid white;
+          background-color: black;
+          color: white;
+          border-radius: 10px;
+          height: 50px !important;
+          width: 140px !important;
+          display: flex;
+          justify-content: space-around;
+          padding-top: 5px;
+          font-size: 12px;
+          padding-bottom: 5px;
+      }
+      .banner-content-button a button img{
+        width: 30px;
+      }
+    }
 </style>
 @section('content')
     @include('includes.website.navbar')
@@ -90,7 +130,7 @@
             <div class="hero-form-section container pt-5 main-content">
                 <div class="hero-form-section-content">
                     <h1>The fastest way to send <span>Top-up</span> worldwide</h1>
-                    <p>99% of mobile recharges sent online with Amin Top-Up arrive in under 30 seconds</p>
+                    <p>99% of mobile recharges sent online with Amin Top-Up arrive in under 5 seconds</p>
                 </div>
                 <form class="">
                     <div class="form-group left-inner-addon">
@@ -211,14 +251,40 @@
                         </div>
                     </div>
                 </div>
+                <div class="banner-content-button d-flex justify-content-center justify-content-lg-start pl-lg-5">
+                    <a href="#" class="mr-1 mr-sm-3">
+                        <button class="d-flex button-1">
+                            <img src="{{asset('assets/website-images/apple.svg')}}">
+                            <div class="button-inner">
+                                <span>Get It On</span>
+                                <br>
+                                <span>App Store</span>
+                            </div>
+                           
+                        </button>
+                    </a>
+                    <a href="#">
+                        <button class="d-flex button-1">
+                            <img src="{{asset('assets/website-images/playstore.svg')}}">
+                            <div class="button-inner">
+                                <span>Get It On</span>
+                                <br>
+                                <span>Play Store</span>
+                            </div>
+                           
+                        </button>
+                    </a>
+                  
+                </div>
+
             </div>
         </div>
      
         <div class="supported-section px-5 pt-0 pt-md-3 ">
             <div class="supported-section-inner">
                 <div class="network-slider-section container-fluid">
-                    <h1>Supported payment</h1>
-                    <h1>methods</h1>
+                    <h1>Our Telecom</h1>
+                    <h1>Partners</h1>
                     <div class="network-slider">
                         <div class="row">
                             <div class="col-md-6 network-slider-left">
@@ -281,7 +347,7 @@
             <div class="col-md-7 info-section-left py-2 py-lg-5">
                 <div class="info-section-left-content">
                     <h1>Safe, Fast,</h1>
-                    <p>Every month around 300,000 people send over 10 million dollars of top-up with Amin. That's thousands of title smiles sent - every single day.</p>
+                    <p>Every day around 100,000 people worldwide use Amin Topup service to send Topup.Our service is secure and fast with the best rates in the market.</p>
                 </div>
             </div>
             <div class="col-md-5 info-section-right pr-0 text-right py-5">
@@ -314,7 +380,7 @@
                 alt="image">
     </div>
     <div class="info-section-two container-fluid px-0 ">
-        <div class="info-section-two-wrapper  container-fluid ">
+        <div class="info-section-two-wrapper  container">
             <div class="row py-3">
                 <div class="col-md-5 info-section-two-left text-center py-1 py-md-4">
                     <img class="mobile-image-left" src="{{ asset('assets/website-images/mobile.svg') }}"
@@ -334,9 +400,9 @@
         alt="image">
     </div>
     <div class="info-section-two container-fluid px-0 ">
-        <div class="info-section-two-wrapper  container-fluid ">
+        <div class="info-section-two-wrapper  container">
             <div class="row py-3">
-                <div class="col-md-7 info-section-two-right d-flex justify-content-end order-2 order-md-12">
+                <div class="col-md-7 info-section-two-right justify-content-end order-2 order-md-12">
                     <div class="info-section-two-right-content pl-md-5">
                         <h1>Send money to almost anywhere in the world from  </h1>
                         <p>Get the Amin Top-Up App for the fastest, easiest way to top-up any phone.</p>

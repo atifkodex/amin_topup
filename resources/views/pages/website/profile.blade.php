@@ -182,7 +182,7 @@
     <div class="container-fluid outer-wrapper">
         <div class="inner-wrapper">
             <img class="star-icon" src="{{ asset('assets/website-images/star-icon.svg') }}" alt="image">
-            <div class="inner-wrapper-heading d-flex">
+            <div class="inner-wrapper-heading d-flex container">
                 <h1>Profil</h1>
                 <h1 class="">e</h1>
             </div>

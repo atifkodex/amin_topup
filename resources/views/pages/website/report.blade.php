@@ -88,7 +88,7 @@
                     </div>
                 </div>
             </div>
-            <div class="inner-wrapper-heading d-flex justify-content-between">
+            <div class="inner-wrapper-heading d-flex justify-content-between container">
                 <div class="report-header-left">
                     <h1>TopUp</h1>
                     <h1>Report</h1>
@@ -117,7 +117,7 @@
           </defs>
       </svg>
     <div class="info-section-two container-fluid px-0">
-        <div class="amount-section container-fluid">
+        <div class="amount-section container">
             <div class="row">
                 <div class="col-12 report-card-wrapper">
                     <div class="reg-box px-0">
@@ -278,9 +278,9 @@
         </div>
     </div>
     <div class="info-section-two container-fluid px-0 ">
-        <div class="info-section-two-wrapper  container-fluid ">
+        <div class="info-section-two-wrapper  container ">
             <div class="row py-3">
-                <div class="col-md-7 info-section-two-right d-flex justify-content-end order-2 order-md-12">
+                <div class="col-md-7 info-section-two-right  justify-content-end order-2 order-md-12">
                     <div class="info-section-two-right-content pl-md-5">
                         <h1>Send money to almost anywhere in the world from </h1>
                         <p>Get the Amin Top-Up App for the fastest, easiest way to top-up any phone.</p>

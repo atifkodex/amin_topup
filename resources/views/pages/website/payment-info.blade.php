@@ -90,7 +90,7 @@
     <div class="container-fluid outer-wrapper">
         <div class="inner-wrapper">
             <img class="star-icon" src="{{ asset('assets/website-images/star-icon.svg') }}" alt="image">
-            <div class="inner-wrapper-heading">
+            <div class="inner-wrapper-heading container">
                 <h1>Add Payment</h1>
                 <h1>Information</h1>
             </div>
@@ -111,7 +111,7 @@
           </defs>
       </svg>
     <div class="info-section-two container-fluid px-0 my-3 my-md-2">
-        <div class="amount-section container-fluid">
+        <div class="amount-section container">
             <div class="row">
                 <div class="col-12">
                     <div class="reg-box my-0 my-md-5">
