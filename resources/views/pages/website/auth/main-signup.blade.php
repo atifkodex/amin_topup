@@ -132,7 +132,15 @@
  border: none;
  overflow-y: hidden !important;
 }
-
+.loginBtn_s{
+        text-decoration: none !important;
+        background-color: #001933 !important;
+        color: white !important;
+        width: 100% !important;
+        padding: 14px 0px !important;
+        font-size: 28px !important;
+        font-weight: bold !important;
+    }
 </style>
 @section('content')
     @include('includes.website.navbar')
@@ -169,25 +177,68 @@
                 </div>
                 <div class="col-12">
                     <div class="reg-box my-3 my-lg-5">
-                        <form class="pt-5">
+                        <form class="pt-5" method="POST" action="{{route('userSignup')}}" enctype="multipart/form-data">
+                            @csrf
+                            @error('email')
+                                <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @enderror
+                            @error('password')
+                                <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @enderror
+                            @error('phone_number')
+                                <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @enderror
+                            @error('country')
+                                <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @enderror
+                            @if (Session::has('message'))
+                                <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
+                                    {{ Session::get('message') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                            @endif
                             <div class="form-group form-field right-inner">
                                 <img src="{{ asset('assets/website-images/message-icon.svg') }}" alt="icon">
-                              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="enter your email">
+                              <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="enter your email">
                             </div>
                             <div class="form-group form-field right-inner">
                                 <img src="{{ asset('assets/website-images/eye.svg') }}"  onclick="viewPsd()"  alt="icon" style="cursor: pointer">
                               <input type="password" class="form-control" id="loginpassword" name="password" placeholder="enter your password">
                             </div>
                             <div class="form-group form-field">   
-                            <input type="number" class="form-control" placeholder="" id="telephone">
+                            <input type="number" class="form-control" placeholder="" name="phone_number" id="telephone">
                             </div>
                             <div class="form-group form-field">   
                                 <label class="mx-0">
                                     Countries
-                                    <input mbsc-input id="demo-country-picker" data-dropdown="true" data-input-style="box" data-label-style="stacked" placeholder="Please select..." />
+                                    <input mbsc-input id="demo-country-picker" name="country" data-dropdown="true" data-input-style="box" data-label-style="stacked" placeholder="Please select..." />
                                 </label>
                                 </div>
-                            <a href="{{url('/')}}" type="submit" class="btn my-3 my-lg-4">Sign Up</a>
+                            <!-- <a href="{{url('/')}}" type="submit" class="btn my-3 my-lg-4">Sign Up</a> -->
+                            <input type="hidden" name="users_device" value="web">
+                            <button type="submit" class=" mt-3 mt-lg-4 loginBtn_s" >SIGN UP</button>
                           </form>
                         <p class="py-3">Already have an account?<a href="{{url('main_login')}}"><span>Log In</span></a> 
                         </p>

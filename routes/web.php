@@ -90,6 +90,8 @@ Auth::routes();
 // website
 Route::get('/number_detail', [WebsiteController::class, 'numberDetail'])->name('number-detail');
 Route::get('/amount_detail', [WebsiteController::class, 'amountDetail'])->name('amountDetails');
+Route::post('/user_login', [WebsiteController::class, 'userLogin'])->name('userLogin');
+Route::post('/user_signup', [WebsiteController::class, 'userSignup'])->name('userSignup');
 
 Route::get('/', function () {
     return view('pages.website.home');

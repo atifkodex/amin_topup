@@ -41,4 +41,51 @@ class WebsiteController extends Controller
         $originalResponse = $response->getData()->data->network;
         return view('pages.website.amount', ['data' => $originalResponse, 'number' => $number]);
     }
+
+    public function userLogin(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|regex:/(.+)@(.+)\.(.+)/i',
+            'password' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator->messages())->withInput();
+        }
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json'
+        ])->post(\config('url.url').'/api/login', $request->all());
+        $responseBody = $response->body();
+        $userLoginData = json_decode($responseBody, true);
+        if ($userLoginData['success'] == false) {
+            session::flash('message', $userLoginData['message']);
+            return redirect()->back();
+        } elseif ($userLoginData['success'] == true) {
+            session::put('UserloginData', $userLoginData['data']);
+            return view('pages.website.home');
+        }
+    }
+
+    public function userSignup(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|regex:/(.+)@(.+)\.(.+)/i',
+            'password' => 'required|min:6',
+            'phone_number' => 'required',
+            'country' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator->messages())->withInput();
+        }
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json'
+        ])->post(\config('url.url').'/api/register', $request->all());
+        $responseBody = $response->body();
+        $userSignupData = json_decode($responseBody, true);
+        if ($userSignupData['success'] == false) {
+            session::flash('message', $userSignupData['message']);
+            return redirect()->back();
+        } elseif ($userSignupData['success'] == true) {
+            return view('pages.website.auth.main-login');
+        }
+    }
 }
