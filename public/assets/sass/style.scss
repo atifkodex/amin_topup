@@ -12,6 +12,20 @@ body {
   min-height: 100vh;
 }
 // navbar
+.dropdown-bg{
+  background: linear-gradient(73.58deg, #04376D 1.64%, #2762A1 88.81%);
+  border-radius: 16px;
+  border: none;
+}
+.dropdown-bg a{
+  text-decoration: none;
+  color: white;
+  &:hover{
+    color: $color-yellow;
+    background: transparent;
+  }
+}
+
 .navbar-bg{
   z-index: 9999;
     background-image: url('../website-images/navbar-bg.svg');
@@ -28,9 +42,16 @@ body {
       }
     }
 }
+.nav-item a:hover{
+  color: $color-yellow !important;
+}
+.nav-item.login:hover a{
+  background: linear-gradient(73.58deg, #04376D 1.64%, #2762A1 88.81%) !important;
+  color: white !important;
+}
 .navbar-nav{
     .nav-item{
-      display: flex;
+      // display: flex;
       align-items: center;
         &.active{
             color:$color-white !important;
@@ -94,7 +115,7 @@ body {
       font-size: 16px;
       transition-duration: 0.2s;
       &:hover{
-        color: $color-white;
+        color: $color-yellow;
         text-decoration: none;
       }
     }
@@ -102,6 +123,7 @@ body {
       h4{
         color: $color-yellow;
         font-size: 14px;
+        font-weight: bold;
       }
     }
     .copy {
@@ -154,6 +176,7 @@ body {
       p{
         font-size:22px;
         width: 50%;
+        font-weight:500;
         margin: 0 auto;
         @media screen and (max-width:1396px) and (min-width:1199px){
           width: 60%;
@@ -208,6 +231,11 @@ body {
         background: $color-yellow;
         color: black;
         height: 50px;
+        &:hover{
+          box-shadow: 0 0 10px 0 #DA7A04 inset, 0 0 20px 2px #0088d7;
+          border: 3px solid #DA7A04;
+          color: white;
+        }
       }
       .left-inner-addon {
         position: relative;
@@ -373,7 +401,7 @@ body {
       display: flex;
       flex-wrap: wrap;
       width: 100%;
-      justify-content: space-around;
+      justify-content:space-between;
       @media screen and (max-width:767px){
         flex-direction: column;
         .service-card{
@@ -897,8 +925,7 @@ body {
       h1{
         font-size: 40px;
         font-weight: bold;
-        &::after{
-          content: ' Afghanistan';
+        span{
           color: $color-yellow;
         }
       }
@@ -950,6 +977,7 @@ body {
       .banner-content-button{
         padding-top: 40px;
         padding-bottom: 40px;
+    
       }
       .banner-content-button a{
         text-decoration: none;
@@ -968,6 +996,10 @@ body {
         justify-content:space-around;
         padding-top:5px;
         padding-bottom: 5px;
+        &:hover{
+          box-shadow: 0 0 5px 0 $color-yellow inset, 0 0 10px 2px $color-yellow;
+          border: 3px solid $color-yellow;
+        }
       }
       @media screen and (max-width:576px) {
         .banner-content-button{
@@ -1379,11 +1411,11 @@ color: black;
   padding-top: 5px;
   margin-top: 5px;
 }
-.amount-card.active{
+.amount-card.active,.amount-card:hover{
   background: $color-yellow;
   color: white;
 }
-.amount-card.active p:last-of-type{
+.amount-card.active p:last-of-type,.amount-card:hover p:last-of-type{
   border-top: 1px solid #DA7A04;
 }
 .amount-heading h1{
@@ -1453,6 +1485,7 @@ color: black;
   padding: 14px 0px;
   font-size: 28px;
   font-weight: bold;
+  outline: none;
 }
 .reg-box a:active,.reg-box a:hover,.reg-box a:focus{
 color: white;
@@ -1462,9 +1495,19 @@ outline: none;
 }
 .reg-box a:nth-of-type(1){
   background: #001933;
+  &:hover{
+    box-shadow: 0 0 10px 0 #004691 inset, 0 0 20px 2px #004691;
+    border: 3px solid #004691 ;
+    background: #002a57f5;
+  }
 }
 .reg-box a:nth-of-type(2){
   background:$color-yellow;
+  &:hover{
+    box-shadow: 0 0 5px 0 #F89822 inset, 0 0 10px 2px #F89822;
+    border: 3px solid #F89822;
+    
+  }
 }
 .reg-box p{
   width: 80%;
@@ -1730,6 +1773,10 @@ outline: none;
 }
 .summary-btn{
   background: $color-yellow !important;
+  &:hover{
+    box-shadow: 0 0 5px 0 #F89822 inset, 0 0 10px 2px #F89822 !important;
+    border: 3px solid #F89822 !important;
+  }
 }
 .summary-text{
   color: #001933 !important;
@@ -2027,5 +2074,147 @@ font-weight: normal;
   .report-card-wrapper{
     padding-left: 10px !important;
     padding-right: 10px !important;
+  }
+}
+
+// payment modal
+.payment-modal-content{
+  position: relative;
+  border: none;
+  border-radius: 10px;
+}
+.modal-img{
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 180px;
+}
+.payment-modal-body p{
+  font-size: 22px;
+  font-weight: 500;
+  color: black;
+}
+.payment-modal-body p.error-message{
+  color:#EB5A5A;
+}
+.payment-modal-body button{
+   width: 400px;
+   height: 50px;
+   background: #EB5A5A;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   font-size: 18px;
+}
+.payment-modal-body .success-message{
+  margin-bottom: 0px;
+  span{
+    color: #3DAB25;
+  }
+}
+@media screen and (max-width:576px){
+  .modal-img{
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 150px;
+  }
+  .payment-modal-content{
+    width:80%;
+    margin: 0 auto;
+  }
+  .payment-modal-body button{
+    width:100%;
+    height: 40px;
+    font-size: 16px;
+    background: #EB5A5A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+ }
+ .payment-modal-body p{
+  font-size:16px;
+  font-weight: 500;
+  color: black;
+ 
+}
+} 
+@media screen and (max-width:376px){
+
+ .payment-modal-body p{
+  font-size:16px;
+  font-weight: 500;
+  color: black;
+  margin-bottom: 0px;
+ 
+}
+} 
+
+// forgot modal
+.email-modal-content{
+  background: linear-gradient(73.58deg, #04376D 1.64%, #2762A1 88.81%);
+  border-radius: 16px;
+  border: none;
+}
+.email-modal-body h1{
+  font-size: 30px;
+  color: white;
+  span{
+    color: $color-yellow;
+  }
+}
+.email-modal-body p{
+  font-size:16px;
+  color: white;
+  margin-bottom: 0px;
+}
+.email-modal-body .form-field input{
+  height: 50px;
+}
+.email-modal-body .email-modal-btn{
+  background: $color-yellow;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  width:200;
+ padding: 10px 0px;
+}
+.email-modal-body .form-field img{
+  width: 40px;
+}
+@media screen and (max-width:991px){
+  .modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 4.5rem auto !important;
+    pointer-events: none;
+}
+}
+@media screen and (max-width:576px){
+  .modal-content{
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  .email-modal-body h1{
+    font-size:25px;
+    color: white;
+    span{
+      color: $color-yellow;
+    }
+  }
+  .email-modal-body .form-field input{
+    height: 40px;
+  }
+  .email-modal-body .email-modal-btn{
+    background: $color-yellow;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    width:100%;
+    padding: 7px 0px;
   }
 }

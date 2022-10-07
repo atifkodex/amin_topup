@@ -82,7 +82,7 @@
     }
  
       .banner-content-button a{
-        text-decoration: none;
+        text-decoration: none !important;
       }
       .button-inner span:nth-of-type(2){
         font-weight: bold;
@@ -99,6 +99,10 @@
         padding-top:5px;
         padding-bottom: 5px;
       }
+      .banner-content-button a button:hover{
+          box-shadow: 0 0 5px 0 #F89822 inset, 0 0 10px 2px #F89822;
+          border: 3px solid #F89822;
+        }
       @media screen and (max-width:576px) {
         .banner-content-button{
           /* padding-top: 20px;
@@ -141,65 +145,6 @@
                     <button type="submit" class="btn form-control">Start Top-up</button>
                 </form>
             </div>
-            
-            {{-- <div class="detail-box-outer pt-5  px-3">
-                <div class="detail-box">
-                    <div class="main-form-section-content pb-4">
-                        <h1>The fastest way to send <span>Top-up</span> worldwide</h1>
-                    </div>
-                    <div class="network-list mb-1 d-flex align-items-center pb-3">
-                        <div class="network-icon">
-                            <img class="network-icon-image" src="{{ asset('assets/website-images/afg-flag.svg') }}"
-                                alt="image">
-                        </div>
-                        <div class="network-text d-flex">
-                            <h1>93 70 00 00 000</h1>
-    
-                        </div>
-                        <div class="network-button pl-2 pl-lg-5">
-                            <button><img class="edit-icon" src="{{ asset('assets/website-images/edit-icon.svg') }}"
-                                    alt="image"></button>
-                        </div>
-    
-                    </div>
-                    <div class="network-list mb-1 d-flex align-items-center pb-3">
-                        <div class="network-icon">
-                            <img class="network-icon-image" src="{{ asset('assets/website-images/awcc.svg') }}" alt="image">
-                        </div>
-                        <div class="network-text d-flex">
-                            <h1>AWCC</h1>
-    
-                        </div>
-                    </div>
-                    <div class="network-list mb-1 d-flex align-items-center pb-3">
-                        <div class="network-icon">
-                            <img class="network-icon-image" src="{{ asset('assets/website-images/profile-icon.svg') }}"
-                                alt="image">
-                        </div>
-                        <div class="network-text d-flex">
-                            <h1>Amin Top-Up</h1>
-    
-                        </div>
-                    </div>
-                    <div class="network-list mb-1 d-flex align-items-center pb-3">
-                        <div class="network-icon">
-                            <img class="network-icon-image" src="{{ asset('assets/website-images/msg-icon.svg') }}"
-                                alt="image">
-                        </div>
-                        <div class="network-text d-flex amin-gmail">
-                            <h1>amintopup@gmail.com</h1>
-    
-                        </div>
-                    </div>
-    
-    
-                </div>
-                 <div class="detail-box-bottom text-right">
-                    <h1>250 <span>AFN</span></h1>
-                 </div>
-            </div> --}}
-       
-            
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                 <path fill="#ffffff" fill-opacity="1"
                     d="M0,32L48,58.7C96,85,192,139,288,176C384,213,480,235,576,202.7C672,171,768,85,864,85.3C960,85,1056,171,1152,197.3C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
@@ -251,7 +196,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="banner-content-button d-flex justify-content-center justify-content-lg-start pl-lg-5">
+                <div class="banner-content-button d-flex justify-content-center justify-content-lg-start ">
                     <a href="#" class="mr-1 mr-sm-3">
                         <button class="d-flex button-1">
                             <img src="{{asset('assets/website-images/apple.svg')}}">
@@ -360,7 +305,7 @@
     <div class="gallery-section container-fluid px-0">
         <img class="gallery-image" src="{{ asset('assets/website-images/gallery-bg.svg') }}"
                 alt="image">
-                <div class="gallery-section-wrapper gallery-wrapper container-fluid ">
+                <div class="gallery-section-wrapper gallery-wrapper container ">
                     <div class="row py-3">
                         <div class="col-md-5 gallery-section-left  text-center py-4">
                             <img class="gallery-image-left" src="{{ asset('assets/website-images/person-image.svg') }}"
@@ -369,7 +314,7 @@
                         <div class="col-md-7 gallery-section-right ">
                             <div class="gallery-section-right-content">
                                 <h1>Trusted by over</h1>
-                                <p>Whether you call it top-up, recharge, load, airtime or credit, we've got you covered. We've delivered over 500 million international mobile recharges since 2022.</p>
+                                <p>We have delivered millions of International Mobile Recharge since 2020.</p>
                             </div>
                         </div>
                     </div>
@@ -388,8 +333,8 @@
                 </div>
                 <div class="col-md-7 info-section-two-right ">
                     <div class="info-section-two-right-content">
-                        <h1>How fast will my money get to </h1>
-                        <p>Choose cash pickup and your money is typically available in minutes at convenient locations throughout Afghanistan.</p>
+                        <h1>How fast will my Topup get to <span>Afghanistan</span>?</h1>
+                        <p>Amin Topup has direct routes with all Afghanistan operators. We deliver your Topup within seconds. 99% of our Topups reach customers under 5 seconds.</p>
                     </div>
                 </div>
             </div>
@@ -404,9 +349,9 @@
             <div class="row py-3">
                 <div class="col-md-7 info-section-two-right justify-content-end order-2 order-md-12">
                     <div class="info-section-two-right-content pl-md-5">
-                        <h1>Send money to almost anywhere in the world from  </h1>
-                        <p>Get the Amin Top-Up App for the fastest, easiest way to top-up any phone.</p>
-                        <div class="banner-content-button d-flex justify-content-center justify-content-md-start">
+                        <h1>What Payment Methods are acceptable in <span>Amin Topup</span>?</h1>
+                        <p>Amin Topup uses a secure third-party payment processing gateway. We will not save or deal with your payment information. Major credit cards are acceptable in Amin Topup.</p>
+                        {{-- <div class=" banner-content-button d-flex justify-content-center justify-content-md-start">
                             <a href="#" class="mr-1 mr-sm-3">
                                 <button class="d-flex button-1">
                                     <img src="{{asset('assets/website-images/apple.svg')}}">
@@ -430,7 +375,7 @@
                                 </button>
                             </a>
                           
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-md-5 info-section-two-left text-center py-1 py-md-4 order-1 order-md-12">

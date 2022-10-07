@@ -57,6 +57,8 @@
     }
     .reg-box p a{
         background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
     }
  
     .right-inner {
@@ -93,7 +95,7 @@
     
                         </div>
                         <div class="network-button pl-2 pl-lg-5">
-                            <button><img class="edit-icon" src="{{ asset('assets/website-images/edit-icon.svg') }}"
+                            <button data-toggle="modal" data-target="#email-modal"><img class="edit-icon"  src="{{ asset('assets/website-images/edit-icon.svg') }}"
                                     alt="image"></button>
                         </div>
     
@@ -150,80 +152,34 @@
                                 <img src="{{ asset('assets/website-images/message-icon.svg') }}" >
                               <input type="email" class="form-control"  name="email" placeholder="enter receiver email">
                             </div>
-                            <a href="" type="submit" class="btn my-3 my-lg-4">LOG IN</a>
+                            <a href=""  class="btn my-3 my-lg-4">LOG IN</a>
                           </form>
-                        <p class="py-3">Don't have account?<a href=""><span>Sign Up</span></a> 
+                        <p class="py-3">Don't have account?<a href="{{url('signup')}}"><span>Sign Up</span></a> 
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    {{-- <div class="container-fluid hero-section main-section rec-section">
-        <img class="hero-image main-image" src="{{ asset('assets/website-images/heross.svg') }}" alt="image">
-        <div class="main-form-section main-centered">
-            <div class="detail-box">
-                <div class="main-form-section-content">
-                    <h1>Your <span>Details</span></h1>
-                </div>
-                <div class="network-list mb-1 d-flex align-items-center pb-3">
-                    <div class="network-icon">
-                        <img class="network-icon-image" src="{{ asset('assets/website-images/afg-flag.svg') }}"
-                            alt="image">
-                    </div>
-                    <div class="network-text d-flex">
-                        <h1>93 70 00 00 000</h1>
-                       
-                    </div>
-                    <div class="network-button pl-2 pl-lg-5">
-                        <button><img class="edit-icon" src="{{ asset('assets/website-images/edit-icon.svg') }}" alt="image"></button>
-                    </div>
-                 
-                </div>
-                <div class="network-list mb-1 d-flex align-items-center pb-3">
-                    <div class="network-icon">
-                        <img class="network-icon-image" src="{{ asset('assets/website-images/awcc.svg') }}"
-                            alt="image">
-                    </div>
-                    <div class="network-text d-flex">
-                        <h1>AWCC</h1>
+    <div class="modal fade" id="email-modal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content email-modal-content">
+                <div class="modal-body email-modal-body  text-center py-sm-3">
+                    <h1>Your <span>Details</span> </h1>
+             
+                    <form class="py-2 py-sm-4">
+                        <div class="form-group form-field right-inner">
 
-                    </div>
+                            <input type="text" class="form-control" 
+                                aria-describedby="emailHelp" value="93 70 00 00 000" placeholder="Type here">
+                        </div>
+                        <a href="#" class="btn mt-sm-3 email-modal-btn" >Update</a>
+                    </form>
                 </div>
-           
-                 
             </div>
-
-
-
-
-
-
-
-
-            <form class="main-form ">
-                <div class="form-group form-heading">
-                   <h1 class="text-left">Add Recevier Detail</h1>
-                </div>
-                <div class="form-group right-inner-addon">
-                    <img src="{{ asset('assets/website-images/person-icon.svg') }}" alt="icon">
-                    <input type="text" class="form-control" placeholder="" value="">
-                </div>
-                <div class="form-group right-inner-addon">
-                    <img src="{{ asset('assets/website-images/message-icon.svg') }}" alt="icon">
-                    <input type="text" class="form-control" placeholder="" value="">
-                </div>
-                <button type="submit" class="btn form-control  mt-3">Continue</button>
-            </form>
         </div>
-        <img class="hero-image-left" src="{{ asset('assets/website-images/left-polygon.svg') }}" alt="image">
-        <img class="hero-image-right" src="{{ asset('assets/website-images/right-polygon.svg') }}" alt="image">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#ffffff" fill-opacity="1"
-                d="M0,32L48,58.7C96,85,192,139,288,176C384,213,480,235,576,202.7C672,171,768,85,864,85.3C960,85,1056,171,1152,197.3C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-            </path>
-        </svg>
-    </div> --}}
+    </div>
    
     @include('includes.website.footer-navbar')
 @endsection

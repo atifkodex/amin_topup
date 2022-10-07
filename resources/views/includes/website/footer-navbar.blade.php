@@ -43,7 +43,7 @@
         </div>
           <div class="col-md-3 col-sm-6">
             <div class="footer-pad">
-              <h4>Legal</h4>
+              <h4>LEGAL</h4>
               <ul class="list-unstyled">
                 <li><a href="{{url('privacy')}}">Privacy notice</a></li>
                 <li><a href="{{url('terms')}}">Terms & conditions</a></li>

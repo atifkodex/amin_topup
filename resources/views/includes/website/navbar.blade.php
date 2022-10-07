@@ -5,15 +5,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown active">
+        <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              Amin Topup
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
+            <div class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="{{url('privacy')}}">About Us</a>
+              <a class="dropdown-item" href="{{url('contact')}}">Contact Us</a>
+            </div>                     
           </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Operators <span class="sr-only">(current)</span></a>
@@ -22,14 +21,14 @@
           <a class="nav-link" href="#">Help</a>
         </li>
         <li class="nav-item login">
-            <a class="nav-link" href="{{url('login')}}">Login</a>
+            <a class="nav-link" href="{{url('main_login')}}">Login</a>
           </li>
           <li class="nav-item dropdown active d-none">
             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img class="navbar-profile" src="{{asset('assets/website-images/profile.jpg')}}" alt="image">
                <p class="profile-name">Amin</p> 
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <div class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="{{url('login')}}">Logout</a>
             </div>
           </li>
