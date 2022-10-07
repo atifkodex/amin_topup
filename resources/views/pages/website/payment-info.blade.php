@@ -90,7 +90,7 @@
     <div class="container-fluid outer-wrapper">
         <div class="inner-wrapper">
             <img class="star-icon" src="{{ asset('assets/website-images/star-icon.svg') }}" alt="image">
-            <div class="inner-wrapper-heading">
+            <div class="inner-wrapper-heading container">
                 <h1>Add Payment</h1>
                 <h1>Information</h1>
             </div>
@@ -111,7 +111,7 @@
           </defs>
       </svg>
     <div class="info-section-two container-fluid px-0 my-3 my-md-2">
-        <div class="amount-section container-fluid">
+        <div class="amount-section container">
             <div class="row">
                 <div class="col-12">
                     <div class="reg-box my-0 my-md-5">
@@ -142,7 +142,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 py-2 pb-2 pb-md-5">
-                                    <a href="" type="submit" class="btn my-3 my-lg-4">Continue</a>
+                                    <a href="" type="submit" class="btn my-3 my-lg-4" data-toggle="modal" data-target="#payment-error">Continue</a>
                                 </div>
                             </div>
                         </form>
@@ -156,6 +156,34 @@
                 alt="image">
         </div>
     </div>
+    <div class="payment-modal modal fade" id="payment-error" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content payment-modal-content  pt-4">
+            <div class="modal-body payment-modal-body  text-center py-3 py-md-5">
+              <p>Unfortunately, Your Topup transaction was not successful due to</p>
+              <p class="error-message">[Error Description]</p>
+              <p>We will refund the payment to your card soon. You can try again later!</p>
+              <button>Try Again</button>
+            </div>
+            <img class="modal-img" src="{{ asset('assets/website-images/error-modal.svg') }}"
+            alt="image">
+        </div>
+    </div>
+</div>
+<div class="payment-modal modal fade" id="payment-success" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content payment-modal-content  pt-4">
+        <div class="modal-body payment-modal-body  text-center py-5">
+          <p class="success-message">Topup <span>successfully</span> sent to Ali.</p>
+          <p>Thank you for using Amin Topup!</p>
+        </div>
+        <img class="modal-img" src="{{ asset('assets/website-images/success-modal.svg') }}"
+        alt="image">
+    </div>
+</div>
+</div>
     @include('includes.website.footer-navbar')
 @endsection
 @section('insertjavascript')

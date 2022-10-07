@@ -127,7 +127,13 @@ Route::get('report', function () {
     return view('pages.website.report');
 });
 
+Route::get('privacy', function () {
+    return view('pages.website.privacy');
+});
 
+Route::get('terms', function () {
+    return view('pages.website.terms');
+});
 
 // auth
 
@@ -139,8 +145,16 @@ Route::get('login', function () {
     return view('pages.website.auth.login');
 });
 
+Route::get('main_login', function () {
+    return view('pages.website.auth.main-login');
+});
+
 Route::get('signup', function () {
     return view('pages.website.auth.sign-up');
+});
+
+Route::get('main_signup', function () {
+    return view('pages.website.auth.main-signup');
 });
 
 Route::get('forgot', function () {

@@ -71,7 +71,7 @@
     
                         </div>
                         <div class="network-button pl-2 pl-lg-5">
-                            <button><img class="edit-icon" src="{{ asset('assets/website-images/edit-icon.svg') }}"
+                            <button data-toggle="modal" data-target="#email-modal"><img class="edit-icon" src="{{ asset('assets/website-images/edit-icon.svg') }}"
                                     alt="image"></button>
                         </div>
     
@@ -133,46 +133,64 @@
                     </div>
                 </div>
                 <div class="col-md-6 py-3">
-                    <div class="amount-card">
-                        <p>Recevier:befor AIT</p>
-                        <h1>100 AFN</h1>
-                        <p>Free fee,total: $7.46USD</p>
-                    </div>
+                    <a href="{{url('login')}}">
+                        <div class="amount-card">
+                            <p>Recevier:befor AIT</p>
+                            <h1>100 AFN</h1>
+                            <p>Free fee,total: $7.46USD</p>
+                        </div>
+                    </a>
+              
                 </div>
                 <div class="col-md-6 py-3">
-                    <div class="amount-card">
-                        <p>Recevier:befor AIT</p>
-                        <h1>100 <span>AFN</span></h1>
-                        <p>Free fee,total: $7.46USD</p>
-                    </div>
+                    <a href="{{url('login')}}">
+                        <div class="amount-card">
+                            <p>Recevier:befor AIT</p>
+                            <h1>100 AFN</h1>
+                            <p>Free fee,total: $7.46USD</p>
+                        </div>
+                    </a>
+              
                 </div>
                 <div class="col-md-6 py-3">
-                    <div class="amount-card">
-                        <p>Recevier:befor AIT</p>
-                        <h1>100 <span>AFN</span></h1>
-                        <p>Free fee,total: $7.46USD</p>
-                    </div>
+                    <a href="{{url('login')}}">
+                        <div class="amount-card">
+                            <p>Recevier:befor AIT</p>
+                            <h1>100 AFN</h1>
+                            <p>Free fee,total: $7.46USD</p>
+                        </div>
+                    </a>
+              
                 </div>
                 <div class="col-md-6 py-3">
-                    <div class="amount-card">
-                        <p>Recevier:befor AIT</p>
-                        <h1>100 <span>AFN</span></h1>
-                        <p>Free fee,total: $7.46USD</p>
-                    </div>
+                    <a href="{{url('login')}}">
+                        <div class="amount-card">
+                            <p>Recevier:befor AIT</p>
+                            <h1>100 AFN</h1>
+                            <p>Free fee,total: $7.46USD</p>
+                        </div>
+                    </a>
+              
                 </div>
                 <div class="col-md-6 py-3">
-                    <div class="amount-card active">
-                        <p>Recevier:befor AIT</p>
-                        <h1>100 <span>AFN</span></h1>
-                        <p>Free fee,total: $7.46USD</p>
-                    </div>
+                    <a href="{{url('login')}}">
+                        <div class="amount-card active">
+                            <p>Recevier:befor AIT</p>
+                            <h1>100 AFN</h1>
+                            <p>Free fee,total: $7.46USD</p>
+                        </div>
+                    </a>
+              
                 </div>
                 <div class="col-md-6 py-3">
-                    <div class="amount-card">
-                        <p>Recevier:befor AIT</p>
-                        <h1>100 <span>AFN</span></h1>
-                        <p>Free fee,total: $7.46USD</p>
-                    </div>
+                    <a href="{{url('login')}}">
+                        <div class="amount-card">
+                            <p>Recevier:befor AIT</p>
+                            <h1>100 AFN</h1>
+                            <p>Free fee,total: $7.46USD</p>
+                        </div>
+                    </a>
+              
                 </div>
 
             </div>
@@ -180,6 +198,25 @@
         <img class="lefts-polygon-two" src="{{ asset('assets/website-images/left-polygon-three.svg') }}" alt="image">
         <img class="right-polygon-two" src="{{ asset('assets/website-images/right-polygon-two.svg') }}" alt="image">
     </div>
+    <div class="modal fade" id="email-modal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content email-modal-content">
+            <div class="modal-body email-modal-body  text-center py-sm-3">
+                <h1>Your <span>Details</span> </h1>
+         
+                <form class="py-2 py-sm-4">
+                    <div class="form-group form-field right-inner">
+
+                        <input type="text" class="form-control" 
+                            aria-describedby="emailHelp" value="93 70 00 00 000" placeholder="Type here">
+                    </div>
+                    <a href="#" class="btn mt-sm-3 email-modal-btn" >Update</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
     @include('includes.website.footer-navbar')
 @endsection
 @section('insertjavascript')

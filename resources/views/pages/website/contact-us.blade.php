@@ -131,7 +131,7 @@
     <div class="container-fluid outer-wrapper">
         <div class="inner-wrapper">
             <img class="star-icon" src="{{ asset('assets/website-images/star-icon.svg') }}" alt="image">
-            <div class="inner-wrapper-heading d-flex">
+            <div class="inner-wrapper-heading d-flex container">
                 <h1>Contact</h1>
                 <h1 class="pl-2">Us</h1>
             </div>
@@ -152,7 +152,7 @@
           </defs>
       </svg>
     <div class="info-section-two container-fluid px-0 my-3 my-md-2">
-        <div class="amount-section container-fluid">
+        <div class="amount-section container">
             <div class="row">
                 <div class="col-12">
                     <div class="reg-box my-0 my-md-5">
@@ -200,9 +200,9 @@
         </div>
     </div>
     <div class="info-section-two container-fluid px-0 ">
-        <div class="info-section-two-wrapper  container-fluid ">
+        <div class="info-section-two-wrapper  container ">
             <div class="row py-3">
-                <div class="col-md-7 info-section-two-right d-flex justify-content-end order-2 order-md-12">
+                <div class="col-md-7 info-section-two-right  justify-content-end order-2 order-md-12">
                     <div class="info-section-two-right-content pl-md-5">
                         <h1>Send money to almost anywhere in the world from </h1>
                         <p>Get the Amin Top-Up App for the fastest, easiest way to top-up any phone.</p>
