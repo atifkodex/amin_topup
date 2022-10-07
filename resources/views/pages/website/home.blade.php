@@ -80,7 +80,6 @@
         padding-bottom: 100px !important;
     }
     }
-  
 </style>
 @section('content')
     @include('includes.website.navbar')
@@ -92,11 +91,12 @@
                     <h1>The fastest way to send <span>Top-up</span> worldwide</h1>
                     <p>99% of mobile recharges sent online with Amin Top-Up arrive in under 30 seconds</p>
                 </div>
-                <form class="">
+                <form class="" action="{{route('number-detail')}}" enctype="multipart/form-data">
+                    @csrf
                     <div class="form-group left-inner-addon">
                         <img src="{{ asset('assets/website-images/flag.svg') }}" alt="icon">
                         <div class="phone-extension">+93</div>
-                        <input type="text" class="form-control" placeholder="" value="">
+                        <input type="text" name="number" class="form-control" placeholder="" value="">
                     </div>
                     <button type="submit" class="btn form-control">Start Top-up</button>
                 </form>

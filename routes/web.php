@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminUIController;
 use App\Http\Middleware\AdminAuth;
 use App\Http\Middleware\IsAdmin;
+use App\Http\Controllers\WebsiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,17 +88,20 @@ Auth::routes();
 
 
 // website
+Route::get('/number_detail', [WebsiteController::class, 'numberDetail'])->name('number-detail');
+Route::get('/amount_detail', [WebsiteController::class, 'amountDetail'])->name('amountDetails');
+
 Route::get('/', function () {
     return view('pages.website.home');
 });
 
-Route::get('receiver-detail', function () {
-    return view('pages.website.recevier');
-});
+// Route::get('receiver-detail', function () {
+//     return view('pages.website.recevier');
+// });
 
-Route::get('amount-detail', function () {
-    return view('pages.website.amount');
-});
+// Route::get('amount-detail', function () {
+//     return view('pages.website.amount');
+// })->name('amountDetails');
 
 Route::get('order', function () {
     return view('pages.website.order-summary');

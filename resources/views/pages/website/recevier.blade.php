@@ -89,7 +89,7 @@
                                 alt="image">
                         </div>
                         <div class="network-text d-flex">
-                            <h1>93 70 00 00 000</h1>
+                            <h1>{{$number}}</h1>
     
                         </div>
                         <div class="network-button pl-2 pl-lg-5">
@@ -100,10 +100,10 @@
                     </div>
                     <div class="network-list mb-1 d-flex align-items-center pb-3">
                         <div class="network-icon">
-                            <img class="network-icon-image" src="{{ asset('assets/website-images/awcc.svg') }}" alt="image">
+                            <img class="network-icon-image" src="{{$data->operator_image}}" alt="image">
                         </div>
                         <div class="network-text d-flex">
-                            <h1>AWCC</h1>
+                            <h1>{{$data->operator_name}}</h1>
     
                         </div>
                     </div>
@@ -138,21 +138,23 @@
             <div class="row">
                 <div class="col-12">
                     <div class="reg-box mb-4 mb-lg-5">
-                        <form class="pt-2">
+                        <form class="pt-2" action="{{route('amountDetails')}}" enctype="multipart/form-data">
+                            @csrf
                             <div class="form-group form-heading pt-1 pb-2  pb-md-4 pt-md-2">
                                 <h1 class="text-left">Add Recevier Detail</h1>
                              </div>
                             <div class="form-group form-field right-inner">
                                 <img src="{{ asset('assets/website-images/person-icon.svg') }}" alt="icon">
-                              <input type="text" class="form-control"  placeholder="enter recevier name">
+                              <input type="text" class="form-control" id="receiverName_d"  placeholder="enter recevier name">
                             </div>
                             <div class="form-group form-field right-inner">
                                 <img src="{{ asset('assets/website-images/message-icon.svg') }}" >
-                              <input type="email" class="form-control"  name="email" placeholder="enter receiver email">
+                              <input type="email" class="form-control" id="receiverEmail_d" name="email" placeholder="enter receiver email">
                             </div>
-                            <a href="" type="submit" class="btn my-3 my-lg-4">LOG IN</a>
-                          </form>
-                        <p class="py-3">Don't have account?<a href=""><span>Sign Up</span></a> 
+                            <input type="hidden" name="number" value="{{$number}}">
+                            <button href="javascript:void(0)" style="background-color:#F89822; color: black" type="submit" class="btn w-100 my-3 my-lg-4 continueReceiverDetailBtn_d">Continue</button>
+                        </form>
+                        <!-- <p class="py-3">Don't have account?<a href=""><span>Sign Up</span></a>  -->
                         </p>
                     </div>
                 </div>
@@ -228,4 +230,14 @@
     @include('includes.website.footer-navbar')
 @endsection
 @section('insertjavascript')
+<script>
+    $(document).ready(function() {
+        $(".continueReceiverDetailBtn_d").click(function(){
+            $receiverName = $('#receiverName_d').val();
+            $receiverEmail = $('#receiverEmail_d').val();
+            localStorage.setItem('receiverName', $receiverName);
+            localStorage.setItem('receiverEmail', $receiverEmail);
+        });
+    });
+</script>
 @endsection

@@ -67,7 +67,7 @@
                                 alt="image">
                         </div>
                         <div class="network-text d-flex">
-                            <h1>93 70 00 00 000</h1>
+                            <h1>{{$number}}</h1>
     
                         </div>
                         <div class="network-button pl-2 pl-lg-5">
@@ -78,10 +78,10 @@
                     </div>
                     <div class="network-list mb-1 d-flex align-items-center pb-3">
                         <div class="network-icon">
-                            <img class="network-icon-image" src="{{ asset('assets/website-images/awcc.svg') }}" alt="image">
+                            <img class="network-icon-image" src="{{$data->operator_image}}" alt="image">
                         </div>
                         <div class="network-text d-flex">
-                            <h1>AWCC</h1>
+                            <h1>{{$data->operator_name}}</h1>
     
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                                 alt="image">
                         </div>
                         <div class="network-text d-flex">
-                            <h1>Amin Top-Up</h1>
+                            <h1 id="receiverName_d">Amin Top-Up</h1>
     
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                                 alt="image">
                         </div>
                         <div class="network-text d-flex amin-gmail">
-                            <h1>amintopup@gmail.com</h1>
+                            <h1 id="receiverEmail_d">amintopup@gmail.com</h1>
     
                         </div>
                     </div>
@@ -186,4 +186,11 @@
     <script>
         $(".hero-section").css("margin-bottom", "10%");
     </script>
+    <script>
+        $receiverName = localStorage.getItem('receiverName');
+        $receiverEmail = localStorage.getItem('receiverEmail');
+        console.log($receiverEmail + $receiverName);
+        $("#receiverName_d").text($receiverName);
+        $("#receiverEmail_d").text($receiverEmail);
+</script>
 @endsection
