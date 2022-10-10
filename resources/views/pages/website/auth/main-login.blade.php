@@ -299,28 +299,28 @@
         $("#email-btn").click(function() {
             let mail = $('#sendOtpMailInput').val();
             localStorage.setItem('otpEmail', mail);
-            $("#email-modal").modal('hide');
-                    $("#otp-modal").modal('show');
-            // Ajax call 
-            // var parameter = {
-            //     email: mail
-            // };
-            // $.ajax({
-            //     url: 'https://amintopup.com/api/send_otp',
-            //     type: 'POST',
-            //     dataType: 'json', // added data type
-            //     data: JSON.stringify(parameter),
-            //     headers: {
-            //         'Content-Type' : 'application/json'
-            //     },
-            //     success: function(response) {
-            //         $("#email-modal").modal('hide');
+            // $("#email-modal").modal('hide');
             //         $("#otp-modal").modal('show');
-            //     },
-            //     error: function (jqXHR, exception) {
-            //         alert("Something went wrong. Please try again later.");
-            //     }
-            // });
+            // Ajax call 
+            var parameter = {
+                email: mail
+            };
+            $.ajax({
+                url: 'https://amintopup.com/api/send_otp',
+                type: 'POST',
+                dataType: 'json', // added data type
+                data: JSON.stringify(parameter),
+                headers: {
+                    'Content-Type' : 'application/json'
+                },
+                success: function(response) {
+                    $("#email-modal").modal('hide');
+                    $("#otp-modal").modal('show');
+                },
+                error: function (jqXHR, exception) {
+                    alert("Something went wrong. Please try again later.");
+                }
+            });
 
         });
         $('.otpVerify_d').click(function(){
