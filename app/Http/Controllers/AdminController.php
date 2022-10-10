@@ -99,9 +99,15 @@ class AdminController extends Controller
             $user->where('phone_number', $request->phone_number);
         }
         if ($request->has('date') && !empty($request->date)) {
-            if($user->transaction != null){
                 $user = $user->get();
-            }
+                if (count($user) > 0) {
+                    foreach ($user as $nuser) {
+                        $date = Transaction::where('user_id', $nuser['id'])->orderBy('created_at', 'desc')->pluck('created_at')->first();
+                        if (!empty($date)) {
+                            $nuser['last_transaction'] = $date->format('d-m-y');
+                        }
+                    }
+                }
         }
         $user = $user->get();
         if (count($user) > 0) {
