@@ -445,32 +445,29 @@
                 'Content-Type': 'application/json'
             },
             success: function(response) {
-                alert('coming');
                 let arr = [];
-
                 response.data.users.forEach(element => {
                     arr.push(element);
                 });
                 $(".userTable").empty();
                 console.log(arr);
                 $(response.data.users).each(function(i, e) {
-
-                    let div = `<tr>
-                                <td class="data name">${e.name}</td>
-                                <td class="data email">${e.email}</td>
-                                <td class="data">${e.users_device}</td>
-                                <td class="data country">${e.country}</td>
-                                <td class="data phone_number">${e.phone_number}</td>
-                                <td class="data last_transaction">${e.last_transaction}</td>`;
-                    if (e.transaction != undefined && e.transaction != '')
-                        div = div + `<input class="total_amount_usd" type="hidden" value="${e.transaction['total_amount_usd']}">`;
-
-                    div = div + `<input class="date_of_birth" type="hidden" value="${e.date_of_birth}">
-                                <td class="data">
-                                    <img class="getuserdata" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                </td>
-                            </tr>`;
+                    let div =   `<tr>
+                                    <td class="data name">${e.name}</td>
+                                    <td class="data email">${e.email}</td>
+                                    <td class="data">${e.users_device}</td>
+                                    <td class="data country">${e.country}</td>
+                                    <td class="data phone_number">${e.phone_number}</td>
+                                    <td class="data last_transaction">${e.last_transaction}</td>`;
+                                    if (e.transaction != undefined && e.transaction != '')
+                                    {div = div + `<input class="total_amount_usd" type="hidden" value="${e.transaction['total_amount_usd']}">`};
+                                    div = div + `<input class="date_of_birth" type="hidden" value="${e.date_of_birth}">
+                                    <td class="data">
+                                        <img class="getuserdata" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
+                                    </td>
+                                </tr>`;
                     $(".userTable").append(div);
+
                     $('.getuserdata').click(function() {
                         var id = $(this).parent().parent().find('.id').val();
                         var name = $(this).parent().parent().find('.name').text();
