@@ -100,7 +100,12 @@ class AdminController extends Controller
         }
         if ($request->has('date') && !empty($request->date)) {
             $userIds = Transaction::whereDate('created_at', $request->date)->pluck('user_id')->toArray();
-            dd(array_unique($userIds));
+            $newusers = array_unique($userIds);
+            if(!empty($newusers)){
+                foreach($newusers as $newuser) {
+                    $user->where('id', $newuser);
+                }
+            }
         }
         $user = $user->get();
         if (count($user) > 0) {
