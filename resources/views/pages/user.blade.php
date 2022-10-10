@@ -457,6 +457,7 @@
                                     <h3>No User Found!</h3>
                                 </div>`;
                     $(".noUserDiv").append(div);
+                    getPagination('#table-id');
                 }else{
                     $(".noUserDiv").empty();
                     let arr = [];
