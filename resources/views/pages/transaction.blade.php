@@ -504,9 +504,10 @@
             error: function (jqXHR, textStatus, errorThrown){
                 $(".newData").empty();
                     let div = `<div class="text-center">
-                                    <h3>No Transaction Found!</h3>
+                                    <h3 class="mx-auto">No Transaction Found!</h3>
                                 </div>`;
                     $(".notransactionDiv").append(div);
+                    getPagination('#table-id');
             }
         });
     });
