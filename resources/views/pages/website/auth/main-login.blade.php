@@ -311,6 +311,9 @@
                 },
                 success: function(response) {
                     alert(response);
+                },
+                error: function (jqXHR, exception) {
+                    alert("response");
                 }
             });
 
