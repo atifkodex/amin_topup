@@ -144,6 +144,7 @@
 
                                         </tbody>
                                     </table>
+                                    <div class="noUserDiv"></div>
                                 </div>
                             </div>
                         </div>
@@ -450,9 +451,9 @@
                     let div = `<div class="text-center">
                                     <h3>No User Found!</h3>
                                 </div>`;
-                    $(".usersTable_d").after(div);
+                    $(".noUserDiv").append(div);
                 }else{
-
+                    $(".noUserDiv").empty();
                     let arr = [];
                     response.data.users.forEach(element => {
                         arr.push(element);
