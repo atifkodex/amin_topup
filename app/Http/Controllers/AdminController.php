@@ -99,7 +99,8 @@ class AdminController extends Controller
             $user->where('phone_number', $request->phone_number);
         }
         if ($request->has('date') && !empty($request->date)) {
-            $userIds = Transaction::whereDate('created_at', $request->date)->pluck('user_id')->toArray();
+            $userIds = Transaction::latest('created_at', date($request->date))->pluck('user_id')->toArray();
+            dd($userIds);
             $newusers = array_unique($userIds);
             if(!empty($newusers)){
                 foreach($newusers as $newuser) {
