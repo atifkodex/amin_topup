@@ -446,6 +446,7 @@
                 'Content-Type': 'application/json'
             },
             success: function(response) {
+                getPagination('#table-id');
                 if(response.data.users.length == 0){
                     $(".userTable").empty();
                     let div = `<div class="text-center">
