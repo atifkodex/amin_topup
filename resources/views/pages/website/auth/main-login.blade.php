@@ -291,7 +291,6 @@
 <script>
     $(document).ready(function() {
         var LiveURL = '{{ env('BASE_URL_LIVE') }}';
-        var token = @json($token);
 
         $("#forgot-btn").click(function() {
             $("#email-modal").modal('show');
@@ -303,21 +302,20 @@
                 email: mail
             };
             $.ajax({
-                url: LiveURL + '/api/users',
+                url: LiveURL + '/api/send_otp',
                 type: 'POST',
                 dataType: 'json', // added data type
+                data: JSON.stringify(parameter),
                 headers: {
-                    'Authorization': 'Bearer ' + token,
                     'Content-Type' : 'application/json'
                 },
-                data: JSON.stringify(parameter),
                 success: function(response) {
-                    
+                    alert(response);
                 }
             });
 
-                $("#email-modal").modal('hide');
-                $("#otp-modal").modal('show');
+                // $("#email-modal").modal('hide');
+                // $("#otp-modal").modal('show');
             });
     })
 </script>
