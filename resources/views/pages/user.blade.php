@@ -448,55 +448,57 @@
                 if(response.data.users.length == 0){
                     $(".userTable").empty();
                     let div = `<div class="text-center">
-                                    <h3>No Transaction available!</h3>
+                                    <h3>No User Found!</h3>
                                 </div>`;
                     $(".usersTable_d").after(div);
-                }
-                let arr = [];
-                response.data.users.forEach(element => {
-                    arr.push(element);
-                });
-                $(".userTable").empty();
-                console.log(arr);
-                $(response.data.users).each(function(i, e) {
-                    let div =   `<tr>
-                                    <td class="data name">${e.name}</td>
-                                    <td class="data email">${e.email}</td>
-                                    <td class="data">${e.users_device}</td>
-                                    <td class="data country">${e.country}</td>
-                                    <td class="data phone_number">${e.phone_number}</td>
-                                    <td class="data last_transaction">${e.last_transaction}</td>`;
-                                    if (e.transaction != undefined && e.transaction != '')
-                                    {div = div + `<input class="total_amount_usd" type="hidden" value="${e.transaction['total_amount_usd']}">`};
-                                    div = div + `<input class="date_of_birth" type="hidden" value="${e.date_of_birth}">
-                                    <td class="data">
-                                        <img class="getuserdata" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
-                                    </td>
-                                </tr>`;
-                    $(".userTable").append(div);
+                }else{
 
-                    $('.getuserdata').click(function() {
-                        var id = $(this).parent().parent().find('.id').val();
-                        var name = $(this).parent().parent().find('.name').text();
-                        var email = $(this).parent().parent().find('.email').text();
-                        var country = $(this).parent().parent().find('.country').text();
-                        var phone_number = $(this).parent().parent().find('.phone_number').text();
-                        var last_transaction = $(this).parent().parent().find('.last_transaction').text();
-                        var total_amount_usd = $(this).parent().parent().find('.total_amount_usd').val();
-                        var date_of_birth = $(this).parent().parent().find('.date_of_birth').val();
-
-
-                        $("#id").val(id);
-                        $("#name_id").text(name);
-                        $("#email_id").text(email);
-                        $("#country_id").text(country);
-                        $("#phone_number_id").text(phone_number);
-                        $("#last_transaction_id").text(last_transaction);
-                        $("#total_amount_usd_id").text(total_amount_usd);
-                        $("#date_of_birth_id").text(date_of_birth);
-
+                    let arr = [];
+                    response.data.users.forEach(element => {
+                        arr.push(element);
                     });
-                });
+                    $(".userTable").empty();
+                    console.log(arr);
+                    $(response.data.users).each(function(i, e) {
+                        let div =   `<tr>
+                                        <td class="data name">${e.name}</td>
+                                        <td class="data email">${e.email}</td>
+                                        <td class="data">${e.users_device}</td>
+                                        <td class="data country">${e.country}</td>
+                                        <td class="data phone_number">${e.phone_number}</td>
+                                        <td class="data last_transaction">${e.last_transaction}</td>`;
+                                        if (e.transaction != undefined && e.transaction != '')
+                                        {div = div + `<input class="total_amount_usd" type="hidden" value="${e.transaction['total_amount_usd']}">`};
+                                        div = div + `<input class="date_of_birth" type="hidden" value="${e.date_of_birth}">
+                                        <td class="data">
+                                            <img class="getuserdata" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
+                                        </td>
+                                    </tr>`;
+                        $(".userTable").append(div);
+    
+                        $('.getuserdata').click(function() {
+                            var id = $(this).parent().parent().find('.id').val();
+                            var name = $(this).parent().parent().find('.name').text();
+                            var email = $(this).parent().parent().find('.email').text();
+                            var country = $(this).parent().parent().find('.country').text();
+                            var phone_number = $(this).parent().parent().find('.phone_number').text();
+                            var last_transaction = $(this).parent().parent().find('.last_transaction').text();
+                            var total_amount_usd = $(this).parent().parent().find('.total_amount_usd').val();
+                            var date_of_birth = $(this).parent().parent().find('.date_of_birth').val();
+    
+    
+                            $("#id").val(id);
+                            $("#name_id").text(name);
+                            $("#email_id").text(email);
+                            $("#country_id").text(country);
+                            $("#phone_number_id").text(phone_number);
+                            $("#last_transaction_id").text(last_transaction);
+                            $("#total_amount_usd_id").text(total_amount_usd);
+                            $("#date_of_birth_id").text(date_of_birth);
+    
+                        });
+                    });
+                }
             }
         });
     });
