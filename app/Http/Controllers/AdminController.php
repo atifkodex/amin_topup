@@ -99,6 +99,7 @@ class AdminController extends Controller
             $user->where('phone_number', $request->phone_number);
         }
         if ($request->has('date') && !empty($request->date)) {
+            dd($user);
             $user->whereDate('created_at', '=', date($request->date));
         }
         $user = $user->get();
@@ -106,7 +107,7 @@ class AdminController extends Controller
             foreach ($user as $nuser) {
                 $date = Transaction::where('user_id', $nuser['id'])->orderBy('created_at', 'desc')->pluck('created_at')->first();
                 if (!empty($date)) {
-                    $nuser['last_transaction'] = $date->format('y-m-d');
+                    $nuser['last_transaction'] = $date->format('d-m-y');
                 }
             }
         }
