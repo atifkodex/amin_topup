@@ -85,8 +85,7 @@
 
                     </div>
                     <div class="support-description-section pt-5 px-4" id="description_id">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem dolor autem optio hic, eaque magni libero aspernatur porro natus deserunt! Adipisci incidunt aperiam voluptate temporibus necessitatibus explicabo assumenda aliquid?
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident dolorem dolor autem optio hic, eaque magni libero aspernatur porro natus deserunt! Adipisci incidunt aperiam voluptate temporibus necessitatibus explicabo assumenda aliquid?
+                        Contact description here...
                     </div>
 
                     <div class="support-description-button py-5 px-4 text-right">
