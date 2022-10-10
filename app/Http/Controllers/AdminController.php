@@ -104,7 +104,7 @@ class AdminController extends Controller
             if(!empty($newusers)){
                 foreach($newusers as $newuser) {
                     dd($user);                    
-                    $user = $user->where('id', $newuser);
+                    $user = User::where('id', $newuser);
                 }
             }
         }
