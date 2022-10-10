@@ -446,7 +446,6 @@
                 'Content-Type': 'application/json'
             },
             success: function(response) {
-                getPagination('#table-id');
                 if(response.data.users.length == 0){
                     $(".userTable").empty();
                     let div = `<div class="text-center">
@@ -460,7 +459,6 @@
                         arr.push(element);
                     });
                     $(".userTable").empty();
-                    console.log(arr);
                     $(response.data.users).each(function(i, e) {
                         let div =   `<tr>
                                         <td class="data name">${e.name}</td>
@@ -500,6 +498,8 @@
     
                         });
                     });
+                    getPagination('#table-id');
+
                 }
             }
         });
