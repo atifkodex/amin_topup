@@ -252,10 +252,10 @@
                     <form class="py-2 py-sm-4">
                         <div class="form-group form-field right-inner">
                             {{-- <img src="{{ asset('assets/website-images/message-icon.svg') }}" alt="icon"> --}}
-                            <input type="email" class="form-control" id="exampleInputEmail1"
+                            <input type="email" class="form-control" name="email" id="sendOtpMailInput"
                                 aria-describedby="emailHelp" placeholder="enter your email">
                         </div>
-                        <a href="#" class="btn mt-sm-3 email-modal-btn" id="email-btn">Continue</a>
+                        <a href="javascript:void(0)" class="btn mt-sm-3 email-modal-btn sendEmailModalBtn" id="email-btn">Continue</a>
                     </form>
                 </div>
             </div>
@@ -290,13 +290,35 @@
 @section('insertjavascript')
 <script>
     $(document).ready(function() {
+        var LiveURL = '{{ env('BASE_URL_LIVE') }}';
+        var token = @json($token);
+
         $("#forgot-btn").click(function() {
             $("#email-modal").modal('show');
         });
         $("#email-btn").click(function() {
-            $("#email-modal").modal('hide');
-            $("#otp-modal").modal('show');
-        });
+            let mail = $('#sendOtpMailInput').val();
+            // Ajax call 
+            var parameter = {
+                email: mail
+            };
+            $.ajax({
+                url: LiveURL + '/api/users',
+                type: 'POST',
+                dataType: 'json', // added data type
+                headers: {
+                    'Authorization': 'Bearer ' + token,
+                    'Content-Type' : 'application/json'
+                },
+                data: JSON.stringify(parameter),
+                success: function(response) {
+                    
+                }
+            });
+
+                $("#email-modal").modal('hide');
+                $("#otp-modal").modal('show');
+            });
     })
 </script>
 <script>
@@ -308,20 +330,20 @@
         inputField.type = "password";
       }
     }
-    </script>
-        <script>
-            let digitValidate = function(ele) {
-                console.log(ele.value);
-                ele.value = ele.value.replace(/[^0-9]/g, '');
-            }
-    
-            let tabChange = function(val) {
-                let ele = document.querySelectorAll('.otp');
-                if (ele[val - 1].value != '') {
-                    ele[val].focus()
-                } else if (ele[val - 1].value == '') {
-                    ele[val - 2].focus()
-                }
-            }
-        </script>
+</script>
+<script>
+    let digitValidate = function(ele) {
+        console.log(ele.value);
+        ele.value = ele.value.replace(/[^0-9]/g, '');
+    }
+
+    let tabChange = function(val) {
+        let ele = document.querySelectorAll('.otp');
+        if (ele[val - 1].value != '') {
+            ele[val].focus()
+        } else if (ele[val - 1].value == '') {
+            ele[val - 2].focus()
+        }
+    }
+</script>
 @endsection

@@ -425,6 +425,7 @@
         var country = $("#country").val();
         var userphonenumber = $("#userphonenumber").val();
         var lpurchase = $("#lpurchase").val();
+
         var parameter = {
             name: username,
             email: email,
@@ -435,15 +436,16 @@
         let formData = JSON.stringify(parameter);
         // Ajax call 
         $.ajax({
-            url: LiveURL6+'/api/users',
+            url: LiveURL +'/api/users',
             dataType: 'json',
             type: 'POST',
-            data: formData,
+            data: JSON.stringify(parameter),
             headers: {
                 'Authorization': 'Bearer ' + token,
                 'Content-Type': 'application/json'
             },
             success: function(response) {
+                alert('coming');
                 let arr = [];
 
                 response.data.users.forEach(element => {
