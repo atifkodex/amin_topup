@@ -248,195 +248,6 @@
 </div>
 @endsection
 @section('inserfooter')
-
-<!-- Backend Script for Transaction Page - START  -->
-<!-- PrintThis CDN -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"></script>
-<!-- Html To Canvas Scripts  -->
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
-<script>
-    var token = @json($token);
-    var LiveURL = '{{ env('BASE_URL_LIVE') }}';
-
-    $("#transactionFilterForm").submit(function(e) {
-        e.preventDefault();
-        var username = $("#username").val();
-        var network = $("#network").val();
-        var userphonenumber = $("#userphonenumber").val();
-        var amountTotal = $("#amountTotal").val();
-        var date = $("#date").val();
-        var parameter = {
-            name: username,
-            network: network,
-            userphonenumber: userphonenumber,
-            amountTotal: amountTotal,
-            date: date
-        };
-        // Ajax call 
-        $.ajax({
-            url: LiveURL + '/api/transactions',
-            dataType: 'json',
-            type: 'POST',
-            data: JSON.stringify(parameter),
-            headers: {
-                'Authorization': 'Bearer ' + token,
-                'Content-Type': 'application/json'
-            },
-            success: function(response) {
-                if(response.data.length == 0){
-                    $(".newData").empty();
-                    let div = `<div class="text-center">
-                                    <h3>No Transaction Found!</h3>
-                                </div>`;
-                    $(".notransactionDiv").append(div);
-                }else{
-                    $(".notransactionDiv").empty();
-                    let arr = [];
-                    response.data.forEach(element => {
-                        arr.push(element);
-                    });
-                    $(".newData").empty();
-                    $(arr).each(function(i, e) {
-                        var transactionId;
-                        if (e.transaction_id == null) {
-                            transactionId = 'Not Set';
-                        } else {
-                            transactionId = e.transaction_id;
-                        }
-    
-                        if (e.status == 0) {
-                            status = 'Failure';
-                        } else {
-                            status = "Success";
-                        }
-                        let div = `<tr>
-                                        <td class="data">${e.id}</td>
-                                        <td class="data">${transactionId}</td>
-                                        <td class="data transactionId">${e.dateTime}</td>
-                                        <td class="data senderName">${e.senderName}</td>
-                                        <td class="data receiverNumber">${e.receiver_number}</td>
-                                        <td class="data network">${e.receiver_network}</td>
-                                        <td class="data topupAmount">${e.topup_amount}</td>
-                                        <td class="data amountUsd">${e.topup_amount_usd}</td>
-                                        <td class="data processingFee">${e.processing_fee}</td>
-                                        <td class="data totalAmountUsd">${e.total_amount_usd}</td>
-                                        <td class="data statusTransaction">${status}</td>
-                                        <td class="data">
-                                            <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
-                                                data-toggle="modal" data-target="#basicsubsModal"
-                                                style="cursor: pointer" class="actionBtnTransaction">
-                                        </td>
-                                    </tr>`;
-                        $(".newData").append(div);
-                        $(".actionBtnTransaction").click(function() {
-                            let transactionId = $(this).parent().parent().find(".transactionId").text();
-                            let senderName = $(this).parent().parent().find(".senderName").text();
-                            let receiverNumber = $(this).parent().parent().find(".receiverNumber").text();
-                            let network = $(this).parent().parent().find(".network").text();
-                            let topupAmount = $(this).parent().parent().find(".topupAmount").text();
-                            let amountUsd = $(this).parent().parent().find(".amountUsd").text();
-                            let processingFee = $(this).parent().parent().find(".processingFee").text();
-                            let totalAmountUsd = $(this).parent().parent().find(".totalAmountUsd").text();
-                            let statusTransaction = $(this).parent().parent().find(".statusTransaction").text();
-    
-                            $("#transactionIdModal").text(transactionId);
-                            $("#senderNameModal").text(senderName);
-                            $("#receiverNumberModal").text(receiverNumber);
-                            $("#networkModal").text(network);
-                            $("#topupAmountModal").text(topupAmount);
-                            $("#amountUsdModal").text(amountUsd);
-                            $("#processingFeeModal").text(processingFee);
-                            $("#totalAmountUsdModal").text(totalAmountUsd);
-                            $("#statusTransactionModal").text(statusTransaction);
-    
-                        });
-                    });
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown){
-                $(".newData").empty();
-                    let div = `<div class="text-center">
-                                    <h3>No Transaction Found!</h3>
-                                </div>`;
-                    $(".notransactionDiv").append(div);
-            }
-        });
-    });
-
-    $(".actionBtnTransaction").click(function() {
-        let transactionId = $(this).parent().parent().find(".transactionId").text();
-        let senderName = $(this).parent().parent().find(".senderName").text();
-        let receiverNumber = $(this).parent().parent().find(".receiverNumber").text();
-        let network = $(this).parent().parent().find(".network").text();
-        let topupAmount = $(this).parent().parent().find(".topupAmount").text();
-        let amountUsd = $(this).parent().parent().find(".amountUsd").text();
-        let processingFee = $(this).parent().parent().find(".processingFee").text();
-        let totalAmountUsd = $(this).parent().parent().find(".totalAmountUsd").text();
-        let statusTransaction = $(this).parent().parent().find(".statusTransaction").text();
-
-        $("#transactionIdModal").text(transactionId);
-        $("#senderNameModal").text(senderName);
-        $("#receiverNumberModal").text(receiverNumber);
-        $("#networkModal").text(network);
-        $("#topupAmountModal").text(topupAmount);
-        $("#amountUsdModal").text(amountUsd);
-        $("#processingFeeModal").text(processingFee);
-        $("#totalAmountUsdModal").text(totalAmountUsd);
-        $("#statusTransactionModal").text(statusTransaction);
-
-    });
-
-    $("#printBtn").click(function(){
-        $("#printSection").printThis({
-            pageTitle: "Transaction Details",
-        });
-    });
-
-
-    $("#download").click(function(e) {
-        var status = $("#statusTransactionModal").text();
-
-        var doc = new jsPDF();
-        // doc.addPage();
-        doc.setFontSize(22);
-        doc.setTextColor(248, 152, 34);
-        doc.text(75, 20, 'Transaction Details');
-        doc.setTextColor(33, 19, 13);
-        doc.setFontSize(16);
-        doc.text(20, 40, 'Transaction Date ');
-        doc.text(150, 40, $("#transactionIdModal").text());
-
-        doc.text(20, 50, 'User ');
-        doc.text(150, 50, $("#senderNameModal").text());
-
-        doc.text(20, 60, 'Receiver Number ');
-        doc.text(150, 60, $("#receiverNumberModal").text());
-
-        doc.text(20, 70, 'Network');
-        doc.text(150, 70, $("#networkModal").text());
-
-        doc.text(20, 80, 'Topup Amount');
-        doc.text(150, 80, $("#topupAmountModal").text());
-
-        doc.text(20, 90, 'Topup Amount Usd');
-        doc.text(150, 90, $("#amountUsdModal").text());
-
-        doc.text(20, 100, 'Proccessing Fee');
-        doc.text(150, 100, $("#processingFeeModal").text());
-        doc.text(20, 110, 'Total Payment In Usd');
-        doc.text(150, 110, $("#totalAmountUsdModal").text());
-        doc.text(20, 120, 'Status');
-        doc.text(150, 120, status.trim());
-        doc.save('transaction.pdf');
-
-    });
-</script>
-<!-- Backend Script for Transaction Page - END  -->
-
 <script>
     getPagination('#table-id');
 
@@ -580,6 +391,197 @@
     //     });
     // });
 </script>
+<!-- Backend Script for Transaction Page - START  -->
+<!-- PrintThis CDN -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"></script>
+<!-- Html To Canvas Scripts  -->
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+<script>
+    var token = @json($token);
+    var LiveURL = '{{ env('BASE_URL_LIVE') }}';
+
+    $("#transactionFilterForm").submit(function(e) {
+        e.preventDefault();
+        var username = $("#username").val();
+        var network = $("#network").val();
+        var userphonenumber = $("#userphonenumber").val();
+        var amountTotal = $("#amountTotal").val();
+        var date = $("#date").val();
+        var parameter = {
+            name: username,
+            network: network,
+            userphonenumber: userphonenumber,
+            amountTotal: amountTotal,
+            date: date
+        };
+        // Ajax call 
+        $.ajax({
+            url: LiveURL + '/api/transactions',
+            dataType: 'json',
+            type: 'POST',
+            data: JSON.stringify(parameter),
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json'
+            },
+            success: function(response) {
+                if(response.data.length == 0){
+                    $(".newData").empty();
+                    let div = `<div class="text-center">
+                                    <h3>No Transaction Found!</h3>
+                                </div>`;
+                    $(".notransactionDiv").append(div);
+                }else{
+                    $(".notransactionDiv").empty();
+                    let arr = [];
+                    response.data.forEach(element => {
+                        arr.push(element);
+                    });
+                    $(".newData").empty();
+                    $(arr).each(function(i, e) {
+                        var transactionId;
+                        if (e.transaction_id == null) {
+                            transactionId = 'Not Set';
+                        } else {
+                            transactionId = e.transaction_id;
+                        }
+    
+                        if (e.status == 0) {
+                            status = 'Failure';
+                        } else {
+                            status = "Success";
+                        }
+                        let div = `<tr>
+                                        <td class="data">${e.id}</td>
+                                        <td class="data">${transactionId}</td>
+                                        <td class="data transactionId">${e.dateTime}</td>
+                                        <td class="data senderName">${e.senderName}</td>
+                                        <td class="data receiverNumber">${e.receiver_number}</td>
+                                        <td class="data network">${e.receiver_network}</td>
+                                        <td class="data topupAmount">${e.topup_amount}</td>
+                                        <td class="data amountUsd">${e.topup_amount_usd}</td>
+                                        <td class="data processingFee">${e.processing_fee}</td>
+                                        <td class="data totalAmountUsd">${e.total_amount_usd}</td>
+                                        <td class="data statusTransaction">${status}</td>
+                                        <td class="data">
+                                            <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
+                                                data-toggle="modal" data-target="#basicsubsModal"
+                                                style="cursor: pointer" class="actionBtnTransaction">
+                                        </td>
+                                    </tr>`;
+                        $(".newData").append(div);
+                        $(".actionBtnTransaction").click(function() {
+                            let transactionId = $(this).parent().parent().find(".transactionId").text();
+                            let senderName = $(this).parent().parent().find(".senderName").text();
+                            let receiverNumber = $(this).parent().parent().find(".receiverNumber").text();
+                            let network = $(this).parent().parent().find(".network").text();
+                            let topupAmount = $(this).parent().parent().find(".topupAmount").text();
+                            let amountUsd = $(this).parent().parent().find(".amountUsd").text();
+                            let processingFee = $(this).parent().parent().find(".processingFee").text();
+                            let totalAmountUsd = $(this).parent().parent().find(".totalAmountUsd").text();
+                            let statusTransaction = $(this).parent().parent().find(".statusTransaction").text();
+    
+                            $("#transactionIdModal").text(transactionId);
+                            $("#senderNameModal").text(senderName);
+                            $("#receiverNumberModal").text(receiverNumber);
+                            $("#networkModal").text(network);
+                            $("#topupAmountModal").text(topupAmount);
+                            $("#amountUsdModal").text(amountUsd);
+                            $("#processingFeeModal").text(processingFee);
+                            $("#totalAmountUsdModal").text(totalAmountUsd);
+                            $("#statusTransactionModal").text(statusTransaction);
+    
+                        });
+                    });
+                    getPagination('#table-id');
+
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown){
+                $(".newData").empty();
+                    let div = `<div class="text-center">
+                                    <h3>No Transaction Found!</h3>
+                                </div>`;
+                    $(".notransactionDiv").append(div);
+            }
+        });
+    });
+
+    $(".actionBtnTransaction").click(function() {
+        let transactionId = $(this).parent().parent().find(".transactionId").text();
+        let senderName = $(this).parent().parent().find(".senderName").text();
+        let receiverNumber = $(this).parent().parent().find(".receiverNumber").text();
+        let network = $(this).parent().parent().find(".network").text();
+        let topupAmount = $(this).parent().parent().find(".topupAmount").text();
+        let amountUsd = $(this).parent().parent().find(".amountUsd").text();
+        let processingFee = $(this).parent().parent().find(".processingFee").text();
+        let totalAmountUsd = $(this).parent().parent().find(".totalAmountUsd").text();
+        let statusTransaction = $(this).parent().parent().find(".statusTransaction").text();
+
+        $("#transactionIdModal").text(transactionId);
+        $("#senderNameModal").text(senderName);
+        $("#receiverNumberModal").text(receiverNumber);
+        $("#networkModal").text(network);
+        $("#topupAmountModal").text(topupAmount);
+        $("#amountUsdModal").text(amountUsd);
+        $("#processingFeeModal").text(processingFee);
+        $("#totalAmountUsdModal").text(totalAmountUsd);
+        $("#statusTransactionModal").text(statusTransaction);
+
+    });
+
+    $("#printBtn").click(function(){
+        $("#printSection").printThis({
+            pageTitle: "Transaction Details",
+        });
+    });
+
+
+    $("#download").click(function(e) {
+        var status = $("#statusTransactionModal").text();
+
+        var doc = new jsPDF();
+        // doc.addPage();
+        doc.setFontSize(22);
+        doc.setTextColor(248, 152, 34);
+        doc.text(75, 20, 'Transaction Details');
+        doc.setTextColor(33, 19, 13);
+        doc.setFontSize(16);
+        doc.text(20, 40, 'Transaction Date ');
+        doc.text(150, 40, $("#transactionIdModal").text());
+
+        doc.text(20, 50, 'User ');
+        doc.text(150, 50, $("#senderNameModal").text());
+
+        doc.text(20, 60, 'Receiver Number ');
+        doc.text(150, 60, $("#receiverNumberModal").text());
+
+        doc.text(20, 70, 'Network');
+        doc.text(150, 70, $("#networkModal").text());
+
+        doc.text(20, 80, 'Topup Amount');
+        doc.text(150, 80, $("#topupAmountModal").text());
+
+        doc.text(20, 90, 'Topup Amount Usd');
+        doc.text(150, 90, $("#amountUsdModal").text());
+
+        doc.text(20, 100, 'Proccessing Fee');
+        doc.text(150, 100, $("#processingFeeModal").text());
+        doc.text(20, 110, 'Total Payment In Usd');
+        doc.text(150, 110, $("#totalAmountUsdModal").text());
+        doc.text(20, 120, 'Status');
+        doc.text(150, 120, status.trim());
+        doc.save('transaction.pdf');
+
+    });
+</script>
+<!-- Backend Script for Transaction Page - END  -->
+
+
 
 <script>
     $(document).ready(function() {
