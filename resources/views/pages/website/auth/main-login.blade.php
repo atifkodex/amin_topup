@@ -269,17 +269,18 @@
                     <h1>Enter <span>4 Digits</span> Code </h1>
                     <p class="py-2 py-sm-3">Enter the 4 digits code that you received on your email.</p>
                     <form class="py-2 py-sm-4 otp-form">
-                        <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(1)'
+                        <input class="otp otp1" type="text" oninput='digitValidate(this)' onkeyup='tabChange(1)'
                             maxlength=1>
-                        <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(2)'
+                        <input class="otp otp2" type="text" oninput='digitValidate(this)' onkeyup='tabChange(2)'
                             maxlength=1>
-                        <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(3)'
+                        <input class="otp otp3" type="text" oninput='digitValidate(this)' onkeyup='tabChange(3)'
                             maxlength=1>
-                        <input class="otp" type="text" oninput='digitValidate(this)'onkeyup='tabChange(4)'
+                        <input class="otp otp4" type="text" oninput='digitValidate(this)'onkeyup='tabChange(4)'
                             maxlength=1>
-
+                        <input type="hidden" id="otpCode_d" name="otp">
+                        <input type="hidden" id="otpMail_d" name="email" >
                     </form>
-                    <a href="{{ url('forgot') }}" class="btn mt-sm-3 col-12 email-modal-btn" >Continue</a>
+                    <a href="javascript:void(0)" class="btn mt-sm-3 col-12 email-modal-btn otpVerify_d" >Continue</a>
                 </div>
             </div>
         </div>
@@ -297,12 +298,50 @@
         });
         $("#email-btn").click(function() {
             let mail = $('#sendOtpMailInput').val();
+            localStorage.setItem('otpEmail', mail);
+            $("#email-modal").modal('hide');
+                    $("#otp-modal").modal('show');
             // Ajax call 
+            // var parameter = {
+            //     email: mail
+            // };
+            // $.ajax({
+            //     url: 'https://amintopup.com/api/send_otp',
+            //     type: 'POST',
+            //     dataType: 'json', // added data type
+            //     data: JSON.stringify(parameter),
+            //     headers: {
+            //         'Content-Type' : 'application/json'
+            //     },
+            //     success: function(response) {
+            //         $("#email-modal").modal('hide');
+            //         $("#otp-modal").modal('show');
+            //     },
+            //     error: function (jqXHR, exception) {
+            //         alert("Something went wrong. Please try again later.");
+            //     }
+            // });
+
+        });
+        $('.otpVerify_d').click(function(){
+            let one = $('.otp1').val();
+            let two = $('.otp2').val();
+            let three = $('.otp3').val();
+            let four = $('.otp4').val();
+            let otp = "" + one + two + three + four;
+            $("#otpCode_d").val(otp);
+            let mail = localStorage.getItem('otpEmail');
+            $("#otpMail_d").val(mail);
+            var otpcode = $("#otpCode_d").val();
+            var otpMail = $("#otpMail_d").val();
+
+            // Ajax call  
             var parameter = {
-                email: mail
+                email: otpMail,
+                otp: otpcode,
             };
             $.ajax({
-                url: 'https://amintopup.com/api/send_otp',
+                url: 'https://amintopup.com/api/verify_otp',
                 type: 'POST',
                 dataType: 'json', // added data type
                 data: JSON.stringify(parameter),
@@ -310,16 +349,13 @@
                     'Content-Type' : 'application/json'
                 },
                 success: function(response) {
-                    alert(response);
+                    window.location.href = LiveURL + 'forgot';
                 },
                 error: function (jqXHR, exception) {
-                    alert("response");
+                    alert("Something went wrong. Please try again later.");
                 }
             });
-
-                // $("#email-modal").modal('hide');
-                // $("#otp-modal").modal('show');
-            });
+        });
     })
 </script>
 <script>
