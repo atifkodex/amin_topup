@@ -103,7 +103,6 @@ class AdminController extends Controller
             $newusers = array_unique($userIds);
             if(!empty($newusers)){
                 foreach($newusers as $newuser) {
-                    dd($user);                    
                     $user = User::where('id', $newuser);
                 }
             }
