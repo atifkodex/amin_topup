@@ -302,7 +302,7 @@
                 email: mail
             };
             $.ajax({
-                url: LiveURL + '/api/send_otp',
+                url: 'https://amintopup.com/api/send_otp',
                 type: 'POST',
                 dataType: 'json', // added data type
                 data: JSON.stringify(parameter),
