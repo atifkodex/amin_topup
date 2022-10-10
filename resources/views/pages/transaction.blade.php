@@ -104,7 +104,7 @@
                                                     <td class="data totalAmountUsd">$ {{$transaction['total_amount_usd']}}</td>
                                                     @if($transaction['status'] == 0)
                                                     <td class="data text-danger statusTransaction">
-                                                        False
+                                                        Failure
                                                     </td>
                                                     @else
                                                     <td class="data success statusTransaction">
@@ -299,6 +299,12 @@
                     } else {
                         transactionId = e.transaction_id;
                     }
+
+                    if (e.status == 0) {
+                        status = 'Failure';
+                    } else {
+                        status = "Success";
+                    }
                     let div = `<tr>
                                     <td class="data">${e.id}</td>
                                     <td class="data">${transactionId}</td>
@@ -310,7 +316,7 @@
                                     <td class="data amountUsd">${e.topup_amount_usd}</td>
                                     <td class="data processingFee">${e.processing_fee}</td>
                                     <td class="data totalAmountUsd">${e.total_amount_usd}</td>
-                                    <td class="data statusTransaction">${e.status}</td>
+                                    <td class="data statusTransaction">${status}</td>
                                     <td class="data">
                                         <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
                                             data-toggle="modal" data-target="#basicsubsModal"

@@ -68,7 +68,7 @@
                                         </select>
                                     </div>
 
-                                    <table id="table-id" class="mr-3 mb-3" style="width: 1100px">
+                                    <table id="table-id" class="mr-3 mb-3 usersTable_d" style="width: 1100px">
 
                                         <thead>
                                             <tr>
@@ -445,6 +445,13 @@
                 'Content-Type': 'application/json'
             },
             success: function(response) {
+                if(response.data.users.length == 0){
+                    $(".userTable").empty();
+                    let div = `<div class="text-center">
+                                    <h3>No Transaction available!</h3>
+                                </div>`;
+                    $(".usersTable_d").after(div);
+                }
                 let arr = [];
                 response.data.users.forEach(element => {
                     arr.push(element);
