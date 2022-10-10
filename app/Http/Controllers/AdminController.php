@@ -96,10 +96,10 @@ class AdminController extends Controller
             $user->where('country', $request->country);
         }
         if ($request->has('phone_number')  && !empty($request->phone_number)) {
-            $user->transaction->where('phone_number', $request->phone_number);
+            $user->where('phone_number', $request->phone_number);
         }
         if ($request->has('date') && !empty($request->date)) {
-            $user->whereDate('created_at', '=', date($request->date));
+            $user->transaction->whereDate('created_at', '=', date($request->date));
         }
         $user = $user->get();
         if (count($user) > 0) {
