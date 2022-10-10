@@ -99,8 +99,9 @@ class AdminController extends Controller
             $user->where('phone_number', $request->phone_number);
         }
         if ($request->has('date') && !empty($request->date)) {
-            dd($user);
-            $user->whereDate('created_at', '=', date($request->date));
+            if(!empty($user->transaction)){
+                $user = $user->get();
+            }
         }
         $user = $user->get();
         if (count($user) > 0) {
