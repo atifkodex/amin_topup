@@ -144,6 +144,11 @@
 
                                         </tbody>
                                     </table>
+                                    @if(empty($data))
+                                        <div class="text-center">
+                                            <h3>No User Found!</h3>
+                                        </div>
+                                    @endif
                                     <div class="noUserDiv"></div>
                                 </div>
                             </div>
@@ -499,7 +504,6 @@
                         });
                     });
                     getPagination('#table-id');
-
                 }
             }
         });

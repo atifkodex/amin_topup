@@ -122,11 +122,11 @@
                                         </tbody>
                                     </table>
                                     @if(empty($data))
-                                                <div class="text-center">
-                                                    <h3>No Transaction available!</h3>
-                                                </div>
-                                            @endif
-                                    
+                                        <div class="text-center">
+                                            <h3>No Transaction Found!</h3>
+                                        </div>
+                                    @endif
+                                    <div class="noTransactionDiv"></div>
                                 </div>
                             </div>
                         </div>
@@ -287,66 +287,82 @@
                 'Content-Type': 'application/json'
             },
             success: function(response) {
-                let arr = [];
-                response.data.forEach(element => {
-                    arr.push(element);
-                });
-                $(".newData").empty();
-                $(arr).each(function(i, e) {
-                    var transactionId;
-                    if (e.transaction_id == null) {
-                        transactionId = 'Not Set';
-                    } else {
-                        transactionId = e.transaction_id;
-                    }
-
-                    if (e.status == 0) {
-                        status = 'Failure';
-                    } else {
-                        status = "Success";
-                    }
-                    let div = `<tr>
-                                    <td class="data">${e.id}</td>
-                                    <td class="data">${transactionId}</td>
-                                    <td class="data transactionId">${e.dateTime}</td>
-                                    <td class="data senderName">${e.senderName}</td>
-                                    <td class="data receiverNumber">${e.receiver_number}</td>
-                                    <td class="data network">${e.receiver_network}</td>
-                                    <td class="data topupAmount">${e.topup_amount}</td>
-                                    <td class="data amountUsd">${e.topup_amount_usd}</td>
-                                    <td class="data processingFee">${e.processing_fee}</td>
-                                    <td class="data totalAmountUsd">${e.total_amount_usd}</td>
-                                    <td class="data statusTransaction">${status}</td>
-                                    <td class="data">
-                                        <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
-                                            data-toggle="modal" data-target="#basicsubsModal"
-                                            style="cursor: pointer" class="actionBtnTransaction">
-                                    </td>
-                                </tr>`;
-                    $(".newData").append(div);
-                    $(".actionBtnTransaction").click(function() {
-                        let transactionId = $(this).parent().parent().find(".transactionId").text();
-                        let senderName = $(this).parent().parent().find(".senderName").text();
-                        let receiverNumber = $(this).parent().parent().find(".receiverNumber").text();
-                        let network = $(this).parent().parent().find(".network").text();
-                        let topupAmount = $(this).parent().parent().find(".topupAmount").text();
-                        let amountUsd = $(this).parent().parent().find(".amountUsd").text();
-                        let processingFee = $(this).parent().parent().find(".processingFee").text();
-                        let totalAmountUsd = $(this).parent().parent().find(".totalAmountUsd").text();
-                        let statusTransaction = $(this).parent().parent().find(".statusTransaction").text();
-
-                        $("#transactionIdModal").text(transactionId);
-                        $("#senderNameModal").text(senderName);
-                        $("#receiverNumberModal").text(receiverNumber);
-                        $("#networkModal").text(network);
-                        $("#topupAmountModal").text(topupAmount);
-                        $("#amountUsdModal").text(amountUsd);
-                        $("#processingFeeModal").text(processingFee);
-                        $("#totalAmountUsdModal").text(totalAmountUsd);
-                        $("#statusTransactionModal").text(statusTransaction);
-
+                if(response.data.length == 0){
+                    $(".newData").empty();
+                    let div = `<div class="text-center">
+                                    <h3>No Transaction Found!</h3>
+                                </div>`;
+                    $(".notransactionDiv").append(div);
+                }else{
+                    $(".notransactionDiv").empty();
+                    let arr = [];
+                    response.data.forEach(element => {
+                        arr.push(element);
                     });
-                });
+                    $(".newData").empty();
+                    $(arr).each(function(i, e) {
+                        var transactionId;
+                        if (e.transaction_id == null) {
+                            transactionId = 'Not Set';
+                        } else {
+                            transactionId = e.transaction_id;
+                        }
+    
+                        if (e.status == 0) {
+                            status = 'Failure';
+                        } else {
+                            status = "Success";
+                        }
+                        let div = `<tr>
+                                        <td class="data">${e.id}</td>
+                                        <td class="data">${transactionId}</td>
+                                        <td class="data transactionId">${e.dateTime}</td>
+                                        <td class="data senderName">${e.senderName}</td>
+                                        <td class="data receiverNumber">${e.receiver_number}</td>
+                                        <td class="data network">${e.receiver_network}</td>
+                                        <td class="data topupAmount">${e.topup_amount}</td>
+                                        <td class="data amountUsd">${e.topup_amount_usd}</td>
+                                        <td class="data processingFee">${e.processing_fee}</td>
+                                        <td class="data totalAmountUsd">${e.total_amount_usd}</td>
+                                        <td class="data statusTransaction">${status}</td>
+                                        <td class="data">
+                                            <img src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol"
+                                                data-toggle="modal" data-target="#basicsubsModal"
+                                                style="cursor: pointer" class="actionBtnTransaction">
+                                        </td>
+                                    </tr>`;
+                        $(".newData").append(div);
+                        $(".actionBtnTransaction").click(function() {
+                            let transactionId = $(this).parent().parent().find(".transactionId").text();
+                            let senderName = $(this).parent().parent().find(".senderName").text();
+                            let receiverNumber = $(this).parent().parent().find(".receiverNumber").text();
+                            let network = $(this).parent().parent().find(".network").text();
+                            let topupAmount = $(this).parent().parent().find(".topupAmount").text();
+                            let amountUsd = $(this).parent().parent().find(".amountUsd").text();
+                            let processingFee = $(this).parent().parent().find(".processingFee").text();
+                            let totalAmountUsd = $(this).parent().parent().find(".totalAmountUsd").text();
+                            let statusTransaction = $(this).parent().parent().find(".statusTransaction").text();
+    
+                            $("#transactionIdModal").text(transactionId);
+                            $("#senderNameModal").text(senderName);
+                            $("#receiverNumberModal").text(receiverNumber);
+                            $("#networkModal").text(network);
+                            $("#topupAmountModal").text(topupAmount);
+                            $("#amountUsdModal").text(amountUsd);
+                            $("#processingFeeModal").text(processingFee);
+                            $("#totalAmountUsdModal").text(totalAmountUsd);
+                            $("#statusTransactionModal").text(statusTransaction);
+    
+                        });
+                    });
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown){
+                $(".newData").empty();
+                    let div = `<div class="text-center">
+                                    <h3>No Transaction Found!</h3>
+                                </div>`;
+                    $(".notransactionDiv").append(div);
             }
         });
     });
