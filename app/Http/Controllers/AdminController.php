@@ -99,7 +99,7 @@ class AdminController extends Controller
             $user->where('phone_number', $request->phone_number);
         }
         if ($request->has('date') && !empty($request->date)) {
-            if($user['transaction'] != null){
+            if($user->transaction != null){
                 $user = $user->get();
             }
         }
