@@ -92,7 +92,7 @@ class WebsiteController extends Controller
     public function resetPassword(Request $request)
     {
         $value = Session::get('userLoginData');
-        $token = $value['user']['token'];
+        // $token = $value['user']['token'];
         $validator = Validator::make($request->all(), [
             'email' => 'required',
             'password' => 'required|min:6',
@@ -101,7 +101,7 @@ class WebsiteController extends Controller
             return back()->withErrors($validator->messages())->withInput();
         }
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $token,
+            'Authorization' => 'Bearer ' . $value,
             'Content-Type' => 'application/json'
         ])->post(\config('url.url').'/api/reset_password', $request->all());
         $responseBody = $response->body();
