@@ -193,7 +193,6 @@
                 <div class="col-12">
                     <div class="reg-box my-3 my-lg-5">
                         <form class="pt-5" id="resetPasswordForm_d" action="">
-                            @csrf
                             @error('password')
                                 <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
                                     {{ $message }}
@@ -216,8 +215,8 @@
                             </div>
                             <div class="form-group form-field right-inner">
                                 <label for="">Confirm Password</label>
-                              <input type="password" class="form-control" id="loginpassword" name="password" placeholder="enter password">
-                              <input type="hidden" class="form-control" id="loginEmail_d" name="email">
+                              <input type="password" class="form-control" id="loginpassword"  placeholder="enter password">
+                              <input type="hidden" class="form-control" id="loginEmail_d" >
                             </div>
                             <button type="submit" class="resetPasswordBtn">Reset Password</button>
                         </form>
