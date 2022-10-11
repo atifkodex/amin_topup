@@ -92,6 +92,8 @@ class WebsiteController extends Controller
     public function sessionData(Request $request)
     {
         Session::put('UserloginData', $request->all());
+        $value = Session::get('UserloginData');
+        dd($value);
     }
 
     public function resetPassword(Request $request)
