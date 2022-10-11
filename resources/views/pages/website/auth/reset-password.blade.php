@@ -218,7 +218,7 @@
                               <input type="password" class="form-control" id="loginpassword"  placeholder="enter password">
                               <input type="hidden" class="form-control" id="loginEmail_d" >
                             </div>
-                            <button type="submit" class="resetPasswordBtn">Reset Password</button>
+                            <button type="btn" class="resetPasswordBtn">Reset Password</button>
                         </form>
                     </div>
                 </div>
@@ -237,7 +237,7 @@
         $("#loginEmail_d").val(email);
         var token = sessionStorage.getItem('userLoginData');
         console.log(token);
-        $("#resetPasswordForm_d").submit(function(){
+        $("#resetPasswordBtn").click(function(){
             var mail = $("#loginEmail_d").val();
             var password = $("#loginpassword").val();
             // Ajax call  
