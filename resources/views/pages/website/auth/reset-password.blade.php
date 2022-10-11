@@ -236,7 +236,7 @@
         let email = localStorage.getItem('otpEmail');
         $("#loginEmail_d").val(email);
         var token = sessionStorage.getItem('userLoginData');
-
+        console.log(token);
         $("#resetPasswordForm_d").submit(function(){
             var mail = $("#loginEmail_d").val();
             var password = $("#loginpassword").val();
