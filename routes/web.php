@@ -92,6 +92,7 @@ Route::get('/number_detail', [WebsiteController::class, 'numberDetail'])->name('
 Route::get('/amount_detail', [WebsiteController::class, 'amountDetail'])->name('amountDetails');
 Route::post('/user_login', [WebsiteController::class, 'userLogin'])->name('userLogin');
 Route::post('/user_signup', [WebsiteController::class, 'userSignup'])->name('userSignup');
+Route::post('/resetpassword', [WebsiteController::class, 'resetPassword'])->name('resetPassword');
 
 Route::get('/', function () {
     return view('pages.website.home');
@@ -161,4 +162,7 @@ Route::get('main_signup', function () {
 
 Route::get('forgot', function () {
     return view('pages.website.auth.forgot-password');
+});
+Route::get('reset_password', function () {
+    return view('pages.website.auth.reset-password');
 });

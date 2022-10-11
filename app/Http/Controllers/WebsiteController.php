@@ -88,4 +88,30 @@ class WebsiteController extends Controller
             return view('pages.website.auth.main-login');
         }
     }
+
+    public function resetPassword(Request $request)
+    {
+        $value = Session::get('userLoginData');
+        $token = $value['user']['token'];
+        $validator = Validator::make($request->all(), [
+            'email' => 'required',
+            'password' => 'required|min:6',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator->messages())->withInput();
+        }
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post(\config('url.url').'/api/reset_password', $request->all());
+        $responseBody = $response->body();
+        $passData = json_decode($responseBody, true);
+        dd($passData);
+        // if ($passData['success'] == false) {
+        //     session::flash('message', $passData['message']);
+        //     return redirect()->back();
+        // } elseif ($passData['success'] == true) {
+        //     return view('pages.website.auth.main-login');
+        // }
+    }
 }
