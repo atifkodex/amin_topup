@@ -89,9 +89,14 @@ class WebsiteController extends Controller
         }
     }
 
+    public function sessionData(Request $request)
+    {
+        Session::put('UserloginData', $request->all());
+    }
+
     public function resetPassword(Request $request)
     {
-        $value = Session::get('userLoginData');
+        $value = Session::get('UserloginData');
         dd($value);
         // $token = $value['user']['token'];
         $validator = Validator::make($request->all(), [

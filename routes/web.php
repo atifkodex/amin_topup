@@ -93,6 +93,7 @@ Route::get('/amount_detail', [WebsiteController::class, 'amountDetail'])->name('
 Route::post('/user_login', [WebsiteController::class, 'userLogin'])->name('userLogin');
 Route::post('/user_signup', [WebsiteController::class, 'userSignup'])->name('userSignup');
 Route::post('/resetpassword', [WebsiteController::class, 'resetPassword'])->name('resetPassword');
+Route::post('/session_data', [WebsiteController::class, 'sessionData']);
 
 Route::get('/', function () {
     return view('pages.website.home');
