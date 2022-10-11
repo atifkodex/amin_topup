@@ -340,6 +340,7 @@
                 email: otpMail,
                 otp: otpcode,
             };
+            console.log(parameter);
             $.ajax({
                 url: 'https://amintopup.com/api/verify_otp',
                 type: 'POST',
@@ -349,7 +350,7 @@
                     'Content-Type' : 'application/json'
                 },
                 success: function(response) {
-                    window.location.href = LiveURL + 'forgot';
+                    window.location.href = 'https://amintopup.com/forgot';
                 },
                 error: function (jqXHR, exception) {
                     alert("Something went wrong. Please try again later.");
