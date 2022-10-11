@@ -350,7 +350,8 @@
                     'Content-Type' : 'application/json'
                 },
                 success: function(response) {
-                    // localStorage.removeItem('otpEmail');
+                    var token = response.data.user.token;
+                    sessionStorage.setItem('userLoginData', token);
                     window.location.href = 'https://amintopup.com/reset_password';
                 },
                 error: function (jqXHR, exception) {
