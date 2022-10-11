@@ -267,7 +267,9 @@ class OrderController extends Controller
         );
 
             if($intent->status == 'succeeded'){
+                $today = Carbon::now();
                 $transactionStatus = Transaction::where('id', $request->transaction_id)->update(['status' => 1, 'transaction_id' => $responseData['data']['transactionId']]);
+                User::where('id', $loginUserId)->update(['last_purchase' => $today]);
                 if($transactionStatus == 1){
 
                     // Create Notification 

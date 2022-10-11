@@ -211,12 +211,12 @@
                             @endif
                             <div class="form-group form-field right-inner">
                                 <label for="">New Password</label>
-                              <input type="password" class="form-control" placeholder="enter password">
+                                <input type="password" class="form-control" placeholder="enter password">
                             </div>
                             <div class="form-group form-field right-inner">
                                 <label for="">Confirm Password</label>
-                              <input type="password" class="form-control" id="loginpassword"  placeholder="enter password">
-                              <input type="hidden" class="form-control" id="loginEmail_d" >
+                                <input type="password" class="form-control" id="loginpassword"  placeholder="enter password">
+                                <input type="hidden" class="form-control" id="loginEmail_d" >
                             </div>
                             <button type="btn" class="resetPasswordBtn">Reset Password</button>
                         </form>

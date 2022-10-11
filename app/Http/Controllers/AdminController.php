@@ -79,6 +79,7 @@ class AdminController extends Controller
             }
         }
     }
+
     ////////.......get user list.........//////
     public function usersList(Request $request)
     {
@@ -99,13 +100,7 @@ class AdminController extends Controller
             $user->where('phone_number', $request->phone_number);
         }
         if ($request->has('date') && !empty($request->date)) {
-            $userIds = Transaction::whereDate('created_at', $request->date)->pluck('user_id')->toArray();
-            $newusers = array_unique($userIds);
-            if(!empty($newusers)){
-                foreach($newusers as $newuser) {
-                    $user = User::where('id', $newuser);
-                }
-            }
+            $user->whereDate('last_transaction', $request->date);
         }
         $user = $user->get();
         if (count($user) > 0) {
