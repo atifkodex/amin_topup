@@ -503,6 +503,7 @@
             },
             error: function (jqXHR, textStatus, errorThrown){
                 $(".newData").empty();
+                $(".notransactionDiv").empty();
                     let div = `<div class="text-center">
                                     <h3 class="mx-auto">No Transaction Found!</h3>
                                 </div>`;
