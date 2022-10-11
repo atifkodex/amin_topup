@@ -92,6 +92,7 @@ class WebsiteController extends Controller
     public function resetPassword(Request $request)
     {
         $value = Session::get('userLoginData');
+        dd($value);
         // $token = $value['user']['token'];
         $validator = Validator::make($request->all(), [
             'email' => 'required',
