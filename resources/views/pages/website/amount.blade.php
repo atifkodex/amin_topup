@@ -67,7 +67,7 @@
                                 alt="image">
                         </div>
                         <div class="network-text d-flex">
-                            <h1>{{$number}}</h1>
+                            <h1 class="receiverNumber_d">{{$number}}</h1>
     
                         </div>
                         <div class="network-button pl-2 pl-lg-5">
@@ -132,17 +132,22 @@
                         <h1>Choose an amount to <span>continue</span></h1>
                     </div>
                 </div>
-                <div class="col-md-6 py-3">
-                    <a href="{{url('login')}}">
-                        <div class="amount-card">
-                            <p>Recevier:befor AIT</p>
-                            <h1>100 AFN</h1>
-                            <p>Free fee,total: $7.46USD</p>
-                        </div>
-                    </a>
-              
-                </div>
-                <div class="col-md-6 py-3">
+                @foreach($data->details as $amounts)
+                    <div class="col-md-6 py-3">
+                        <a href="javascript:void(0)" class="selectAmount_d">
+                            <div class="amount-card">
+                                <p>Recevier:befor AIT</p>
+                                <h1 data-src="{{$amounts->denomination}}" class="denominationAmount_d">{{$amounts->denomination}} AFN</h1>
+                                <p>${{$amounts->processing_fee}} fee,total: ${{$amounts->totalAmount}}</p>
+                            </div>
+                            <form action="{{route('orderSummary')}}" class="goToSummaryForm_d" enctype="multipart/form-data" method="POST">
+                                @csrf
+                                <input type="hidden" class="inputNum_d" name="number" value="">
+                            </form>
+                        </a>
+                    </div>
+                @endforeach
+                {{-- <div class="col-md-6 py-3">
                     <a href="{{url('login')}}">
                         <div class="amount-card">
                             <p>Recevier:befor AIT</p>
@@ -191,7 +196,7 @@
                         </div>
                     </a>
               
-                </div>
+                </div> --}}
 
             </div>
         </div>
@@ -229,5 +234,14 @@
         console.log($receiverEmail + $receiverName);
         $("#receiverName_d").text($receiverName);
         $("#receiverEmail_d").text($receiverEmail);
+
+        $(".selectAmount_d").click(function(){
+            let denomination = $(this).find('.denominationAmount_d').attr('data-src');
+            localStorage.setItem('denomination', denomination);
+            let num = $('.receiverNumber_d').text();
+            $('.inputNum_d').val(num);
+            $(this).find('.goToSummaryForm_d').submit();
+
+        });
 </script>
 @endsection

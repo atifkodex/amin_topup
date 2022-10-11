@@ -216,13 +216,13 @@
                             @endif
                             <div class="form-group form-field right-inner">
                                 <img src="{{ asset('assets/website-images/message-icon.svg') }}" alt="icon">
-                                <input type="email" class="form-control" name="email" id="exampleInputEmail1"
+                                <input type="email" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp" placeholder="enter your email">
                             </div>
                             <div class="form-group form-field right-inner">
                                 <img src="{{ asset('assets/website-images/eye.svg') }}" onclick="viewPsd()" alt="icon"
                                     style="cursor: pointer">
-                                <input type="password" class="form-control" name="password" id="loginpassword" name="password"
+                                <input type="password" class="form-control" id="loginpassword" name="password"
                                     placeholder="enter your password">
                             </div>
                             <button type="submit" class=" mt-3 mt-lg-4 loginBtn_s" >LOG IN</button>

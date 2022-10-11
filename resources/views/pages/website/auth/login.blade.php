@@ -149,6 +149,15 @@
         box-shadow: none;
         outline: none;
     }
+    .loginBtn_s{
+        text-decoration: none !important;
+        background-color: #001933 !important;
+        color: white !important;
+        width: 100% !important;
+        padding: 14px 0px !important;
+        font-size: 28px !important;
+        font-weight: bold !important;
+    }
 </style>
 @section('content')
     @include('includes.website.navbar')
@@ -166,7 +175,7 @@
                                 alt="image">
                         </div>
                         <div class="network-text d-flex">
-                            <h1>93 70 00 00 000</h1>
+                            <h1 class="number_d">{{$number}}</h1>
 
                         </div>
                         <div class="network-button pl-2 pl-lg-5">
@@ -246,20 +255,46 @@
                 </div>
                 <div class="col-12">
                     <div class="reg-box my-3 my-lg-5">
-                        <form class="pt-5">
+                        <form class="pt-5" method="POST" action="{{route('inwebLogin')}}" enctype="multipart/form-data">
+                            @csrf
+                            @error('email')
+                                <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @enderror
+                            @error('password')
+                                <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @enderror
+                            @if (Session::has('message'))
+                                <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
+                                    {{ Session::get('message') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                            @endif
                             <div class="form-group form-field right-inner">
                                 <img src="{{ asset('assets/website-images/message-icon.svg') }}" alt="icon">
                                 <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="enter your email">
+                                    aria-describedby="emailHelp" name="email" placeholder="enter your email">
                             </div>
                             <div class="form-group form-field right-inner">
                                 <img src="{{ asset('assets/website-images/eye.svg') }}" onclick="viewPsd()" alt="icon"
                                     style="cursor: pointer">
                                 <input type="password" class="form-control" id="loginpassword" name="password"
                                     placeholder="enter your password">
+                                <input type="hidden" class="form-control numberInput_d" name="number">
                             </div>
-                            <a href="" type="submit" class="btn mt-3 mt-lg-4">LOG IN</a>
-                           
+                            <!-- <a href="" type="submit" class="btn mt-3 mt-lg-4">LOG IN</a> -->
+                            <button type="submit" class=" mt-3 mt-lg-4 loginBtn_s" >LOG IN</button>
                         </form>
                         <div class="text-right forgot-psd mb-3 mb-lg-4">
                             <a href="#" id="forgot-btn">Forgot Password</a>
@@ -350,6 +385,8 @@
             $("#email-modal").modal('hide');
             $("#otp-modal").modal('show');
         });
+        let num = $(".number_d").text();
+        $(".numberInput_d").val(num);
     })
 </script>
     <script>

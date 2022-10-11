@@ -65,6 +65,34 @@ class WebsiteController extends Controller
         }
     }
 
+    public function inwebLogin(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|regex:/(.+)@(.+)\.(.+)/i',
+            'password' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator->messages())->withInput();
+        }
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json'
+        ])->post(\config('url.url').'/api/login', $request->all());
+        $responseBody = $response->body();
+        $userLoginData = json_decode($responseBody, true);
+        if ($userLoginData['success'] == false) {
+            session::flash('message', $userLoginData['message']);
+            return redirect()->back();
+        } elseif ($userLoginData['success'] == true) {
+            session::put('UserloginData', $userLoginData['data']);
+            
+            $number = $request->number;
+            $user = new UserController;
+            $response = $user->networkOperator($request);
+            $originalResponse = $response->getData()->data->network;
+            return view('pages.website.order-summary', ['data' => $originalResponse, 'number' => $number]);
+        }
+    }
+
     public function userSignup(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -87,13 +115,6 @@ class WebsiteController extends Controller
         } elseif ($userSignupData['success'] == true) {
             return view('pages.website.auth.main-login');
         }
-    }
-
-    public function sessionData(Request $request)
-    {
-        Session::put('UserloginData', $request->all());
-        $value = Session::get('UserloginData');
-        dd($value);
     }
 
     public function resetPassword(Request $request)
@@ -121,5 +142,27 @@ class WebsiteController extends Controller
         // } elseif ($passData['success'] == true) {
         //     return view('pages.website.auth.main-login');
         // }
+    }
+
+    public function orderSummary(Request $request)
+    {
+        $number = $request->number;
+        $user = new UserController;
+        $response = $user->networkOperator($request);
+        $originalResponse = $response->getData()->data->network;
+        if(Session::has('UserloginData')){
+            return view('pages.website.order-summary', ['data' => $originalResponse, 'number' => $number]);
+        }else{
+            return view('pages.website.auth.login', ['data' => $originalResponse, 'number' => $number]);
+        }
+    }
+
+    public function logoutUser(){
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
+        Session::flush();
+        Cache::flush();
+        return redirect('/');
     }
 }

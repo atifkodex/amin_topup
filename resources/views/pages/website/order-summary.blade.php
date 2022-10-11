@@ -46,7 +46,6 @@
     }
 
     }
-   
   
 </style>
 @section('content')
@@ -82,7 +81,7 @@
                         <div class="order-summary-content ">
                           <div class="order-summary-list px-0 py-2 py-md-3 px-xl-4">
                             <div class="order-summary-list-left"> <p>Number</p></div>
-                            <div class="order-summary-list-right"><p>+93 700 00 00 000</p></div>
+                            <div class="order-summary-list-right"><p>{{$number}}</p></div>
                           </div>
                           <div class="order-summary-list px-0 py-2 py-md-3 px-xl-4">
                             <div class="order-summary-list-left"> <p>Country</p></div>
@@ -90,35 +89,32 @@
                           </div>
                           <div class="order-summary-list px-0 py-2 py-md-3 px-xl-4">
                             <div class="order-summary-list-left"> <p>Network</p></div>
-                            <div class="order-summary-list-right"><p>AWCC</p></div>
+                            <div class="order-summary-list-right"><p>{{$data->operator_name}}</p></div>
                           </div>
                           <div class="order-summary-list px-0 py-2 py-md-3 px-xl-4">
                             <div class="order-summary-list-left"> <p>Topup Amount</p></div>
-                            <div class="order-summary-list-right"><p>200 ANF</p></div>
+                            <div class="order-summary-list-right "><p class="topupAfn_d">200 AFN</p></div>
                           </div>
                           <div class="order-summary-list order-summary-list-box my-2 my-md-3 py-2 py-md-3">
                             <div class="order-summary-list-left"> <p class="pl-2">Recevier Gets (After Tax)</p></div>
-                            <div class="order-summary-list-right"><p>200 ANF</p></div>
+                            <div class="order-summary-list-right"><p class="receiverGetAfn_d">200 ANF</p></div>
                           </div>
                           <div class="order-summary-list px-0 py-2 py-md-3 px-xl-4">
                             <div class="order-summary-list-left"> <p>Topup Amount:</p></div>
-                            <div class="order-summary-list-right"><p>7.49 USD</p></div>
+                            <div class="order-summary-list-right"><p class="topupToUsd_d">7.49 USD</p></div>
                           </div>
                           <div class="order-summary-list px-0 py-2 py-md-3 px-xl-4">
                             <div class="order-summary-list-left"> <p>Processing fee:</p></div>
-                            <div class="order-summary-list-right"><p>3.52 USD</p></div>
+                            <div class="order-summary-list-right"><p class="processingFee_d">3.52 USD</p></div>
                           </div>
                           <div class="order-summary-list px-0 py-2 py-md-3 px-xl-4">
                             <div class="order-summary-list-left"> <p>Total:</p></div>
-                            <div class="order-summary-list-right"><p>#12450</p></div>
+                            <div class="order-summary-list-right"><p class="totalUsd_d">#12450</p></div>
                           </div>
-                          <div class="order-summary-list px-0 py-2 py-md-3 px-xl-4">
-                            <div class="order-summary-list-left"> <p>Paid Amount</p></div>
-                            <div class="order-summary-list-right"><p>11.01 USD</p></div>
-                          </div>
+                          
                           <div class="order-summary-list order-summary-list-box my-2 my-md-3 py-2 py-md-3">
                             <div class="order-summary-list-left"> <p class="pl-2">Total Payable:</p></div>
-                            <div class="order-summary-list-right"><p>11.01 USD</p></div>
+                            <div class="order-summary-list-right"><p class="totalUsd_d">11.01 USD</p></div>
                           </div>
                         </div>
                         <p class="py-3 summary-text">Amin Topup uses third party payment gateway for facilitating payments. We are not saving your payment information in our system </p> 
@@ -136,5 +132,19 @@
     @include('includes.website.footer-navbar')
 @endsection
 @section('insertjavascript')
-   
+    <script>
+      var denominationAmount = localStorage.getItem('denomination');
+      var data = @json($data);
+      console.log(data.details)
+      $(data.details).each(function (index, element) {
+        if(element.denomination == denominationAmount){
+          $('.topupAfn_d').text(element.denomination + " AFN");
+          $('.receiverGetAfn_d').text(element.receiver_get_AFN + " AFN");
+          $('.topupToUsd_d').text("$" + element.topup_usd);
+          $('.processingFee_d').text("$" + element.processing_fee);
+          $('.totalUsd_d').text("$" + element.totalAmount);
+        }
+      });
+      console.log(arr);
+    </script>
 @endsection

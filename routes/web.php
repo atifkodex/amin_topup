@@ -91,9 +91,11 @@ Auth::routes();
 Route::get('/number_detail', [WebsiteController::class, 'numberDetail'])->name('number-detail');
 Route::get('/amount_detail', [WebsiteController::class, 'amountDetail'])->name('amountDetails');
 Route::post('/user_login', [WebsiteController::class, 'userLogin'])->name('userLogin');
+Route::post('/inweb_login', [WebsiteController::class, 'inwebLogin'])->name('inwebLogin');
 Route::post('/user_signup', [WebsiteController::class, 'userSignup'])->name('userSignup');
 Route::post('/resetpassword', [WebsiteController::class, 'resetPassword'])->name('resetPassword');
-Route::post('/session_data', [WebsiteController::class, 'sessionData']);
+Route::post('/order_summary', [WebsiteController::class, 'orderSummary'])->name('orderSummary');
+Route::get('/logout_user', [WebsiteController::class, 'logoutUser'])->name('logoutUser');
 
 Route::get('/', function () {
     return view('pages.website.home');
