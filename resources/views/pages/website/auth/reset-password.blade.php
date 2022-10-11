@@ -192,7 +192,7 @@
                 </div>
                 <div class="col-12">
                     <div class="reg-box my-3 my-lg-5">
-                        <form class="pt-5" method="POST" action="{{route('resetPassword')}}" enctype="multipart/form-data">
+                        <form class="pt-5" id="resetPasswordForm_d" action="">
                             @csrf
                             @error('password')
                                 <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
@@ -236,6 +236,34 @@
     $(document).ready(function(){
         let email = localStorage.getItem('otpEmail');
         $("#loginEmail_d").val(email);
+        var token = sessionStorage.getItem('userLoginData');
+
+        $("#resetPasswordForm_d").submit(function(){
+            var mail = $("#loginEmail_d").val();
+            var password = $("#loginpassword").val();
+            // Ajax call  
+            var parameter = {
+                email: mail,
+                password: password,
+            };
+            $.ajax({
+                url: 'https://amintopup.com/api/reset_password',
+                type: 'POST',
+                dataType: 'json', // added data type
+                data: JSON.stringify(parameter),
+                headers: {
+                    'Authorization': 'Bearer ' + token,
+                    'Content-Type': 'application/json'
+                },
+                success: function(response) {
+                    window.location.href = 'https://amintopup.com/main_login';
+                },
+                error: function (jqXHR, exception) {
+                    alert("Something went wrong. Please try again later.");
+                }
+            });
+        });
+
     });
 </script>
 

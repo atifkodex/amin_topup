@@ -350,15 +350,7 @@
                     'Content-Type' : 'application/json'
                 },
                 success: function(response) {
-                    var token = response.data;
-                    $.ajax({
-                        type: "POST",
-                        url: './session_data',
-                        data: token,
-                        success: function() {
-                            console.log("Geodata sent");
-                        }
-                    });
+                    var token = response.data.user.token;
                     sessionStorage.setItem('userLoginData', token);
                     window.location.href = 'https://amintopup.com/reset_password';
                 },
