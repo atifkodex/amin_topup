@@ -211,7 +211,7 @@
                             @endif
                             <div class="form-group form-field right-inner">
                                 <label for="">New Password</label>
-                              <input type="password" class="form-control" id="loginpassword" placeholder="enter password">
+                              <input type="password" class="form-control" placeholder="enter password">
                             </div>
                             <div class="form-group form-field right-inner">
                                 <label for="">Confirm Password</label>
@@ -236,7 +236,6 @@
         let email = localStorage.getItem('otpEmail');
         $("#loginEmail_d").val(email);
         var token = sessionStorage.getItem('userLoginData');
-        console.log(token);
         $("#resetPasswordBtn").click(function(){
             var mail = $("#loginEmail_d").val();
             var password = $("#loginpassword").val();
