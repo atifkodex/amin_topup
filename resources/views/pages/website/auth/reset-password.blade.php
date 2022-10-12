@@ -201,7 +201,7 @@
         </div>
         <div class="col-12">
             <div class="reg-box my-3 my-lg-5">
-                <form class="pt-5" id="resetPasswordForm_d" action="" method="POST">
+                <form class="pt-5" id="resetPasswordForm_d" action="">
                     @error('password')
                     <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
                         {{ $message }}
@@ -246,6 +246,7 @@
         $("#loginEmail_d").val(email);
         var token = sessionStorage.getItem('userLoginData');
         $("#resetPasswordBtn").click(function() {
+            debugger;
             var mail = $("#loginEmail_d").val();
             var password = $("#loginpassword").val();
             // Ajax call  
@@ -253,7 +254,6 @@
                 email: mail,
                 password: password,
             };
-            debugger;
             $.ajax({
                 url: 'https://amintopup.com/api/reset_password',
                 type: 'POST',
