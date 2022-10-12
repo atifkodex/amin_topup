@@ -88,7 +88,7 @@ Auth::routes();
 
 
 // website
-Route::get('/number_detail', [WebsiteController::class, 'numberDetail'])->name('number-detail');
+Route::post('/number_detail', [WebsiteController::class, 'numberDetail'])->name('number-detail');
 Route::get('/amount_detail', [WebsiteController::class, 'amountDetail'])->name('amountDetails');
 Route::post('/user_login', [WebsiteController::class, 'userLogin'])->name('userLogin');
 Route::post('/inweb_login', [WebsiteController::class, 'inwebLogin'])->name('inwebLogin');
