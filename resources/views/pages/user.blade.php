@@ -20,7 +20,7 @@
     .setting-card-body-inner {
         overflow-x: auto;
         height: 680px !important;
-        overflow-y: hidden !important;
+        overflow-y:auto !important;
     }
 
     .user-modal-time {
