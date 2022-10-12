@@ -201,7 +201,7 @@
         </div>
         <div class="col-12">
             <div class="reg-box my-3 my-lg-5">
-                <form class="pt-5" id="resetPasswordForm_d" action="">
+                <form class="pt-5" id="resetPasswordForm_d">
                     @error('password')
                     <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
                         {{ $message }}
