@@ -201,8 +201,7 @@
         </div>
         <div class="col-12">
             <div class="reg-box my-3 my-lg-5">
-                <form class="pt-5" id="resetPasswordForm_d" action="{{route('resetPassword')}}" method="POST">
-                    @csrf
+                <form class="pt-5" id="resetPasswordForm_d" action="" method="POST">
                     @error('password')
                     <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
                         {{ $message }}
@@ -225,10 +224,10 @@
                     </div>
                     <div class="form-group form-field right-inner">
                         <label for="">Confirm Password</label>
-                        <input type="password" class="form-control" name="password" id="loginpassword" placeholder="enter password">
-                        <input type="hidden" name="email" class="form-control" id="loginEmail_d">
+                        <input type="password" class="form-control" id="loginpassword" placeholder="enter password">
+                        <input type="hidden" class="form-control" id="loginEmail_d">
                     </div>
-                    <button type="submit" class="resetPasswordBtn">Reset Password</button>
+                    <button type="btn" class="resetPasswordBtn">Reset Password</button>
                 </form>
             </div>
         </div>
@@ -246,7 +245,7 @@
         let email = localStorage.getItem('otpEmail');
         $("#loginEmail_d").val(email);
         var token = sessionStorage.getItem('userLoginData');
-        $("#resetPasswordBtn_d").click(function() {
+        $("#resetPasswordBtn").click(function() {
             var mail = $("#loginEmail_d").val();
             var password = $("#loginpassword").val();
             // Ajax call  
@@ -254,6 +253,7 @@
                 email: mail,
                 password: password,
             };
+            debugger;
             $.ajax({
                 url: 'https://amintopup.com/api/reset_password',
                 type: 'POST',
