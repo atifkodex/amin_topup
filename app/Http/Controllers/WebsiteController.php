@@ -117,6 +117,34 @@ class WebsiteController extends Controller
         }
     }
 
+    public function inwebSignup(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|regex:/(.+)@(.+)\.(.+)/i',
+            'password' => 'required|min:6',
+            'phone_number' => 'required',
+            'country' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator->messages())->withInput();
+        }
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json'
+        ])->post(\config('url.url').'/api/register', $request->all());
+        $responseBody = $response->body();
+        $userSignupData = json_decode($responseBody, true);
+        if ($userSignupData['success'] == false) {
+            session::flash('message', $userSignupData['message']);
+            return redirect()->back();
+        } elseif ($userSignupData['success'] == true) {
+            $number = $request->number;
+            $user = new UserController;
+            $response = $user->networkOperator($request);
+            $originalResponse = $response->getData()->data->network;
+            return view('pages.website.auth.login', ['data' => $originalResponse, 'number' => $number]);
+        }
+    }
+
     public function resetPassword(Request $request)
     {
         $value = Session::get('UserloginData');
@@ -164,5 +192,92 @@ class WebsiteController extends Controller
         Session::flush();
         Cache::flush();
         return redirect('/');
+    }
+
+    public function topupHistory() 
+    {
+        $value = Session::get('UserloginData');
+        $token = $value['user']['token'];
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post(\config('url.url') . '/api/all_topups');
+        $convertor = $response->body();
+        $historyResponse = json_decode($convertor, true);
+        if($historyResponse['success'] == false) {
+            session::flash('historyMessage', "You have not created a topup yet!");
+            return view('pages.website.report');
+        } elseif ($historyResponse['success'] == true) {
+            return view('pages.website.report', ['data' => $historyResponse['data']]);
+        }
+    }
+
+    public function topupDetail(Request $request, $id)
+    {
+        $value = Session::get('UserloginData');
+        $token = $value['user']['token'];
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post(\config('url.url') . '/api/transaction_detail', ['transaction_id' => $id]);
+        $convertor = $response->body();
+        $detailResponse = json_decode($convertor, true);
+        return view('pages.website.transaction', ['data' => $detailResponse['data']]);
+    }
+
+    public function userProfile()
+    {
+        $loginData = Session::get('UserloginData');
+        return view('pages.website.profile', ['data' => $loginData['user']]);
+    }
+
+    public function editProfile(Request $request)
+    {
+        $value = Session::get('UserloginData');
+        $token = $value['user']['token'];
+        $data = $request->all();
+        if ($request->has('image')) {
+            $file = $request->file('image');
+
+            $image_path = $file->getPathname();
+            $image_mime = $file->getmimeType();
+            $image_org  = $file->getClientOriginalName();
+
+            $client = new \GuzzleHttp\Client();
+            $imageresponse = $client->request('POST', \config('url.url') . '/api/image_link', [
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'Authorization' => 'Bearer ' . $token,
+                ],
+                'multipart' => [
+                    [
+                        'name'     => 'image',
+                        'filename' => $image_org,
+                        'Mime-Type' => $image_mime,
+                        'contents' => fopen($image_path, 'r'),
+                    ],
+
+                ],
+            ]);
+            $imageconvertor = $imageresponse->getBody();
+            $imageResponse = json_decode($imageconvertor, true);
+            $profileImage = $imageResponse['data'];
+        }
+
+        
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $token,
+            'Content-Type' => 'application/json'
+        ])->post(\config('url.url') . '/api/update', ['profile' => $profileImage, 
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
+            'date_of_birth' => $request->date_of_birth,
+            'country' => $request->country,
+        'id' => $request->id]);
+        $convertor = $response->body();
+        $profileResponse = json_decode($convertor, true);
+        if($profileResponse['success'] == true){
+            return view('pages.website.profile', ['data' => $profileResponse['data']]);
+        }
     }
 }

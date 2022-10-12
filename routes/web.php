@@ -93,9 +93,14 @@ Route::get('/amount_detail', [WebsiteController::class, 'amountDetail'])->name('
 Route::post('/user_login', [WebsiteController::class, 'userLogin'])->name('userLogin');
 Route::post('/inweb_login', [WebsiteController::class, 'inwebLogin'])->name('inwebLogin');
 Route::post('/user_signup', [WebsiteController::class, 'userSignup'])->name('userSignup');
+Route::post('/inweb_signup', [WebsiteController::class, 'inwebSignup'])->name('inwebSignup');
 Route::post('/resetpassword', [WebsiteController::class, 'resetPassword'])->name('resetPassword');
 Route::post('/order_summary', [WebsiteController::class, 'orderSummary'])->name('orderSummary');
 Route::get('/logout_user', [WebsiteController::class, 'logoutUser'])->name('logoutUser');
+Route::get('/topup_history', [WebsiteController::class, 'topupHistory'])->name('topupHistory');
+Route::get('/topup_detail/{id}', [WebsiteController::class, 'topupDetail']);
+Route::get('/profile', [WebsiteController::class, 'userProfile'])->name('userProfile');
+Route::post('/edit_profile', [WebsiteController::class, 'editProfile'])->name('editProfile');
 
 Route::get('/', function () {
     return view('pages.website.home');
@@ -117,21 +122,21 @@ Route::get('payment', function () {
     return view('pages.website.payment-info');
 });
 
-Route::get('transaction', function () {
-    return view('pages.website.transaction');
-});
+// Route::get('transaction', function () {
+//     return view('pages.website.transaction');
+// });
 
 Route::get('contact', function () {
     return view('pages.website.contact-us');
 });
 
-Route::get('profile', function () {
-    return view('pages.website.profile');
-});
+// Route::get('profile', function () {
+//     return view('pages.website.profile');
+// });
 
-Route::get('report', function () {
-    return view('pages.website.report');
-});
+// Route::get('report', function () {
+//     return view('pages.website.report');
+// });
 
 Route::get('privacy', function () {
     return view('pages.website.privacy');
