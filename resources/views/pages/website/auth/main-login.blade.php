@@ -217,7 +217,7 @@
                             <div class="form-group form-field right-inner">
                                 <img src="{{ asset('assets/website-images/message-icon.svg') }}" alt="icon">
                                 <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="enter your email">
+                                    aria-describedby="emailHelp" name="email" placeholder="enter your email">
                             </div>
                             <div class="form-group form-field right-inner">
                                 <img src="{{ asset('assets/website-images/eye.svg') }}" onclick="viewPsd()" alt="icon"

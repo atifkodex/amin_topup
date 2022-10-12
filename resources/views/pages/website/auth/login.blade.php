@@ -299,7 +299,10 @@
                         <div class="text-right forgot-psd mb-3 mb-lg-4">
                             <a href="#" id="forgot-btn">Forgot Password</a>
                         </div>
-                        <p class="py-3">Don't have account?<a href="{{url('signup')}}"><span>Sign Up</span></a>
+                        <p class="py-3">Don't have account?
+                            <a href="{{url('signup')}}" class="signup_d">
+                                <span>Sign Up</span>
+                            </a>
                         </p>
                     </div>
                 </div>
