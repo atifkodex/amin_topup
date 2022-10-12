@@ -227,7 +227,7 @@
                         <input type="password" class="form-control" id="loginpassword" placeholder="enter password">
                         <input type="hidden" class="form-control" id="loginEmail_d">
                     </div>
-                    <button type="btn" class="resetPasswordBtn">Reset Password</button>
+                    <button type="btn" class="resetPasswordBtn" id="resetPasswordBtn">Reset Password</button>
                 </form>
             </div>
         </div>
