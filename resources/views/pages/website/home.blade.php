@@ -136,7 +136,7 @@
                     <h1>The fastest way to send <span>Top-up</span> worldwide</h1>
                     <p>99% of mobile recharges sent online with Amin Top-Up arrive in under 5 seconds</p>
                 </div>
-                <form class="" action="{{route('number-detail')}}" enctype="multipart/form-data">
+                <form class="" method="POST" action="{{route('number-detail')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group left-inner-addon">
                         <img src="{{ asset('assets/website-images/flag.svg') }}" alt="icon">
