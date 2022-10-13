@@ -332,7 +332,24 @@ class WebsiteController extends Controller
             'description' => 'Amin Topup',
             'capture' => false,
         ]);
-        dd($charge);
+        if($charge->status == "succeeded"){
+            // Topup API 
+            $value = Session::get('UserloginData');
+            $token = $value['user']['token'];
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $token,
+                'Content-Type' => 'application/json'
+            ])->post(\config('url.url') . '/api/topup_charge', [
+                'charge_id' => $charge->id,
+                'receiver_number' => $request->number,
+                'amount' => $request->amount,
+                'product_code' => $request->code,
+                'transaction_id' => $request->tid
+            ]);
+            $convertor = $response->body();
+            $topupResponse = json_decode($convertor, true);
+            dd($topupResponse);
+        }
 
     }
 }
