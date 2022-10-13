@@ -295,6 +295,132 @@ class OrderController extends Controller
         }
     }
 
+    public function TopupCharge(Request $request){
+        // Validation for params 
+        $validator = Validator::make($request->all(), [
+            'charge_id' => 'required',
+            'receiver_number' => 'required',
+            'amount' => 'required',
+            'product_code' => 'required',
+            'transaction_id' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError(implode(",", $validator->errors()->all()), []);
+        }
+        $number = substr($request->receiver_number,0, 3);
+        if($number == 930){
+            $completeNum = substr($request->receiver_number, 2);
+        }elseif($number == 937 || $number == 932){
+            $num = substr($request->receiver_number, 2);
+            $completeNum = 0 . $num;
+        }else{
+            $completeNum = $request->receiver_number;
+        }
+        // Remove white spaces from Number 
+        $completeNumber = str_replace(' ', '', $completeNum);
+
+        // All required parameters 
+        $serviceID = 'TOPUP';
+
+        $productID = $request->product_code;    //This line will be replaced with test productID for final deployment
+        // $productID = 'SALAAM_ERECHARGE';
+        $targetMSISDN = $completeNumber;      //This line will be replaced with test number for final deployment
+        // $targetMSISDN = '0745557555';
+        $unitType = 'EMONEY';
+        $currency = 'AFN';
+        $exponent = '0';
+
+        $amount = $request->amount;    //This line will be replaced with test amount for final deployment
+        // $amount = '01';
+        $userIdentifierRaw = 'amintopup';
+
+        $payment['unitType']= $unitType;
+        $payment['currency']= $currency;
+        $payment['exponent']= $exponent;
+        $payment['amount']= $amount;
+        $payments = [
+            $payment
+        ];
+        
+        $datas['fromUser']['userIdentifier'] = $userIdentifierRaw;
+        $datas['payment'] = $payments;
+        $datas['serviceID'] = $serviceID;
+        $datas['productID'] = $productID;
+        $datas['targetMSISDN'] = $targetMSISDN;
+        $final['data'] = (object) $datas;
+
+        // Login API Request 
+        $data['grantType'] = "password";
+        $data['username'] = "amintopup";
+        $data['password'] = "J7FAiSSSCWeLUM4";
+        $loginData['data'] = (object) $data;
+
+        $username = 'DISTRIBUTOR_API';
+        $password = ';<G/2hnC}"HE:Z?A';
+
+        $loginResponse = Http::withoutVerifying()->withBasicAuth($username, $password)->post('https://adp.280.af/login', $loginData);
+        $loginResponseBody = $loginResponse->body();
+        $loginResponseData = json_decode($loginResponseBody, true);
+        $accessToken = $loginResponseData['data']['access_token'];
+        // $checkRecord = TopupToken::find(1);
+        // if (empty($checkRecord)) {
+        //     $topupToken = new TopupToken;
+        //     $topupToken->access_token = $accessToken;
+        //     $topupToken->save();
+        // } else {
+        //     $checkRecord->access_token = $accessToken;
+        //     $checkRecord->save();
+        // }
+
+        // Topup API Request
+        $response = Http::withoutVerifying()->withHeaders([
+            'Authorization' => 'Bearer ' . $accessToken,
+            'Content-Type' => 'application/json'
+        ])->post('https://adp.280.af/topup', $final);
+        $responseBody = $response->body();
+        $responseData = json_decode($responseBody, true);
+        $responseMessage = $responseData['responseMessage'];
+        $match = explode(':', $responseMessage);
+        $key = count($match) - 1;
+        $errorMessage = $match[$key];
+        if(isset($responseData['data']['transactionStatus']) && $responseData['data']['transactionStatus'] == 1){
+        
+        // Capture Amount 
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        $intent = $stripe->charges->capture(
+            $request->charge_id,
+            []
+        );
+
+            if($intent->status == 'succeeded'){
+                $today = Carbon::now();
+                $transactionStatus = Transaction::where('id', $request->transaction_id)->update(['status' => 1, 'transaction_id' => $responseData['data']['transactionId']]);
+                User::where('id', $loginUserId)->update(['last_purchase' => $today]);
+                if($transactionStatus == 1){
+
+                    // Create Notification 
+                    $notification = new NotificationLog;
+                    $notification->user_id = auth()->user()->id;
+                    $notification->notification_type = "transaction";
+                    $notification->transaction_id = $request->transaction_id;
+                    $notification->notification_status = 0;
+                    $notification->save();
+                    return $this->sendResponse([], 'Transaction Successfull, Topup sent to receiver.');
+                }else{
+                    return $this->sendError("payment sent to user, stripe transaction succeeded but the transaction status was not updated due to some error.");
+                }
+            }else{
+                return $this->sendError("Problem occured while transaction call.");
+            }
+        }else{
+            // Cancel Intent 
+            $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+            $stripe->charges->cancel($request->charge_id, []);
+
+            return $this->sendError($errorMessage);
+        }
+    }
+
     public function topupHistory(Request $request)
     {
         $loginUserId = Auth::user()->id;

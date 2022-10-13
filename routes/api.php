@@ -61,6 +61,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('payment_url', [OrderController::class, 'stripePaymentUrl']);
     Route::post('payment_intent', [OrderController::class, 'paymentIntent']);
     Route::post('topup', [OrderController::class, 'Topup']);
+    Route::post('topup_charge', [OrderController::class, 'TopupTopupCharge']);
     Route::post('/update', [ApiAuthController::class, 'update_user'])->name('update.api');
     Route::post('/contact_us', [ContactsController::class, 'contacts'])->name('contact_us.api');
     Route::post('/create_transaction', [OrderController::class, 'createTransaction']);
