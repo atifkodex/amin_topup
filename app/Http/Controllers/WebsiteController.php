@@ -84,12 +84,13 @@ class WebsiteController extends Controller
             return redirect()->back();
         } elseif ($userLoginData['success'] == true) {
             session::put('UserloginData', $userLoginData['data']);
-            
+            $value = Session::get('UserloginData');
+            $token = $value['user']['token'];
             $number = $request->number;
             $user = new UserController;
             $response = $user->networkOperator($request);
             $originalResponse = $response->getData()->data->network;
-            return view('pages.website.order-summary', ['data' => $originalResponse, 'number' => $number]);
+            return view('pages.website.order-summary', ['data' => $originalResponse, 'number' =>$number, 'token' => $token]);
         }
     }
 
@@ -174,13 +175,14 @@ class WebsiteController extends Controller
 
     public function orderSummary(Request $request)
     {
-        $value = Session::get('UserloginData');
-        $token = $value['user']['token'];
+        
         $number = $request->number;
         $user = new UserController;
         $response = $user->networkOperator($request);
         $originalResponse = $response->getData()->data->network;
         if(Session::has('UserloginData')){
+            $value = Session::get('UserloginData');
+            $token = $value['user']['token'];
             return view('pages.website.order-summary', ['data' => $originalResponse, 'number' => $number, 'token' => $token]);
         }else{
             return view('pages.website.auth.login', ['data' => $originalResponse, 'number' => $number]);

@@ -159,7 +159,7 @@
             </div>
           </div>
           <p class="py-3 summary-text">Amin Topup uses third party payment gateway for facilitating payments. We are not saving your payment information in our system </p>
-          <a href="{{url('payment')}}" class="btn my-3 my-lg-4 summary-btn pay" id="payByCardBtn_d">Pay by Credit Card</a>
+          <a href="javascript:void(0)" class="btn my-3 my-lg-4 summary-btn pay" id="payByCardBtn_d">Pay by Credit Card</a>
 
         </div>
       </div>
