@@ -191,9 +191,9 @@
                                     <img src="{{ asset('assets/website-images/cvc-icon.svg') }}" alt="icon">
                                     <input type="text" class="form-control" name="card_cvc" placeholder="CVC">
                                     <input type="hidden" class="form-control amountToDeduct_d" name="amount">
-                                    <input type="hidden" class="form-control amountToDeduct_d" name="code">
-                                    <input type="hidden" class="form-control amountToDeduct_d" name="number">
-                                    <input type="hidden" class="form-control amountToDeduct_d" name="tid">
+                                    <input type="hidden" class="form-control code" name="code">
+                                    <input type="hidden" class="form-control number" name="number">
+                                    <input type="hidden" class="form-control tid" name="tid">
                                 </div>
                             </div>
                             <div class="col-12 py-2 pb-2 pb-md-5">
