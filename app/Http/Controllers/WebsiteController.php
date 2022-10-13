@@ -328,7 +328,7 @@ class WebsiteController extends Controller
         $charge = $stripe->charges->create([
             'card' => $token['id'],
             'currency' => 'USD',
-            'amount' => $request->amount,
+            'amount' => $request->amount * 100,
             'description' => 'Amin Topup',
             'capture' => false,
         ]);
