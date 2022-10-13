@@ -101,6 +101,7 @@ Route::get('/topup_history', [WebsiteController::class, 'topupHistory'])->name('
 Route::get('/topup_detail/{id}', [WebsiteController::class, 'topupDetail']);
 Route::get('/profile', [WebsiteController::class, 'userProfile'])->name('userProfile');
 Route::post('/edit_profile', [WebsiteController::class, 'editProfile'])->name('editProfile');
+Route::post('/pay_topup', [WebsiteController::class, 'payTopup'])->name('payTopup');
 
 Route::get('/', function () {
     return view('pages.website.home');

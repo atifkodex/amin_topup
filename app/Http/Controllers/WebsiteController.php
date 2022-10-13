@@ -284,4 +284,9 @@ class WebsiteController extends Controller
             return view('pages.website.profile', ['data' => $profileResponse['data']]);
         }
     }
+
+    public function payTopup(Request $request)
+    {
+        
+    }
 }
