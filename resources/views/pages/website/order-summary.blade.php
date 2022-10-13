@@ -154,7 +154,7 @@
                 <p class="pl-2">Total Payable:</p>
               </div>
               <div class="order-summary-list-right">
-                <p class="totalUsd_d">11.01 USD</p>
+                <p class="totalUsd_d usdTotal_d">11.01 USD</p>
               </div>
             </div>
           </div>
@@ -196,9 +196,9 @@
     let receiverNumber = @json($number);
     let country = 'Afghanistan';
     let network = $('.network_d').text();
-    let usdAmount = $('.topupToUsd_d').text();
-    let processingFee = $('.processingFee_d').text();
-    let totalUsd = $('.totalUsd_d').text();
+    let usdAmount = $('.topupToUsd_d').text().replace(/\$/g, '');
+    let processingFee = $('.processingFee_d').text().replace(/\$/g, '');
+    let totalUsd = $('.usdTotal_d').text().replace(/\$/g, '');
     parameter = {
       receiver_name: receiverName,
       topup_amount: denomination,
@@ -209,6 +209,7 @@
       processing_fee: processingFee,
       total_amount_usd: totalUsd,
     }
+    console.log(parameter);
     $.ajax({
       url: 'http://kodextech.net/amin-topup/api/create_transaction',
       type: 'POST',
