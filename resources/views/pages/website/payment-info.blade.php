@@ -202,6 +202,5 @@
 <script>
     let amount = sessionStorage.getItem('totalUsd');
     $(".payTopupBtn").text('Pay $' + amount);
-    console.log(amount);
 </script>
 @endsection
