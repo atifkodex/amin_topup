@@ -232,7 +232,8 @@
         dataArray.push(totalUsd);
         dataArray.push(tid);
         console.log(dataArray);
-
+        sessionStorage.setItem('transactionData', dataArray);
+        window.location.href = 'http://kodextech.net/amin-topup/payment';
       },
       error: function(jqXHR, exception) {
         alert("Something went wrong. Please try again later.");
