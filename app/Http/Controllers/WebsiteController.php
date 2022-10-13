@@ -305,7 +305,15 @@ class WebsiteController extends Controller
         }
 
         $amount = round($request->amount, 2);
-        $stripe = Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $customer = $stripe->customers->create([
+            'description' => 'Test Customer',
+        ]);
+        $ephemeralKey = \Stripe\EphemeralKey::create(
+            ['customer' => $customer->id],
+            ['stripe_version' => '2020-08-27']
+        );
         $token = $stripe->tokens()->create([
             'card' => [
                 'number' => $request->get('card_num'),
