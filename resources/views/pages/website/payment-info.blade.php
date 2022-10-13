@@ -200,7 +200,7 @@
 @endsection
 @section('insertjavascript')
 <script>
-    let amount = sessionStorage.getItem('transactionData');
-    console.log(amount[2]);
+    let amount = sessionStorage.getItem('totalUsd');
+    console.log(amount);
 </script>
 @endsection
