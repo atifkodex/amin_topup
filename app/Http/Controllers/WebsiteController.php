@@ -292,7 +292,7 @@ class WebsiteController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'card_name' => 'required|string',
-            'card_num' => 'required|numeric|digits:14',
+            'card_num' => 'required|numeric|digits:16',
             'card_expiry_month' => 'required|numeric|digits:2',
             'card_expiry_year' => 'required|numeric|digits:4',
             'card_cvc' => 'required|numeric|min:3',
