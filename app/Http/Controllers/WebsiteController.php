@@ -304,54 +304,25 @@ class WebsiteController extends Controller
         }
 
         $amount = round($request->amount, 2);
-        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-
-        // create customer 
-        $customer = $stripe->customers->create([
-            'description' => 'Test Customer',
-        ]);
-
-        // create token 
-        $stripe->tokens->create([
+        $stripe = Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $token = $stripe->tokens()->create([
             'card' => [
-                'number' => $request->card_num,
-                'exp_month' => $request->card_expiry_month,
-                'exp_year' => $request->card_expiry_year,
-                'cvc' => $request->card_cvc,
-                'name' => $request->card_name,
-            ],
-            'customer' => $customer->id,
-        ]);
-
-        $ephemeralKey = \Stripe\EphemeralKey::create(
-            ['customer' => $customer->id],
-            ['stripe_version' => '2020-08-27']
-        );
-
-        $paymentIntent = $stripe->paymentIntents->create([
-            'amount' => $amount * 100,
-            'currency' => 'usd',
-            'customer' => $customer->id,
-            'payment_method_options' => [
-                'card' => [
-                    'capture_method' => 'manual',
-                ],
+                'number' => $request->get('card_num'),
+                'exp_month' => $request->get('card_expiry_month'),
+                'exp_year' => $request->get('card_expiry_year'),
+                'cvc' => $request->get('card_cvc'),
+                'name' => $request->get('card_name'),
             ],
         ]);
 
-        dd($paymentIntent);
-        // $pay_int_res = [
-        //     'result' => 'Success',
-        //     'message' => 'Payment intent successfully!',
-        //     'payment_intent' => $paymentIntent->client_secret,
-        //     'ephemeral_key' => $ephemeralKey->secret,
-        //     'customer_id' => $customer->id,
-        //     'publishablekey' => env('STRIPE_KEY'),
-        //     'secret' => env('STRIPE_SECRET'),
-        //     'id' => $paymentIntent->id
-        // ];
+        $charge = $stripe->charges()->create([
+            'card' => $token['id'],
+            'currency' => 'USD',
+            'amount' => $request->amount,
+            'description' => 'Amin Topup',
+            'capture' => false,
+        ]);
+        dd($charge);
 
     }
 }
