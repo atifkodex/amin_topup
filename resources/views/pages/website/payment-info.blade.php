@@ -201,6 +201,6 @@
 @section('insertjavascript')
 <script>
     let amount = sessionStorage.getItem('transactionData');
-    console.log(amount);
+    console.log(amount[2]);
 </script>
 @endsection
