@@ -105,7 +105,7 @@
                 <p>Network</p>
               </div>
               <div class="order-summary-list-right">
-                <p>{{$data->operator_name}}</p>
+                <p class="network_d">{{$data->operator_name}}</p>
               </div>
             </div>
             <div class="order-summary-list px-0 py-2 py-md-3 px-xl-4">
@@ -159,7 +159,7 @@
             </div>
           </div>
           <p class="py-3 summary-text">Amin Topup uses third party payment gateway for facilitating payments. We are not saving your payment information in our system </p>
-          <a href="{{url('payment')}}" class="btn my-3 my-lg-4 summary-btn">Pay by Credit Card</a>
+          <a href="{{url('payment')}}" class="btn my-3 my-lg-4 summary-btn pay" id="payByCardBtn_d">Pay by Credit Card</a>
 
         </div>
       </div>
@@ -176,7 +176,7 @@
 <script>
   var denominationAmount = localStorage.getItem('denomination');
   var data = @json($data);
-  console.log(data.details)
+  var token = @json($token);
   $(data.details).each(function(index, element) {
     if (element.denomination == denominationAmount) {
       roundAmount = parseFloat(element.totalAmount.toFixed(2));
@@ -187,6 +187,45 @@
       $('.totalUsd_d').text("$" + roundAmount);
     }
   });
-  console.log(arr);
+
+  // Transaction API 
+  $("#payByCardBtn_d").click(function() {
+    let receiverName = localStorage.getItem('receiverName');
+    let receiverEmail = localStorage.getItem('receiverEmail');
+    let denomination = localStorage.getItem('denomination');
+    let receiverNumber = @json($number);
+    let country = 'Afghanistan';
+    let network = $('.network_d').text();
+    let usdAmount = $('.topupToUsd_d').text();
+    let processingFee = $('.processingFee_d').text();
+    let totalUsd = $('.totalUsd_d').text();
+    parameter = {
+      receiver_name: receiverName,
+      topup_amount: denomination,
+      receiver_number: receiverNumber,
+      country: country,
+      receiver_network: network,
+      topup_amount_usd: usdAmount,
+      processing_fee: processingFee,
+      total_amount_usd: totalUsd,
+    }
+    $.ajax({
+      url: 'http://kodextech.net/amin-topup/api/create_transaction',
+      type: 'POST',
+      dataType: 'json', // added data type
+      data: JSON.stringify(parameter),
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json'
+      },
+      success: function(response) {
+        console.log('created transaction');
+      },
+      error: function(jqXHR, exception) {
+        alert("Something went wrong. Please try again later.");
+      }
+    });
+
+  });
 </script>
 @endsection
