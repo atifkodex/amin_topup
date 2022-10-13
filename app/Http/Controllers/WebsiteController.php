@@ -288,16 +288,6 @@ class WebsiteController extends Controller
 
     public function payTopup(CreditCardRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'card_name' => 'required|string',
-            'card_num' => 'required|integer',
-            'card_expiry_month' => 'required|integer|min:2|max:2',
-            'card_expiry_year' => 'required|integer|min:4|max:4',
-            'card_cvc' => 'required|integer|min:3',
-            
-        ]);
-        if ($validator->fails()) {
-            return $this->sendError(implode(",", $validator->errors()->all()), []);
-        }
+        
     }
 }

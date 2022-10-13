@@ -129,6 +129,38 @@
                 <div class="reg-box my-0 my-md-5">
                     <form class="pt-2 pt-md-5" method="POST" enctype="multipart/form-data" action="{{route('payTopup')}}">
                         @csrf
+                        @error('card_num')
+                        <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
+                            {{ $message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @enderror
+                        @error('card_expiry_month')
+                        <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
+                            {{ $message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @enderror
+                        @error('card_expiry_year')
+                        <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
+                            {{ $message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @enderror
+                        @error('card_cvc')
+                        <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
+                            {{ $message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @enderror
                         <div class="row">
                             <div class="col-12 py-2">
                                 <div class="form-group form-field right-inner">
