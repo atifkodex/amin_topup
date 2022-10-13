@@ -286,8 +286,72 @@ class WebsiteController extends Controller
         }
     }
 
-    public function payTopup(CreditCardRequest $request)
+    public function payTopup(Request $request)
     {
-        
+        $validator = Validator::make($request->all(), [
+            'card_name' => 'required|string',
+            'card_num' => 'required|numeric|digits:14',
+            'card_expiry_month' => 'required|numeric|digits:2',
+            'card_expiry_year' => 'required|numeric|digits:4',
+            'card_cvc' => 'required|numeric|min:3',
+            'amount' => 'required',
+            'code' => 'required',
+            'number' => 'required',
+            'tid' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator->messages())->withInput();
+        }
+
+        $amount = round($request->amount, 2);
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        // create customer 
+        $customer = $stripe->customers->create([
+            'description' => 'Test Customer',
+        ]);
+
+        // create token 
+        $stripe->tokens->create([
+            'card' => [
+                'number' => $request->card_num,
+                'exp_month' => $request->card_expiry_month,
+                'exp_year' => $request->card_expiry_year,
+                'cvc' => $request->card_cvc,
+                'name' => $request->card_name,
+            ],
+            'customer' => $customer->id,
+        ]);
+
+        $ephemeralKey = \Stripe\EphemeralKey::create(
+            ['customer' => $customer->id],
+            ['stripe_version' => '2020-08-27']
+        );
+
+        $paymentIntent = $stripe->paymentIntents->create([
+            'amount' => $amount * 100,
+            'currency' => 'usd',
+            'customer' => $customer->id,
+            'payment_method_options' => [
+                'card' => [
+                    'capture_method' => 'manual',
+                ],
+            ],
+        ]);
+
+        dd($paymentIntent);
+        // $pay_int_res = [
+        //     'result' => 'Success',
+        //     'message' => 'Payment intent successfully!',
+        //     'payment_intent' => $paymentIntent->client_secret,
+        //     'ephemeral_key' => $ephemeralKey->secret,
+        //     'customer_id' => $customer->id,
+        //     'publishablekey' => env('STRIPE_KEY'),
+        //     'secret' => env('STRIPE_SECRET'),
+        //     'id' => $paymentIntent->id
+        // ];
+
     }
 }

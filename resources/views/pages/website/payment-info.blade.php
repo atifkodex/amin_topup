@@ -190,6 +190,10 @@
                                 <div class="form-group form-field right-inner">
                                     <img src="{{ asset('assets/website-images/cvc-icon.svg') }}" alt="icon">
                                     <input type="text" class="form-control" name="card_cvc" placeholder="CVC">
+                                    <input type="hidden" class="form-control amountToDeduct_d" name="amount">
+                                    <input type="hidden" class="form-control amountToDeduct_d" name="code">
+                                    <input type="hidden" class="form-control amountToDeduct_d" name="number">
+                                    <input type="hidden" class="form-control amountToDeduct_d" name="tid">
                                 </div>
                             </div>
                             <div class="col-12 py-2 pb-2 pb-md-5">
@@ -233,6 +237,13 @@
 @section('insertjavascript')
 <script>
     let amount = sessionStorage.getItem('totalUsd');
+    let tid = sessionStorage.getItem('tid');
+    let receiverNumber = sessionStorage.getItem('receiverNumber');
+    let code = sessionStorage.getItem('code');
     $(".payTopupBtn").text('Pay $' + amount);
+    $(".amount").val(amount);
+    $(".code").val(code);
+    $(".number").val(receiverNumber);
+    $(".tid").val(tid);
 </script>
 @endsection
