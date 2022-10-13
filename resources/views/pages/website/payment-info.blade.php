@@ -241,7 +241,7 @@
     let receiverNumber = sessionStorage.getItem('receiverNumber');
     let code = sessionStorage.getItem('code');
     $(".payTopupBtn").text('Pay $' + amount);
-    $(".amount").val(amount);
+    $(".amountToDeduct_d").val(amount);
     $(".code").val(code);
     $(".number").val(receiverNumber);
     $(".tid").val(tid);
