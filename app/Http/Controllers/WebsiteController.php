@@ -22,6 +22,7 @@ use Codedge\Fpdf\Fpdf\Fpdf;
 use Cache;
 use Illuminate\Support\Collection;
 use App\Http\Requests\Request\CreditCardRequest;
+use Stripe\Stripe;
 
 class WebsiteController extends Controller
 {
