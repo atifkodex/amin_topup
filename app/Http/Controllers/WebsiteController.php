@@ -315,7 +315,7 @@ class WebsiteController extends Controller
             ['customer' => $customer->id],
             ['stripe_version' => '2020-08-27']
         );
-        $token = $stripe->tokens()->create([
+        $token = $stripe->tokens->create([
             'card' => [
                 'number' => $request->get('card_num'),
                 'exp_month' => $request->get('card_expiry_month'),
@@ -325,7 +325,7 @@ class WebsiteController extends Controller
             ],
         ]);
 
-        $charge = $stripe->charges()->create([
+        $charge = $stripe->charges->create([
             'card' => $token['id'],
             'currency' => 'USD',
             'amount' => $request->amount,
