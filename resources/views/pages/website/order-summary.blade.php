@@ -158,6 +158,7 @@
               </div>
             </div>
           </div>
+          <input type="hidden" class="productCode_d">
           <p class="py-3 summary-text">Amin Topup uses third party payment gateway for facilitating payments. We are not saving your payment information in our system </p>
           <a href="javascript:void(0)" class="btn my-3 my-lg-4 summary-btn pay" id="payByCardBtn_d">Pay by Credit Card</a>
 
@@ -185,6 +186,7 @@
       $('.topupToUsd_d').text("$" + element.topup_usd);
       $('.processingFee_d').text("$" + element.processing_fee);
       $('.totalUsd_d').text("$" + roundAmount);
+      $('.productCode_d').val(element.product_code_topup);
     }
   });
 
@@ -199,6 +201,8 @@
     let usdAmount = $('.topupToUsd_d').text().replace(/\$/g, '');
     let processingFee = $('.processingFee_d').text().replace(/\$/g, '');
     let totalUsd = $('.usdTotal_d').text().replace(/\$/g, '');
+    let code = $('.productCode_d').val();
+
     parameter = {
       receiver_name: receiverName,
       topup_amount: denomination,
@@ -209,7 +213,8 @@
       processing_fee: processingFee,
       total_amount_usd: totalUsd,
     }
-    console.log(parameter);
+
+    console.log(dataArray);
     $.ajax({
       url: 'http://kodextech.net/amin-topup/api/create_transaction',
       type: 'POST',
@@ -220,7 +225,15 @@
         'Content-Type': 'application/json'
       },
       success: function(response) {
-        console.log('created transaction');
+        let tid = response.data.transaction_id;
+
+        let dataArray = [];
+        dataArray.push(code);
+        dataArray.push(receiverNumber);
+        dataArray.push(totalUsd);
+        dataArray.push(tid);
+        console.log(dataArray);
+
       },
       error: function(jqXHR, exception) {
         alert("Something went wrong. Please try again later.");
