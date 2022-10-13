@@ -414,8 +414,8 @@ class OrderController extends Controller
             }
         }else{
             // Cancel Intent 
-            $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-            $stripe->charges->cancel($request->charge_id, []);
+            // $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+            // $stripe->charges->cancel($request->charge_id, []);
 
             return $this->sendError($errorMessage);
         }
