@@ -214,7 +214,6 @@
       total_amount_usd: totalUsd,
     }
 
-    console.log(dataArray);
     $.ajax({
       url: 'http://kodextech.net/amin-topup/api/create_transaction',
       type: 'POST',
