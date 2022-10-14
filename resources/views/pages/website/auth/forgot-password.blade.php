@@ -213,7 +213,7 @@
     $(document).ready(function() {
         let email = localStorage.getItem('otpEmail');
         $("#loginEmail_d").val(email);
-        var token = sessionStorage.getItem('userLoginData');
+        var token = sessionStorage.getItem('userLoginToken');
         $("#resetPasswordBtn").click(function() {
             debugger;
             var mail = $("#loginEmail_d").val();

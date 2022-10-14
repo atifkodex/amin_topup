@@ -447,7 +447,7 @@
                 },
                 success: function(response) {
                     var token = response.data.user.token;
-                    sessionStorage.setItem('userLoginData', token);
+                    sessionStorage.setItem('userLoginToken', token);
                     window.location.href = 'https://amintopup.com/forgot';
                 },
                 error: function(jqXHR, exception) {
