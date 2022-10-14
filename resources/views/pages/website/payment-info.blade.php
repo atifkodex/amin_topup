@@ -96,6 +96,16 @@
         outline: none !important;
         border: none !important;
     }
+
+    .tryAgainAnchor {
+        width: 400px;
+        height: 50px;
+        background: #EB5A5A;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+    }
 </style>
 @section('content')
 @include('includes.website.navbar')
@@ -215,8 +225,9 @@
             <div class="modal-body payment-modal-body  text-center py-3 py-md-5">
                 <p>Unfortunately, Your Topup transaction was not successful due to</p>
                 <p class="error-message">[ {{ Session::get('message') }} ]</p>
-                <p>We will refund the payment to your card soon. You can try again later!</p>
-                <button>Try Again</button>
+                <p>We did not charge your card for this topup. You can try again later!</p>
+                <!-- <button>Try Again</button> -->
+                <a href="{{url('/')}}" class="tryAgainAnchor">Try Again</a>
             </div>
             <img class="modal-img" src="{{ asset('assets/website-images/error-modal.svg') }}" alt="image">
         </div>
