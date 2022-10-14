@@ -312,7 +312,7 @@
                         {{-- <img src="{{ asset('assets/website-images/message-icon.svg') }}" alt="icon"> --}}
                         <input type="email" class="form-control" id="sendOtpMailInput" aria-describedby="emailHelp" placeholder="enter your email">
                     </div>
-                    <a href="#" class="btn mt-sm-3 email-modal-btn" id="email-btn">Continue</a>
+                    <a href="javascript:void(0)" class="btn mt-sm-3 email-modal-btn" id="email-btn">Continue</a>
                 </form>
             </div>
         </div>
@@ -332,7 +332,7 @@
                     <input type="hidden" id="otpCode_d" name="otp">
                     <input type="hidden" id="otpMail_d" name="email">
                 </form>
-                <a href="{{ url('forgot') }}" class="btn mt-sm-3 col-12 email-modal-btn">Continue</a>
+                <a href="javascript:void(0)" class="btn mt-sm-3 col-12 email-modal-btn">Continue</a>
             </div>
         </div>
     </div>
@@ -450,6 +450,7 @@
                     sessionStorage.setItem('userLoginToken', token);
                     console.log(response);
                     console.log(token);
+                    window.location.href = 'https://amintopup.com/forgot';
                 },
                 error: function(jqXHR, exception) {
                     alert("Something went wrong. Please try again later.");
