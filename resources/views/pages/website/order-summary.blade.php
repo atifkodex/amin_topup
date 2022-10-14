@@ -230,7 +230,7 @@
         sessionStorage.setItem('totalUsd', totalUsd);
         sessionStorage.setItem('code', code);
 
-        window.location.href = 'http://kodextech.net/amin-topup/payment';
+        window.location.href = 'http://amintopup.com/payment';
       },
       error: function(jqXHR, exception) {
         alert("Something went wrong. Please try again later.");
