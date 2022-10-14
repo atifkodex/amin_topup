@@ -98,13 +98,18 @@
     }
 
     .tryAgainAnchor {
-        width: 400px;
-        height: 50px;
-        background: #EB5A5A;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 18px;
+        width: 400px !important;
+        height: 50px !important;
+        background: #EB5A5A !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 5px  !important;
+        font-size: 18px !important;
+        text-decoration: none !important;
+    }
+
+    .tryAgainAnchor:hover{
+        text-decoration: none !important;;
     }
 </style>
 @section('content')

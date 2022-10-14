@@ -310,7 +310,7 @@
                 <form class="py-2 py-sm-4">
                     <div class="form-group form-field right-inner">
                         {{-- <img src="{{ asset('assets/website-images/message-icon.svg') }}" alt="icon"> --}}
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="enter your email">
+                        <input type="email" class="form-control" id="sendOtpMailInput" aria-describedby="emailHelp" placeholder="enter your email">
                     </div>
                     <a href="#" class="btn mt-sm-3 email-modal-btn" id="email-btn">Continue</a>
                 </form>
@@ -325,11 +325,12 @@
                 <h1>Enter <span>4 Digits</span> Code </h1>
                 <p class="py-2 py-sm-3">Enter the 4 digits code that you received on your email.</p>
                 <form class="py-2 py-sm-4 otp-form">
-                    <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(1)' maxlength=1>
-                    <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(2)' maxlength=1>
-                    <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(3)' maxlength=1>
-                    <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(4)' maxlength=1>
-
+                    <input class="otp otp1" type="text" oninput='digitValidate(this)' onkeyup='tabChange(1)' maxlength=1>
+                    <input class="otp otp2" type="text" oninput='digitValidate(this)' onkeyup='tabChange(2)' maxlength=1>
+                    <input class="otp otp3" type="text" oninput='digitValidate(this)' onkeyup='tabChange(3)' maxlength=1>
+                    <input class="otp otp4" type="text" oninput='digitValidate(this)' onkeyup='tabChange(4)' maxlength=1>
+                    <input type="hidden" id="otpCode_d" name="otp">
+                    <input type="hidden" id="otpMail_d" name="email">
                 </form>
                 <a href="{{ url('forgot') }}" class="btn mt-sm-3 col-12 email-modal-btn">Continue</a>
             </div>
@@ -359,13 +360,13 @@
 @section('insertjavascript')
 <script>
     $(document).ready(function() {
-        $("#forgot-btn").click(function() {
-            $("#email-modal").modal('show');
-        });
-        $("#email-btn").click(function() {
-            $("#email-modal").modal('hide');
-            $("#otp-modal").modal('show');
-        });
+        // $("#forgot-btn").click(function() {
+        //     $("#email-modal").modal('show');
+        // });
+        // $("#email-btn").click(function() {
+        //     $("#email-modal").modal('hide');
+        //     $("#otp-modal").modal('show');
+        // });
         let num = $(".number_d").text();
         $(".numberInput_d").val(num);
 
@@ -383,6 +384,78 @@
             localStorage.setItem('receiverNetwork', receiverNetwork);
         });
     });
+
+    $(document).ready(function() {
+        var LiveURL = '{{ env('
+        BASE_URL_LIVE ') }}';
+
+        $("#forgot-btn").click(function() {
+            $("#email-modal").modal('show');
+        });
+        $("#email-btn").click(function() {
+            let mail = $('#sendOtpMailInput').val();
+            localStorage.setItem('otpEmail', mail);
+            // $("#email-modal").modal('hide');
+            //         $("#otp-modal").modal('show');
+            // Ajax call 
+            var parameter = {
+                email: mail
+            };
+            $.ajax({
+                url: 'https://amintopup.com/api/send_otp',
+                type: 'POST',
+                dataType: 'json', // added data type
+                data: JSON.stringify(parameter),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                success: function(response) {
+                    $("#email-modal").modal('hide');
+                    $("#otp-modal").modal('show');
+                },
+                error: function(jqXHR, exception) {
+                    alert("Something went wrong. Please try again later.");
+                }
+            });
+
+        });
+        $('.otpVerify_d').click(function() {
+            let one = $('.otp1').val();
+            let two = $('.otp2').val();
+            let three = $('.otp3').val();
+            let four = $('.otp4').val();
+            let otp = "" + one + two + three + four;
+            $("#otpCode_d").val(otp);
+            let mail = localStorage.getItem('otpEmail');
+            $("#otpMail_d").val(mail);
+            var otpcode = $("#otpCode_d").val();
+            var otpMail = $("#otpMail_d").val();
+
+            // Ajax call  
+            var parameter = {
+                email: otpMail,
+                otp: otpcode,
+            };
+            console.log(parameter);
+            $.ajax({
+                url: 'https://amintopup.com/api/verify_otp',
+                type: 'POST',
+                dataType: 'json', // added data type
+                data: JSON.stringify(parameter),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                success: function(response) {
+                    var token = response.data.user.token;
+                    sessionStorage.setItem('userLoginData', token);
+                    window.location.href = 'https://amintopup.com/forgot';
+                },
+                error: function(jqXHR, exception) {
+                    alert("Something went wrong. Please try again later.");
+                }
+            });
+        });
+    })
 </script>
 <script>
     function viewPsd() {
