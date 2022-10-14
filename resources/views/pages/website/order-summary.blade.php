@@ -230,7 +230,7 @@
         sessionStorage.setItem('totalUsd', totalUsd);
         sessionStorage.setItem('code', code);
 
-        window.location.href = 'http://amintopup.com/payment';
+        window.location.href = 'https://amintopup.com/payment';
       },
       error: function(jqXHR, exception) {
         alert("Something went wrong. Please try again later.");
