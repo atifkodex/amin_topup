@@ -106,6 +106,7 @@
         border-radius: 5px  !important;
         font-size: 18px !important;
         text-decoration: none !important;
+        padding: 10px 15% !important;
     }
 
     .tryAgainAnchor:hover{
