@@ -312,7 +312,7 @@
                         {{-- <img src="{{ asset('assets/website-images/message-icon.svg') }}" alt="icon"> --}}
                         <input type="email" class="form-control" id="sendOtpMailInput" aria-describedby="emailHelp" placeholder="enter your email">
                     </div>
-                    <a href="javascript:void(0)" class="btn mt-sm-3 email-modal-btn" id="email-btn">Continue</a>
+                    <a href="javascript:void(0)" class="btn mt-sm-3 email-modal-btn otpVerify_d" id="email-btn">Continue</a>
                 </form>
             </div>
         </div>
