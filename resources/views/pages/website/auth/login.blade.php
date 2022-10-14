@@ -312,7 +312,7 @@
                         {{-- <img src="{{ asset('assets/website-images/message-icon.svg') }}" alt="icon"> --}}
                         <input type="email" class="form-control" id="sendOtpMailInput" aria-describedby="emailHelp" placeholder="enter your email">
                     </div>
-                    <a href="javascript:void(0)" class="btn mt-sm-3 email-modal-btn otpVerify_d" id="email-btn">Continue</a>
+                    <a href="javascript:void(0)" class="btn mt-sm-3 email-modal-btn" id="email-btn">Continue</a>
                 </form>
             </div>
         </div>
@@ -332,7 +332,7 @@
                     <input type="hidden" id="otpCode_d" name="otp">
                     <input type="hidden" id="otpMail_d" name="email">
                 </form>
-                <a href="javascript:void(0)" class="btn mt-sm-3 col-12 email-modal-btn">Continue</a>
+                <a href="javascript:void(0)" class="btn mt-sm-3 col-12 email-modal-btn otpVerify_d">Continue</a>
             </div>
         </div>
     </div>
@@ -360,13 +360,6 @@
 @section('insertjavascript')
 <script>
     $(document).ready(function() {
-        // $("#forgot-btn").click(function() {
-        //     $("#email-modal").modal('show');
-        // });
-        // $("#email-btn").click(function() {
-        //     $("#email-modal").modal('hide');
-        //     $("#otp-modal").modal('show');
-        // });
         let num = $(".number_d").text();
         $(".numberInput_d").val(num);
 
