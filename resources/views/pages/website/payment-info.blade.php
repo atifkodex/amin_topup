@@ -214,7 +214,7 @@
         <div class="modal-content payment-modal-content  pt-4">
             <div class="modal-body payment-modal-body  text-center py-3 py-md-5">
                 <p>Unfortunately, Your Topup transaction was not successful due to</p>
-                <p class="error-message">[Error Description]</p>
+                <p class="error-message">[ {{ Session::get('message') }} ]</p>
                 <p>We will refund the payment to your card soon. You can try again later!</p>
                 <button>Try Again</button>
             </div>
@@ -234,7 +234,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content payment-modal-content  pt-4">
             <div class="modal-body payment-modal-body  text-center py-5">
-                <p class="success-message">Topup <span>successfully</span> sent to Ali.</p>
+                <p class="success-message">Topup <span>successfully</span> sent.</p>
                 <p>Thank you for using Amin Topup!</p>
             </div>
             <img class="modal-img" src="{{ asset('assets/website-images/success-modal.svg') }}" alt="image">

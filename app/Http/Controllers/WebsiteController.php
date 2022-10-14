@@ -349,6 +349,7 @@ class WebsiteController extends Controller
             $convertor = $response->body();
             $topupResponse = json_decode($convertor, true);
             if($topupResponse['success'] == false){
+                Session::flash('message', $topupResponse['message']);
                 return redirect()->back()->with('error', 'payment-error');
             } elseif ($topupResponse['success'] == true) {
                 return redirect()->back()->with('success','payment-success');
