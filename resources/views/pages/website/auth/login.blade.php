@@ -450,7 +450,6 @@
                     sessionStorage.setItem('userLoginToken', token);
                     console.log(response);
                     console.log(token);
-                    // window.location.href = 'https://amintopup.com/forgot';
                 },
                 error: function(jqXHR, exception) {
                     alert("Something went wrong. Please try again later.");
