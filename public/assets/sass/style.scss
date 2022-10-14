@@ -1231,12 +1231,15 @@ body {
   }
 }
 .detail-box{
-  background: white;
+  // background: white;
   padding:2% 3% 2% 4%;
-  width: 50%;
+  width: 80%;
   margin: 0 auto;
   border-radius: 20px;
-
+  @media screen and (max-width:767px){
+      width: 100%;
+    
+  }
  
   .network-button{
     button{
@@ -1274,9 +1277,9 @@ body {
       }
     }
     .network-text{
-      padding-left: 10%;
-      padding-right: 5%;
-      position: relative;
+      // padding-left: 10%;
+      // padding-right: 5%;
+      // position: relative;
       h1{
         font-size: 22px;
        
@@ -1290,7 +1293,7 @@ body {
         }
       }
       .network-text{
-        padding-left: 5%;
+        // padding-left: 5%;
         h1{
           font-size: 22px;
          
@@ -1305,12 +1308,13 @@ body {
         }
       }
       .network-text{
-        padding-left: 10%;
+        // padding-left: 10%;
         h1{
           font-size: 22px;
          
         }
       }
+  
     }
     @media screen and (max-width:576px){
       .network-icon{
@@ -1320,7 +1324,7 @@ body {
         }
       }
       .network-text{
-        padding-left: 10%;
+        // padding-left: 10%;
         h1{
           font-size:18px;
          
@@ -1331,39 +1335,37 @@ body {
   }
 }
 @media screen and (min-width:768px){
-.detail-box-outer{
-  padding-bottom: 100px;
-}
+
 .detail-box-bottom{
   padding-bottom: 100px;
 }
 }
 @media screen and (min-width:1396px){
-  .detail-box,.detail-box-bottom{
+  .detail-box-bottom{
     width: 60%;
     max-width:800px;
   }
 
 }
 @media screen and (max-width:1220px) and (min-width:992px){
-  .detail-box,.detail-box-bottom{
+  .detail-box-bottom{
     width: 50%;
   }
 }
 @media screen and (max-width:991px) and (min-width:768px){
-  .detail-box,.detail-box-bottom{
+  .detail-box-bottom{
     width: 50%;
   }
  
 }
 @media screen and (max-width:767px) and (min-width:576px){
-  .detail-box,.detail-box-bottom{
+  .detail-box-bottom{
     width: 80%;
   }
  
 }
 @media screen and (max-width:576px){
-  .detail-box,.detail-box-bottom{
+  .detail-box-bottom{
     width: 100%;
   }
  
@@ -1378,7 +1380,7 @@ body {
 
 @media screen and (min-width:768px) and (max-width:1366px){
   .amount-box{
-    box-shadow: 0 0 10px #E5F2FF;
+    // box-shadow: 0 0 10px #E5F2FF;
   }
 }
 .amount-section {
@@ -1389,7 +1391,7 @@ body {
   }
 }
 .amount-card{
-  background: #F0F7FF;
+background: white;
 border-radius: 14px;
 padding:10px 20px;
 color: black;
@@ -1417,6 +1419,13 @@ color: black;
 }
 .amount-card.active p:last-of-type,.amount-card:hover p:last-of-type{
   border-top: 1px solid #DA7A04;
+}
+.amount-heading{
+  width: 80%;
+  margin: 0 auto;
+  @media screen and (max-width:767px){
+    width: 100%;
+  }
 }
 .amount-heading h1{
   font-size: 40px;
@@ -1461,13 +1470,31 @@ color: black;
     }
   }
 }
-@media screen and (max-width:340px){
-.amin-gmail h1{
-  white-space: nowrap; 
-  width: 200px; 
-  overflow: hidden;
-  text-overflow: ellipsis; 
+
+// new
+.network-item{
+  width: 33.33%;
+  flex-wrap: wrap;
 }
+@media screen and (max-width:576px){
+  .network-item:nth-of-type(1){
+    width: 20%;
+    flex-wrap: wrap;
+  }
+  .network-item:nth-of-type(2){
+    width: 60%;
+    flex-wrap: wrap;
+  }
+  .network-item:nth-of-type(3){
+    width: 20%;
+    flex-wrap: wrap;
+  }
+}
+.amin-gmail h1{
+  white-space: nowrap !important; 
+  width:100% !important; 
+  overflow: hidden !important;
+  text-overflow: ellipsis !important; 
 }
 
 // Registraion screen
@@ -1476,6 +1503,10 @@ color: black;
   border-radius: 14px;
   padding: 20px;
   margin: 0 auto;
+  width: 80%;
+  @media screen and (max-width:767px){
+   width: 100%;
+  }
 }
 .reg-box a{
   text-decoration: none;
@@ -1578,14 +1609,14 @@ outline: none;
 }
 
 }
-@media screen and (max-width:767px){
-  .amount-section{
-  width: 80% !important;
-}
-}
+// @media screen and (max-width:767px){
+//   .amount-section{
+//   width: 80% !important;
+// }
+// }
 @media screen and (max-width:576px){
   .amount-section{
-  width:100% !important;
+  width:90% !important;
 }
 }
 
@@ -2217,4 +2248,85 @@ font-weight: normal;
     width:100%;
     padding: 7px 0px;
   }
+}
+.tax-section{
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  @media screen and (max-width:767px){
+    width: 100%;
+  }
+  @media screen and (max-width:576px){
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.tax-section .tax-section-left{
+display: flex;
+align-items: flex-end;
+@media screen and (max-width:576px){
+  align-items: center;
+}
+}
+.tax-section .tax-section-right{
+  display: flex;
+  align-items: flex-end;
+  @media screen and (max-width:576px){
+    align-items: center;
+  }
+}
+.tax-section .tax-section-left h1{
+  font-size: 35px;
+  margin-bottom: 0px;
+  color:#001933;
+  }
+  .tax-section .tax-section-left p{
+    font-size: 20px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    padding-top:10px;
+    color: #001933;
+    span{
+      color: rgb(0, 204, 255);
+    }
+    }
+.tax-section .tax-section-right h1{
+  color: $color-yellow; 
+  font-size: 60px;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+.tax-section .tax-section-right p{
+color: #001933;
+ margin-bottom: 0px;
+padding-top: 35px;
+ font-weight: bold;
+ font-size: 20px;
+}
+@media screen and (max-width:767px){
+  .tax-section .tax-section-left h1{
+    font-size: 22px;
+    }
+    .tax-section .tax-section-left p{
+      font-size:18px;
+      padding-top: 5px;
+      }
+      .tax-section .tax-section-right h1{
+        font-size:50px;
+        }
+}
+@media screen and (max-width:576px){
+  .tax-section .tax-section-right h1{ 
+    font-size: 30px;
+  }
+  .tax-section .tax-section-left h1{
+    font-size: 22px;
+    }
+    .tax-section .tax-section-left p{
+      font-size:16px;
+      }
+      .tax-section .tax-section-right p{
+       font-size: 16px;
+       padding-top: 0px;
+        }
 }
