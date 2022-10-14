@@ -208,6 +208,7 @@
         <img class="right-polygon-orange" src="{{ asset('assets/website-images/right-polygon-orange.svg') }}" alt="image">
     </div>
 </div>
+
 <div class="payment-modal modal fade" id="payment-error" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content payment-modal-content  pt-4">
@@ -221,6 +222,13 @@
         </div>
     </div>
 </div>
+@if(!empty(Session::get('error')) && Session::get('error') == 'payment-error')
+<script>
+    $(function() {
+        $('#payment-error').modal('show');
+    });
+</script>
+@endif
 <div class="payment-modal modal fade" id="payment-success" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content payment-modal-content  pt-4">
@@ -232,6 +240,13 @@
         </div>
     </div>
 </div>
+@if(!empty(Session::get('success')) && Session::get('success') == 'payment-success')
+<script>
+    $(function() {
+        $('#payment-success').modal('show');
+    });
+</script>
+@endif
 @include('includes.website.footer-navbar')
 @endsection
 @section('insertjavascript')
