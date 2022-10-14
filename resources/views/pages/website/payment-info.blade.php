@@ -223,6 +223,7 @@
     </div>
 </div>
 @if(!empty(Session::get('error')) && Session::get('error') == 'payment-error')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
     $(function() {
         $('#payment-error').modal('show');
@@ -241,6 +242,7 @@
     </div>
 </div>
 @if(!empty(Session::get('success')) && Session::get('success') == 'payment-success')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
     $(function() {
         $('#payment-success').modal('show');
