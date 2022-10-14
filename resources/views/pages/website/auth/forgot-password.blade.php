@@ -214,8 +214,8 @@
         let email = localStorage.getItem('otpEmail');
         $("#loginEmail_d").val(email);
         var token = sessionStorage.getItem('userLoginToken');
+        console.log(token);
         $("#resetPasswordBtn").click(function() {
-            debugger;
             var mail = $("#loginEmail_d").val();
             var password = $("#loginpassword").val();
             // Ajax call  
