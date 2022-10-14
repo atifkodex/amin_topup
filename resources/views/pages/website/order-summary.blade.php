@@ -215,7 +215,7 @@
     }
 
     $.ajax({
-      url: 'http://kodextech.net/amin-topup/api/create_transaction',
+      url: 'https://amintopup.com/api/create_transaction',
       type: 'POST',
       dataType: 'json', // added data type
       data: JSON.stringify(parameter),
