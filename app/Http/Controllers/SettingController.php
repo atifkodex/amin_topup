@@ -44,7 +44,7 @@ class SettingController extends Controller
 
     public function createImageLink(Request $request){
         $validator = Validator::make($request->all(), [
-            '       ' => 'required',
+            'image' => 'required',
         ]);
         if ($validator->fails()) {
             return $this->sendError(implode(',', $validator->errors()->all()), null);
