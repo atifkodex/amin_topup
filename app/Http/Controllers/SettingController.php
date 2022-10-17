@@ -44,7 +44,7 @@ class SettingController extends Controller
 
     public function createImageLink(Request $request){
         $validator = Validator::make($request->all(), [
-            'image' => 'required',
+            '       ' => 'required',
         ]);
         if ($validator->fails()) {
             return $this->sendError(implode(',', $validator->errors()->all()), null);
@@ -60,7 +60,7 @@ class SettingController extends Controller
 
             $name = time() . '.' . $image->getClientOriginalExtension();
             $image->move($destinationPath, $name);
-            $image = "https://amintopup.com" . $uploadPath . $name;
+            $image = "https://amintopup.com/public/user_images/" . $name;
             return $this->sendResponse($image,"image path generated successfully");
         }
     }
