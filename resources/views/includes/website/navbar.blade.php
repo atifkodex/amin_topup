@@ -4,7 +4,7 @@
         <img src="{{asset('assets/website-images/hamburger.png')}}" alt="">
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto d-md-flex align-items-md-center">
         <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              Amin Topup
