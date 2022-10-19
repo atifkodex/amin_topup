@@ -29,27 +29,38 @@ class WebsiteController extends Controller
 {
     use ResponseTrait;
 
-    public function numberDetail(Request $request){
+    public function numberDetail(Request $request)
+    {
         $number = $request->number;
-        $checkNumberFour = substr($number, 4);
-        $checkNumberthree = substr($number, 3);
-        if ($checkNumberFour == 9307 || $checkNumberFour == 9302) {
-            $request = $request;
-        }
-        elseif ($checkNumberthree == 937 || $checkNumberthree == 932) {
-            $request = $request;
-        }
-        else{
+        $checkNumberFour = substr($number, 0, 4);
+        $checkNumberthree = substr($number, 0, 3);
+        $checkNumberfive = substr($number, 0, 5);
+        // $checkNumbersix = substr($number, 0, 4);
+        if ($checkNumberFour == '9307' || $checkNumberfive == '93020') {
+            $request->number = $request->number;
+        } elseif ($checkNumberthree == '937' || $checkNumberFour == '9320') {
+            $request->number = $request->number;
+        } else {
             $request->number = 93 . $request->number;
+            $checkNumberFour = substr($request->number, 0, 4);
+            $checkNumberthree = substr($request->number, 0, 3);
+            $checkNumberfive = substr($request->number, 0, 5);
+            // $checkNumbersix = substr($request->number, 0, 4);
+            if ($checkNumberFour == '9307' || $checkNumberfive == '93020' || $checkNumberthree == '937' || $checkNumberFour == '9320'){
+                $request->number = $request->number;
+            }else{
+                Session::flash('numError', 'Enter a number from Afghanistan origin only.');
+                return redirect()->back();
+            }
         }
-
         $user = new UserController;
         $response = $user->networkOperator($request);
         $originalResponse = $response->getData()->data->network;
         return view('pages.website.recevier', ['data' => $originalResponse, 'number' => $request->number]);
     }
 
-    public function amountDetail(Request $request){
+    public function amountDetail(Request $request)
+    {
         $number = $request->number;
         $user = new UserController;
         $response = $user->networkOperator($request);
@@ -68,7 +79,7 @@ class WebsiteController extends Controller
         }
         $response = Http::withHeaders([
             'Content-Type' => 'application/json'
-        ])->post(\config('url.url').'/api/login', $request->all());
+        ])->post(\config('url.url') . '/api/login', $request->all());
         $responseBody = $response->body();
         $userLoginData = json_decode($responseBody, true);
         if ($userLoginData['success'] == false) {
@@ -91,7 +102,7 @@ class WebsiteController extends Controller
         }
         $response = Http::withHeaders([
             'Content-Type' => 'application/json'
-        ])->post(\config('url.url').'/api/login', $request->all());
+        ])->post(\config('url.url') . '/api/login', $request->all());
         $responseBody = $response->body();
         $userLoginData = json_decode($responseBody, true);
         if ($userLoginData['success'] == false) {
@@ -105,7 +116,7 @@ class WebsiteController extends Controller
             $user = new UserController;
             $response = $user->networkOperator($request);
             $originalResponse = $response->getData()->data->network;
-            return view('pages.website.order-summary', ['data' => $originalResponse, 'number' =>$number, 'token' => $token]);
+            return view('pages.website.order-summary', ['data' => $originalResponse, 'number' => $number, 'token' => $token]);
         }
     }
 
@@ -122,7 +133,7 @@ class WebsiteController extends Controller
         }
         $response = Http::withHeaders([
             'Content-Type' => 'application/json'
-        ])->post(\config('url.url').'/api/register', $request->all());
+        ])->post(\config('url.url') . '/api/register', $request->all());
         $responseBody = $response->body();
         $userSignupData = json_decode($responseBody, true);
         if ($userSignupData['success'] == false) {
@@ -146,7 +157,7 @@ class WebsiteController extends Controller
         }
         $response = Http::withHeaders([
             'Content-Type' => 'application/json'
-        ])->post(\config('url.url').'/api/register', $request->all());
+        ])->post(\config('url.url') . '/api/register', $request->all());
         $responseBody = $response->body();
         $userSignupData = json_decode($responseBody, true);
         if ($userSignupData['success'] == false) {
@@ -176,7 +187,7 @@ class WebsiteController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $value,
             'Content-Type' => 'application/json'
-        ])->post(\config('url.url').'/api/reset_password', $request->all());
+        ])->post(\config('url.url') . '/api/reset_password', $request->all());
         $responseBody = $response->body();
         $passData = json_decode($responseBody, true);
         dd($passData);
@@ -190,21 +201,22 @@ class WebsiteController extends Controller
 
     public function orderSummary(Request $request)
     {
-        
+
         $number = $request->number;
         $user = new UserController;
         $response = $user->networkOperator($request);
         $originalResponse = $response->getData()->data->network;
-        if(Session::has('UserloginData')){
+        if (Session::has('UserloginData')) {
             $value = Session::get('UserloginData');
             $token = $value['user']['token'];
             return view('pages.website.order-summary', ['data' => $originalResponse, 'number' => $number, 'token' => $token]);
-        }else{
+        } else {
             return view('pages.website.auth.login', ['data' => $originalResponse, 'number' => $number]);
         }
     }
 
-    public function logoutUser(){
+    public function logoutUser()
+    {
         header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
         header("Cache-Control: post-check=0, pre-check=0", false);
         header("Pragma: no-cache");
@@ -213,7 +225,7 @@ class WebsiteController extends Controller
         return redirect('/');
     }
 
-    public function topupHistory() 
+    public function topupHistory()
     {
         $value = Session::get('UserloginData');
         $token = $value['user']['token'];
@@ -223,7 +235,7 @@ class WebsiteController extends Controller
         ])->post(\config('url.url') . '/api/all_topups');
         $convertor = $response->body();
         $historyResponse = json_decode($convertor, true);
-        if($historyResponse['success'] == false) {
+        if ($historyResponse['success'] == false) {
             session::flash('historyMessage', "You have not created a topup yet!");
             return view('pages.website.report');
         } elseif ($historyResponse['success'] == true) {
@@ -283,19 +295,21 @@ class WebsiteController extends Controller
             $profileImage = $imageResponse['data'];
         }
 
-        
+
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Content-Type' => 'application/json'
-        ])->post(\config('url.url') . '/api/update', ['profile' => $profileImage, 
+        ])->post(\config('url.url') . '/api/update', [
+            'profile' => $profileImage,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
             'date_of_birth' => $request->date_of_birth,
             'country' => $request->country,
-        'id' => $request->id]);
+            'id' => $request->id
+        ]);
         $convertor = $response->body();
         $profileResponse = json_decode($convertor, true);
-        if($profileResponse['success'] == true){
+        if ($profileResponse['success'] == true) {
             return view('pages.website.profile', ['data' => $profileResponse['data']]);
         }
     }
@@ -344,7 +358,7 @@ class WebsiteController extends Controller
             'description' => 'Amin Topup',
             'capture' => false,
         ]);
-        if($charge->status == "succeeded"){
+        if ($charge->status == "succeeded") {
             // Topup API 
             $value = Session::get('UserloginData');
             $token = $value['user']['token'];
@@ -360,13 +374,12 @@ class WebsiteController extends Controller
             ]);
             $convertor = $response->body();
             $topupResponse = json_decode($convertor, true);
-            if($topupResponse['success'] == false){
+            if ($topupResponse['success'] == false) {
                 Session::flash('message', $topupResponse['message']);
                 return redirect()->back()->with('error', 'payment-error');
             } elseif ($topupResponse['success'] == true) {
-                return redirect()->back()->with('success','payment-success');
+                return redirect()->back()->with('success', 'payment-success');
             }
         }
-
     }
 }
