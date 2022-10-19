@@ -294,7 +294,7 @@ class WebsiteController extends Controller
             $imageResponse = json_decode($imageconvertor, true);
             $profileImage = $imageResponse['data'];
         }
-
+        
 
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $token,
