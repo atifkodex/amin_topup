@@ -33,10 +33,12 @@
           <div class="footer-pad">
             <h4>ACCOUNT</h4>
             <ul class="list-unstyled">
-              <li><a href="{{route('topupHistory')}}">My Account</a></li>
               <li><a href="{{url('/')}}">Send Topup</a></li>
+              @if(session()->has('UserloginData'))
+              <li><a href="{{route('topupHistory')}}">My Account</a></li>
               <li><a href="{{route('topupHistory')}}">Purchase History</a></li>
               <li><a href="{{route('userProfile')}}">My Profile</a></li>
+              @endif
               <li><a href="#">Support</a></li>
             </ul>
           </div>
