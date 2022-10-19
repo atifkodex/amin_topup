@@ -31,10 +31,22 @@ class WebsiteController extends Controller
 
     public function numberDetail(Request $request){
         $number = $request->number;
+        $checkNumberFour = substr($number, 4);
+        $checkNumberthree = substr($number, 3);
+        if ($checkNumberFour == 9307 || $checkNumberFour == 9302) {
+            $request = $request;
+        }
+        elseif ($checkNumberthree == 937 || $checkNumberthree == 932) {
+            $request = $request;
+        }
+        else{
+            $request->number = 93 . $request->number;
+        }
+
         $user = new UserController;
         $response = $user->networkOperator($request);
         $originalResponse = $response->getData()->data->network;
-        return view('pages.website.recevier', ['data' => $originalResponse, 'number' => $number]);
+        return view('pages.website.recevier', ['data' => $originalResponse, 'number' => $request->number]);
     }
 
     public function amountDetail(Request $request){
