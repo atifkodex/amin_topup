@@ -188,7 +188,7 @@
     .updateProfileBtn {
         text-decoration: none !important;
         background-color: #F89822 !important;
-        color: white !important ;
+        color: white !important;
         width: 100% !important;
         padding: 14px 0px !important;
         font-size: 28px !important;
@@ -233,13 +233,13 @@
                             <div class="col-12 pb-4">
                                 <div class="profile-image-section text-center py-4">
                                     @if($data['profile'] == null)
-                                    <img class="profile-img" src="{{ asset('assets/website-images/profile-image.jpg') }}" alt="image">
+                                    <img class="profile-img imgPrevieDiv" src="{{ asset('assets/website-images/profile-image.jpg') }}" alt="image">
                                     @else
-                                    <img class="profile-img" src="{{ $data['profile'] }}" alt="image">
+                                    <img class="profile-img imgPrevieDiv" src="{{ $data['profile'] }}" alt="image">
                                     @endif
                                     <h1 class="py-2">Amin Top-up</h1>
                                     <div class="form-group form-field">
-                                        <input type="file" name="image" id="file-input" class="visuallyhidden">
+                                        <input type="file" onchange="readURL(this);" name="image" id="file-input" class="visuallyhidden">
                                         <button class="file-upload">Change Picture</button>
                                     </div>
                                 </div>
@@ -271,7 +271,7 @@
                                     <label for="country">Country</label>
                                     <img src="{{ asset('assets/website-images/Edit.svg') }}" alt="icon">
                                     <input type="text" class="form-control" name="country" value="{{$data['country']}}" placeholder="Type here">
-                                    <input type="hidden" class="form-control" name="id" value="{{$data['id']}}" >
+                                    <input type="hidden" class="form-control" name="id" value="{{$data['id']}}">
                                 </div>
                             </div>
                             <div class="col-12 py-2 pb-2 pb-md-5 text-center">
@@ -339,5 +339,18 @@
         e.preventDefault();
         $('#file-input').trigger('click');
     });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('.imgPrevieDiv')
+                    .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 </script>
 @endsection

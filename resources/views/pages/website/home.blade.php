@@ -223,7 +223,7 @@
                 </div>
             </div>
             <div class="banner-content-button d-flex justify-content-center justify-content-lg-start ">
-                <a href="#" class="mr-1 mr-sm-3">
+                <a href="https://www.apple.com/app-store/" class="mr-1 mr-sm-3">
                     <button class="d-flex button-1">
                         <img src="{{asset('assets/website-images/apple.svg')}}">
                         <div class="button-inner">
@@ -234,7 +234,7 @@
 
                     </button>
                 </a>
-                <a href="#">
+                <a href="https://play.google.com/store/games">
                     <button class="d-flex button-1">
                         <img src="{{asset('assets/website-images/playstore.svg')}}">
                         <div class="button-inner">

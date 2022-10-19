@@ -293,20 +293,24 @@ class WebsiteController extends Controller
             $imageconvertor = $imageresponse->getBody();
             $imageResponse = json_decode($imageconvertor, true);
             $profileImage = $imageResponse['data'];
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $token,
+                'Content-Type' => 'application/json'
+            ])->post(\config('url.url') . '/api/update', [
+                'profile' => $profileImage,
+                'email' => $request->email,
+                'phone_number' => $request->phone_number,
+                'date_of_birth' => $request->date_of_birth,
+                'country' => $request->country,
+                'id' => $request->id
+            ]);
+        }else{
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $token,
+                'Content-Type' => 'application/json'
+            ])->post(\config('url.url') . '/api/update', $request->all());
         }
-        
 
-        $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $token,
-            'Content-Type' => 'application/json'
-        ])->post(\config('url.url') . '/api/update', [
-            'profile' => $profileImage,
-            'email' => $request->email,
-            'phone_number' => $request->phone_number,
-            'date_of_birth' => $request->date_of_birth,
-            'country' => $request->country,
-            'id' => $request->id
-        ]);
         $convertor = $response->body();
         $profileResponse = json_decode($convertor, true);
         if ($profileResponse['success'] == true) {
@@ -380,6 +384,30 @@ class WebsiteController extends Controller
             } elseif ($topupResponse['success'] == true) {
                 return redirect()->back()->with('success', 'payment-success');
             }
+        }
+    }
+
+    public function contactUs(Request $request)
+    {
+        if(Session::has('UserloginData')){
+            $value = Session::get('UserloginData');
+            $token = $value['user']['token'];
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $token,
+                'Content-Type' => 'application/json'
+            ])->post(\config('url.url') . '/api/contact_us', $request->all());
+            $convertor = $response->body();
+            $contactResponse = json_decode($convertor, true);
+            if($contactResponse['success'] == true){
+                Session::flash('contactSuccess', $contactResponse['message']);
+                return redirect()->back();
+            }else{
+                Session::flash('contactFailed', 'Something went wrong, try again later.');
+                return redirect()->back();
+            }
+        }else{
+            Session::flash('notloginError', 'You need to login to add a contact request');
+            return redirect()->back();
         }
     }
 }

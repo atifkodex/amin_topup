@@ -125,124 +125,157 @@
             width: 100% !important;
         }
     }
+
+    .contactBtn {
+        text-decoration: none;
+        background-color: #F89822;
+        color: white;
+        width: 100%;
+        padding: 14px 0px;
+        font-size: 28px;
+        font-weight: bold;
+        outline: none;
+        border: none;
+    }
 </style>
 @section('content')
-    @include('includes.website.navbar')
-    <div class="container-fluid outer-wrapper">
-        <div class="inner-wrapper">
-            <img class="star-icon" src="{{ asset('assets/website-images/star-icon.svg') }}" alt="image">
-            <div class="inner-wrapper-heading d-flex container">
-                <h1>Contact</h1>
-                <h1 class="pl-2">Us</h1>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#ffffff" fill-opacity="1"
-                    d="M0,32L48,58.7C96,85,192,139,288,176C384,213,480,235,576,202.7C672,171,768,85,864,85.3C960,85,1056,171,1152,197.3C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-                </path>
-            </svg>
+@include('includes.website.navbar')
+<div class="container-fluid outer-wrapper">
+    <div class="inner-wrapper">
+        <img class="star-icon" src="{{ asset('assets/website-images/star-icon.svg') }}" alt="image">
+        <div class="inner-wrapper-heading d-flex container">
+            <h1>Contact</h1>
+            <h1 class="pl-2">Us</h1>
         </div>
-
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ffffff" fill-opacity="1" d="M0,32L48,58.7C96,85,192,139,288,176C384,213,480,235,576,202.7C672,171,768,85,864,85.3C960,85,1056,171,1152,197.3C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+            </path>
+        </svg>
     </div>
-    <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <defs>
-              <filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />    
-                  <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
-                  <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
-              </filter>
-          </defs>
-      </svg>
-    <div class="info-section-two container-fluid px-0 my-3 my-md-2">
-        <div class="amount-section container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="reg-box my-0 my-md-5">
-                        <form class="pt-2 pt-md-3">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="contact-form-heading pb-md-2">
-                                        <h1>Contact Us</h1>
-                                        <p>We'd like to hear from you!</p>
-                                        <p>What can we help you with today?</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 py-2">
-                                    <div class="form-group form-field right-inner">
-                                        <label for="name">Name<sup>*</sup></label>
-                                        <input type="text" class="form-control" placeholder="Type your name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 py-2">
-                                    <div class="form-group form-field right-inner">
-                                        <label for="email">Email<sup>*</sup></label>
-                                        <input type="email" class="form-control" placeholder="Type your email">
-                                    </div>
-                                </div>
-                                <div class="col-12 py-2">
-                                    <div class="form-group form-field right-inner">
-                                        <label for="message">Your Message</label>
-                                        <textarea class="form-control" rows="3"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-12 py-2 pb-2 pb-md-5 text-center">
-                                    <a href="" type="submit"
-                                        class="btn my-3 my-lg-4 summary-btn contact-btn">Contact Us</a>
+
+</div>
+<svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+        <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+        </filter>
+    </defs>
+</svg>
+<div class="info-section-two container-fluid px-0 my-3 my-md-2">
+    <div class="amount-section container">
+        <div class="row">
+            <div class="col-12">
+                <div class="reg-box my-0 my-md-5">
+                    <form class="pt-2 pt-md-3" action="{{route('contactUs')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @if (Session::has('notloginError'))
+                        <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
+                            {{ Session::get('notloginError') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif
+                        @if (Session::has('contactSuccess'))
+                        <div class="alert alert-success alert-dismissible fade show login-email-field" role="alert">
+                            {{ Session::get('contactSuccess') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif
+                        @if (Session::has('contactFailed'))
+                        <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
+                            {{ Session::get('contactcontactFailedResponse') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="contact-form-heading pb-md-2">
+                                    <h1>Contact Us</h1>
+                                    <p>We'd like to hear from you!</p>
+                                    <p>What can we help you with today?</p>
                                 </div>
                             </div>
-                        </form>
-
-
-                    </div>
-                </div>
-            </div>
-            <img class="left-polygon-blue" src="{{ asset('assets/website-images/left-polygon-blue.svg') }}" alt="image">
-            <img class="right-polygon-orange" src="{{ asset('assets/website-images/right-polygon-orange.svg') }}"
-                alt="image">
-        </div>
-    </div>
-    <div class="info-section-two container-fluid px-0 ">
-        <div class="info-section-two-wrapper  container ">
-            <div class="row py-3">
-                <div class="col-md-7 info-section-two-right  justify-content-end order-2 order-md-12">
-                    <div class="info-section-two-right-content pl-md-5">
-                        <h1>Send money to almost anywhere in the world from </h1>
-                        <p>Get the Amin Top-Up App for the fastest, easiest way to top-up any phone.</p>
-                        <div class="banner-content-button d-flex justify-content-center justify-content-md-start">
-                            <a href="#" class="mr-1 mr-sm-3">
-                                <button class="d-flex button-1">
-                                    <img src="{{ asset('assets/website-images/apple.svg') }}">
-                                    <div class="button-inner">
-                                        <span>Get It On</span>
-                                        <br>
-                                        <span>App Store</span>
-                                    </div>
-
-                                </button>
-                            </a>
-                            <a href="#">
-                                <button class="d-flex button-1">
-                                    <img src="{{ asset('assets/website-images/playstore.svg') }}">
-                                    <div class="button-inner">
-                                        <span>Get It On</span>
-                                        <br>
-                                        <span>Play Store</span>
-                                    </div>
-
-                                </button>
-                            </a>
-
+                            <div class="col-md-6 py-2">
+                                <div class="form-group form-field right-inner">
+                                    <label for="name">Subject<sup>*</sup></label>
+                                    <input type="text" name="subject" class="form-control" placeholder="Type your name">
+                                </div>
+                            </div>
+                            <div class="col-md-6 py-2">
+                                <div class="form-group form-field right-inner">
+                                    <label for="email">Category<sup>*</sup></label>
+                                    <input type="text" name="category" class="form-control" placeholder="Type your email">
+                                </div>
+                            </div>
+                            <div class="col-12 py-2">
+                                <div class="form-group form-field right-inner">
+                                    <label for="message">Your Message<sup>*</sup></label>
+                                    <textarea class="form-control" name="description" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12 py-2 pb-2 pb-md-5 text-center">
+                                <!-- <a href="" type="submit" class="btn my-3 my-lg-4 summary-btn contact-btn">Contact Us</a> -->
+                                <button class="contactBtn w-50" type="submit">Contact Us</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
-                <div class="col-md-5 info-section-two-left text-center py-1 py-md-4 order-1 order-md-12">
-                    <img class="mobile-image-left" src="{{ asset('assets/website-images/person-animated.svg') }}"
-                        alt="image">
-                </div>
-
             </div>
         </div>
-        <img class="left-polygon-two" src="{{ asset('assets/website-images/left-polygon-three.svg') }}" alt="image">
+        <img class="left-polygon-blue" src="{{ asset('assets/website-images/left-polygon-blue.svg') }}" alt="image">
+        <img class="right-polygon-orange" src="{{ asset('assets/website-images/right-polygon-orange.svg') }}" alt="image">
     </div>
-    @include('includes.website.footer-navbar')
+</div>
+<div class="info-section-two container-fluid px-0 ">
+    <div class="info-section-two-wrapper  container ">
+        <div class="row py-3">
+            <div class="col-md-7 info-section-two-right  justify-content-end order-2 order-md-12">
+                <div class="info-section-two-right-content pl-md-5">
+                    <h1>Send money to almost anywhere in the world from </h1>
+                    <p>Get the Amin Top-Up App for the fastest, easiest way to top-up any phone.</p>
+                    <div class="banner-content-button d-flex justify-content-center justify-content-md-start">
+                        <a href="https://www.apple.com/app-store/" class="mr-1 mr-sm-3">
+                            <button class="d-flex button-1">
+                                <img src="{{ asset('assets/website-images/apple.svg') }}">
+                                <div class="button-inner">
+                                    <span>Get It On</span>
+                                    <br>
+                                    <span>App Store</span>
+                                </div>
+
+                            </button>
+                        </a>
+                        <a href="https://play.google.com/store/games">
+                            <button class="d-flex button-1">
+                                <img src="{{ asset('assets/website-images/playstore.svg') }}">
+                                <div class="button-inner">
+                                    <span>Get It On</span>
+                                    <br>
+                                    <span>Play Store</span>
+                                </div>
+
+                            </button>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 info-section-two-left text-center py-1 py-md-4 order-1 order-md-12">
+                <img class="mobile-image-left" src="{{ asset('assets/website-images/person-animated.svg') }}" alt="image">
+            </div>
+
+        </div>
+    </div>
+    <img class="left-polygon-two" src="{{ asset('assets/website-images/left-polygon-three.svg') }}" alt="image">
+</div>
+@include('includes.website.footer-navbar')
 @endsection
 @section('insertjavascript')
 @endsection

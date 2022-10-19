@@ -123,6 +123,18 @@
         font-size: 26px !important;
         font-weight: bold !important;
     }
+
+    .btnStyleModal_s {
+        text-decoration: none !important;
+        background-color: #F89822 !important;
+        color: black !important;
+        width: 50% !important;
+        padding: 10px 0px !important;
+        font-size: 20px !important;
+        font-weight: bold !important;
+        border: none !important;
+        border-radius: 10px;
+    }
 </style>
 @section('content')
 @include('includes.website.navbar')
@@ -252,7 +264,6 @@
     <div class="amount-section container mb-5">
         <div class="pt-5">
             <div class="detail-box amount-box my-3">
-
                 <div class="network-list mb-1 d-flex align-items-center justify-content-between pb-3">
                     <div class="network-icon network-item text-left">
                         <img class="network-icon-image" src="{{ asset('assets/website-images/afg-flag.svg') }}" alt="image">
@@ -262,7 +273,7 @@
 
                     </div>
                     <div class="network-button network-item text-right">
-                        <button data-toggle="modal" data-target="#email-modal"><img class="edit-icon" src="{{ asset('assets/website-images/edit-icon.svg') }}" alt="image"></button>
+                        <button data-toggle="modal" data-target="#number-modal"><img class="edit-icon" src="{{ asset('assets/website-images/edit-icon.svg') }}" alt="image"></button>
                     </div>
 
                 </div>
@@ -296,7 +307,7 @@
                             <input type="email" class="form-control" id="receiverEmail_d" name="email" placeholder="enter receiver email">
                         </div>
                         <input type="hidden" name="number" value="{{$number}}">
-                        <button href="javascript:void(0)"  type="submit" class="btnStyle_s btn w-100 my-3 my-lg-4 continueReceiverDetailBtn_d">Continue</button>
+                        <button href="javascript:void(0)" type="submit" class="btnStyle_s btn w-100 my-3 my-lg-4 continueReceiverDetailBtn_d">Continue</button>
                     </form>
                     </p>
                 </div>
@@ -320,6 +331,23 @@
                         <input type="text" class="form-control" aria-describedby="emailHelp" value="93 70 00 00 000" placeholder="Type here">
                     </div>
                     <a href="#" class="btn mt-sm-3 email-modal-btn">Update</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="number-modal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content email-modal-content">
+            <div class="modal-body email-modal-body  text-center py-sm-3">
+                <h1>Your <span>Details</span> </h1>
+
+                <form class="py-2 py-sm-4" method="POST" action="{{route('number-detail')}}">
+                    @csrf
+                    <div class="form-group form-field right-inner">
+                        <input type="text" class="form-control" aria-describedby="emailHelp" name="number" value="{{$number}}" placeholder="Type here">
+                    </div>
+                    <button type="submit" class="updateNumModal btnStyleModal_s">Update</button>
                 </form>
             </div>
         </div>

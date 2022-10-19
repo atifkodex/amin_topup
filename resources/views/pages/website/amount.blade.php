@@ -58,6 +58,18 @@
     .info-section-two {
         position: relative;
     }
+
+    .btnStyleModal_s {
+        text-decoration: none !important;
+        background-color: #F89822 !important;
+        color: black !important;
+        width: 50% !important;
+        padding: 10px 0px !important;
+        font-size: 20px !important;
+        font-weight: bold !important;
+        border: none !important;
+        border-radius: 10px;
+    }
 </style>
 @section('content')
 @include('includes.website.navbar')
@@ -341,9 +353,9 @@
                 <form class="py-2 py-sm-4" method="POST" action="{{route('number-detail')}}">
                     @csrf
                     <div class="form-group form-field right-inner">
-                        <input type="text" class="form-control" aria-describedby="emailHelp" name="number" value="93 70 00 00 000" placeholder="Type here">
+                        <input type="text" class="form-control" aria-describedby="emailHelp" name="number" value="{{$number}}" placeholder="Type here">
                     </div>
-                    <button type="submit" class="updateNumModal">Update</button>
+                    <button type="submit" class="updateNumModal btnStyleModal_s">Update</button>
                 </form>
             </div>
         </div>
