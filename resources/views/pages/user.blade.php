@@ -206,7 +206,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="lpurchase">Last Purchase</label>
-                                <input type="text" class="form-control" id="lpurchase" placeholder="YY/MM/DD" name="date">
+                                <input type="text" class="form-control" id="lpurchase" placeholder="YYYY-MM-DD" name="date">
 
                             </div>
 
@@ -515,10 +515,10 @@
                 }
             });
         } else {
-            alert("Date format should be YY-MM-DD only!");
+            alert("Date format should be YYYY-MM-DD only!");
         }
 
-        
+
     });
 
     ///////......show user data in modal....//////
