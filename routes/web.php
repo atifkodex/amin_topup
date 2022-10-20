@@ -89,13 +89,7 @@ Auth::routes();
 
 // website
 Route::post('/number_detail', [WebsiteController::class, 'numberDetail'])->name('number-detail');
-<<<<<<< HEAD
-Route::post('/amountl', [WebsiteController::class, 'amountDetail'])->name('amountDetailsroute');
-Route::post('/amount_detail', [WebsiteController::class, 'amountDetail'])->name('testroute');
-
-=======
 Route::get('/amount_detail', [WebsiteController::class, 'amountDetail'])->name('amountDetails');
->>>>>>> fddfc7dc9fc231c60ff25fe198c0da1c073f7d73
 Route::post('/user_login', [WebsiteController::class, 'userLogin'])->name('userLogin');
 Route::post('/inweb_login', [WebsiteController::class, 'inwebLogin'])->name('inwebLogin');
 Route::post('/user_signup', [WebsiteController::class, 'userSignup'])->name('userSignup');
