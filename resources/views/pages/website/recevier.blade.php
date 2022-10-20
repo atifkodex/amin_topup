@@ -293,7 +293,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="reg-box mb-4 mb-lg-5">
-                    <form class="pt-2" method="POST" id="receiverDetailForm_d" action="{{route('amountDetails')}}" enctype="multipart/form-data">
+                    <form class="pt-2" method="POST" id="receiverDetailForm_d" action="{{route('amountDetailsroute')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group form-heading pt-1 pb-2  pb-md-4 pt-md-2">
                             <h1 class="text-left">Add Receiver Detail</h1>
@@ -313,7 +313,7 @@
                             <input type="email" class="form-control" id="receiverEmail_d" name="email" placeholder="enter receiver email">
                         </div>
                         <input type="hidden" name="number" value="{{$number}}">
-                        <button href="javascript:void(0)" type="submit" class="btnStyle_s btn w-100 my-3 my-lg-4 continueReceiverDetailBtn_d">Continue</button>
+                        <button type="submit" class="btnStyle_s btn w-100 my-3 my-lg-4 continueReceiverDetailBtn_d">Continue</button>
                     </form>
                     </p>
                 </div>
