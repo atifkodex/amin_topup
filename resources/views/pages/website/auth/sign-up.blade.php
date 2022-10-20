@@ -152,6 +152,18 @@
         font-weight: bold !important;
         border: none !important;
     }
+
+    .btnStyleModal_s {
+        text-decoration: none !important;
+        background-color: #F89822 !important;
+        color: black !important;
+        width: 50% !important;
+        padding: 10px 0px !important;
+        font-size: 20px !important;
+        font-weight: bold !important;
+        border: none !important;
+        border-radius: 10px;
+    }
 </style>
 @section('content')
 @include('includes.website.navbar')
@@ -506,12 +518,12 @@
             <div class="modal-body email-modal-body  text-center py-sm-3">
                 <h1>Your <span>Details</span> </h1>
 
-                <form class="py-2 py-sm-4">
+                <form class="py-2 py-sm-4" method="POST" action="{{route('number-detail')}}">
+                    @csrf
                     <div class="form-group form-field right-inner">
-
-                        <input type="text" class="form-control" aria-describedby="emailHelp" value="93 70 00 00 000" placeholder="Type here">
+                        <input type="text" class="form-control modalInput_d" aria-describedby="emailHelp" name="number" value="">
                     </div>
-                    <a href="#" class="btn mt-sm-3 email-modal-btn">Update</a>
+                    <button type="submit" class="updateNumModal btnStyleModal_s">Update</button>
                 </form>
             </div>
         </div>
@@ -590,6 +602,7 @@
 
         $(".number_d").text(num);
         $(".numberInput").val(num);
+        $(".modalInput_d").val(num);
         $(".network_d").text(network);
         $(".mail_d").text(mail);
         $(".name_d").text(name);

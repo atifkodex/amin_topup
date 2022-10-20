@@ -162,6 +162,18 @@
         font-weight: bold !important;
         border: none !important;
     }
+
+    .btnStyleModal_s {
+        text-decoration: none !important;
+        background-color: #F89822 !important;
+        color: black !important;
+        width: 50% !important;
+        padding: 10px 0px !important;
+        font-size: 20px !important;
+        font-weight: bold !important;
+        border: none !important;
+        border-radius: 10px;
+    }
 </style>
 @section('content')
 @include('includes.website.navbar')
@@ -352,7 +364,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="number-modal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+<!-- <div class="modal fade" id="number-modal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content email-modal-content">
             <div class="modal-body email-modal-body  text-center py-sm-3">
@@ -364,6 +376,40 @@
                         <input type="text" class="form-control" aria-describedby="emailHelp" value="93 70 00 00 000" placeholder="Type here">
                     </div>
                     <a href="#" class="btn mt-sm-3 email-modal-btn">Update</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- <div class="modal fade" id="email-modal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content email-modal-content">
+            <div class="modal-body email-modal-body  text-center py-sm-3">
+                <h1>Your <span>Details</span> </h1>
+
+                <form class="py-2 py-sm-4">
+                    <div class="form-group form-field right-inner">
+
+                        <input type="text" class="form-control" aria-describedby="emailHelp" value="93 70 00 00 000" placeholder="Type here">
+                    </div>
+                    <a href="#" class="btn mt-sm-3 email-modal-btn">Update</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="modal fade" id="number-modal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content email-modal-content">
+            <div class="modal-body email-modal-body  text-center py-sm-3">
+                <h1>Your <span>Details</span> </h1>
+
+                <form class="py-2 py-sm-4" method="POST" action="{{route('number-detail')}}">
+                    @csrf
+                    <div class="form-group form-field right-inner">
+                        <input type="text" class="form-control" aria-describedby="emailHelp" name="number" value="{{$number}}" placeholder="Type here">
+                    </div>
+                    <button type="submit" class="updateNumModal btnStyleModal_s">Update</button>
                 </form>
             </div>
         </div>

@@ -160,8 +160,8 @@
                 </div>
             </div>
             @foreach($data->details as $amounts)
-            <?php $roundFee = round($amounts->processing_fee,2);
-            $roundTotal = round($amounts->totalAmount,2);
+            <?php $roundFee = round($amounts->processing_fee, 2);
+            $roundTotal = round($amounts->totalAmount, 2);
             ?>
             <div class="col-md-6 py-3">
                 <a href="javascript:void(0)" class="selectAmount_d">
