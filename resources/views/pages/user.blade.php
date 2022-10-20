@@ -437,8 +437,9 @@
         var lpurchase = $("#lpurchase").val();
         if (/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/.test(lpurchase)) {
             lpurchase = $("#lpurchase").val();
-        }else{
+        } else {
             alert("Date format should be YY-MM-DD only!");
+            location.reload(true);
         }
 
         var parameter = {
