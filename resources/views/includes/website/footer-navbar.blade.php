@@ -12,7 +12,7 @@
           <!--Column1-->
           <div class="footer-pad">
             <img class="pb-3" src="{{asset('assets/website-images/footer-logo.svg')}}" alt="image">
-            <ul class="list-unstyled">
+            <ul class="list-unstyled"> 
               <li class="pb-3"><a href="https://www.apple.com/app-store/"> <img class="apple-btn" src="{{asset('assets/website-images/apple-btn.svg')}}" alt="image"></a></li>
               <li class="pb-3"><a href="https://play.google.com/store/games"> <img class="apple-btn" src="{{asset('assets/website-images/playstore-btn.svg')}}" alt="image"></a></li>
             </ul>

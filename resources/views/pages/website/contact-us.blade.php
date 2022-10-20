@@ -205,13 +205,13 @@
                             <div class="col-md-6 py-2">
                                 <div class="form-group form-field right-inner">
                                     <label for="name">Subject<sup>*</sup></label>
-                                    <input type="text" name="subject" class="form-control" placeholder="Type your name">
+                                    <input type="text" name="subject" class="form-control" placeholder="Enter subject">
                                 </div>
                             </div>
                             <div class="col-md-6 py-2">
                                 <div class="form-group form-field right-inner">
                                     <label for="email">Category<sup>*</sup></label>
-                                    <input type="text" name="category" class="form-control" placeholder="Type your email">
+                                    <input type="text" name="category" class="form-control" placeholder="Enter category name">
                                 </div>
                             </div>
                             <div class="col-12 py-2">

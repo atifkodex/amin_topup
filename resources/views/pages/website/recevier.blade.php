@@ -261,6 +261,14 @@
             $('.showDetailError').addClass('d-none');
             $receiverName = $('#receiverName_d').val();
             $receiverEmail = $('#receiverEmail_d').val();
+            if ($receiverEmail != '') {
+                if (/(.+)@(.+)\.(.+)/i.test($receiverEmail)) {
+                    localStorage.setItem('receiverEmail', $receiverEmail);
+                } else {
+                    alert('Email Format is invalid');
+                    return;
+                }
+            }
             if ($receiverName == '') {
                 $('.showDetailError').removeClass('d-none');
             } else {

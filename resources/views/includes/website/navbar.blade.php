@@ -12,6 +12,7 @@
          <div class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdownMenuLink">
            <a class="dropdown-item" href="{{url('privacy')}}">About Us</a>
            <a class="dropdown-item" href="{{url('contact')}}">Contact Us</a>
+           <a class="dropdown-item" href="{{route('userProfile')}}">Profile</a>
          </div>
        </li>
        <!-- <li class="nav-item">
@@ -22,9 +23,11 @@
        </li>
 
        @if(session()->has('UserloginData'))
+       <?php $profile = Session::get('UserloginData')['user']['profile'];
+        ?>
        <li class="nav-item dropdown active">
          <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <img class="navbar-profile" src="{{asset('assets/website-images/profile.jpg')}}" alt="image">
+           <img class="navbar-profile" src="{{ $profile }}" alt="image">
            <p class="profile-name">Amin</p>
          </a>
          <div class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdownMenuLink">

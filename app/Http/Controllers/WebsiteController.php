@@ -92,7 +92,20 @@ class WebsiteController extends Controller
             return redirect()->back();
         } elseif ($userLoginData['success'] == true) {
             session::put('UserloginData', $userLoginData['data']);
-            return view('pages.website.home');
+            $value = Session::get('UserloginData');
+            $token = $value['user']['token'];
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $token,
+                'Content-Type' => 'application/json'
+            ])->post(\config('url.url') . '/api/all_topups');
+            $convertor = $response->body();
+            $historyResponse = json_decode($convertor, true);
+            if ($historyResponse['success'] == false) {
+                session::flash('historyMessage', "You have not created a topup yet!");
+                return view('pages.website.report');
+            } elseif ($historyResponse['success'] == true) {
+                return view('pages.website.report', ['data' => $historyResponse['data']]);
+            }
         }
     }
 
