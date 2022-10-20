@@ -202,7 +202,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="lpurchase">Last Purchase</label>
-                                <input type="text" class="form-control" id="lpurchase" placeholder="Type Here.." name="date">
+                                <input type="text" class="form-control" id="lpurchase" placeholder="YY/MM/DD" name="date">
 
                             </div>
 
