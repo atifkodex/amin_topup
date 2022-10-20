@@ -163,12 +163,20 @@
                     </button>
                 </div>
                 @endif
+                @error('number')
+                <div class="alert alert-danger alert-dismissible fade show login-email-field" role="alert">
+                    {{ $message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @enderror
                 <div class="form-group left-inner-addon">
                     <img src="{{ asset('assets/website-images/flag.svg') }}" alt="icon">
                     <div class="phone-extension">+93</div>
                     <input type="text" name="number" class="form-control" placeholder="" value="">
                 </div>
-                <button type="submit" class="btn form-control">Start Top-up</button>
+                <button type="submit" class="btn form-control startTopupBtn_s">Start Top-up</button>
             </form>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">

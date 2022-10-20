@@ -181,10 +181,11 @@
   $(data.details).each(function(index, element) {
     if (element.denomination == denominationAmount) {
       roundAmount = parseFloat(element.totalAmount.toFixed(2));
+      roundFees = parseFloat(element.processing_fee.toFixed(2));
       $('.topupAfn_d').text(element.denomination + " AFN");
       $('.receiverGetAfn_d').text(element.receiver_get_AFN + " AFN");
       $('.topupToUsd_d').text("$" + element.topup_usd);
-      $('.processingFee_d').text("$" + element.processing_fee);
+      $('.processingFee_d').text("$" + roundFees);
       $('.totalUsd_d').text("$" + roundAmount);
       $('.productCode_d').val(element.product_code_topup);
     }
@@ -194,6 +195,9 @@
   $("#payByCardBtn_d").click(function() {
     let receiverName = localStorage.getItem('receiverName');
     let receiverEmail = localStorage.getItem('receiverEmail');
+    if (receiverEmail == "") {
+      $(".emailDiv").addClass('invisible');
+    }
     let denomination = localStorage.getItem('denomination');
     let receiverNumber = @json($number);
     let country = 'Afghanistan';

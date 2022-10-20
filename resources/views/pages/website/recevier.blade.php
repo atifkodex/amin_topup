@@ -195,21 +195,17 @@
         <div class="row">
             <div class="col-12">
                 <div class="reg-box mb-4 mb-lg-5">
-<<<<<<< HEAD
-                    <form class="pt-2" method="post" id="receiverDetailForm_d" action="{{route('testroute')}}" enctype="multipart/form-data">
-=======
-                    <form class="pt-2" method="POST" id="receiverDetailForm_d" action="{{url('amount_detail')}}" enctype="multipart/form-data">
->>>>>>> fddfc7dc9fc231c60ff25fe198c0da1c073f7d73
+                    <form class="pt-2" id="receiverDetailForm_d" action="{{route('amountDetails')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group form-heading pt-1 pb-2  pb-md-4 pt-md-2">
                             <h1 class="text-left">Add Receiver Detail</h1>
                         </div>
-                        <!-- <div class="alert alert-danger alert-dismissible fade show login-email-field showDetailError d-none" role="alert">
-                            Name and Email Fields are Required.
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <div class="alert alert-danger alert-dismissible fade show login-email-field showDetailError d-none" role="alert">
+                            <b>Name</b> Field is Required.
+                            <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div> -->
+                            </button> -->
+                        </div>
                         <div class="form-group form-field right-inner">
                             <img src="{{ asset('assets/website-images/person-icon.svg') }}" alt="icon">
                             <input type="text" class="form-control" name="name" id="receiverName_d" placeholder="enter receiver name">
@@ -219,7 +215,7 @@
                             <input type="email" class="form-control" id="receiverEmail_d" name="email" placeholder="enter receiver email">
                         </div>
                         <input type="hidden" name="number" value="{{$number}}">
-                        <button type="submit" class="btnStyle_s btn w-100 my-3 my-lg-4 continueReceiverDetailBtn_d">Continue</button>
+                        <button class="btnStyle_s btn w-100 my-3 my-lg-4 continueReceiverDetailBtn_d">Continue</button>
                     </form>
                     </p>
                 </div>
@@ -271,18 +267,17 @@
 <script>
     $(document).ready(function() {
         $(".continueReceiverDetailBtn_d").click(function(e) {
-                e.preventDefault();
-                debugger;
-                $receiverName = $('#receiverName_d').val();
-                $receiverEmail = $('#receiverEmail_d').val();
-                // if ($receiverName == '' || $receiverEmail == '') {
-                //     $('.showDetailError').removeClass('d-none');
-                // } else {
+            e.preventDefault();
+            $('.showDetailError').addClass('d-none');
+            $receiverName = $('#receiverName_d').val();
+            $receiverEmail = $('#receiverEmail_d').val();
+            if ($receiverName == '') {
+                $('.showDetailError').removeClass('d-none');
+            } else {
                 localStorage.setItem('receiverName', $receiverName);
                 localStorage.setItem('receiverEmail', $receiverEmail);
-                // $("#receiverDetailForm_d").submit();
+                $("#receiverDetailForm_d").submit();
             }
-
         });
     });
 </script>

@@ -31,6 +31,12 @@ class WebsiteController extends Controller
 
     public function numberDetail(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'number' => 'required|numeric|digits_between:9,12',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator->messages())->withInput();
+        }
         $number = $request->number;
         $checkNumberFour = substr($number, 0, 4);
         $checkNumberthree = substr($number, 0, 3);
@@ -171,6 +177,15 @@ class WebsiteController extends Controller
             $originalResponse = $response->getData()->data->network;
             return view('pages.website.auth.login', ['data' => $originalResponse, 'number' => $number]);
         }
+    }
+
+    public function gotologinpage(Request $request)
+    {
+        $number = $request->number;
+        $user = new UserController;
+        $response = $user->networkOperator($request);
+        $originalResponse = $response->getData()->data->network;
+        return view('pages.website.auth.login', ['data' => $originalResponse, 'number' => $number]);
     }
 
     public function resetPassword(Request $request)

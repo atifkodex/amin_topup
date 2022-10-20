@@ -390,7 +390,7 @@
 
                     </div>
                 </div>
-                <div class="network-list mb-1 d-flex align-items-center pb-3 justify-content-between">
+                <div class="network-list mb-1 d-flex align-items-center pb-3 justify-content-between emailDiv">
                     <div class="network-icon network-item">
                         <img class="network-icon-image" src="{{ asset('assets/website-images/msg-icon.svg') }}" alt="image">
                     </div>
@@ -485,7 +485,11 @@
                         <input type="hidden" name="number" class="numberInput_d" value="web">
                         <button type="submit" class=" mt-3 mt-lg-4 loginBtn_s">SIGN UP</button>
                     </form>
-                    <p class="py-3">Already have an account?<a href="{{url('login')}}"><span>Log In</span></a>
+                    <form class="pt-5" method="POST" id="goToLoginPage_d" action="{{route('gotologinpage')}}" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" class="numberInput" name="number" value="">
+                    </form>
+                    <p class="py-3">Already have an account?<a href="javascript:void(0)" class="loginBtn_d"><span>Log In</span></a>
                     </p>
                 </div>
             </div>
@@ -575,17 +579,27 @@
         let num = localStorage.getItem('receiverNum');
         let network = localStorage.getItem('receiverNetwork');
         let mail = localStorage.getItem('receiverEmail');
+        if (mail == "") {
+            $(".emailDiv").addClass('invisible');
+        }
         let name = localStorage.getItem('receiverName');
         let amount = localStorage.getItem('denomination');
+        let percentage = (amount * 10) / 100;
+        let amountAfterTax = amount - percentage;
         let networkImage = localStorage.getItem('networkImage');
 
         $(".number_d").text(num);
+        $(".numberInput").val(num);
         $(".network_d").text(network);
         $(".mail_d").text(mail);
         $(".name_d").text(name);
-        $(".amount_d").text(amount + " AFN");
+        $(".amount_d").text(amountAfterTax);
         $(".numberInput_d").val(num);
         $(".networkImage").attr('src', networkImage);
+
+        $('.loginBtn_d').click(function() {
+            $("#goToLoginPage_d").submit();
+        });
     });
 </script>
 @endsection

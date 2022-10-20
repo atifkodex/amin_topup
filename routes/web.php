@@ -103,6 +103,7 @@ Route::get('/profile', [WebsiteController::class, 'userProfile'])->name('userPro
 Route::post('/edit_profile', [WebsiteController::class, 'editProfile'])->name('editProfile');
 Route::post('/pay_topup', [WebsiteController::class, 'payTopup'])->name('payTopup');
 Route::post('/contact_us', [WebsiteController::class, 'contactUs'])->name('contactUs');
+Route::post('/login_page', [WebsiteController::class, 'gotologinpage'])->name('gotologinpage');
 
 Route::get('/', function () {
     return view('pages.website.home');

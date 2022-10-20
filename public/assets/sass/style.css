@@ -234,12 +234,12 @@ body {
     padding: 20px 10px;
   }
 }
-.hero-section .hero-form-section form button {
+.hero-section .hero-form-section form .startTopupBtn_s {
   background: #F89822;
   color: black;
   height: 50px;
 }
-.hero-section .hero-form-section form button:hover {
+.hero-section .hero-form-section form .startTopupBtn_s:hover {
   box-shadow: 0 0 10px 0 #DA7A04 inset, 0 0 20px 2px #0088d7;
   border: 3px solid #DA7A04;
   color: white;

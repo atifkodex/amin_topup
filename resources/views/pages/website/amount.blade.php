@@ -73,168 +73,7 @@
 </style>
 @section('content')
 @include('includes.website.navbar')
-<!-- <div class="container-fluid  px-0 outer-wrapper">
-    <div class="inner-wrapper inner-wrapper-main">
-        <img class="star-icon" src="{{ asset('assets/website-images/star-icon.svg') }}" alt="image">
-        <div class="detail-box-outer pt-5  px-3">
-            <div class="detail-box amount-box">
-                <div class="main-form-section-content pb-4">
-                    <h1>Your <span>Details</span></h1>
-                </div>
-                <div class="network-list mb-1 d-flex align-items-center pb-3">
-                    <div class="network-icon">
-                        <img class="network-icon-image" src="{{ asset('assets/website-images/afg-flag.svg') }}" alt="image">
-                    </div>
-                    <div class="network-text d-flex">
-                        <h1 class="receiverNumber_d">{{$number}}</h1>
 
-                    </div>
-                    <div class="network-button pl-2 pl-lg-5">
-                        <button data-toggle="modal" data-target="#email-modal"><img class="edit-icon" src="{{ asset('assets/website-images/edit-icon.svg') }}" alt="image"></button>
-                    </div>
-
-                </div>
-                <div class="network-list mb-1 d-flex align-items-center pb-3">
-                    <div class="network-icon">
-                        <img class="network-icon-image" src="{{$data->operator_image}}" alt="image">
-                    </div>
-                    <div class="network-text d-flex">
-                        <h1>{{$data->operator_name}}</h1>
-
-                    </div>
-                </div>
-                <div class="network-list mb-1 d-flex align-items-center pb-3">
-                    <div class="network-icon">
-                        <img class="network-icon-image" src="{{ asset('assets/website-images/profile-icon.svg') }}" alt="image">
-                    </div>
-                    <div class="network-text d-flex">
-                        <h1 id="receiverName_d">Amin Top-Up</h1>
-
-                    </div>
-                </div>
-                <div class="network-list mb-1 d-flex align-items-center pb-3">
-                    <div class="network-icon">
-                        <img class="network-icon-image" src="{{ asset('assets/website-images/msg-icon.svg') }}" alt="image">
-                    </div>
-                    <div class="network-text d-flex amin-gmail">
-                        <h1 id="receiverEmail_d">amintopup@gmail.com</h1>
-
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="detail-box-bottom text-right invisible">
-                <h1>250 <span>AFN</span></h1>
-            </div>
-        </div>
-
-
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#ffffff" fill-opacity="1" d="M0,32L48,58.7C96,85,192,139,288,176C384,213,480,235,576,202.7C672,171,768,85,864,85.3C960,85,1056,171,1152,197.3C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-            </path>
-        </svg>
-
-    </div>
-    <img class="left-polygon-blue" src="{{ asset('assets/website-images/left-polygon-blue.svg') }}" alt="image">
-    <img class="right-polygon-orange" src="{{ asset('assets/website-images/right-polygon-orange.svg') }}" alt="image">
-</div>
-<div class="info-section-two container-fluid px-0  pb-5">
-    <div class="amount-section  container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="amount-heading col-12 col-lg-6 px-0">
-                    <h1>Choose an amount to <span>continue</span></h1>
-                </div>
-            </div>
-            @foreach($data->details as $amounts)
-            <div class="col-md-6 py-3">
-                <a href="javascript:void(0)" class="selectAmount_d">
-                    <div class="amount-card">
-                        <p>Recevier:befor AIT</p>
-                        <h1 data-src="{{$amounts->denomination}}" class="denominationAmount_d">{{$amounts->denomination}} AFN</h1>
-                        <p>${{$amounts->processing_fee}} fee,total: ${{$amounts->totalAmount}}</p>
-                    </div>
-                    <form action="{{route('orderSummary')}}" class="goToSummaryForm_d" enctype="multipart/form-data" method="POST">
-                        @csrf
-                        <input type="hidden" class="inputNum_d" name="number" value="">
-                    </form>
-                </a>
-            </div>
-            @endforeach
-            {{-- <div class="col-md-6 py-3">
-                    <a href="{{url('login')}}">
-            <div class="amount-card">
-                <p>Recevier:befor AIT</p>
-                <h1>100 AFN</h1>
-                <p>Free fee,total: $7.46USD</p>
-            </div>
-            </a>
-
-        </div>
-        <div class="col-md-6 py-3">
-            <a href="{{url('login')}}">
-                <div class="amount-card">
-                    <p>Recevier:befor AIT</p>
-                    <h1>100 AFN</h1>
-                    <p>Free fee,total: $7.46USD</p>
-                </div>
-            </a>
-
-        </div>
-        <div class="col-md-6 py-3">
-            <a href="{{url('login')}}">
-                <div class="amount-card">
-                    <p>Recevier:befor AIT</p>
-                    <h1>100 AFN</h1>
-                    <p>Free fee,total: $7.46USD</p>
-                </div>
-            </a>
-
-        </div>
-        <div class="col-md-6 py-3">
-            <a href="{{url('login')}}">
-                <div class="amount-card active">
-                    <p>Recevier:befor AIT</p>
-                    <h1>100 AFN</h1>
-                    <p>Free fee,total: $7.46USD</p>
-                </div>
-            </a>
-
-        </div>
-        <div class="col-md-6 py-3">
-            <a href="{{url('login')}}">
-                <div class="amount-card">
-                    <p>Recevier:befor AIT</p>
-                    <h1>100 AFN</h1>
-                    <p>Free fee,total: $7.46USD</p>
-                </div>
-            </a>
-
-        </div> --}}
-
-    </div>
-</div>
-<img class="lefts-polygon-two" src="{{ asset('assets/website-images/left-polygon-three.svg') }}" alt="image">
-<img class="right-polygon-two" src="{{ asset('assets/website-images/right-polygon-two.svg') }}" alt="image">
-</div>
-<div class="modal fade" id="email-modal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content email-modal-content">
-            <div class="modal-body email-modal-body  text-center py-sm-3">
-                <h1>Your <span>Details</span> </h1>
-
-                <form class="py-2 py-sm-4" method="POST" action="{{route('number-detail')}}">
-                    @csrf
-                    <div class="form-group form-field right-inner">
-                        <input type="text" class="form-control" aria-describedby="emailHelp" name="number" value="93 70 00 00 000" placeholder="Type here">
-                    </div>
-                    <button type="submit" class="updateNumModal">Update</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
 <div class="container-fluid outer-wrapper">
     <div class="inner-wrapper">
         <img class="star-icon" src="{{ asset('assets/website-images/star-icon.svg') }}" alt="image">
@@ -297,11 +136,11 @@
 
                     </div>
                 </div>
-                <div class="network-list mb-1 d-flex align-items-center pb-3 justify-content-between">
+                <div class="network-list mb-1 d-flex align-items-center pb-3 justify-content-between emailDiv">
                     <div class="network-icon network-item">
                         <img class="network-icon-image" src="{{ asset('assets/website-images/msg-icon.svg') }}" alt="image">
                     </div>
-                    <div class="network-text  amin-gmail network-item">
+                    <div class="network-text  amin-gmail network-item ">
                         <h1 id="receiverEmail_d">amintopup@gmail.com</h1>
                     </div>
                     <div class="network-button network-item invisible text-right">
@@ -321,12 +160,15 @@
                 </div>
             </div>
             @foreach($data->details as $amounts)
+            <?php $roundFee = round($amounts->processing_fee,2);
+            $roundTotal = round($amounts->totalAmount,2);
+            ?>
             <div class="col-md-6 py-3">
                 <a href="javascript:void(0)" class="selectAmount_d">
                     <div class="amount-card">
-                        <p>Recevier:befor AIT</p>
+                        <p>Receiver:befor AIT</p>
                         <h1 data-src="{{$amounts->denomination}}" class="denominationAmount_d">{{$amounts->denomination}} AFN</h1>
-                        <p>${{$amounts->processing_fee}} fee,total: ${{$amounts->totalAmount}}</p>
+                        <p>${{$roundFee}} fee, total: ${{$roundTotal}}</p>
                     </div>
                     <form action="{{route('orderSummary')}}" class="goToSummaryForm_d" enctype="multipart/form-data" method="POST">
                         @csrf
@@ -387,6 +229,9 @@
 <script>
     $receiverName = localStorage.getItem('receiverName');
     $receiverEmail = localStorage.getItem('receiverEmail');
+    if ($receiverEmail == "") {
+        $(".emailDiv").addClass('invisible');
+    }
     console.log($receiverEmail + $receiverName);
     $("#receiverName_d").text($receiverName);
     $("#receiverEmail_d").text($receiverEmail);
