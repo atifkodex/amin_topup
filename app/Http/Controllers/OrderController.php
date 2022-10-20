@@ -16,6 +16,7 @@ use App\NotificationLog;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 use App\TopupToken;
+use App\User;
 
 
 class OrderController extends Controller
