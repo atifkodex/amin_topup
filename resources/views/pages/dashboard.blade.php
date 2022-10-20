@@ -339,9 +339,13 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($data['latestTransaction'] as $transaction)
+                                    <?php $string = $transaction['created_at'];
+                                    $date = strtotime($string);
+                                    $newDate = date('d-M-y H:i', $date);
+                                    ?>
                                     <tr>
                                         <td class="data">{{$transaction['id']}}</td>
-                                        <td class="data">16 Aug 2022 12:00PM</td>
+                                        <td class="data">{{$newDate}}</td>
                                         <td class="data">{{$transaction['user']['name']}}</td>
                                         <td class="data">
                                             <img src="{{$transaction['networkImage']}}" alt="pangol">

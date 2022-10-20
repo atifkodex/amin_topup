@@ -46,9 +46,9 @@ class WebsiteController extends Controller
             $checkNumberthree = substr($request->number, 0, 3);
             $checkNumberfive = substr($request->number, 0, 5);
             // $checkNumbersix = substr($request->number, 0, 4);
-            if ($checkNumberFour == '9307' || $checkNumberfive == '93020' || $checkNumberthree == '937' || $checkNumberFour == '9320'){
+            if ($checkNumberFour == '9307' || $checkNumberfive == '93020' || $checkNumberthree == '937' || $checkNumberFour == '9320') {
                 $request->number = $request->number;
-            }else{
+            } else {
                 Session::flash('numError', 'Enter a number from Afghanistan origin only.');
                 return redirect()->back();
             }
@@ -61,13 +61,7 @@ class WebsiteController extends Controller
 
     public function amountDetail(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return back()->withErrors($validator->messages())->withInput();
-        }
+        
         $number = $request->number;
         $user = new UserController;
         $response = $user->networkOperator($request);
@@ -311,7 +305,7 @@ class WebsiteController extends Controller
                 'country' => $request->country,
                 'id' => $request->id
             ]);
-        }else{
+        } else {
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
                 'Content-Type' => 'application/json'
@@ -396,7 +390,7 @@ class WebsiteController extends Controller
 
     public function contactUs(Request $request)
     {
-        if(Session::has('UserloginData')){
+        if (Session::has('UserloginData')) {
             $value = Session::get('UserloginData');
             $token = $value['user']['token'];
             $response = Http::withHeaders([
@@ -405,14 +399,14 @@ class WebsiteController extends Controller
             ])->post(\config('url.url') . '/api/contact_us', $request->all());
             $convertor = $response->body();
             $contactResponse = json_decode($convertor, true);
-            if($contactResponse['success'] == true){
+            if ($contactResponse['success'] == true) {
                 Session::flash('contactSuccess', $contactResponse['message']);
                 return redirect()->back();
-            }else{
+            } else {
                 Session::flash('contactFailed', 'Something went wrong, try again later.');
                 return redirect()->back();
             }
-        }else{
+        } else {
             Session::flash('notloginError', 'You need to login to add a contact request');
             return redirect()->back();
         }
