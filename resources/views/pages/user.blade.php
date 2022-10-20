@@ -458,6 +458,7 @@
                 success: function(response) {
                     if (response.data.users.length == 0) {
                         $(".userTable").empty();
+                        $(".noUserDiv").empty();
                         let div = `<div class="text-center">
                                     <h3>No User Found!</h3>
                                 </div>`;
@@ -537,6 +538,7 @@
                 success: function(response) {
                     if (response.data.users.length == 0) {
                         $(".userTable").empty();
+                        $(".noUserDiv").empty();
                         let div = `<div class="text-center">
                                     <h3>No User Found!</h3>
                                 </div>`;
