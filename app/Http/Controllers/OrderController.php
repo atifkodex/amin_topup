@@ -137,6 +137,8 @@ class OrderController extends Controller
         $success = $transaction->save();
         if($success){
             $id = $transaction->id;
+            $today = Carbon::now()->format('y-m-d');
+            User::where('id', $loginUserId)->update(['last_purchase' => $today]);
             $data['transaction_id'] = $id;
             return $this->sendResponse($data, 'Payment Intent');
         }else{
