@@ -293,14 +293,20 @@
         <div class="row">
             <div class="col-12">
                 <div class="reg-box mb-4 mb-lg-5">
-                    <form class="pt-2" action="{{route('amountDetails')}}" enctype="multipart/form-data">
+                    <form class="pt-2" method="POST" id="receiverDetailForm_d" action="{{route('amountDetails')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group form-heading pt-1 pb-2  pb-md-4 pt-md-2">
-                            <h1 class="text-left">Add Recevier Detail</h1>
+                            <h1 class="text-left">Add Receiver Detail</h1>
                         </div>
+                        <!-- <div class="alert alert-danger alert-dismissible fade show login-email-field showDetailError d-none" role="alert">
+                            Name and Email Fields are Required.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div> -->
                         <div class="form-group form-field right-inner">
                             <img src="{{ asset('assets/website-images/person-icon.svg') }}" alt="icon">
-                            <input type="text" class="form-control" id="receiverName_d" placeholder="enter recevier name">
+                            <input type="text" class="form-control" name="name" id="receiverName_d" placeholder="enter receiver name">
                         </div>
                         <div class="form-group form-field right-inner">
                             <img src="{{ asset('assets/website-images/message-icon.svg') }}">
@@ -358,11 +364,19 @@
 @section('insertjavascript')
 <script>
     $(document).ready(function() {
-        $(".continueReceiverDetailBtn_d").click(function() {
-            $receiverName = $('#receiverName_d').val();
-            $receiverEmail = $('#receiverEmail_d').val();
-            localStorage.setItem('receiverName', $receiverName);
-            localStorage.setItem('receiverEmail', $receiverEmail);
+        $(".continueReceiverDetailBtn_d").click(function(e) {
+                e.preventDefault();
+                debugger;
+                $receiverName = $('#receiverName_d').val();
+                $receiverEmail = $('#receiverEmail_d').val();
+                // if ($receiverName == '' || $receiverEmail == '') {
+                //     $('.showDetailError').removeClass('d-none');
+                // } else {
+                localStorage.setItem('receiverName', $receiverName);
+                localStorage.setItem('receiverEmail', $receiverEmail);
+                // $("#receiverDetailForm_d").submit();
+            }
+
         });
     });
 </script>

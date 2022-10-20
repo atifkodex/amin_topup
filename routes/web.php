@@ -20,11 +20,11 @@ use App\Http\Controllers\WebsiteController;
 
 Route::post('/admin_login', [AdminUIController::class, 'adminLogin'])->name('adminLogin');
 
-Route::group(['middleware' => 'prevent-back-history'],function(){
-Route::middleware([AdminAuth::class])->group(function () {
-    Route::group(['prefix' => 'admin', 'middleware' => [IsAdmin::class]], function () {
-        
-        Route::post('/support', [AdminUIController::class, 'support'])->name('/support');
+Route::group(['middleware' => 'prevent-back-history'], function () {
+    Route::middleware([AdminAuth::class])->group(function () {
+        Route::group(['prefix' => 'admin', 'middleware' => [IsAdmin::class]], function () {
+
+            Route::post('/support', [AdminUIController::class, 'support'])->name('/support');
             Route::get('/dashboard', [AdminUIController::class, 'dashboardDetails'])->name('dashboard-details');
             Route::get('/setting', [AdminUIController::class, 'settingDetails'])->name('setting-details');
             Route::get('/support_page', [AdminUIController::class, 'support'])->name('support-page');
@@ -41,17 +41,16 @@ Route::middleware([AdminAuth::class])->group(function () {
             Route::get('/change_password', [AdminUIController::class, 'changePasswordPage'])->name('changePasswordPage');
             Route::post('/update_env', [AdminUIController::class, 'updateEnv'])->name('update_env');
             Route::post('/download', [AdminUIController::class, 'downloadPdf'])->name('downloaduserpdf');
-            Route::get("/logout",[AdminUIController::class,"logout"])->name("adminLogout");
+            Route::get("/logout", [AdminUIController::class, "logout"])->name("adminLogout");
         });
     });
-    
 });
-        Route::get('/admin', function () {
-            return view('pages.auth.login');
-        })->name('login');
-        Route::get('/admin/login', function () {
-            return view('pages.auth.login');
-        });
+Route::get('/admin', function () {
+    return view('pages.auth.login');
+})->name('login');
+Route::get('/admin/login', function () {
+    return view('pages.auth.login');
+});
 
 // Route::get('/change_password', function () {
 //     return view('pages.auth.change-password');
@@ -89,7 +88,7 @@ Auth::routes();
 
 // website
 Route::post('/number_detail', [WebsiteController::class, 'numberDetail'])->name('number-detail');
-Route::get('/amount_detail', [WebsiteController::class, 'amountDetail'])->name('amountDetails');
+Route::post('/amount_detail', [WebsiteController::class, 'amountDetail'])->name('amountDetails');
 Route::post('/user_login', [WebsiteController::class, 'userLogin'])->name('userLogin');
 Route::post('/inweb_login', [WebsiteController::class, 'inwebLogin'])->name('inwebLogin');
 Route::post('/user_signup', [WebsiteController::class, 'userSignup'])->name('userSignup');
@@ -112,9 +111,7 @@ Route::get('/', function () {
 //     return view('pages.website.recevier');
 // });
 
-// Route::get('amount-detail', function () {
-//     return view('pages.website.amount');
-// })->name('amountDetails');
+
 
 Route::get('order', function () {
     return view('pages.website.order-summary');

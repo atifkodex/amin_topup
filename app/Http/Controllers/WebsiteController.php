@@ -61,6 +61,13 @@ class WebsiteController extends Controller
 
     public function amountDetail(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator->messages())->withInput();
+        }
         $number = $request->number;
         $user = new UserController;
         $response = $user->networkOperator($request);
