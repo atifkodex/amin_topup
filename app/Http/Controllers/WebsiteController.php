@@ -41,7 +41,6 @@ class WebsiteController extends Controller
         $checkNumberFour = substr($number, 0, 4);
         $checkNumberthree = substr($number, 0, 3);
         $checkNumberfive = substr($number, 0, 5);
-        // $checkNumbersix = substr($number, 0, 4);
         if ($checkNumberFour == '9307' || $checkNumberfive == '93020') {
             $request->number = $request->number;
         } elseif ($checkNumberthree == '937' || $checkNumberFour == '9320') {
@@ -51,7 +50,6 @@ class WebsiteController extends Controller
             $checkNumberFour = substr($request->number, 0, 4);
             $checkNumberthree = substr($request->number, 0, 3);
             $checkNumberfive = substr($request->number, 0, 5);
-            // $checkNumbersix = substr($request->number, 0, 4);
             if ($checkNumberFour == '9307' || $checkNumberfive == '93020' || $checkNumberthree == '937' || $checkNumberFour == '9320') {
                 $request->number = $request->number;
             } else {

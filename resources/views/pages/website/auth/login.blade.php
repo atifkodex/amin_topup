@@ -404,12 +404,18 @@
             <div class="modal-body email-modal-body  text-center py-sm-3">
                 <h1>Your <span>Details</span> </h1>
 
-                <form class="py-2 py-sm-4" method="POST" action="{{route('number-detail')}}">
+                <form class="py-2 py-sm-4" id="numModalForm_d" method="POST" action="{{route('number-detail')}}">
                     @csrf
-                    <div class="form-group form-field right-inner">
-                        <input type="text" class="form-control" aria-describedby="emailHelp" name="number" value="{{$number}}" placeholder="Type here">
+                    <div class="alert alert-danger alert-dismissible fade show login-email-field showDetailErrorModal d-none" role="alert">
+                        Enter a number from Afghanistan origin only!
                     </div>
-                    <button type="submit" class="updateNumModal btnStyleModal_s">Update</button>
+                    <div class="alert alert-danger alert-dismissible fade show login-email-field showDetailErrorModal2 d-none" role="alert">
+                        Invalid Format! Must be between 9 or 12 digits!
+                    </div>
+                    <div class="form-group form-field right-inner">
+                        <input type="number" class="form-control" aria-describedby="emailHelp" id="numInputModal_d" name="number" value="{{$number}}" placeholder="Type here">
+                    </div>
+                    <button class="updateNumModal btnStyleModal_s" id="updateNumModalBtn_d">Update</button>
                 </form>
             </div>
         </div>
@@ -517,6 +523,49 @@
                     alert("Something went wrong. Please try again later.");
                 }
             });
+        });
+
+        // Modal Num validation 
+        $('#updateNumModalBtn_d').click(function(e) {
+            e.preventDefault();
+            $(".showDetailErrorModal").addClass('d-none');
+            $(".showDetailErrorModal2").addClass('d-none');
+
+            let enteredNum = $('#numInputModal_d').val();
+            let response;
+            if (enteredNum.length < 9 || enteredNum.length > 13) {
+                $(".showDetailErrorModal").addClass('d-none');
+                $(".showDetailErrorModal2").removeClass('d-none');
+                response = 'false';
+                return;
+            }
+
+            let checkNumberFour = String(enteredNum).slice(0, 4);
+            let checkNumberthree = String(enteredNum).slice(0, 3);
+            let checkNumberfive = String(enteredNum).slice(0, 5);
+            if (checkNumberFour == '9307' || checkNumberfive == '93020') {
+                enteredNum = enteredNum;
+                response = 'true';
+            } else if (checkNumberthree == '937' || checkNumberFour == '9320') {
+                enteredNum = enteredNum;
+                response = 'true';
+            } else {
+                enteredNum = 93 + enteredNum;
+                let checkNumberFour = String(enteredNum).slice(0, 4);
+                let checkNumberthree = String(enteredNum).slice(0, 3);
+                let checkNumberfive = String(enteredNum).slice(0, 5);
+                if (checkNumberFour == '9307' || checkNumberfive == '93020' || checkNumberthree == '937' || checkNumberFour == '9320') {
+                    enteredNum = enteredNum;
+                    response = 'true';
+                } else {
+                    $(".showDetailErrorModal").removeClass('d-none');
+                    $(".showDetailErrorModal2").addClass('d-none');
+                    response = 'false';
+                    return;
+
+                }
+            }
+            $("#numModalForm_d").submit();
         });
     })
 </script>
