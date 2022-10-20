@@ -20,7 +20,7 @@
     .setting-card-body-inner {
         overflow-x: auto;
         height: 680px !important;
-        overflow-y:auto !important;
+        overflow-y: auto !important;
     }
 
     .user-modal-time {
@@ -84,7 +84,7 @@
                                         </thead>
                                         <tbody class="userTable">
                                             @foreach($data as $post)
-                                            <tr >
+                                            <tr>
                                                 <input type="hidden" class="id" value="{{$post['id']}}">
                                                 @if(!empty($post['name']))
                                                 <td class="data name">{{$post['name']}}</td>
@@ -117,7 +117,11 @@
                                                 @endif
 
                                                 @if(isset($post['last_transaction']))
-                                                <td class="data last_transaction"><span class="user-table-time">{{ $post['last_transaction'] }}</span></td>
+                                                <?php $string = $post['last_transaction'];
+                                                $date = strtotime($string);
+                                                $newDate = date('y-m-d', $date);
+                                                ?>
+                                                <td class="data last_transaction"><span class="user-table-time">{{ $newDate }}</span></td>
                                                 @else
                                                 <td class="data last_transaction"><span class="user-table-time">No Trasaction</span></td>
                                                 @endif
@@ -145,9 +149,9 @@
                                         </tbody>
                                     </table>
                                     @if(empty($data))
-                                        <div class="text-center">
-                                            <h3>No User Found!</h3>
-                                        </div>
+                                    <div class="text-center">
+                                        <h3>No User Found!</h3>
+                                    </div>
                                     @endif
                                     <div class="noUserDiv"></div>
                                 </div>
@@ -277,7 +281,8 @@
 <script>
     // import FileSaver from 'file-saver';
     var token = @json($token);
-    var LiveURL = '{{ env('BASE_URL_LIVE') }}';
+    var LiveURL = '{{ env('
+    BASE_URL_LIVE ') }}';
 
     getPagination('#table-id');
 
@@ -409,7 +414,6 @@
 </script>
 
 <script>
-
     $(document).ready(function() {
         $("#next span").click(function() {
             $('#next').addClass('active');
@@ -442,7 +446,7 @@
         let formData = JSON.stringify(parameter);
         // Ajax call 
         $.ajax({
-            url: LiveURL +'/api/users',
+            url: LiveURL + '/api/users',
             dataType: 'json',
             type: 'POST',
             data: JSON.stringify(parameter),
@@ -451,14 +455,14 @@
                 'Content-Type': 'application/json'
             },
             success: function(response) {
-                if(response.data.users.length == 0){
+                if (response.data.users.length == 0) {
                     $(".userTable").empty();
                     let div = `<div class="text-center">
                                     <h3>No User Found!</h3>
                                 </div>`;
                     $(".noUserDiv").append(div);
                     getPagination('#table-id');
-                }else{
+                } else {
                     $(".noUserDiv").empty();
                     let arr = [];
                     response.data.users.forEach(element => {
@@ -466,22 +470,23 @@
                     });
                     $(".userTable").empty();
                     $(response.data.users).each(function(i, e) {
-                        let div =   `<tr>
+                        let div = `<tr>
                                         <td class="data name">${e.name}</td>
                                         <td class="data email">${e.email}</td>
                                         <td class="data">${e.users_device}</td>
                                         <td class="data country">${e.country}</td>
                                         <td class="data phone_number">${e.phone_number}</td>
                                         <td class="data last_transaction">${e.last_transaction}</td>`;
-                                        if (e.transaction != undefined && e.transaction != '')
-                                        {div = div + `<input class="total_amount_usd" type="hidden" value="${e.transaction['total_amount_usd']}">`};
-                                        div = div + `<input class="date_of_birth" type="hidden" value="${e.date_of_birth}">
+                        if (e.transaction != undefined && e.transaction != '') {
+                            div = div + `<input class="total_amount_usd" type="hidden" value="${e.transaction['total_amount_usd']}">`
+                        };
+                        div = div + `<input class="date_of_birth" type="hidden" value="${e.date_of_birth}">
                                         <td class="data">
                                             <img class="getuserdata" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
                                         </td>
                                     </tr>`;
                         $(".userTable").append(div);
-    
+
                         $('.getuserdata').click(function() {
                             var id = $(this).parent().parent().find('.id').val();
                             var name = $(this).parent().parent().find('.name').text();
@@ -491,8 +496,8 @@
                             var last_transaction = $(this).parent().parent().find('.last_transaction').text();
                             var total_amount_usd = $(this).parent().parent().find('.total_amount_usd').val();
                             var date_of_birth = $(this).parent().parent().find('.date_of_birth').val();
-    
-    
+
+
                             $("#id").val(id);
                             $("#name_id").text(name);
                             $("#email_id").text(email);
@@ -501,7 +506,7 @@
                             $("#last_transaction_id").text(last_transaction);
                             $("#total_amount_usd_id").text(total_amount_usd);
                             $("#date_of_birth_id").text(date_of_birth);
-    
+
                         });
                     });
                     getPagination('#table-id');
@@ -533,7 +538,7 @@
 
     });
 
-    $("#printBtn").click(function(){
+    $("#printBtn").click(function() {
         $("#printSection").printThis({
             pageTitle: "Transaction Details",
         });
