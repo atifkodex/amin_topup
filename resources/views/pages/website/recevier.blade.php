@@ -195,7 +195,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="reg-box mb-4 mb-lg-5">
+<<<<<<< HEAD
+                    <form class="pt-2" method="post" id="receiverDetailForm_d" action="{{route('testroute')}}" enctype="multipart/form-data">
+=======
                     <form class="pt-2" method="POST" id="receiverDetailForm_d" action="{{url('amount_detail')}}" enctype="multipart/form-data">
+>>>>>>> fddfc7dc9fc231c60ff25fe198c0da1c073f7d73
                         @csrf
                         <div class="form-group form-heading pt-1 pb-2  pb-md-4 pt-md-2">
                             <h1 class="text-left">Add Receiver Detail</h1>
