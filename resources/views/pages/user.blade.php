@@ -435,7 +435,86 @@
         var country = $("#country").val();
         var userphonenumber = $("#userphonenumber").val();
         var lpurchase = $("#lpurchase").val();
-        if (/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/.test(lpurchase)) {
+        if (/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/.test(lpurchase) && lpurchase != '') {
+            lpurchase = $("#lpurchase").val();
+            var parameter = {
+                name: username,
+                email: email,
+                country: country,
+                date: lpurchase,
+                phone_number: userphonenumber
+            };
+            let formData = JSON.stringify(parameter);
+            // Ajax call 
+            $.ajax({
+                url: LiveURL + '/api/users',
+                dataType: 'json',
+                type: 'POST',
+                data: JSON.stringify(parameter),
+                headers: {
+                    'Authorization': 'Bearer ' + token,
+                    'Content-Type': 'application/json'
+                },
+                success: function(response) {
+                    if (response.data.users.length == 0) {
+                        $(".userTable").empty();
+                        let div = `<div class="text-center">
+                                    <h3>No User Found!</h3>
+                                </div>`;
+                        $(".noUserDiv").append(div);
+                        getPagination('#table-id');
+                    } else {
+                        $(".noUserDiv").empty();
+                        let arr = [];
+                        response.data.users.forEach(element => {
+                            arr.push(element);
+                        });
+                        $(".userTable").empty();
+                        $(response.data.users).each(function(i, e) {
+                            let div = `<tr>
+                                        <td class="data name">${e.name}</td>
+                                        <td class="data email">${e.email}</td>
+                                        <td class="data">${e.users_device}</td>
+                                        <td class="data country">${e.country}</td>
+                                        <td class="data phone_number">${e.phone_number}</td>
+                                        <td class="data last_transaction">${e.last_transaction}</td>`;
+                            if (e.transaction != undefined && e.transaction != '') {
+                                div = div + `<input class="total_amount_usd" type="hidden" value="${e.transaction['total_amount_usd']}">`
+                            };
+                            div = div + `<input class="date_of_birth" type="hidden" value="${e.date_of_birth}">
+                                        <td class="data">
+                                            <img class="getuserdata" src="{{ asset('assets/images/action-icon.svg') }}" alt="pangol" data-toggle="modal" data-target="#basicsubsModal" style="cursor: pointer">
+                                        </td>
+                                    </tr>`;
+                            $(".userTable").append(div);
+
+                            $('.getuserdata').click(function() {
+                                var id = $(this).parent().parent().find('.id').val();
+                                var name = $(this).parent().parent().find('.name').text();
+                                var email = $(this).parent().parent().find('.email').text();
+                                var country = $(this).parent().parent().find('.country').text();
+                                var phone_number = $(this).parent().parent().find('.phone_number').text();
+                                var last_transaction = $(this).parent().parent().find('.last_transaction').text();
+                                var total_amount_usd = $(this).parent().parent().find('.total_amount_usd').val();
+                                var date_of_birth = $(this).parent().parent().find('.date_of_birth').val();
+
+
+                                $("#id").val(id);
+                                $("#name_id").text(name);
+                                $("#email_id").text(email);
+                                $("#country_id").text(country);
+                                $("#phone_number_id").text(phone_number);
+                                $("#last_transaction_id").text(last_transaction);
+                                $("#total_amount_usd_id").text(total_amount_usd);
+                                $("#date_of_birth_id").text(date_of_birth);
+
+                            });
+                        });
+                        getPagination('#table-id');
+                    }
+                }
+            });
+        } else if (lpurchase == '') {
             lpurchase = $("#lpurchase").val();
             var parameter = {
                 name: username,
