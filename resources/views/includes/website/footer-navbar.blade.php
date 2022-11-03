@@ -47,7 +47,7 @@
           <div class="footer-pad">
             <h4>LEGAL</h4>
             <ul class="list-unstyled">
-              <li><a href="{{url('privacy')}}">Privacy notice</a></li>
+              <li><a href="{{url('privacynotice')}}">Privacy notice</a></li>
               <li><a href="{{url('terms')}}">Terms & conditions</a></li>
             </ul>
           </div>
