@@ -275,10 +275,6 @@
                 <p>Anywhere in the world, you can simply send Topup to any phone number fast and easily.</p>
             </div>
             <div class="col-12 privacy-content-item pb-md-4">
-                <h1>How can you get in the Amin?</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam natus quam dicta quibusdam vel, repudiandae praesentium deleniti quia aliquid cupiditate nostrum non esse labore molestias. Sint minus molestias ex veniam.</p>
-            </div>
-            <div class="col-12 privacy-content-item pb-md-4">
                 <h1>Scope of the Amin's Privacy notice?</h1>
                 <p>Personal data is information that identifies a person or can be used to identify a person. For us to provide our Services to you, we need to collect and process personal data about you. Without this information, we may not be able to provide our Services to you.</p>
                 <p>This privacy notice will apply to personal data about you collected by us through the Application or otherwise. You acknowledge that you have informed any such person that their personal data may be collected and processed by Amin Topup.</p>
