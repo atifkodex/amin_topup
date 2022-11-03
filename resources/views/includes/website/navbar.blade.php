@@ -10,7 +10,7 @@
            Amin Topup
          </a>
          <div class="dropdown-menu dropdown-bg" aria-labelledby="navbarDropdownMenuLink">
-           <a class="dropdown-item" href="{{url('privacy')}}">About Us</a>
+           <a class="dropdown-item" href="{{url('about')}}">About Us</a>
            <a class="dropdown-item" href="{{url('contact')}}">Contact Us</a>
            <a class="dropdown-item" href="{{route('userProfile')}}">Profile</a>
          </div>
