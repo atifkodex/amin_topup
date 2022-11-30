@@ -19,7 +19,6 @@ use App\Http\Controllers\WebsiteController;
 */
 
 Route::post('/admin_login', [AdminUIController::class, 'adminLogin'])->name('adminLogin');
-
 Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::middleware([AdminAuth::class])->group(function () {
         Route::group(['prefix' => 'admin', 'middleware' => [IsAdmin::class]], function () {

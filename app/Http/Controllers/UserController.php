@@ -114,5 +114,12 @@ class UserController extends Controller
             return $this->sendError(($response), []);
         }
     }
+
+    public function sendMailInvoice(Request $request)
+    {
+        \Mail::to('wahid.kodex@gmail.com')->send(new \App\Mail\SendInvoice($request->data));
+        return true;
+
+    }
     
 }

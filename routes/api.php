@@ -36,6 +36,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::post('/verify_otp', [OtpController::class, 'verifyOtp']);
     Route::post('password/email', [ResetPasswordController::class, 'sendResetResponse'])->name('password/email');
     Route::post('/check_number', [UserController::class, 'networkDetail']);
+    Route::post('/send-invoice', [UserController::class, 'sendMailInvoice']);
 
 });
 
